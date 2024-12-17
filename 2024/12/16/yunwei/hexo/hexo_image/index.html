@@ -22,21 +22,21 @@
     <meta name="description" content="hexo+typora设置typora在设置-&gt;图像设置  相对路径_config.yml中配置，会在使用 hexo new post_name 创建新文档时，在当前目录创建和文档名相同的文件夹，用于存储对应文档的图像 1post_asset_folder: true    按照上述设置后，typora可以限制图像，但是hexo无法显示图像 安装插件hexo-renderer-marke">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo_images">
-<meta property="og:url" content="https://tthours.github.io/2024/12/16/hexo/hexo_image/index.html">
+<meta property="og:url" content="https://tthours.github.io/2024/12/16/yunwei/hexo/hexo_image/index.html">
 <meta property="og:site_name" content="tthours">
 <meta property="og:description" content="hexo+typora设置typora在设置-&gt;图像设置  相对路径_config.yml中配置，会在使用 hexo new post_name 创建新文档时，在当前目录创建和文档名相同的文件夹，用于存储对应文档的图像 1post_asset_folder: true    按照上述设置后，typora可以限制图像，但是hexo无法显示图像 安装插件hexo-renderer-marke">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tthours.github.io/2024/12/15/hexo/hexo_install/age-20221230182231829.png">
-<meta property="og:image" content="https://tthours.github.io/2024/12/15/hexo/hexo_install/age-20241216185909849.png">
-<meta property="og:image" content="https://tthours.github.io/2024/12/15/hexo/hexo_install/age-20241216185919525.png">
-<meta property="og:image" content="https://tthours.github.io/2024/12/15/hexo/hexo_install/age-20241216185930812.png">
+<meta property="og:image" content="https://tthours.github.io/image-20221230182231829.png">
+<meta property="og:image" content="https://tthours.github.io/image-20241216185909849.png">
+<meta property="og:image" content="https://tthours.github.io/image-20241216185919525.png">
+<meta property="og:image" content="https://tthours.github.io/image-20241216185930812.png">
 <meta property="article:published_time" content="2024-12-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-17T06:01:23.249Z">
+<meta property="article:modified_time" content="2024-12-17T06:06:36.479Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="yunwei">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://tthours.github.io/2024/12/15/hexo/hexo_install/age-20221230182231829.png">
+<meta name="twitter:image" content="https://tthours.github.io/image-20221230182231829.png">
   
   
   
@@ -290,7 +290,7 @@
                 <span id="more"></span>
 
 <h2 id="hexo-typora"><a href="#hexo-typora" class="headerlink" title="hexo+typora"></a>hexo+typora</h2><h3 id="设置typora"><a href="#设置typora" class="headerlink" title="设置typora"></a>设置typora</h3><p>在设置-&gt;图像设置</p>
-<p><img src="/2024/12/15/hexo/hexo_install/age-20221230182231829.png" srcset="/img/loading.gif" lazyload alt="image-20221230182231829"></p>
+<p><img src="/./image-20221230182231829.png" srcset="/img/loading.gif" lazyload alt="image-20221230182231829"></p>
 <h3 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h3><p>_config.yml中配置，会在使用 hexo new post_name 创建新文档时，在当前目录创建和文档名相同的文件夹，用于存储对应文档的图像</p>
 <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">post_asset_folder:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
 
@@ -303,9 +303,9 @@
 <h3 id="修改-config-yml配置"><a href="#修改-config-yml配置" class="headerlink" title="修改_config.yml配置"></a>修改_config.yml配置</h3><p>增加如下内容</p>
 <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">marked:</span><br>  <span class="hljs-params">prependRoot:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-params">postAsset:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2024/12/15/hexo/hexo_install/age-20241216185909849.png" srcset="/img/loading.gif" lazyload alt="image-20241216185909849"></p>
-<p><img src="/2024/12/15/hexo/hexo_install/age-20241216185919525.png" srcset="/img/loading.gif" lazyload alt="image-20241216185919525"></p>
-<p><img src="/2024/12/15/hexo/hexo_install/age-20241216185930812.png" srcset="/img/loading.gif" lazyload alt="image-20241216185930812"></p>
+<p><img src="/./image-20241216185909849.png" srcset="/img/loading.gif" lazyload alt="image-20241216185909849"></p>
+<p><img src="/./image-20241216185919525.png" srcset="/img/loading.gif" lazyload alt="image-20241216185919525"></p>
+<p><img src="/./image-20241216185930812.png" srcset="/img/loading.gif" lazyload alt="image-20241216185930812"></p>
 <h3 id="安装插件hexo-asset-image-不好用"><a href="#安装插件hexo-asset-image-不好用" class="headerlink" title="安装插件hexo-asset-image(不好用)"></a>安装插件hexo-asset-image(不好用)</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">npm install hexo-asset-<span class="hljs-selector-tag">image</span> <span class="hljs-attr">--save</span><br></code></pre></td></tr></table></figure>
 
 <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">➜  tthourshexo npm install hexo-asset-image --save<br><br>added <span class="hljs-number">21</span> packages, <span class="hljs-literal">and</span> audited <span class="hljs-number">254</span> packages in <span class="hljs-number">5</span>s<br><br><span class="hljs-number">30</span> packages are looking for funding<br>  run `npm fund` for details<br><br><span class="hljs-number">6</span> vulnerabilities (<span class="hljs-number">1</span> moderate, <span class="hljs-number">4</span> high, <span class="hljs-number">1</span> <span class="hljs-keyword">critical</span>)<br><br>Some issues need review, <span class="hljs-literal">and</span> may require choosing<br>a different dependency.<br><br>Run `npm audit` for details.<br></code></pre></td></tr></table></figure>
@@ -371,7 +371,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>hexo_images</div>
-      <div>https://tthours.github.io/2024/12/16/hexo/hexo_image/</div>
+      <div>https://tthours.github.io/2024/12/16/yunwei/hexo/hexo_image/</div>
     </div>
     <div class="license-meta">
       
@@ -408,12 +408,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/" title="view_dir_belong_disk">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">view_dir_belong_disk</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/15/hexo/hexo_install/" title="hexo_install">
-                        <span class="hidden-mobile">hexo_install</span>
+                      <a href="/2024/12/16/tthours/" title="hexo_images">
+                        <span class="hidden-mobile">hexo_images</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
