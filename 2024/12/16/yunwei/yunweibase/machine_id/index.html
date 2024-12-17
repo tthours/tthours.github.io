@@ -19,28 +19,23 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="hexo+typora设置typora在设置-&gt;图像设置  相对路径_config.yml中配置，会在使用 hexo new post_name 创建新文档时，在当前目录创建和文档名相同的文件夹，用于存储对应文档的图像 1post_asset_folder: true    按照上述设置后，typora可以限制图像，但是hexo无法显示图像 安装插件hexo-renderer-marke">
+    <meta name="description" content="简介在 Linux 系统中，每台计算机都有一个唯一的标识符，称为机器 ID（Machine ID）。机器 ID 是一个由操作系统生成的字符串，用于标识特定的计算机。它在系统启动时自动生成，并且在系统的整个生命周期中保持不变。本文将详细介绍机器 ID 的作用、生成方式以及在 Linux 系统中的应用。 机器 ID 的生成方式Linux 系统中的机器 ID 是通过以下方式生成的： systemd在">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo_images">
-<meta property="og:url" content="https://tthours.github.io/2024/12/16/yunwei/hexo/hexo_images/index.html">
+<meta property="og:title" content="machine_id">
+<meta property="og:url" content="https://tthours.github.io/2024/12/16/yunwei/yunweibase/machine_id/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="hexo+typora设置typora在设置-&gt;图像设置  相对路径_config.yml中配置，会在使用 hexo new post_name 创建新文档时，在当前目录创建和文档名相同的文件夹，用于存储对应文档的图像 1post_asset_folder: true    按照上述设置后，typora可以限制图像，但是hexo无法显示图像 安装插件hexo-renderer-marke">
+<meta property="og:description" content="简介在 Linux 系统中，每台计算机都有一个唯一的标识符，称为机器 ID（Machine ID）。机器 ID 是一个由操作系统生成的字符串，用于标识特定的计算机。它在系统启动时自动生成，并且在系统的整个生命周期中保持不变。本文将详细介绍机器 ID 的作用、生成方式以及在 Linux 系统中的应用。 机器 ID 的生成方式Linux 系统中的机器 ID 是通过以下方式生成的： systemd在">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tthours.github.io/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/82231829.png">
-<meta property="og:image" content="https://tthours.github.io/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/85909849.png">
-<meta property="og:image" content="https://tthours.github.io/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/85919525.png">
-<meta property="og:image" content="https://tthours.github.io/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/85930812.png">
 <meta property="article:published_time" content="2024-12-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-17T06:59:45.004Z">
+<meta property="article:modified_time" content="2024-12-17T06:59:20.734Z">
 <meta property="article:author" content="tt">
-<meta property="article:tag" content="hexo">
 <meta property="article:tag" content="yunwei">
+<meta property="article:tag" content="yunweibase">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://tthours.github.io/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/82231829.png">
   
   
   
-  <title>hexo_images - tthours</title>
+  <title>machine_id - tthours</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -206,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="hexo_images"></span>
+            <span id="subtitle" data-typed-text="machine_id"></span>
           
         </div>
 
@@ -234,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          392 字
+          1.2k 字
         
       </span>
     
@@ -245,7 +240,7 @@
         
         
         
-          4 分钟
+          11 分钟
         
       </span>
     
@@ -282,40 +277,50 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">hexo_images</h1>
+            <h1 id="seo-header">machine_id</h1>
             
             
               <div class="markdown-body">
                 
                 <span id="more"></span>
 
-<h2 id="hexo-typora"><a href="#hexo-typora" class="headerlink" title="hexo+typora"></a>hexo+typora</h2><h3 id="设置typora"><a href="#设置typora" class="headerlink" title="设置typora"></a>设置typora</h3><p>在设置-&gt;图像设置</p>
-<p><img src="/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/82231829.png" srcset="/img/loading.gif" lazyload alt="image-20221230182231829"></p>
-<h3 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h3><p>_config.yml中配置，会在使用 hexo new post_name 创建新文档时，在当前目录创建和文档名相同的文件夹，用于存储对应文档的图像</p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">post_asset_folder:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在 Linux 系统中，每台计算机都有一个唯一的标识符，称为机器 ID（Machine ID）。机器 ID 是一个由操作系统生成的字符串，用于标识特定的计算机。它在系统启动时自动生成，并且在系统的整个生命周期中保持不变。本文将详细介绍机器 ID 的作用、生成方式以及在 Linux 系统中的应用。</p>
+<h2 id="机器-ID-的生成方式"><a href="#机器-ID-的生成方式" class="headerlink" title="机器 ID 的生成方式"></a>机器 ID 的生成方式</h2><p>Linux 系统中的机器 ID 是通过以下方式生成的：</p>
+<h3 id="systemd"><a href="#systemd" class="headerlink" title="systemd"></a>systemd</h3><p>在现代的 Linux 发行版中，机器 ID 是由 systemd 生成和管理的。systemd 是一个系统和服务管理器，它负责启动、停止和管理系统上的各种进程和服务。当系统启动时，systemd 会生成一个机器 ID 并将其存储在 <code>/etc/machine-id</code> 文件中。这个文件是一个只包含机器 ID 的纯文本文件。</p>
+<p>&#x2F;etc&#x2F;machine-id 文件默认权限</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir">root<span class="hljs-variable">@iZbp1191gh7vw52537lyxrZ</span><span class="hljs-symbol">:/var/log</span><span class="hljs-comment"># ls -lat /etc/machine-id</span><br>-r--r--r-- <span class="hljs-number">1</span> root root <span class="hljs-number">33</span> <span class="hljs-title class_">Jun</span> <span class="hljs-number">13</span>  <span class="hljs-number">2023</span> /etc/machine-id<br></code></pre></td></tr></table></figure>
 
 
 
-<p>按照上述设置后，typora可以限制图像，但是hexo无法显示图像</p>
-<h3 id="安装插件hexo-renderer-marked"><a href="#安装插件hexo-renderer-marked" class="headerlink" title="安装插件hexo-renderer-marked"></a>安装插件hexo-renderer-marked</h3><p>新版本hexo已集成hexo-renderer-marked，如果不确定，可以使用npm查询</p>
-<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mel">➜  tthourshexo npm list hexo-<span class="hljs-keyword">renderer</span>-marked<br>hexo-site@0<span class="hljs-number">.0</span><span class="hljs-number">.0</span> /Users/admin/tthours/tthourshexo<br>└── hexo-<span class="hljs-keyword">renderer</span>-marked@6<span class="hljs-number">.3</span><span class="hljs-number">.0</span><br></code></pre></td></tr></table></figure>
+<h3 id="生成规则"><a href="#生成规则" class="headerlink" title="生成规则"></a>生成规则</h3><p>机器 ID 是一个 32 位的十六进制字符串，由 16 个字符组成。生成机器 ID 的规则如下：</p>
+<ul>
+<li>首先，系统会尝试读取 <code>/etc/machine-id</code> 文件。如果该文件存在且内容有效，则将其用作机器 ID。</li>
+<li>如果 <code>/etc/machine-id</code> 文件不存在或内容无效，则系统会生成一个新的机器 ID，并将其写入 <code>/etc/machine-id</code> 文件中。</li>
+</ul>
+<h2 id="机器-ID-的作用"><a href="#机器-ID-的作用" class="headerlink" title="机器 ID 的作用"></a>机器 ID 的作用</h2><p>机器 ID 在 Linux 系统中具有以下作用：</p>
+<h3 id="唯一标识符"><a href="#唯一标识符" class="headerlink" title="唯一标识符"></a>唯一标识符</h3><p>机器 ID 是用来唯一标识一台计算机的。通过机器 ID，系统可以识别不同的计算机，并进行一些特定的操作和配置。</p>
+<h3 id="许可验证"><a href="#许可验证" class="headerlink" title="许可验证"></a>许可验证</h3><p>一些软件和服务提供商可能使用机器 ID 来验证许可证和授权。通过检查机器 ID，他们可以确定软件是否在授权范围内运行。</p>
+<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><p>机器 ID 在安全性方面也起到了一定的作用。它可以用于生成一些加密密钥或用于加密通信，以确保只有具有特定机器 ID 的计算机才能解密和访问数据。</p>
+<h3 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h3><p>机器 ID 还可以用于系统配置和管理。一些配置文件和脚本可能会根据机器 ID 进行不同的操作或应用不同的设置。</p>
+<h2 id="使用机器-ID"><a href="#使用机器-ID" class="headerlink" title="使用机器 ID"></a>使用机器 ID</h2><p>在 Linux 系统中，可以使用机器 ID 来进行一些操作和配置。</p>
+<h3 id="查看机器-ID"><a href="#查看机器-ID" class="headerlink" title="查看机器 ID"></a>查看机器 ID</h3><p>要查看当前计算机的机器 ID，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/machine-id<br></code></pre></td></tr></table></figure>
 
-<h3 id="修改-config-yml配置"><a href="#修改-config-yml配置" class="headerlink" title="修改_config.yml配置"></a>修改_config.yml配置</h3><p>增加如下内容</p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">marked:</span><br>  <span class="hljs-params">prependRoot:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-params">postAsset:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-
-<p><img src="/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/85909849.png" srcset="/img/loading.gif" lazyload alt="image-20241216185909849"></p>
-<p><img src="/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/85919525.png" srcset="/img/loading.gif" lazyload alt="image-20241216185919525"></p>
-<p><img src="/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/85930812.png" srcset="/img/loading.gif" lazyload alt="image-20241216185930812"></p>
-<h3 id="安装插件hexo-asset-image-不好用"><a href="#安装插件hexo-asset-image-不好用" class="headerlink" title="安装插件hexo-asset-image(不好用)"></a>安装插件hexo-asset-image(不好用)</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">npm install hexo-asset-<span class="hljs-selector-tag">image</span> <span class="hljs-attr">--save</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">➜  tthourshexo npm install hexo-asset-image --save<br><br>added <span class="hljs-number">21</span> packages, <span class="hljs-literal">and</span> audited <span class="hljs-number">254</span> packages in <span class="hljs-number">5</span>s<br><br><span class="hljs-number">30</span> packages are looking for funding<br>  run `npm fund` for details<br><br><span class="hljs-number">6</span> vulnerabilities (<span class="hljs-number">1</span> moderate, <span class="hljs-number">4</span> high, <span class="hljs-number">1</span> <span class="hljs-keyword">critical</span>)<br><br>Some issues need review, <span class="hljs-literal">and</span> may require choosing<br>a different dependency.<br><br>Run `npm audit` for details.<br></code></pre></td></tr></table></figure>
-
-<p>插件的作用在于<code>hexo generate</code>生成静态网页资源时自动由相对路径生成绝对路径，但要求md文件中必须使用相对路径，此时的md中复制的图片目录为<code>/同名文件夹/图片名</code>，多了个文件夹路径</p>
-<h4 id="图片文件根目录设置"><a href="#图片文件根目录设置" class="headerlink" title="图片文件根目录设置"></a>图片文件根目录设置</h4><p>打开<code>/blog/scaffolds/post.md</code>，该文件为每次hexo新建md文件时的格式，包括title、date等属性，在该属性中加入<code>typora-root-url: &#123;&#123; title &#125;&#125;</code>，使hexo新建的md文件自动以同路径下的同名文件夹为图片根目录。</p>
-<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><p>【1】Typora与Hexo的图片根目录设置 Magnesium 2022年12月30日</p>
-<p><a target="_blank" rel="noopener" href="https://cmmyyyy.github.io/2022/12/30/Typora%E4%B8%8EHexo%E7%9A%84%E5%9B%BE%E7%89%87%E6%A0%B9%E7%9B%AE%E5%BD%95%E8%AE%BE%E7%BD%AE/">https://cmmyyyy.github.io/2022/12/30/Typora%E4%B8%8EHexo%E7%9A%84%E5%9B%BE%E7%89%87%E6%A0%B9%E7%9B%AE%E5%BD%95%E8%AE%BE%E7%BD%AE/</a></p>
-<p>【2】Hexo插入图片（好用的办法）robotx 2023-11-29</p>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7306723921717198899">https://juejin.cn/post/7306723921717198899</a></p>
+<h3 id="使用机器-ID-进行其他操作"><a href="#使用机器-ID-进行其他操作" class="headerlink" title="使用机器 ID 进行其他操作"></a>使用机器 ID 进行其他操作</h3><p>除了查看机器 ID，还可以在以下情况下使用机器 ID 进行操作和配置：</p>
+<ul>
+<li>许可验证：某些软件和服务可能需要验证机器 ID 才能使用许可证进行授权。在这种情况下，你可以将机器 ID 提供给软件或服务提供商以进行许可证验证。</li>
+<li>系统配置：一些配置文件或脚本可能会使用机器 ID 进行不同的操作或应用不同的设置。你可以根据机器 ID 编写脚本或配置文件，以根据不同的机器 ID 进行特定的配置。</li>
+<li>安全性：机器 ID 可用于增加系统的安全性。例如，你可以使用机器 ID 生成一些加密密钥，以确保只有具有特定机器 ID 的计算机才能解密和访问数据。</li>
+</ul>
+<h2 id="机器-ID-的注意事项"><a href="#机器-ID-的注意事项" class="headerlink" title="机器 ID 的注意事项"></a>机器 ID 的注意事项</h2><p>在使用机器 ID 时，需要注意以下事项：</p>
+<ul>
+<li>唯一性：机器 ID 应该是唯一的，每台计算机都应该有不同的机器 ID。确保在克隆或复制系统时更新机器 ID。</li>
+<li>保密性：机器 ID 是一个敏感信息，应该妥善保管。避免将机器 ID 泄露给不信任的人或系统。</li>
+<li>持久性：机器 ID 在系统的整个生命周期中保持不变。在更换硬件或重新安装操作系统时，机器 ID 通常不会改变。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>机器 ID 是 Linux 系统中用于唯一标识计算机的标识符。它由 systemd 生成并存储在 <code>/etc/machine-id</code> 文件中。机器 ID 在许可验证、安全性和系统配置方面发挥着重要作用。通过机器 ID，系统可以识别不同的计算机并进行特定的操作和配置。在使用机器 ID 时，请确保唯一性、保密性和持久性，并根据需要使用相应的命令和配置文件来操作和配置系统。</p>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><p>【1】开发者社区&#x2F;龙蜥操作系统&#x2F;文章&#x2F;什么是 Linux 中的机器 ID？</p>
+<p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1319056">https://developer.aliyun.com/article/1319056</a></p>
 
                 
               </div>
@@ -339,7 +344,7 @@
   
     <span>></span>
     
-  <a href="/categories/yunwei/hexo/" class="category-chain-item">hexo</a>
+  <a href="/categories/yunwei/yunweibase/" class="category-chain-item">yunweibase</a>
   
   
 
@@ -356,9 +361,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/hexo/" class="print-no-link">#hexo</a>
-      
         <a href="/tags/yunwei/" class="print-no-link">#yunwei</a>
+      
+        <a href="/tags/yunweibase/" class="print-no-link">#yunweibase</a>
       
     </div>
   
@@ -370,8 +375,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>hexo_images</div>
-      <div>https://tthours.github.io/2024/12/16/yunwei/hexo/hexo_images/</div>
+      <div>machine_id</div>
+      <div>https://tthours.github.io/2024/12/16/yunwei/yunweibase/machine_id/</div>
     </div>
     <div class="license-meta">
       
@@ -408,9 +413,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/16/yunwei/yunweibase/cpe/" title="cpe">
+                      <a href="/2024/12/16/yunwei/hexo/hexo_images/" title="hexo_images">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">cpe</span>
+                        <span class="hidden-mobile">hexo_images</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -418,8 +423,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/16/yunwei/yunweibase/machine_id/" title="machine_id">
-                        <span class="hidden-mobile">machine_id</span>
+                      <a href="/2024/12/15/yunwei/hexo/hexo_install/" title="hexo_install">
+                        <span class="hidden-mobile">hexo_install</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
