@@ -36,35 +36,6 @@
   
   <entry>
     <title>hexo_images</title>
-    <link href="/2024/12/16/yunwei/hexo/hexo_image/"/>
-    <url>/2024/12/16/yunwei/hexo/hexo_image/</url>
-    
-    <content type="html"><![CDATA[<span id="more"></span><h2 id="hexo-typora"><a href="#hexo-typora" class="headerlink" title="hexo+typora"></a>hexo+typora</h2><h3 id="设置typora"><a href="#设置typora" class="headerlink" title="设置typora"></a>设置typora</h3><p>在设置-&gt;图像设置</p><p><img src="/./image-20221230182231829.png" alt="image-20221230182231829"></p><h3 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h3><p>_config.yml中配置，会在使用 hexo new post_name 创建新文档时，在当前目录创建和文档名相同的文件夹，用于存储对应文档的图像</p><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">post_asset_folder:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure><p>按照上述设置后，typora可以限制图像，但是hexo无法显示图像</p><h3 id="安装插件hexo-renderer-marked"><a href="#安装插件hexo-renderer-marked" class="headerlink" title="安装插件hexo-renderer-marked"></a>安装插件hexo-renderer-marked</h3><p>新版本hexo已集成hexo-renderer-marked，如果不确定，可以使用npm查询</p><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mel">➜  tthourshexo npm list hexo-<span class="hljs-keyword">renderer</span>-marked<br>hexo-site@0<span class="hljs-number">.0</span><span class="hljs-number">.0</span> /Users/admin/tthours/tthourshexo<br>└── hexo-<span class="hljs-keyword">renderer</span>-marked@6<span class="hljs-number">.3</span><span class="hljs-number">.0</span><br></code></pre></td></tr></table></figure><h3 id="修改-config-yml配置"><a href="#修改-config-yml配置" class="headerlink" title="修改_config.yml配置"></a>修改_config.yml配置</h3><p>增加如下内容</p><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">marked:</span><br>  <span class="hljs-params">prependRoot:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-params">postAsset:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure><p><img src="/./image-20241216185909849.png" alt="image-20241216185909849"></p><p><img src="/./image-20241216185919525.png" alt="image-20241216185919525"></p><p><img src="/./image-20241216185930812.png" alt="image-20241216185930812"></p><h3 id="安装插件hexo-asset-image-不好用"><a href="#安装插件hexo-asset-image-不好用" class="headerlink" title="安装插件hexo-asset-image(不好用)"></a>安装插件hexo-asset-image(不好用)</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">npm install hexo-asset-<span class="hljs-selector-tag">image</span> <span class="hljs-attr">--save</span><br></code></pre></td></tr></table></figure><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">➜  tthourshexo npm install hexo-asset-image --save<br><br>added <span class="hljs-number">21</span> packages, <span class="hljs-literal">and</span> audited <span class="hljs-number">254</span> packages in <span class="hljs-number">5</span>s<br><br><span class="hljs-number">30</span> packages are looking for funding<br>  run `npm fund` for details<br><br><span class="hljs-number">6</span> vulnerabilities (<span class="hljs-number">1</span> moderate, <span class="hljs-number">4</span> high, <span class="hljs-number">1</span> <span class="hljs-keyword">critical</span>)<br><br>Some issues need review, <span class="hljs-literal">and</span> may require choosing<br>a different dependency.<br><br>Run `npm audit` for details.<br></code></pre></td></tr></table></figure><p>插件的作用在于<code>hexo generate</code>生成静态网页资源时自动由相对路径生成绝对路径，但要求md文件中必须使用相对路径，此时的md中复制的图片目录为<code>/同名文件夹/图片名</code>，多了个文件夹路径</p><h4 id="图片文件根目录设置"><a href="#图片文件根目录设置" class="headerlink" title="图片文件根目录设置"></a>图片文件根目录设置</h4><p>打开<code>/blog/scaffolds/post.md</code>，该文件为每次hexo新建md文件时的格式，包括title、date等属性，在该属性中加入<code>typora-root-url: &#123;&#123; title &#125;&#125;</code>，使hexo新建的md文件自动以同路径下的同名文件夹为图片根目录。</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>【1】Typora与Hexo的图片根目录设置 Magnesium 2022年12月30日</p><p><a href="https://cmmyyyy.github.io/2022/12/30/Typora%E4%B8%8EHexo%E7%9A%84%E5%9B%BE%E7%89%87%E6%A0%B9%E7%9B%AE%E5%BD%95%E8%AE%BE%E7%BD%AE/">https://cmmyyyy.github.io/2022/12/30/Typora%E4%B8%8EHexo%E7%9A%84%E5%9B%BE%E7%89%87%E6%A0%B9%E7%9B%AE%E5%BD%95%E8%AE%BE%E7%BD%AE/</a></p><p>【2】Hexo插入图片（好用的办法）robotx 2023-11-29</p><p><a href="https://juejin.cn/post/7306723921717198899">https://juejin.cn/post/7306723921717198899</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>yunwei</category>
-      
-      <category>hexo</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>hexo</tag>
-      
-      <tag>yunwei</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>hexo_images</title>
     <link href="/2024/12/16/tthours/"/>
     <url>/2024/12/16/tthours/</url>
     
@@ -114,6 +85,35 @@
       <tag>yunwei</tag>
       
       <tag>yunweibase</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>hexo_images</title>
+    <link href="/2024/12/16/yunwei/hexo/hexo_images/"/>
+    <url>/2024/12/16/yunwei/hexo/hexo_images/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h2 id="hexo-typora"><a href="#hexo-typora" class="headerlink" title="hexo+typora"></a>hexo+typora</h2><h3 id="设置typora"><a href="#设置typora" class="headerlink" title="设置typora"></a>设置typora</h3><p>在设置-&gt;图像设置</p><p><img src="/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/82231829.png" alt="image-20221230182231829"></p><h3 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h3><p>_config.yml中配置，会在使用 hexo new post_name 创建新文档时，在当前目录创建和文档名相同的文件夹，用于存储对应文档的图像</p><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">post_asset_folder:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure><p>按照上述设置后，typora可以限制图像，但是hexo无法显示图像</p><h3 id="安装插件hexo-renderer-marked"><a href="#安装插件hexo-renderer-marked" class="headerlink" title="安装插件hexo-renderer-marked"></a>安装插件hexo-renderer-marked</h3><p>新版本hexo已集成hexo-renderer-marked，如果不确定，可以使用npm查询</p><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mel">➜  tthourshexo npm list hexo-<span class="hljs-keyword">renderer</span>-marked<br>hexo-site@0<span class="hljs-number">.0</span><span class="hljs-number">.0</span> /Users/admin/tthours/tthourshexo<br>└── hexo-<span class="hljs-keyword">renderer</span>-marked@6<span class="hljs-number">.3</span><span class="hljs-number">.0</span><br></code></pre></td></tr></table></figure><h3 id="修改-config-yml配置"><a href="#修改-config-yml配置" class="headerlink" title="修改_config.yml配置"></a>修改_config.yml配置</h3><p>增加如下内容</p><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">marked:</span><br>  <span class="hljs-params">prependRoot:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-params">postAsset:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure><p><img src="/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/85909849.png" alt="image-20241216185909849"></p><p><img src="/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/85919525.png" alt="image-20241216185919525"></p><p><img src="/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/85930812.png" alt="image-20241216185930812"></p><h3 id="安装插件hexo-asset-image-不好用"><a href="#安装插件hexo-asset-image-不好用" class="headerlink" title="安装插件hexo-asset-image(不好用)"></a>安装插件hexo-asset-image(不好用)</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">npm install hexo-asset-<span class="hljs-selector-tag">image</span> <span class="hljs-attr">--save</span><br></code></pre></td></tr></table></figure><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">➜  tthourshexo npm install hexo-asset-image --save<br><br>added <span class="hljs-number">21</span> packages, <span class="hljs-literal">and</span> audited <span class="hljs-number">254</span> packages in <span class="hljs-number">5</span>s<br><br><span class="hljs-number">30</span> packages are looking for funding<br>  run `npm fund` for details<br><br><span class="hljs-number">6</span> vulnerabilities (<span class="hljs-number">1</span> moderate, <span class="hljs-number">4</span> high, <span class="hljs-number">1</span> <span class="hljs-keyword">critical</span>)<br><br>Some issues need review, <span class="hljs-literal">and</span> may require choosing<br>a different dependency.<br><br>Run `npm audit` for details.<br></code></pre></td></tr></table></figure><p>插件的作用在于<code>hexo generate</code>生成静态网页资源时自动由相对路径生成绝对路径，但要求md文件中必须使用相对路径，此时的md中复制的图片目录为<code>/同名文件夹/图片名</code>，多了个文件夹路径</p><h4 id="图片文件根目录设置"><a href="#图片文件根目录设置" class="headerlink" title="图片文件根目录设置"></a>图片文件根目录设置</h4><p>打开<code>/blog/scaffolds/post.md</code>，该文件为每次hexo新建md文件时的格式，包括title、date等属性，在该属性中加入<code>typora-root-url: &#123;&#123; title &#125;&#125;</code>，使hexo新建的md文件自动以同路径下的同名文件夹为图片根目录。</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>【1】Typora与Hexo的图片根目录设置 Magnesium 2022年12月30日</p><p><a href="https://cmmyyyy.github.io/2022/12/30/Typora%E4%B8%8EHexo%E7%9A%84%E5%9B%BE%E7%89%87%E6%A0%B9%E7%9B%AE%E5%BD%95%E8%AE%BE%E7%BD%AE/">https://cmmyyyy.github.io/2022/12/30/Typora%E4%B8%8EHexo%E7%9A%84%E5%9B%BE%E7%89%87%E6%A0%B9%E7%9B%AE%E5%BD%95%E8%AE%BE%E7%BD%AE/</a></p><p>【2】Hexo插入图片（好用的办法）robotx 2023-11-29</p><p><a href="https://juejin.cn/post/7306723921717198899">https://juejin.cn/post/7306723921717198899</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>yunwei</category>
+      
+      <category>hexo</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+      <tag>yunwei</tag>
       
     </tags>
     
