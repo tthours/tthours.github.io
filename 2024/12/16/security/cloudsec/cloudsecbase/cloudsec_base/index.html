@@ -27,7 +27,7 @@
 <meta property="og:description" content="云原生基础概念qemu-kvmqemuqemu原理qemu 是通过软件实现的虚拟化模拟器，可以模拟大多数硬件设备，可以通过 qemu 模拟虚拟机，模拟出来的虚拟机与之交互的硬件就是 qemu 模拟出来的硬件，qemu 模拟的硬件将从虚拟机接收过来的指令转译给真正的硬件。 qemu优势qemu劣势由于 qemu 是基于软件的，指令需要 qemu 进行转译，所以速度会相对较慢一些。 KVMke">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-17T18:08:58.938Z">
+<meta property="article:modified_time" content="2024-12-18T05:45:16.197Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="cloudsec">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.4k 字
+          3.5k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          29 分钟
+          30 分钟
         
       </span>
     
@@ -502,6 +502,20 @@
 <p>按照官方文档部署的K8s需要经过 kubectl proxy 才可以通过本地8001端口访问dashboard，但是如果直接将dashboard映射到宿主机节点或者在执行 kubectl proxy是使用额外的参数（kubectl proxy –address 0.0.0.0 –accept-hosts&#x3D;’^*$’），会出现只要可以访问到宿主机的都可以访问到dashboard</p>
 <p>默认情况下，dashboard是需要登录认证，但是如果在dashboard启动参数中添加 –enable-skip-login选项，则就可以通过点击dashboard界面的“跳过”来绕过认证</p>
 <p>3、Kubelet</p>
+<h2 id="云原生应用的风险分析"><a href="#云原生应用的风险分析" class="headerlink" title="云原生应用的风险分析"></a>云原生应用的风险分析</h2><p>5.3 云原生应用的新风险分析</p>
+<p>5.3.1 数据泄露风险</p>
+<p>1）应用漏洞</p>
+<p>API造成的数据泄露风险</p>
+<p>2）密钥不规范管理</p>
+<p>硬编码</p>
+<p>解决方案：</p>
+<p>代码与配置可分离</p>
+<p>配置支持分布式</p>
+<p>配置实时可更新</p>
+<p>配置可统一治理</p>
+<p>3）应用间通信未加密</p>
+<p>gRPC协议，默认不加密</p>
+<p>5.3.2 未授权访问的风险</p>
 
                 
               </div>
