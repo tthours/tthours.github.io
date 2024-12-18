@@ -1,0 +1,877 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="云原生基础概念qemu-kvmqemuqemu原理qemu 是通过软件实现的虚拟化模拟器，可以模拟大多数硬件设备，可以通过 qemu 模拟虚拟机，模拟出来的虚拟机与之交互的硬件就是 qemu 模拟出来的硬件，qemu 模拟的硬件将从虚拟机接收过来的指令转译给真正的硬件。 qemu优势qemu劣势由于 qemu 是基于软件的，指令需要 qemu 进行转译，所以速度会相对较慢一些。 KVMke">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cloudsec_base">
+<meta property="og:url" content="https://tthours.github.io/2024/12/16/security/cloudsec/cloudsecbase/cloudsec_base/index.html">
+<meta property="og:site_name" content="tthours">
+<meta property="og:description" content="云原生基础概念qemu-kvmqemuqemu原理qemu 是通过软件实现的虚拟化模拟器，可以模拟大多数硬件设备，可以通过 qemu 模拟虚拟机，模拟出来的虚拟机与之交互的硬件就是 qemu 模拟出来的硬件，qemu 模拟的硬件将从虚拟机接收过来的指令转译给真正的硬件。 qemu优势qemu劣势由于 qemu 是基于软件的，指令需要 qemu 进行转译，所以速度会相对较慢一些。 KVMke">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-17T18:08:58.938Z">
+<meta property="article:author" content="tt">
+<meta property="article:tag" content="security">
+<meta property="article:tag" content="cloudsec">
+<meta property="article:tag" content="base">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>cloudsec_base - tthours</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tthours.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ten thousand hours</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/hd.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="cloudsec_base"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        tt
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-12-16 00:00" pubdate>
+          2024年12月16日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">cloudsec_base</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <span id="more"></span>
+
+
+
+<h1 id="云原生基础概念"><a href="#云原生基础概念" class="headerlink" title="云原生基础概念"></a>云原生基础概念</h1><h2 id="qemu-kvm"><a href="#qemu-kvm" class="headerlink" title="qemu-kvm"></a>qemu-kvm</h2><h3 id="qemu"><a href="#qemu" class="headerlink" title="qemu"></a>qemu</h3><h4 id="qemu原理"><a href="#qemu原理" class="headerlink" title="qemu原理"></a>qemu原理</h4><p>qemu 是通过软件实现的虚拟化模拟器，可以模拟大多数硬件设备，可以通过 qemu 模拟虚拟机，模拟出来的虚拟机与之交互的硬件就是 qemu 模拟出来的硬件，qemu 模拟的硬件将从虚拟机接收过来的指令转译给真正的硬件。</p>
+<h4 id="qemu优势"><a href="#qemu优势" class="headerlink" title="qemu优势"></a>qemu优势</h4><h4 id="qemu劣势"><a href="#qemu劣势" class="headerlink" title="qemu劣势"></a>qemu劣势</h4><p>由于 qemu 是基于软件的，指令需要 qemu 进行转译，所以速度会相对较慢一些。</p>
+<h3 id="KVM"><a href="#KVM" class="headerlink" title="KVM"></a>KVM</h3><p>kernel-based Virtual Machine</p>
+<h4 id="KVM原理"><a href="#KVM原理" class="headerlink" title="KVM原理"></a>KVM原理</h4><p>硬件辅助的虚拟化技术。</p>
+<p>kvm 是 linux 的内核模块,用于模拟 CPU 和内存。</p>
+<h4 id="KVM优势"><a href="#KVM优势" class="headerlink" title="KVM优势"></a>KVM优势</h4><p>由于是基于linux内核的，所以模拟出来的虚拟机的 CPU 指令会直接和真正的硬件进行交互，因此速度会更加快速</p>
+<h4 id="KVM劣势"><a href="#KVM劣势" class="headerlink" title="KVM劣势"></a>KVM劣势</h4><h3 id="qemu-kvm-1"><a href="#qemu-kvm-1" class="headerlink" title="qemu-kvm"></a>qemu-kvm</h3><h4 id="qemu-kvm原理"><a href="#qemu-kvm原理" class="headerlink" title="qemu-kvm原理"></a>qemu-kvm原理</h4><p>由于 qemu 和 kvm 单独使用都会存在一些不满意的地方，所以 qemu 将 kvm 整合，使用 ioctl 调用 &#x2F;dev&#x2F;kvm 接口，将相关 CPU 的指令直接交由 内核进行处理。</p>
+<p>kvm 模拟 CPU 和内存，实现CPU和内存的虚拟化；qemu 模拟 IO 设备，实现 IO 的虚拟化。通过两者实现服务器的虚拟化，所以就是 qemu-kvm。</p>
+<h2 id="容器技术"><a href="#容器技术" class="headerlink" title="容器技术"></a>容器技术</h2><h3 id="容器和虚拟化"><a href="#容器和虚拟化" class="headerlink" title="容器和虚拟化"></a>容器和虚拟化</h3><p><strong>虚拟化：Vritualization</strong></p>
+<p>通常在hypervisor层实现对硬件资源的虚拟化，hypervisor为虚拟机提供了虚拟的运行平台，管理虚拟机的操作系统的运行，每个虚拟机都有自己的操作系统、系统库和应用</p>
+<p><strong>容器：Container</strong></p>
+<p>没有hypervisor层，每个容器是与主机共享硬件资源及操作系统</p>
+<p>在操作系统层面实现了对计算机系统资源的虚拟化，在操作系统中对CPU、内存和文件系统等资源的隔离划分和控制，实现进程之间透明的资源使用。</p>
+<h3 id="容器镜像"><a href="#容器镜像" class="headerlink" title="容器镜像"></a>容器镜像</h3><p>镜像是容器运行的基础，容器引擎可使用不同的镜像启动相应的容器</p>
+<p>虚拟机镜像是将完整的操作系统封装成一个镜像文件</p>
+<p>容器镜像不是一个文件，是分层存储的文件系统，所以如果对镜像内某个文件修改时，只是修改的最上方的读写层，不会覆盖下层已有的文件系统</p>
+<h3 id="容器存储"><a href="#容器存储" class="headerlink" title="容器存储"></a>容器存储</h3><h4 id="镜像元数据"><a href="#镜像元数据" class="headerlink" title="镜像元数据"></a>镜像元数据</h4><p>Linux系统中docker的数据默认存储在&#x2F;var&#x2F;lib&#x2F;docker中</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs tap">└─<span class="hljs-comment"># ls -l /var/lib/docker</span><br>总用量 44<br>drwx--x--x <span class="hljs-number"> 4 </span>root root<span class="hljs-number"> 4096 </span> 4月<span class="hljs-number"> 22 </span>19:08 buildkit<br>drwx--x--- <span class="hljs-number"> 3 </span>root root<span class="hljs-number"> 4096 </span> 7月 <span class="hljs-number"> 5 </span>09:00 containers<br>drwx------ <span class="hljs-number"> 3 </span>root root<span class="hljs-number"> 4096 </span> 4月<span class="hljs-number"> 22 </span>19:08 image<br>drwxr-x--- <span class="hljs-number"> 3 </span>root root<span class="hljs-number"> 4096 </span> 4月<span class="hljs-number"> 22 </span>19:08 network<br>drwx--x---<span class="hljs-number"> 26 </span>root root<span class="hljs-number"> 4096 </span> 7月 <span class="hljs-number"> 5 </span>09:00 overlay2<br>drwx------ <span class="hljs-number"> 4 </span>root root<span class="hljs-number"> 4096 </span> 4月<span class="hljs-number"> 22 </span>19:08 plugins<br>drwx------ <span class="hljs-number"> 2 </span>root root<span class="hljs-number"> 4096 </span> 7月 <span class="hljs-number"> 3 </span>11:05 runtimes<br>drwx------ <span class="hljs-number"> 2 </span>root root<span class="hljs-number"> 4096 </span> 4月<span class="hljs-number"> 22 </span>19:08 swarm<br>drwx------ <span class="hljs-number"> 2 </span>root root<span class="hljs-number"> 4096 </span> 7月 <span class="hljs-number"> 4 </span>09:33 tmp<br>drwx------ <span class="hljs-number"> 2 </span>root root<span class="hljs-number"> 4096 </span> 4月<span class="hljs-number"> 22 </span>19:08 trust<br>drwx-----x<span class="hljs-number"> 17 </span>root root<span class="hljs-number"> 4096 </span> 7月 <span class="hljs-number"> 5 </span>09:00 volumes<br><br></code></pre></td></tr></table></figure>
+
+<p>基于不同的系统又有不同的存储驱动和不同的目录结构</p>
+<p>镜像每一层的ID是该文件内容的散列校验值，作为该层的唯一标识。</p>
+<p>镜像索引方式：</p>
+<p>读取镜像的manifests文件</p>
+<p>获取config的sha256码</p>
+<p>得到镜像config文件</p>
+<p>遍历manifests文件中的所有层（layer）</p>
+<p>根据sha256码在本地查找</p>
+<p>拼出完整镜像</p>
+<h4 id="存储驱动"><a href="#存储驱动" class="headerlink" title="存储驱动"></a>存储驱动</h4><p>Docker 依靠驱动技术管理镜像和运行它们的容器间的存储和交互</p>
+<p>当前支持的存储驱动</p>
+<p>overlay2、aufs、fuse-overlays、devicemapper、btrfs、zfs、vfs</p>
+<h4 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h4><p>docker采用数据卷（Volume）的形式向容器提供持久化存储</p>
+<h3 id="容器网络"><a href="#容器网络" class="headerlink" title="容器网络"></a>容器网络</h3><p>容器网络目前可分为主机网络和集群网络</p>
+<p>主机网络</p>
+<p>以Docker为例，分为 None 网络模式、Bridge 网络模式、Host 网络模式和 Container 网络模式</p>
+<p>集群网络以 Kubernetes 为例</p>
+<p>Pod 为 Kubernetes 应用运行的基本单元，每个 Pod 中包含一个或多个相关的容器，多个容器运行在同一主机中，并且共享相同的网络命名空间和相同的Linux协议栈</p>
+<p>集群网络基于Pod主要涉及以下三种通信</p>
+<p>同一Pod内，容器和容器之间的通信</p>
+<p>同一主机内不同Pod之间的通信</p>
+<p>跨主机Pod之间的通信</p>
+<h3 id="容器运行时"><a href="#容器运行时" class="headerlink" title="容器运行时"></a>容器运行时</h3><p>容器运行时负责管理容器运行的整个生命周期，包括但不限于指定容器镜像格式、构建镜像、上传和拉取镜像、管理镜像、管理容器实例、运行容器等</p>
+<p>OCI（Open Container Initiative）开放容器标准</p>
+<p>包含容器运行时标准和容器镜像标准</p>
+<p>容器运行时标准主要包含 runC、Rocket、Kata Containers、gVisor等</p>
+<p>CRI（Container Runtime Interface）容器运行时接口</p>
+<p>当前支持的CRI运行时包括 Docker、Containerd、CRI-O</p>
+<h2 id="容器编排"><a href="#容器编排" class="headerlink" title="容器编排"></a>容器编排</h2><p>关注度较高的容器编排平台</p>
+<p>Kubernetes </p>
+<p>apache mesos</p>
+<p>docker Swarm</p>
+<p>OpenShift</p>
+<p>Rancher</p>
+<h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><p>服务之间通常通过 RESTful 通信</p>
+<h2 id="服务网格"><a href="#服务网格" class="headerlink" title="服务网格"></a>服务网格</h2><p>Service Mesh</p>
+<p>通常通过一组轻量级网络代理实现，这些代理与应用程序一起部署，而无须感知应用程序本身</p>
+<p>Sidecar 运行在服务旁，并对服务透明。由于所有通过服务的流量均会经过Sidecar，因此Sidecar可实现流量控制功能，如服务发现、负载均衡、智能路由、故障注入、熔断器、TLS终止等</p>
+<p>Istio为代表</p>
+<h2 id="Serverless"><a href="#Serverless" class="headerlink" title="Serverless"></a>Serverless</h2><p>Serverless可在不考虑服务器的情况下构建并运行应用程序和服务，也就是开放者只负责开发，服务器均交给第三方管理</p>
+<p>两种实现方式</p>
+<p>BaaS（Backend as a Service，后端即服务）</p>
+<p>FaaS（Functions as a Service，函数即服务），主要实现方式</p>
+<p>典型代表</p>
+<p>AWS Lamba</p>
+<p>阿里云的函数计算</p>
+<p>Kubernetes的kubeless</p>
+<p>Apache OpenWhisk</p>
+<h1 id="云原生安全架构"><a href="#云原生安全架构" class="headerlink" title="云原生安全架构"></a>云原生安全架构</h1><h2 id="容器安全"><a href="#容器安全" class="headerlink" title="容器安全"></a>容器安全</h2><p>关键字：容器逃逸</p>
+<h3 id="容器基础设施安全"><a href="#容器基础设施安全" class="headerlink" title="容器基础设施安全"></a>容器基础设施安全</h3><p>主机安全配置是否会影响到容器</p>
+<p>主机恶意进程和安全漏洞是否会影响到容器</p>
+<p>容器内进程是否可以利用主机上的安全漏洞</p>
+<h3 id="容器镜像安全"><a href="#容器镜像安全" class="headerlink" title="容器镜像安全"></a>容器镜像安全</h3><p>镜像中的软件是否存在安全漏洞</p>
+<p>镜像构建过程中是否存在安全风险</p>
+<p>镜像传输过程中是否被恶意篡改</p>
+<h3 id="容器运行安全"><a href="#容器运行安全" class="headerlink" title="容器运行安全"></a>容器运行安全</h3><p>运行的容器间的隔离是否充分</p>
+<p>容器间的通信是否安全</p>
+<p>容器内的恶意程序是否会影响到主机或者其他容器</p>
+<p>容器的资源使用情况是否安全</p>
+<h3 id="容器编排安全"><a href="#容器编排安全" class="headerlink" title="容器编排安全"></a>容器编排安全</h3><p>Docker自身的安全性</p>
+<p>service mesh&#x2F;serverless对容器安全的影响</p>
+<p>容器中安全密钥的管理和传统环境的不同</p>
+<p>容器化的数据隐私保护与传统的数据隐私保护是否一致</p>
+<h3 id="容器应用安全"><a href="#容器应用安全" class="headerlink" title="容器应用安全"></a>容器应用安全</h3><h2 id="安全能力架构"><a href="#安全能力架构" class="headerlink" title="安全能力架构"></a>安全能力架构</h2><h3 id="物理安全"><a href="#物理安全" class="headerlink" title="物理安全"></a>物理安全</h3><h3 id="系统安全"><a href="#系统安全" class="headerlink" title="系统安全"></a>系统安全</h3><p>系统完整性保护</p>
+<p>OS&#x2F;DB&#x2F;WEB加固</p>
+<p>安全补丁</p>
+<p>病毒防护</p>
+<h3 id="网络安全"><a href="#网络安全" class="headerlink" title="网络安全"></a>网络安全</h3><p>防火墙</p>
+<p>IDS&#x2F;IPS</p>
+<p>Anti-DDOS</p>
+<p>僵尸网络&#x2F;蠕虫检测</p>
+<p>网络平面隔离</p>
+<p>传输安全（SSL&#x2F;VPN)</p>
+<h3 id="管理安全"><a href="#管理安全" class="headerlink" title="管理安全"></a>管理安全</h3><p>多因素接入认证</p>
+<p>集中用户管理和认证</p>
+<p>集中日志审计</p>
+<p>镜像签名和完整性保护</p>
+<h3 id="虚拟化安全"><a href="#虚拟化安全" class="headerlink" title="虚拟化安全"></a>虚拟化安全</h3><p>虚拟机隔离</p>
+<p>虚拟防火墙</p>
+<p>恶意VM预防</p>
+<h3 id="数据安全"><a href="#数据安全" class="headerlink" title="数据安全"></a>数据安全</h3><p>数据隔离</p>
+<p>数据访问控制</p>
+<p>剩余信息保护</p>
+<p>快照加密</p>
+<p>用户数据加密存储</p>
+<p>存储位置要求</p>
+<h1 id="元原生安全风险"><a href="#元原生安全风险" class="headerlink" title="元原生安全风险"></a>元原生安全风险</h1><h2 id="容器基础设施的风险分析"><a href="#容器基础设施的风险分析" class="headerlink" title="容器基础设施的风险分析"></a>容器基础设施的风险分析</h2><h3 id="1、容器基础设施面临的风险"><a href="#1、容器基础设施面临的风险" class="headerlink" title="1、容器基础设施面临的风险"></a>1、容器基础设施面临的风险</h3><h4 id="1-1、容器镜像存在的风险"><a href="#1-1、容器镜像存在的风险" class="headerlink" title="1.1、容器镜像存在的风险"></a>1.1、容器镜像存在的风险</h4><h5 id="1-1-1、不安全的第三方组件"><a href="#1-1-1、不安全的第三方组件" class="headerlink" title="1.1.1、不安全的第三方组件"></a>1.1.1、不安全的第三方组件</h5><p>基于原生镜像的基础上进行二次开发，导致原有镜像中存在非必须的组件，且这些组件存在风险。</p>
+<h5 id="1-1-2、恶意镜像"><a href="#1-1-2、恶意镜像" class="headerlink" title="1.1.2、恶意镜像"></a>1.1.2、恶意镜像</h5><p>公共镜像存在引入恶意镜像的风险</p>
+<h5 id="1-1-3、敏感信息泄露"><a href="#1-1-3、敏感信息泄露" class="headerlink" title="1.1.3、敏感信息泄露"></a>1.1.3、敏感信息泄露</h5><p>为开发调试的便捷性，存在将敏感信息写入代码或配置文件，构成镜像时，敏感信息一并打包到，传输的外部镜像仓库，导致信息泄露。</p>
+<h4 id="1-2、活动容器存在的风险"><a href="#1-2、活动容器存在的风险" class="headerlink" title="1.2、活动容器存在的风险"></a>1.2、活动容器存在的风险</h4><h5 id="1-2-1、不安全的容器应用"><a href="#1-2-1、不安全的容器应用" class="headerlink" title="1.2.1、不安全的容器应用"></a>1.2.1、不安全的容器应用</h5><p>如果启动时配置了端口映射，容器应用外部可访问，传统业务代码的安全风险依然存在。</p>
+<h5 id="1-2-2、不受限制的资源共享"><a href="#1-2-2、不受限制的资源共享" class="headerlink" title="1.2.2、不受限制的资源共享"></a>1.2.2、不受限制的资源共享</h5><p>默认情况下，Docker不会对容器的资源使用进行限制，也就是容器可以无限制使用宿主机资源。存在容器耗尽宿主机资源的风险。</p>
+<h5 id="1-2-3、不安全的配置与挂载"><a href="#1-2-3、不安全的配置与挂载" class="headerlink" title="1.2.3、不安全的配置与挂载"></a>1.2.3、不安全的配置与挂载</h5><p>配置与挂载：容器在启动时带有的配置选项和挂载选项</p>
+<p><strong>容器核心隔离机制</strong>：</p>
+<ul>
+<li>Linux命名空间机制：在文件系统、网络、进程、进程间通信和主机名等方面实现隔离。</li>
+<li>cgroups机制：在CPU、内存和硬盘等资源方面实现隔离。</li>
+<li>Capabilities、Seccomp和AppArmor等机制：限制容器内进程间的权限和系统调用访问能力</li>
+</ul>
+<p><strong>打破隔离方式</strong>：</p>
+<ul>
+<li>配置 –privileged 选项，容器将不受 Seccomp等安全机制的限制，容器内root权限将变得和宿主机上的root一样</li>
+<li>配置 –net&#x3D;host，容器将与宿主机处于同一网络命令空间（打破网络隔离）</li>
+<li>配置 –pid&#x3D;host，容器将与宿主机处于同一进程命令空间（打破进程隔离）</li>
+<li>执行挂载 –volume &#x2F;:&#x2F;host，宿主机根目录将被挂载到容器内部（打破文件系统隔离）</li>
+</ul>
+<p>1.3、容器网络存在的风险</p>
+<h3 id="3-4、运行时容器的攻击案例"><a href="#3-4、运行时容器的攻击案例" class="headerlink" title="3.4、运行时容器的攻击案例"></a>3.4、运行时容器的攻击案例</h3><h4 id="攻击分类"><a href="#攻击分类" class="headerlink" title="攻击分类"></a>攻击分类</h4><p>1）主要影响机密性、完整性的：通常是获取目标系统控制权、窃取或修改数据等。</p>
+<p>2）主要影响可用性的：通常是对目标系统信息资源的耗尽型攻击。</p>
+<h4 id="3-4-1、容器逃逸"><a href="#3-4-1、容器逃逸" class="headerlink" title="3.4.1、容器逃逸"></a>3.4.1、容器逃逸</h4><h5 id="3-4-1-1、不安全配置导致的容器逃逸"><a href="#3-4-1-1、不安全配置导致的容器逃逸" class="headerlink" title="3.4.1.1、不安全配置导致的容器逃逸"></a>3.4.1.1、不安全配置导致的容器逃逸</h5><p>docker 已经将容器运行时的Capabilities黑名单机制改为如今的默认禁止所有Capabilities，再以白名单方式赋予容器运行所需的最小权限。</p>
+<p>Docker默认赋予容器近40项权限中的14项</p>
+<p>CAP_CHOWN</p>
+<p>CAP_DAC_OVERRIDE</p>
+<p>CAP_FSETID</p>
+<p>CAP_FOWNER<br>CAP_MKNOD<br>CAP_NET_RAW<br>CAP_SETGID<br>CAP_SETUID<br>CAP_SETFCAP</p>
+<p>CAP_SETPCAP</p>
+<p>CAP_NET_BIND_SERVICE</p>
+<p>CAP_SYS_CHROOT<br>CAP_KILL<br>CAP_AUDIT_WAITE</p>
+<p><strong>–privileged  特权模式运行容器</strong></p>
+<p>特权容器允许访问宿主机上的所有设备，同时修改AppArmor或SELinux的配置，使容器拥有于那些直接运行在宿主机上的进程几乎相同的权限</p>
+<p>创建非特权容器</p>
+<p>docker run -itd –name non_privileged_centos centos &#x2F;bin&#x2F;bash</p>
+<p>root@VM-8-5-ubuntu:~# docker run -itd –name non_privileged_centos centos &#x2F;bin&#x2F;bash<br>f2fa3a889b7d43d5bc371bf02d62b360ffa9cce7737eb6a4cfae60864be5625e</p>
+<p>创建特权容器</p>
+<p>docker run -t -i -d –privileged  –name privileged_centos centos &#x2F;bin&#x2F;bash</p>
+<p>root@VM-8-5-ubuntu:~# docker run -t -i -d –privileged  –name privileged_centos centos &#x2F;bin&#x2F;bash<br>7ef25d5d2b4605bef917323d591f9596b95c6262268fda77edac4f13322de2f5</p>
+<p>root@VM-8-5-ubuntu:~# docker run -itd –name privileged busybox –privileged<br>e5b459ca0fe56484dee600d919f1fafde42631923fa326393d60c1692fea1d27<br>docker: Error response from daemon: failed to create shim: OCI runtime create failed: container_linux.go:380: starting container process caused: exec: “–privileged”: executable file not found in $PATH: unknown.</p>
+<p>docker exec id fdisk -l</p>
+<p>docker exec id fdisk -l | tail -n 2</p>
+<p>ps </p>
+<p>procfs</p>
+<h5 id="3-4-1-2-不安全挂载导致的容器逃逸"><a href="#3-4-1-2-不安全挂载导致的容器逃逸" class="headerlink" title="3.4.1.2 不安全挂载导致的容器逃逸"></a>3.4.1.2 不安全挂载导致的容器逃逸</h5><p>将宿主机敏感文件或敏感目录挂在到不可控的容器中，会存在安全问题</p>
+<h6 id="将-Docker-Socket-挂载到容器内"><a href="#将-Docker-Socket-挂载到容器内" class="headerlink" title="将 Docker Socket 挂载到容器内"></a>将 Docker Socket 挂载到容器内</h6><p>Docker Socket 是 Docker  守护进程监听的UNIX套接字，用来与守护进程通信-查询信息或下发命令，如果将该套接字文件&#x2F;var&#x2F;run&#x2F;docker.sock挂载到攻击者可控容器，存在被逃逸的风险</p>
+<h6 id="挂载宿主机-profs"><a href="#挂载宿主机-profs" class="headerlink" title="挂载宿主机 profs"></a>挂载宿主机 profs</h6><h5 id="3-4-1-3-相关程序漏洞导致的容器逃逸"><a href="#3-4-1-3-相关程序漏洞导致的容器逃逸" class="headerlink" title="3.4.1.3 相关程序漏洞导致的容器逃逸"></a>3.4.1.3 相关程序漏洞导致的容器逃逸</h5><p>CVE-2019-5736 覆盖宿主机上的runC文件</p>
+<h5 id="3-4-1-4-内核漏洞导致的容器逃逸"><a href="#3-4-1-4-内核漏洞导致的容器逃逸" class="headerlink" title="3.4.1.4 内核漏洞导致的容器逃逸"></a>3.4.1.4 内核漏洞导致的容器逃逸</h5><p>CVE-2016-5195 内存页的写时复制问题</p>
+<h4 id="3-4-2-安全容器逃逸"><a href="#3-4-2-安全容器逃逸" class="headerlink" title="3.4.2 安全容器逃逸"></a>3.4.2 安全容器逃逸</h4><h4 id="3-4-3-资源耗尽型攻击"><a href="#3-4-3-资源耗尽型攻击" class="headerlink" title="3.4.3 资源耗尽型攻击"></a>3.4.3 资源耗尽型攻击</h4><p>容器运行时默认情况下未对容器内进程在资源使用上做任何限制，以Pod为基本单位的容器编排管理系统在默认情况下也未对用户创建的Pod做任何CPU、内容使用限制</p>
+<h5 id="3-4-3-1-CPU资源耗尽攻击"><a href="#3-4-3-1-CPU资源耗尽攻击" class="headerlink" title="3.4.3.1 CPU资源耗尽攻击"></a>3.4.3.1 CPU资源耗尽攻击</h5><h2 id="容器编排平台的风险分析"><a href="#容器编排平台的风险分析" class="headerlink" title="容器编排平台的风险分析"></a>容器编排平台的风险分析</h2><h3 id="容器编排平台面临的风险"><a href="#容器编排平台面临的风险" class="headerlink" title="容器编排平台面临的风险"></a>容器编排平台面临的风险</h3><h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><p>CNI插件Flannel：Pod之间通信的工具</p>
+<p>kube-system命名空间</p>
+<p>Flannel Pod</p>
+<p>kube-proxy Pod</p>
+<p>Kubernetes集群中需要以YAML声明式文件的形式来创建Pod，Pod为逻辑概念，实际由一个或多个容器组成。</p>
+<p>对容器的配置须以Pod的配置方式下发。</p>
+<h4 id="4-1-1-容器基础设施存在的风险"><a href="#4-1-1-容器基础设施存在的风险" class="headerlink" title="4.1.1 容器基础设施存在的风险"></a>4.1.1 容器基础设施存在的风险</h4><p>kubernetes提供了ConfigMaps和Secrets两种资源来单独存储常规配置和敏感信息</p>
+<h4 id="4-1-2-Kubernetes-组件接口存在的风险"><a href="#4-1-2-Kubernetes-组件接口存在的风险" class="headerlink" title="4.1.2 Kubernetes 组件接口存在的风险"></a>4.1.2 Kubernetes 组件接口存在的风险</h4><p>Kubernetes中绝大多数组件以基于HTTP或HTTPS的API形式提供服务</p>
+<p>常见服务及端口信息</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>默认端口</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>API Server</td>
+<td>6443</td>
+<td>基于HTTPS的安全端口</td>
+</tr>
+<tr>
+<td>API Server</td>
+<td>8080</td>
+<td>不安全的HTTP端口，不建议启用</td>
+</tr>
+<tr>
+<td>Kubelet</td>
+<td>10248</td>
+<td>用于检查kubelet健康状态的HTTP端口</td>
+</tr>
+<tr>
+<td>Kubelet</td>
+<td>10250</td>
+<td>面向API Server提供服务的HTTPS端口</td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>8001</td>
+<td>提供HTTP服务的端口</td>
+</tr>
+<tr>
+<td>etcd</td>
+<td>2379</td>
+<td>客户端与服务端之间通信的接口</td>
+</tr>
+<tr>
+<td>etcd</td>
+<td>2380</td>
+<td>不同服务端实例之间通信的端口</td>
+</tr>
+</tbody></table>
+<p>1、API Server</p>
+<p>默认情况下，API Server在8080和6443两个端口提供服务</p>
+<p>8080端口提供没有TLS加密的HTTP服务，所有到达端口的请求将绕过所有认证和授权模块（但是任然会被准入控制模块处理？？？）</p>
+<p>6443端口提供TLS加密的HTTPS服务，到达的请求必须通过认证和授权机制才能被成功处理</p>
+<p>2、Dashboard</p>
+<p>按照官方文档部署的K8s需要经过 kubectl proxy 才可以通过本地8001端口访问dashboard，但是如果直接将dashboard映射到宿主机节点或者在执行 kubectl proxy是使用额外的参数（kubectl proxy –address 0.0.0.0 –accept-hosts&#x3D;’^*$’），会出现只要可以访问到宿主机的都可以访问到dashboard</p>
+<p>默认情况下，dashboard是需要登录认证，但是如果在dashboard启动参数中添加 –enable-skip-login选项，则就可以通过点击dashboard界面的“跳过”来绕过认证</p>
+<p>3、Kubelet</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/security/" class="category-chain-item">security</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/security/cloudsec/" class="category-chain-item">cloudsec</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/security/" class="print-no-link">#security</a>
+      
+        <a href="/tags/cloudsec/" class="print-no-link">#cloudsec</a>
+      
+        <a href="/tags/base/" class="print-no-link">#base</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>cloudsec_base</div>
+      <div>https://tthours.github.io/2024/12/16/security/cloudsec/cloudsecbase/cloudsec_base/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年12月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              TT
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/12/16/yunwei/yunweibase/machine_id/" title="machine_id">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">machine_id</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/12/16/security/cloudsec/cloudsectips/distinguish_virtual_container_machine/" title="distinguish_virtual_container_machine">
+                        <span class="hidden-mobile">distinguish_virtual_container_machine</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
