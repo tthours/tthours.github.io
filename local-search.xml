@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>life_yl</title>
+    <link href="/2024/12/24/life/life_yl/"/>
+    <url>/2024/12/24/life/life_yl/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h3 id="流感"><a href="#流感" class="headerlink" title="流感"></a>流感</h3><p>罗氏出品-玛巴洛沙韦干混悬剂：5 岁以上都可以用</p><p>罗氏出品-速福达</p><p>来自TK茧房群</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>life</category>
+      
+      <category>yiliao</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>life</tag>
+      
+      <tag>yiliao</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>tk_group_message</title>
     <link href="/2024/12/24/informationCocoon/tk_group_message/"/>
     <url>/2024/12/24/informationCocoon/tk_group_message/</url>
@@ -54,35 +83,6 @@
       <tag>infomationCocoon</tag>
       
       <tag>tk</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>life_yl</title>
-    <link href="/2024/12/24/life/life_yl/"/>
-    <url>/2024/12/24/life/life_yl/</url>
-    
-    <content type="html"><![CDATA[<span id="more"></span><h3 id="流感"><a href="#流感" class="headerlink" title="流感"></a>流感</h3><p>罗氏出品-玛巴洛沙韦干混悬剂：5 岁以上都可以用</p><p>罗氏出品-速福达</p><p>来自TK茧房群</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>life</category>
-      
-      <category>yiliao</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>life</tag>
-      
-      <tag>yiliao</tag>
       
     </tags>
     
@@ -242,37 +242,6 @@
   
   
   <entry>
-    <title>view_dir_belong_disk</title>
-    <link href="/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/"/>
-    <url>/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/</url>
-    
-    <content type="html"><![CDATA[<span id="more"></span><h2 id="查看目录归属磁盘"><a href="#查看目录归属磁盘" class="headerlink" title="查看目录归属磁盘"></a>查看目录归属磁盘</h2><p>df -h [目录]</p><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crystal">ubuntu<span class="hljs-variable">@ip</span>-<span class="hljs-number">1</span>-<span class="hljs-number">1</span>-<span class="hljs-number">1</span>-<span class="hljs-number">1</span>:<span class="hljs-regexp">/$ df -h /opt</span><span class="hljs-regexp">/</span><br><span class="hljs-regexp">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="hljs-regexp">/dev</span><span class="hljs-regexp">/root       6.8G  2.6G  4.2G  38% /</span><br></code></pre></td></tr></table></figure><p><img src="/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/image-20241217142507343.png" alt="image-20241217142507343"></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>yunwei</category>
-      
-      <category>yunweitips</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>yunwei</tag>
-      
-      <tag>yunweitips</tag>
-      
-      <tag>tips</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>cpe</title>
     <link href="/2024/12/16/yunwei/yunweibase/cpe/"/>
     <url>/2024/12/16/yunwei/yunweibase/cpe/</url>
@@ -323,6 +292,37 @@
       <tag>yunwei</tag>
       
       <tag>yunweibase</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>view_dir_belong_disk</title>
+    <link href="/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/"/>
+    <url>/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h2 id="查看目录归属磁盘"><a href="#查看目录归属磁盘" class="headerlink" title="查看目录归属磁盘"></a>查看目录归属磁盘</h2><p>df -h [目录]</p><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crystal">ubuntu<span class="hljs-variable">@ip</span>-<span class="hljs-number">1</span>-<span class="hljs-number">1</span>-<span class="hljs-number">1</span>-<span class="hljs-number">1</span>:<span class="hljs-regexp">/$ df -h /opt</span><span class="hljs-regexp">/</span><br><span class="hljs-regexp">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="hljs-regexp">/dev</span><span class="hljs-regexp">/root       6.8G  2.6G  4.2G  38% /</span><br></code></pre></td></tr></table></figure><p><img src="/2024/12/16/yunwei/yunweitips/view_dir_belong_disk/image-20241217142507343.png" alt="image-20241217142507343"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>yunwei</category>
+      
+      <category>yunweitips</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>yunwei</tag>
+      
+      <tag>yunweitips</tag>
+      
+      <tag>tips</tag>
       
     </tags>
     
@@ -449,7 +449,7 @@
     <link href="/2024/03/15/security/codesec/code_repo_reinforce/"/>
     <url>/2024/03/15/security/codesec/code_repo_reinforce/</url>
     
-    <content type="html"><![CDATA[<span id="more"></span><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>github 为了安全性需要禁止上传敏感内容，所以需要.gitignore 文件来设置哪些文件不需要上传进行版本管理</p><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-string">/dir/</span> 过滤整个文件夹<br>*<span class="hljs-string">.txt</span> 过滤所有<span class="hljs-string">.txt</span>文件<br><span class="hljs-string">/dir/config.php</span> 过滤具体文件<br></code></pre></td></tr></table></figure><p><img src="/security/codesec/code_repo_reinforce/image-20241224171307321.png" alt="image-20241224171307321"></p><p>说明：</p><p>过滤掉的文件不会上传，也就是说不会进行版本管理，本地还是会有的</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">/ 开头表示目录<br>* 通配多个字符<br>? 通配单个字符<br><span class="hljs-string">[]</span> 包含单个字符的匹配列表<br>! 表示不忽略匹配的文件或者目录，也就是会上传<br></code></pre></td></tr></table></figure><p>规则匹配策略：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">自上到下进行匹配<br></code></pre></td></tr></table></figure><h2 id="错误总结"><a href="#错误总结" class="headerlink" title="错误总结"></a>错误总结</h2><p>1、不生效原因</p><p>可能是已经在缓存中，清除缓存，重新上传</p><p>git rm -r –cached .</p>]]></content>
+    <content type="html"><![CDATA[<span id="more"></span><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>github 为了安全性需要禁止上传敏感内容，所以需要.gitignore 文件来设置哪些文件不需要上传进行版本管理</p><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-string">/dir/</span> 过滤整个文件夹<br>*<span class="hljs-string">.txt</span> 过滤所有<span class="hljs-string">.txt</span>文件<br><span class="hljs-string">/dir/config.php</span> 过滤具体文件<br></code></pre></td></tr></table></figure><p><img src="/image-20241224171307321.png" alt="image-20241224171307321"></p><p>说明：</p><p>过滤掉的文件不会上传，也就是说不会进行版本管理，本地还是会有的</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">/ 开头表示目录<br>* 通配多个字符<br>? 通配单个字符<br><span class="hljs-string">[]</span> 包含单个字符的匹配列表<br>! 表示不忽略匹配的文件或者目录，也就是会上传<br></code></pre></td></tr></table></figure><p>规则匹配策略：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">自上到下进行匹配<br></code></pre></td></tr></table></figure><h2 id="错误总结"><a href="#错误总结" class="headerlink" title="错误总结"></a>错误总结</h2><p>1、不生效原因</p><p>可能是已经在缓存中，清除缓存，重新上传</p><p>git rm -r –cached .</p>]]></content>
     
     
     <categories>
