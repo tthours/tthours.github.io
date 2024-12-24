@@ -26,15 +26,15 @@
 <meta property="og:site_name" content="tthours">
 <meta property="og:description" content="前言github 为了安全性需要禁止上传敏感内容，所以需要.gitignore 文件来设置哪些文件不需要上传进行版本管理 语法123&#x2F;dir&#x2F; 过滤整个文件夹*.txt 过滤所有.txt文件&#x2F;dir&#x2F;config.php 过滤具体文件   说明： 过滤掉的文件不会上传，也就是说不会进行版本管理，本地还是会有的 12345&#x2F; 开头表示目录* 通配多个字符? 通配单个字符[] 包含单个字符的匹配列">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tthours.github.io/image-20241224171307321.png">
+<meta property="og:image" content="https://tthours.github.io/security/codesec/code_repo_reinforce/image-20241224171307321.png">
 <meta property="article:published_time" content="2024-03-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-24T09:13:34.344Z">
+<meta property="article:modified_time" content="2024-12-24T09:18:10.014Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="codesec">
 <meta property="article:tag" content="安全加固">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://tthours.github.io/image-20241224171307321.png">
+<meta name="twitter:image" content="https://tthours.github.io/security/codesec/code_repo_reinforce/image-20241224171307321.png">
   
   
   
@@ -290,7 +290,7 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>github 为了安全性需要禁止上传敏感内容，所以需要.gitignore 文件来设置哪些文件不需要上传进行版本管理</p>
 <h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-string">/dir/</span> 过滤整个文件夹<br>*<span class="hljs-string">.txt</span> 过滤所有<span class="hljs-string">.txt</span>文件<br><span class="hljs-string">/dir/config.php</span> 过滤具体文件<br></code></pre></td></tr></table></figure>
 
-<p><img src="/image-20241224171307321.png" srcset="/img/loading.gif" lazyload alt="image-20241224171307321"></p>
+<p><img src="/security/codesec/code_repo_reinforce/image-20241224171307321.png" srcset="/img/loading.gif" lazyload alt="image-20241224171307321"></p>
 <p>说明：</p>
 <p>过滤掉的文件不会上传，也就是说不会进行版本管理，本地还是会有的</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">/ 开头表示目录<br>* 通配多个字符<br>? 通配单个字符<br><span class="hljs-string">[]</span> 包含单个字符的匹配列表<br>! 表示不忽略匹配的文件或者目录，也就是会上传<br></code></pre></td></tr></table></figure>
