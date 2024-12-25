@@ -4,6 +4,66 @@
   
   
   <entry>
+    <title>awk</title>
+    <link href="/2024/12/25/yunwei/yunweicommands/awk/"/>
+    <url>/2024/12/25/yunwei/yunweicommands/awk/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><h3 id="分割字符串"><a href="#分割字符串" class="headerlink" title="&#x2F; 分割字符串"></a>&#x2F; 分割字符串</h3><p>需要对多行URL的文本切割，输出域名，输出下标从1开始</p><p>cat filename.txt | awk -F ‘&#x2F;‘ ‘{print $3}’</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">https://umeay.com/名单.bat<br>https://qqfnmasqq.bond/电子普票.rar<br>https://ehfof.shop/查阅8080.exe<br><br>➜  内网安全 <span class="hljs-built_in">cat</span> yhioc20241225.txt| awk -F <span class="hljs-string">&#x27;/&#x27;</span> <span class="hljs-string">&#x27;&#123;print $3&#125;&#x27;</span><br>umeay.com<br>qqfnmasqq.bond<br>ehfof.shop<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>yunwei</category>
+      
+      <category>yunweicommands</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>yunwei</tag>
+      
+      <tag>yunweicommands</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>delete_file_null_line</title>
+    <link href="/2024/12/25/yunwei/yunweitips/delete_file_null_line/"/>
+    <url>/2024/12/25/yunwei/yunweitips/delete_file_null_line/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h3 id="sed命令"><a href="#sed命令" class="headerlink" title="sed命令"></a>sed命令</h3><p>brew install coreutils 安装</p><h3 id="vim命令"><a href="#vim命令" class="headerlink" title="vim命令"></a>vim命令</h3><p>进入vim，输入以下命令删除空行</p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-symbol">:g/^</span><span class="hljs-variable">$/</span>d<br></code></pre></td></tr></table></figure><h3 id="sublime"><a href="#sublime" class="headerlink" title="sublime"></a>sublime</h3><p><strong>mac</strong></p><p>1、option+command+F 打开查找和替换窗口</p><p>2、查找框输入 ^\n</p><p>^ 表示行的开头</p><p>\n 表示换行符</p><p>3、替换框确保为空</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>yunwei</category>
+      
+      <category>yunweitips</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>yunwei</tag>
+      
+      <tag>yunweitips</tag>
+      
+      <tag>tips</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>tk_group_message</title>
     <link href="/2024/12/24/informationCocoon/tk_group_message/"/>
     <url>/2024/12/24/informationCocoon/tk_group_message/</url>
