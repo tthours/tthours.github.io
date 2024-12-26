@@ -19,23 +19,23 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="tips&#x2F; 分割字符串需要对多行URL的文本切割，输出域名，输出下标从1开始 cat filename.txt | awk -F ‘&#x2F;‘ ‘{print $3}’ 12345678https:&#x2F;&#x2F;umeay.com&#x2F;名单.bathttps:&#x2F;&#x2F;qqfnmasqq.bond&#x2F;电子普票.rarhttps:&#x2F;&#x2F;ehfof.shop&#x2F;查阅8080.exe➜  内网安全 cat">
+    <meta name="description" content="中级班课程目录 一、溢出利用1、平台演示2、exp代码框架、SHELLCODE编写3、溢出通道对抗防火墙4、异常链表对抗堆栈COOKIES保护技术5、溢出跳转、兼容技术6、堆溢出利用7、溢出程序跟踪调试8、一些典型溢出漏洞分析9、RPC编程简单介绍10、RPC的漏洞利用11、一些典型的RPC漏洞分析12、更多的利用代码包括RPC漏洞利用代码二、漏洞挖掘1、漏洞研究2、数据流挖掘技术3、FUZZ技术">
 <meta property="og:type" content="article">
-<meta property="og:title" content="awk">
-<meta property="og:url" content="https://tthours.github.io/2024/12/25/yunwei/yunweicommands/awk/index.html">
+<meta property="og:title" content="yuangekecheng">
+<meta property="og:url" content="https://tthours.github.io/2024/12/26/security/secstudy/yuangekecheng/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="tips&#x2F; 分割字符串需要对多行URL的文本切割，输出域名，输出下标从1开始 cat filename.txt | awk -F ‘&#x2F;‘ ‘{print $3}’ 12345678https:&#x2F;&#x2F;umeay.com&#x2F;名单.bathttps:&#x2F;&#x2F;qqfnmasqq.bond&#x2F;电子普票.rarhttps:&#x2F;&#x2F;ehfof.shop&#x2F;查阅8080.exe➜  内网安全 cat">
+<meta property="og:description" content="中级班课程目录 一、溢出利用1、平台演示2、exp代码框架、SHELLCODE编写3、溢出通道对抗防火墙4、异常链表对抗堆栈COOKIES保护技术5、溢出跳转、兼容技术6、堆溢出利用7、溢出程序跟踪调试8、一些典型溢出漏洞分析9、RPC编程简单介绍10、RPC的漏洞利用11、一些典型的RPC漏洞分析12、更多的利用代码包括RPC漏洞利用代码二、漏洞挖掘1、漏洞研究2、数据流挖掘技术3、FUZZ技术">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-24T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-25T06:10:30.149Z">
+<meta property="article:published_time" content="2024-12-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-26T05:55:57.770Z">
 <meta property="article:author" content="tt">
-<meta property="article:tag" content="yunwei">
-<meta property="article:tag" content="yunweicommands">
+<meta property="article:tag" content="security">
+<meta property="article:tag" content="secstudy">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>awk - tthours</title>
+  <title>yuangekecheng - tthours</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="awk"></span>
+            <span id="subtitle" data-typed-text="yuangekecheng"></span>
           
         </div>
 
@@ -217,8 +217,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-25 00:00" pubdate>
-          2024年12月25日 凌晨
+        <time datetime="2024-12-26 00:00" pubdate>
+          2024年12月26日 凌晨
         </time>
       </span>
     
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          75 字
+          435 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -277,19 +277,15 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">awk</h1>
+            <h1 id="seo-header">yuangekecheng</h1>
             
             
               <div class="markdown-body">
                 
-                <span id="more"></span>
-
-
-
-<h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><h3 id="分割字符串"><a href="#分割字符串" class="headerlink" title="&#x2F; 分割字符串"></a>&#x2F; 分割字符串</h3><p>需要对多行URL的文本切割，输出域名，输出下标从1开始</p>
-<p>cat filename.txt | awk -F ‘&#x2F;‘ ‘{print $3}’</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">https://umeay.com/名单.bat<br>https://qqfnmasqq.bond/电子普票.rar<br>https://ehfof.shop/查阅8080.exe<br><br>➜  内网安全 <span class="hljs-built_in">cat</span> yhioc20241225.txt| awk -F <span class="hljs-string">&#x27;/&#x27;</span> <span class="hljs-string">&#x27;&#123;print $3&#125;&#x27;</span><br>umeay.com<br>qqfnmasqq.bond<br>ehfof.shop<br></code></pre></td></tr></table></figure>
-
+                <p>中级班课程目录</p>
+<p>一、溢出利用<br>1、平台演示<br>2、exp代码框架、SHELLCODE编写<br>3、溢出通道对抗防火墙<br>4、异常链表对抗堆栈COOKIES保护技术<br>5、溢出跳转、兼容技术<br>6、堆溢出利用<br>7、溢出程序跟踪调试<br>8、一些典型溢出漏洞分析<br>9、RPC编程简单介绍<br>10、RPC的漏洞利用<br>11、一些典型的RPC漏洞分析<br>12、更多的利用代码包括RPC漏洞利用代码<br>二、漏洞挖掘<br>1、漏洞研究<br>2、数据流挖掘技术<br>3、FUZZ技术<br>4、关键API、系统特性<br>5、内核漏洞挖掘和利用技术<br>三、总结提高<br>1、前面内容的一些补充<br>2、高级DVE对抗技术<br>3、xp挑战赛对抗360沙箱技术</p>
+<p>高级班课程目录</p>
+<p>一、溢出利用<br>1、平台演示<br>2、exp代码框架、SHELLCODE编写<br>3、溢出通道对抗防火墙<br>4、异常链表对抗堆栈COOKIES保护技术<br>5、溢出跳转、兼容技术<br>6、堆溢出利用<br>7、溢出程序跟踪调试<br>8、一些典型溢出漏洞分析，更多一些<br>9、RPC编程简单介绍<br>10、RPC的漏洞利用<br>11、一些典型的RPC漏洞分析<br>12、更多的利用代码包括RPC漏洞利用代码，比中级班再更多<br>二、漏洞挖掘<br>1、漏洞研究<br>2、数据流挖掘技术<br>3、FUZZ<br>4、关键API、系统特性<br>5、内核漏洞挖掘和利用技术<br>6、RPC漏洞的挖掘<br>7、RPC漏洞挖掘的小工具<br>三、总结提高<br>1、前面内容的一些补充<br>2、高级DVE对抗技术<br>3、xp挑战赛对抗360沙箱技术<br>4、调试技术<br>5、安全模型和安全本质理解</p>
 
                 
               </div>
@@ -308,12 +304,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/yunwei/" class="category-chain-item">yunwei</a>
+  <a href="/categories/security/" class="category-chain-item">security</a>
   
   
     <span>></span>
     
-  <a href="/categories/yunwei/yunweicommands/" class="category-chain-item">yunweicommands</a>
+  <a href="/categories/security/secstudy/" class="category-chain-item">secstudy</a>
   
   
 
@@ -330,9 +326,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/yunwei/" class="print-no-link">#yunwei</a>
+        <a href="/tags/security/" class="print-no-link">#security</a>
       
-        <a href="/tags/yunweicommands/" class="print-no-link">#yunweicommands</a>
+        <a href="/tags/secstudy/" class="print-no-link">#secstudy</a>
       
     </div>
   
@@ -344,8 +340,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>awk</div>
-      <div>https://tthours.github.io/2024/12/25/yunwei/yunweicommands/awk/</div>
+      <div>yuangekecheng</div>
+      <div>https://tthours.github.io/2024/12/26/security/secstudy/yuangekecheng/</div>
     </div>
     <div class="license-meta">
       
@@ -357,7 +353,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月25日</div>
+          <div>2024年12月26日</div>
         </div>
       
       
@@ -382,18 +378,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/26/yunwei/yunweitips/weibo_video_download/" title="weibo_video_download">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">weibo_video_download</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/25/yunwei/yunweitips/delete_file_null_line/" title="delete_file_null_line">
-                        <span class="hidden-mobile">delete_file_null_line</span>
+                      <a href="/2024/12/26/yunwei/yunweitips/weibo_video_download/" title="weibo_video_download">
+                        <span class="hidden-mobile">weibo_video_download</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

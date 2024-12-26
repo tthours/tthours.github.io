@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据安全技术数据加密技术对称加密技术对称加密技术原理对称加密是指加密和解密使用相同密钥的加密算法。 发送方和接收方必须共享同一个密钥。 数据发送者通过密钥对数据进行加密，数据接收方通过密钥对数据进行解密 对称加密技术优点加密速度快相同密钥加解密 算法简单易懂原理直观，容易理解和实现 对称加密技术缺点密钥管理困难由于相同密钥，存在密钥分发，需要保障密钥安全性，尤其在密钥传输和存储阶段 安全性">
+    <meta name="description" content="数据安全技术数据加密技术数据脱敏技术数据屏蔽（Masking）数据屏蔽原理将敏感数据的部分或全部内容通过特定的字符或符号替换真实信息。 例如：用*或x替换手机号指定几位 在实现时，要确定屏蔽的位置和屏蔽字符的规则，以达到既能隐藏敏感信息，又能保留数据部分特征的目的。 数据屏蔽场景及优势能够在保持数据格式完整性的同时，有效地隐藏敏感信息，让用户对数据的大致格式和类型有直观的了解。 数据替换（">
 <meta property="og:type" content="article">
 <meta property="og:title" content="datasec_base">
 <meta property="og:url" content="https://tthours.github.io/2024/12/16/security/datasec/datasec_base/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="数据安全技术数据加密技术对称加密技术对称加密技术原理对称加密是指加密和解密使用相同密钥的加密算法。 发送方和接收方必须共享同一个密钥。 数据发送者通过密钥对数据进行加密，数据接收方通过密钥对数据进行解密 对称加密技术优点加密速度快相同密钥加解密 算法简单易懂原理直观，容易理解和实现 对称加密技术缺点密钥管理困难由于相同密钥，存在密钥分发，需要保障密钥安全性，尤其在密钥传输和存储阶段 安全性">
+<meta property="og:description" content="数据安全技术数据加密技术数据脱敏技术数据屏蔽（Masking）数据屏蔽原理将敏感数据的部分或全部内容通过特定的字符或符号替换真实信息。 例如：用*或x替换手机号指定几位 在实现时，要确定屏蔽的位置和屏蔽字符的规则，以达到既能隐藏敏感信息，又能保留数据部分特征的目的。 数据屏蔽场景及优势能够在保持数据格式完整性的同时，有效地隐藏敏感信息，让用户对数据的大致格式和类型有直观的了解。 数据替换（">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-19T03:03:48.129Z">
+<meta property="article:modified_time" content="2024-12-26T07:24:31.462Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="datasec">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          2.3k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          10 分钟
+          20 分钟
         
       </span>
     
@@ -287,47 +287,58 @@
 
 
 
-<h2 id="数据安全技术"><a href="#数据安全技术" class="headerlink" title="数据安全技术"></a>数据安全技术</h2><h3 id="数据加密技术"><a href="#数据加密技术" class="headerlink" title="数据加密技术"></a>数据加密技术</h3><h4 id="对称加密技术"><a href="#对称加密技术" class="headerlink" title="对称加密技术"></a>对称加密技术</h4><h5 id="对称加密技术原理"><a href="#对称加密技术原理" class="headerlink" title="对称加密技术原理"></a>对称加密技术原理</h5><p>对称加密是指加密和解密使用相同密钥的加密算法。</p>
-<p>发送方和接收方必须共享同一个密钥。</p>
-<p>数据发送者通过密钥对数据进行加密，数据接收方通过密钥对数据进行解密</p>
-<h5 id="对称加密技术优点"><a href="#对称加密技术优点" class="headerlink" title="对称加密技术优点"></a>对称加密技术优点</h5><h6 id="加密速度快"><a href="#加密速度快" class="headerlink" title="加密速度快"></a>加密速度快</h6><p>相同密钥加解密</p>
-<h6 id="算法简单易懂"><a href="#算法简单易懂" class="headerlink" title="算法简单易懂"></a>算法简单易懂</h6><p>原理直观，容易理解和实现</p>
-<h5 id="对称加密技术缺点"><a href="#对称加密技术缺点" class="headerlink" title="对称加密技术缺点"></a>对称加密技术缺点</h5><h6 id="密钥管理困难"><a href="#密钥管理困难" class="headerlink" title="密钥管理困难"></a>密钥管理困难</h6><p>由于相同密钥，存在密钥分发，需要保障密钥安全性，尤其在密钥传输和存储阶段</p>
-<h6 id="安全性相对较低"><a href="#安全性相对较低" class="headerlink" title="安全性相对较低"></a>安全性相对较低</h6><p>由于相同密钥，需要加解密双方共享密钥，如果密钥被泄露，就丧失了安全性</p>
-<h5 id="常见对称加密算法"><a href="#常见对称加密算法" class="headerlink" title="常见对称加密算法"></a>常见对称加密算法</h5><h6 id="DES（数据加密标准）"><a href="#DES（数据加密标准）" class="headerlink" title="DES（数据加密标准）"></a>DES（数据加密标准）</h6><p>经典的对称加密算法，将数据分为64位的块进行加密。</p>
-<p>由于密钥长度较短，只有56位，目前已被认为安全性不够</p>
-<h6 id="3DES（3重数据加密标准）"><a href="#3DES（3重数据加密标准）" class="headerlink" title="3DES（3重数据加密标准）"></a>3DES（3重数据加密标准）</h6><p>DES加密算法改进版，对数据进行 3 次DES加密操作，使用两个或三个56位密钥</p>
-<p>安全性有所增加，加密速度相对较慢</p>
-<h6 id="AES（高级数据加密标准）"><a href="#AES（高级数据加密标准）" class="headerlink" title="AES（高级数据加密标准）"></a>AES（高级数据加密标准）</h6><p>目前广泛使用的对称加密算法之一</p>
-<p>支持128位、192位和256位的密钥长度，能够对128位的数据进行高效加密</p>
-<p>例如：存储敏感信息（数据密码）、网络通信（VPN数据传输）常用AES加密</p>
-<h4 id="非对称加密技术"><a href="#非对称加密技术" class="headerlink" title="非对称加密技术"></a>非对称加密技术</h4><h5 id="非对称加密技术原理"><a href="#非对称加密技术原理" class="headerlink" title="非对称加密技术原理"></a>非对称加密技术原理</h5><p>非对称加密使用一对密钥，即公钥和私钥</p>
-<p>数据加密方面：加密方使用公钥进行加密，解密方使用私钥进行解密</p>
-<p>数据签名方面：签名方使用私钥进行签名，解密方使用公钥进行解密验证真实性</p>
-<h5 id="常见非对称加密算法"><a href="#常见非对称加密算法" class="headerlink" title="常见非对称加密算法"></a>常见非对称加密算法</h5><h6 id="RSA（Rivest-Shamir-Adleman）"><a href="#RSA（Rivest-Shamir-Adleman）" class="headerlink" title="RSA（Rivest - Shamir - Adleman）"></a>RSA（Rivest - Shamir - Adleman）</h6><p>最著名的非对称加密算法之一</p>
-<p>基于数论中的大整数分解问题，密钥长度通常在1024位以上</p>
-<p>例如：在数字证书、SSL&#x2F;TLS 协议（用于验证服务器身份）以及安全电子邮件（如 PGP 加密）等场景中广泛使用 RSA</p>
-<h6 id="ECC（椭圆曲线密码体制）"><a href="#ECC（椭圆曲线密码体制）" class="headerlink" title="ECC（椭圆曲线密码体制）"></a>ECC（椭圆曲线密码体制）</h6><p>基于椭圆曲线离散对数问题</p>
-<p>相比于RSA，可以使用更短的密钥长度达到相同甚至更高的安全性</p>
-<p>例如：在资源受限的设备（如移动设备、物联网设备）中，ECC 因其高效性而被广泛应用于安全通信和身份认证。</p>
-<h5 id="非对称加密技术优势"><a href="#非对称加密技术优势" class="headerlink" title="非对称加密技术优势"></a>非对称加密技术优势</h5><h6 id="安全性高"><a href="#安全性高" class="headerlink" title="安全性高"></a>安全性高</h6><h6 id=""><a href="#" class="headerlink" title=""></a></h6><h5 id="非对称加密技术劣势"><a href="#非对称加密技术劣势" class="headerlink" title="非对称加密技术劣势"></a>非对称加密技术劣势</h5><h5 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h5><p>数字签名</p>
-<p>身份认证</p>
-<p>密钥交换：可以通过非对称加密安全地交换对称加密所需的密钥</p>
-<h4 id="哈希加密技术"><a href="#哈希加密技术" class="headerlink" title="哈希加密技术"></a>哈希加密技术</h4><h5 id="哈希加密技术原理"><a href="#哈希加密技术原理" class="headerlink" title="哈希加密技术原理"></a>哈希加密技术原理</h5><p>单向加密算法</p>
-<p>将任意长度数据转换为固定长度的哈希值，也称为消息摘要</p>
-<p>具有不可逆性，即无法从哈希值反推出原始数据</p>
-<p>验证数据完整性：相同的数据输入会产生相同的哈希值</p>
-<h5 id="哈希加密技术算法"><a href="#哈希加密技术算法" class="headerlink" title="哈希加密技术算法"></a>哈希加密技术算法</h5><h6 id="MD5（消息摘要算法第5版）"><a href="#MD5（消息摘要算法第5版）" class="headerlink" title="MD5（消息摘要算法第5版）"></a>MD5（消息摘要算法第5版）</h6><p>曾被广泛应用</p>
-<p>由于安全性存在严重的问题，如容易产生碰撞，即不同的数据可能产生相同的哈希值</p>
-<p>目前已不建议用于安全敏感的场合</p>
-<h6 id="SHA-1（安全哈希算法1）"><a href="#SHA-1（安全哈希算法1）" class="headerlink" title="SHA-1（安全哈希算法1）"></a>SHA-1（安全哈希算法1）</h6><p>160 位的哈希值长度在面对强大的计算能力攻击时可能不够安全</p>
-<h6 id="SHA-2（安全哈希算法2）系列"><a href="#SHA-2（安全哈希算法2）系列" class="headerlink" title="SHA-2（安全哈希算法2）系列"></a>SHA-2（安全哈希算法2）系列</h6><p>SHA-224</p>
-<p>SHA-256</p>
-<p>目前安全性能较高的哈希算法</p>
-<p>SHA - 256 常用于区块链技术（如比特币中用于验证交易的完整性）、文件完整性验证（如下载文件时验证文件是否被篡改）等场景</p>
-<h6 id="SHA-3（安全哈希算法3）"><a href="#SHA-3（安全哈希算法3）" class="headerlink" title="SHA-3（安全哈希算法3）"></a>SHA-3（安全哈希算法3）</h6><h5 id="哈希加密技术应用场景"><a href="#哈希加密技术应用场景" class="headerlink" title="哈希加密技术应用场景"></a>哈希加密技术应用场景</h5><p>密码存储</p>
-<p>数据完整性验证</p>
-<h3 id="数据脱敏技术"><a href="#数据脱敏技术" class="headerlink" title="数据脱敏技术"></a>数据脱敏技术</h3><h4 id="数据屏蔽（Masking）"><a href="#数据屏蔽（Masking）" class="headerlink" title="数据屏蔽（Masking）"></a>数据屏蔽（Masking）</h4><h4 id="数据替换（Substitution）"><a href="#数据替换（Substitution）" class="headerlink" title="数据替换（Substitution）"></a>数据替换（Substitution）</h4><h4 id="数据扰动（Perturbation）"><a href="#数据扰动（Perturbation）" class="headerlink" title="数据扰动（Perturbation）"></a>数据扰动（Perturbation）</h4><h4 id="数据匿名化（Anonymization）"><a href="#数据匿名化（Anonymization）" class="headerlink" title="数据匿名化（Anonymization）"></a>数据匿名化（Anonymization）</h4><h4 id="数据加密（Encryption）"><a href="#数据加密（Encryption）" class="headerlink" title="数据加密（Encryption）"></a>数据加密（Encryption）</h4><h3 id="数据访问控制技术"><a href="#数据访问控制技术" class="headerlink" title="数据访问控制技术"></a>数据访问控制技术</h3><h4 id="RBAC（基于角色的访问控制）模型"><a href="#RBAC（基于角色的访问控制）模型" class="headerlink" title="RBAC（基于角色的访问控制）模型"></a>RBAC（基于角色的访问控制）模型</h4><h4 id="ABAC（基于属性的访问控制）模型"><a href="#ABAC（基于属性的访问控制）模型" class="headerlink" title="ABAC（基于属性的访问控制）模型"></a>ABAC（基于属性的访问控制）模型</h4>
+<h2 id="数据安全技术"><a href="#数据安全技术" class="headerlink" title="数据安全技术"></a>数据安全技术</h2><h3 id="数据加密技术"><a href="#数据加密技术" class="headerlink" title="数据加密技术"></a>数据加密技术</h3><h3 id="数据脱敏技术"><a href="#数据脱敏技术" class="headerlink" title="数据脱敏技术"></a>数据脱敏技术</h3><h4 id="数据屏蔽（Masking）"><a href="#数据屏蔽（Masking）" class="headerlink" title="数据屏蔽（Masking）"></a>数据屏蔽（Masking）</h4><h5 id="数据屏蔽原理"><a href="#数据屏蔽原理" class="headerlink" title="数据屏蔽原理"></a>数据屏蔽原理</h5><p>将敏感数据的部分或全部内容通过特定的字符或符号替换真实信息。</p>
+<p>例如：用*或x替换手机号指定几位</p>
+<p>在实现时，要确定屏蔽的位置和屏蔽字符的规则，以达到既能隐藏敏感信息，又能保留数据部分特征的目的。</p>
+<h5 id="数据屏蔽场景及优势"><a href="#数据屏蔽场景及优势" class="headerlink" title="数据屏蔽场景及优势"></a>数据屏蔽场景及优势</h5><p>能够在保持数据格式完整性的同时，有效地隐藏敏感信息，让用户对数据的大致格式和类型有直观的了解。</p>
+<h4 id="数据替换（Substitution）"><a href="#数据替换（Substitution）" class="headerlink" title="数据替换（Substitution）"></a>数据替换（Substitution）</h4><h5 id="数据替换原理"><a href="#数据替换原理" class="headerlink" title="数据替换原理"></a>数据替换原理</h5><p>将敏感数据替换为虚拟的或通用的数据。</p>
+<p>例如：</p>
+<p>真实姓名替换为张三、李四这种通用名字</p>
+<p>详细地址替换为大致区域</p>
+<h5 id="数据替换场景及优势"><a href="#数据替换场景及优势" class="headerlink" title="数据替换场景及优势"></a>数据替换场景及优势</h5><p>适用于对数据真实性要求不高，但需要保护隐私的场景，例如软件开发过程中测试数据生成。</p>
+<p>操作简单，可快速对大量数据操作，也可以在一定程度上保留数据格式和类型</p>
+<h4 id="数据扰动（Perturbation）"><a href="#数据扰动（Perturbation）" class="headerlink" title="数据扰动（Perturbation）"></a>数据扰动（Perturbation）</h4><h5 id="数据扰动原理"><a href="#数据扰动原理" class="headerlink" title="数据扰动原理"></a>数据扰动原理</h5><p>对原始数据进行随机化处理，添加一定的随机误差，使得敏感信息无法被还原</p>
+<h5 id="数据扰动场景及优势"><a href="#数据扰动场景及优势" class="headerlink" title="数据扰动场景及优势"></a>数据扰动场景及优势</h5><h4 id="数据匿名化（Anonymization）"><a href="#数据匿名化（Anonymization）" class="headerlink" title="数据匿名化（Anonymization）"></a>数据匿名化（Anonymization）</h4><h4 id="数据加密（Encryption）"><a href="#数据加密（Encryption）" class="headerlink" title="数据加密（Encryption）"></a>数据加密（Encryption）</h4><h3 id="数据访问控制技术"><a href="#数据访问控制技术" class="headerlink" title="数据访问控制技术"></a>数据访问控制技术</h3><h4 id="RBAC（基于角色的访问控制）模型"><a href="#RBAC（基于角色的访问控制）模型" class="headerlink" title="RBAC（基于角色的访问控制）模型"></a>RBAC（基于角色的访问控制）模型</h4><h4 id="ABAC（基于属性的访问控制）模型"><a href="#ABAC（基于属性的访问控制）模型" class="headerlink" title="ABAC（基于属性的访问控制）模型"></a>ABAC（基于属性的访问控制）模型</h4><h3 id="隐私计算技术"><a href="#隐私计算技术" class="headerlink" title="隐私计算技术"></a>隐私计算技术</h3><h4 id="隐私计算定义"><a href="#隐私计算定义" class="headerlink" title="隐私计算定义"></a>隐私计算定义</h4><p>是一种在保护数据隐私的前提下，实现数据价值挖掘和利用的技术体系。</p>
+<p>允许数据所有者在不泄漏敏感信息的情况下，对数据进行计算、分析和共享等操作。</p>
+<h4 id="隐私计算主要技术方向"><a href="#隐私计算主要技术方向" class="headerlink" title="隐私计算主要技术方向"></a>隐私计算主要技术方向</h4><h5 id="同态加密（Homomorphic-Encryption）"><a href="#同态加密（Homomorphic-Encryption）" class="headerlink" title="同态加密（Homomorphic Encryption）"></a>同态加密（Homomorphic Encryption）</h5><h6 id="同态加密原理"><a href="#同态加密原理" class="headerlink" title="同态加密原理"></a>同态加密原理</h6><h5 id="安全多方计算"><a href="#安全多方计算" class="headerlink" title="安全多方计算"></a>安全多方计算</h5><h5 id="联邦学习（Federated-Learning）"><a href="#联邦学习（Federated-Learning）" class="headerlink" title="联邦学习（Federated Learning）"></a>联邦学习（Federated Learning）</h5><h6 id="联邦学习原理"><a href="#联邦学习原理" class="headerlink" title="联邦学习原理"></a>联邦学习原理</h6><p>一种分布式机器学习方法，允许多个数据源（如不同的设备或机构）在本地数据上训练模型，然后将模型参数（如神经网络的权重）进行共享聚合，而不是直接共享数据。这样可以在保护数据隐私的基础上，利用各方的数据来训练一个更强大的全局模型。</p>
+<h6 id="联邦学习分类"><a href="#联邦学习分类" class="headerlink" title="联邦学习分类"></a>联邦学习分类</h6><p><strong>集中式联邦学习</strong>：中央服务器负责协调学习过程，包括选择参与节点和聚合模型更新。</p>
+<p><strong>去中心化联邦学习</strong>：允许节点自主协调获取全局模型，避免单点故障。</p>
+<p><strong>异构联邦学习</strong>：支持具有不同计算和通信能力的异构本地模型训练，同时生成准确的全局推理模型。</p>
+<h6 id="联邦学习一般流程"><a href="#联邦学习一般流程" class="headerlink" title="联邦学习一般流程"></a>联邦学习一般流程</h6><p>1、<strong>问题定义与参与方确定</strong></p>
+<p><strong>明确目标</strong>：首先需要确定联邦学习要解决的问题，目标决定了后续的数据需求和模型类型。</p>
+<p><strong>识别参与方</strong>：找出拥有相关数据且愿意参与联邦学习的各方。这些参与方可以是不同的机构（如多家医院、银行），也可以是不同的设备（如智能手机、物联网设备）。参与方需要具备一定的数据存储和计算能力，以便在本地进行数据处理。</p>
+<p>2、<strong>数据准备与预处理</strong></p>
+<p><strong>本地数据收集</strong>：每个参与方在本地收集用于训练模型的数据。这些数据通常是敏感的，不会离开本地设备或机构。</p>
+<p><strong>数据清洗与特征工程（本地）</strong>：参与方在本地对数据进行清洗，去除噪声、错误数据和重复数据。同时，进行特征工程，如提取有用的特征、对特征进行编码或归一化等操作。</p>
+<p>3、<strong>模型初始化与分发</strong></p>
+<p><strong>模型选择与初始化</strong>：由协调者（可以是一个中立的第三方机构，也可以是参与方中的主导者）选择合适的机器学习模型架构，如神经网络、决策树等，并进行初始化，如设置权重和偏置参数。</p>
+<p><strong>模型分发</strong>：将初始化后的模型参数发送给各个参与方。</p>
+<p>4、<strong>本地模型训练</strong></p>
+<p><strong>利用本地数据训练</strong>：各参与方在本地使用自己的数据对收到的模型进行训练。在训练过程中，模型根据本地数据的特征和标签，通过优化算法（如梯度下降）来调整模型参数，使模型在本地数据上的性能（如准确率、损失函数值）得到优化。</p>
+<p><strong>计算梯度更新（本地）</strong>：在训练过程中，参与方计算模型参数的梯度更新。梯度表示模型参数对损失函数的变化率，用于指导模型参数的调整方向。</p>
+<p>5、<strong>模型参数聚合</strong></p>
+<p><strong>上传梯度更新或模型参数</strong>：参与方将本地计算的梯度更新或训练后的模型参数发送给协调者。这一步骤需要注意数据传输的安全性，通常会采用加密等手段来保护数据。例如，通过同态加密技术对梯度更新进行加密，使得协调者在接收数据时无法获取梯度中的隐私信息。</p>
+<p><strong>聚合操作（协调者）</strong>：协调者收到来自各个参与方的梯度更新或模型参数后，进行聚合操作。对于梯度更新，聚合操作可以是简单的加权平均（根据参与方数据量、数据质量等因素确定权重）；对于模型参数，聚合操作可能更复杂，如对不同模型的参数进行融合。例如，在简单的线性回归模型联邦学习中，协调者将各参与方上传的梯度更新进行加权平均，然后更新全局模型的参数。</p>
+<p>6、<strong>模型更新与评估</strong></p>
+<p><strong>更新全局模型（协调者）</strong>：根据聚合后的结果，协调者更新全局模型的参数。</p>
+<p><strong>模型评估（可选）</strong>：可以对更新后的全局模型进行评估，评估指标可以是准确率、召回率、F1 - 分数等（取决于具体的任务）。评估数据可以是预留的测试数据（这些测试数据也可以通过联邦学习的方式获取），或者是模拟数据。通过评估来判断模型是否达到预期的性能目标，如果没有达到，可能需要调整模型架构、训练策略或联邦学习的参数。</p>
+<p>7、<strong>迭代训练与优化</strong></p>
+<p><strong>循环训练过程</strong>：重复上述本地模型训练、模型参数聚合、模型更新与评估的步骤，直到全局模型达到满意的性能或者达到预定的训练次数。在每次迭代中，模型不断吸收各参与方的本地数据信息，逐步优化性能。</p>
+<p><strong>优化调整（可选）</strong>：在迭代过程中，可以根据模型的性能表现和训练情况，对联邦学习的各个环节进行优化调整。例如，调整参与方的权重、更新数据预处理方法、改变模型架构等，以提高模型的收敛速度和最终性能。</p>
+<h6 id="联邦学习优势"><a href="#联邦学习优势" class="headerlink" title="联邦学习优势"></a>联邦学习优势</h6><p><strong>保护隐私</strong>：由于数据不需要上传到中央服务器，用户的隐私得到了很好的保护。</p>
+<p><strong>减少数据传输</strong>：只需传输模型参数，显著减少了数据传输的量。</p>
+<p><strong>提高模型的泛化能力</strong>：由于模型是在不同设备上训练的，这些设备的数据分布可能会有所不同，因此最终的全局模型能够更好地适应不同用户的需求。</p>
+<p><strong>利用边缘计算</strong>：联邦学习可以利用用户设备的计算能力，在边缘进行数据处理，减轻了中央服务器的负担。</p>
+<p><strong>适应动态环境</strong>：联邦学习能够快速适应动态变化的环境。</p>
+<h6 id="联邦学习应用"><a href="#联邦学习应用" class="headerlink" title="联邦学习应用"></a>联邦学习应用</h6><p>移动设备的个性化推荐系统</p>
+<p>医疗领域的疾病预测模型</p>
+<p>金融行业的反欺诈模型</p>
+<h6 id="联邦学习挑战"><a href="#联邦学习挑战" class="headerlink" title="联邦学习挑战"></a>联邦学习挑战</h6><p><strong>数据异构性</strong>：不同设备的数据分布可能存在差异，这种异构性会影响模型的训练效果。</p>
+<p><strong>通信效率</strong>：由于设备的网络环境可能不稳定，因此在联邦学习中，需要考虑如何减少通信开销。</p>
+<p><strong>安全性</strong>：尽管联邦学习可以保护用户隐私，但仍然需要防范一些潜在的安全威胁，比如模型反向工程和恶意设备的影响。</p>
+<h5 id="可信执行环境"><a href="#可信执行环境" class="headerlink" title="可信执行环境"></a>可信执行环境</h5><h5 id="差分隐私"><a href="#差分隐私" class="headerlink" title="差分隐私"></a>差分隐私</h5><h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><p>【1】联邦学习：去中心化的机器学习新模式 川后静波 吴建明利驰软件 2024年10月09日 22:13</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg2MDg5NzE5NA==&mid=2247491179&idx=1&sn=bfdb40f3d7bfef6b4ea294b7a6a96120&chksm=cf6915a369d37b516940c2c48eaae5ec7010335d389422a25ffbd87f910cefa04829fd5bd6d9#rd">https://mp.weixin.qq.com/s?__biz=Mzg2MDg5NzE5NA==&amp;mid=2247491179&amp;idx=1&amp;sn=bfdb40f3d7bfef6b4ea294b7a6a96120&amp;chksm=cf6915a369d37b516940c2c48eaae5ec7010335d389422a25ffbd87f910cefa04829fd5bd6d9#rd</a></p>
+
                 
               </div>
             
