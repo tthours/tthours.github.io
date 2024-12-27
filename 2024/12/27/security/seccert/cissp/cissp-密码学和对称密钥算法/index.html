@@ -19,23 +19,24 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="中级班课程目录 一、溢出利用1、平台演示2、exp代码框架、SHELLCODE编写3、溢出通道对抗防火墙4、异常链表对抗堆栈COOKIES保护技术5、溢出跳转、兼容技术6、堆溢出利用7、溢出程序跟踪调试8、一些典型溢出漏洞分析9、RPC编程简单介绍10、RPC的漏洞利用11、一些典型的RPC漏洞分析12、更多的利用代码包括RPC漏洞利用代码二、漏洞挖掘1、漏洞研究2、数据流挖掘技术3、FUZZ技术">
+    <meta name="description" content="简介密码可为已存储（静态）、通过网络传输（传输中&#x2F;动态）和存在于内存（使用中&#x2F;处理中）的敏感信息提供保密性、完整性、身份认证和不可否认性保护 密码学基本知识密码学的目标保密性confidentiality保密性目标确保数据在静态、传输中和使用中等三种不同状态下始终保持私密。 保密性是指为了存储的信息或个人和群体之间的通信保守秘密。 保密性实现对称密码系统symmetric">
 <meta property="og:type" content="article">
-<meta property="og:title" content="yuangekecheng">
-<meta property="og:url" content="https://tthours.github.io/2024/12/26/security/secstudy/yuangekecheng/index.html">
+<meta property="og:title" content="cissp-密码学和对称密钥算法">
+<meta property="og:url" content="https://tthours.github.io/2024/12/27/security/seccert/cissp/cissp-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%92%8C%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="中级班课程目录 一、溢出利用1、平台演示2、exp代码框架、SHELLCODE编写3、溢出通道对抗防火墙4、异常链表对抗堆栈COOKIES保护技术5、溢出跳转、兼容技术6、堆溢出利用7、溢出程序跟踪调试8、一些典型溢出漏洞分析9、RPC编程简单介绍10、RPC的漏洞利用11、一些典型的RPC漏洞分析12、更多的利用代码包括RPC漏洞利用代码二、漏洞挖掘1、漏洞研究2、数据流挖掘技术3、FUZZ技术">
+<meta property="og:description" content="简介密码可为已存储（静态）、通过网络传输（传输中&#x2F;动态）和存在于内存（使用中&#x2F;处理中）的敏感信息提供保密性、完整性、身份认证和不可否认性保护 密码学基本知识密码学的目标保密性confidentiality保密性目标确保数据在静态、传输中和使用中等三种不同状态下始终保持私密。 保密性是指为了存储的信息或个人和群体之间的通信保守秘密。 保密性实现对称密码系统symmetric">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-26T05:55:57.770Z">
+<meta property="article:published_time" content="2024-12-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-27T01:32:39.582Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
-<meta property="article:tag" content="secstudy">
+<meta property="article:tag" content="seccert">
+<meta property="article:tag" content="cissp">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>yuangekecheng - tthours</title>
+  <title>cissp-密码学和对称密钥算法 - tthours</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="yuangekecheng"></span>
+            <span id="subtitle" data-typed-text="cissp-密码学和对称密钥算法"></span>
           
         </div>
 
@@ -217,8 +218,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-26 00:00" pubdate>
-          2024年12月26日 凌晨
+        <time datetime="2024-12-27 00:00" pubdate>
+          2024年12月27日 凌晨
         </time>
       </span>
     
@@ -229,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          435 字
+          1.3k 字
         
       </span>
     
@@ -240,7 +241,7 @@
         
         
         
-          4 分钟
+          12 分钟
         
       </span>
     
@@ -277,16 +278,59 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">yuangekecheng</h1>
+            <h1 id="seo-header">cissp-密码学和对称密钥算法</h1>
             
             
               <div class="markdown-body">
                 
-                <p>中级班课程目录</p>
-<p>一、溢出利用<br>1、平台演示<br>2、exp代码框架、SHELLCODE编写<br>3、溢出通道对抗防火墙<br>4、异常链表对抗堆栈COOKIES保护技术<br>5、溢出跳转、兼容技术<br>6、堆溢出利用<br>7、溢出程序跟踪调试<br>8、一些典型溢出漏洞分析<br>9、RPC编程简单介绍<br>10、RPC的漏洞利用<br>11、一些典型的RPC漏洞分析<br>12、更多的利用代码包括RPC漏洞利用代码<br>二、漏洞挖掘<br>1、漏洞研究<br>2、数据流挖掘技术<br>3、FUZZ技术<br>4、关键API、系统特性<br>5、内核漏洞挖掘和利用技术<br>三、总结提高<br>1、前面内容的一些补充<br>2、高级DVE对抗技术<br>3、xp挑战赛对抗360沙箱技术</p>
-<p>高级班课程目录</p>
-<p>一、溢出利用<br>1、平台演示<br>2、exp代码框架、SHELLCODE编写<br>3、溢出通道对抗防火墙<br>4、异常链表对抗堆栈COOKIES保护技术<br>5、溢出跳转、兼容技术<br>6、堆溢出利用<br>7、溢出程序跟踪调试<br>8、一些典型溢出漏洞分析，更多一些<br>9、RPC编程简单介绍<br>10、RPC的漏洞利用<br>11、一些典型的RPC漏洞分析<br>12、更多的利用代码包括RPC漏洞利用代码，比中级班再更多<br>二、漏洞挖掘<br>1、漏洞研究<br>2、数据流挖掘技术<br>3、FUZZ<br>4、关键API、系统特性<br>5、内核漏洞挖掘和利用技术<br>6、RPC漏洞的挖掘<br>7、RPC漏洞挖掘的小工具<br>三、总结提高<br>1、前面内容的一些补充<br>2、高级DVE对抗技术<br>3、xp挑战赛对抗360沙箱技术<br>4、调试技术<br>5、安全模型和安全本质理解</p>
+                <span id="more"></span>
 
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>密码可为已存储（<strong>静态</strong>）、通过网络传输（<strong>传输中&#x2F;动态</strong>）和存在于内存（<strong>使用中&#x2F;处理中</strong>）的敏感信息提供<strong>保密性</strong>、<strong>完整性</strong>、<strong>身份认证</strong>和<strong>不可否认性</strong>保护</p>
+<h2 id="密码学基本知识"><a href="#密码学基本知识" class="headerlink" title="密码学基本知识"></a>密码学基本知识</h2><h3 id="密码学的目标"><a href="#密码学的目标" class="headerlink" title="密码学的目标"></a>密码学的目标</h3><h4 id="保密性confidentiality"><a href="#保密性confidentiality" class="headerlink" title="保密性confidentiality"></a>保密性confidentiality</h4><h5 id="保密性目标"><a href="#保密性目标" class="headerlink" title="保密性目标"></a>保密性目标</h5><p>确保数据在静态、传输中和使用中等三种不同状态下始终保持私密。</p>
+<p>保密性是指为了存储的信息或个人和群体之间的通信保守秘密。</p>
+<h5 id="保密性实现"><a href="#保密性实现" class="headerlink" title="保密性实现"></a>保密性实现</h5><h6 id="对称密码系统symmetric-cryptosystem"><a href="#对称密码系统symmetric-cryptosystem" class="headerlink" title="对称密码系统symmetric cryptosystem"></a>对称密码系统symmetric cryptosystem</h6><p>使用一个共享秘密密钥，提供给密码系统的所有用户。</p>
+<h6 id="非对称密码系统asymmertric-cryptosystem"><a href="#非对称密码系统asymmertric-cryptosystem" class="headerlink" title="非对称密码系统asymmertric cryptosystem"></a>非对称密码系统asymmertric cryptosystem</h6><p>使用为系统每个用户单独组合的公钥和私钥。</p>
+<h5 id="保密性关注的数据"><a href="#保密性关注的数据" class="headerlink" title="保密性关注的数据"></a>保密性关注的数据</h5><h6 id="静态数据（data-at-rest）"><a href="#静态数据（data-at-rest）" class="headerlink" title="静态数据（data at rest）"></a>静态数据（data at rest）</h6><p>被存储的数据，是指驻留在一个永久位置上等待被访问的数据。</p>
+<p>硬盘、备份磁带、云存储服务、USB装置和其他存储介质中的数据</p>
+<p>容易受到物理设备盗窃的影响。</p>
+<h6 id="动态数据（data-in-montion）"><a href="#动态数据（data-in-montion）" class="headerlink" title="动态数据（data in montion）"></a>动态数据（data in montion）</h6><p>线路上的数据（线路是指承载数据通信的网络电缆），是指正在两个系统之间通过网络传送的数据。</p>
+<p>通过公司网络、无线网络或互联网传送的数据</p>
+<p>容易受到窃听的影响。</p>
+<h6 id="使用中的数据（data-in-use）"><a href="#使用中的数据（data-in-use）" class="headerlink" title="使用中的数据（data in use）"></a>使用中的数据（data in use）</h6><p>是指保存在计算机系统活跃内存中，可供系统中运行的进程访问的数据</p>
+<p>容易受到未经授权的进程访问（如果操作系统没有适当隔离不同进程）</p>
+<h4 id="完整性integrity"><a href="#完整性integrity" class="headerlink" title="完整性integrity"></a>完整性integrity</h4><h5 id="完整性目标"><a href="#完整性目标" class="headerlink" title="完整性目标"></a>完整性目标</h5><p>确保数据没有在未经授权的情况下被更改。</p>
+<p>如果完整性机制正常运行，消息的接收者可确定，收到的消息和发出的消息相同。</p>
+<p>完整性检查可确保被存储数据自创建起到被访问时不曾有过更改。</p>
+<p>完整性控制抵御所有形式的更改，其中包括第三方试图插入假信息时进行的有意篡改、有意删除部分数据和因传输过程中的故障而发生的无意更改。</p>
+<h5 id="完整性实现"><a href="#完整性实现" class="headerlink" title="完整性实现"></a>完整性实现</h5><p>通过使用加密的消息摘要来实现，也被称为数据签名（digital signature）</p>
+<h6 id="公钥"><a href="#公钥" class="headerlink" title="公钥"></a>公钥</h6><h6 id="秘密密钥密码系统"><a href="#秘密密钥密码系统" class="headerlink" title="秘密密钥密码系统"></a>秘密密钥密码系统</h6><h4 id="身份认证authentication"><a href="#身份认证authentication" class="headerlink" title="身份认证authentication"></a>身份认证authentication</h4><h5 id="身份认证目标"><a href="#身份认证目标" class="headerlink" title="身份认证目标"></a>身份认证目标</h5><p>用于验证系统用户自称的身份，是密码系统的一项主要功能。</p>
+<h4 id="不可否认性non-repudiation"><a href="#不可否认性non-repudiation" class="headerlink" title="不可否认性non-repudiation"></a>不可否认性non-repudiation</h4><h5 id="不可否认性目标"><a href="#不可否认性目标" class="headerlink" title="不可否认性目标"></a>不可否认性目标</h5><p>向接受者保证：消息发自发送者，而且没有人冒充发送者。</p>
+<p>不可否认性还防止发送者声称自己绝对没有发送过消息（也叫否认消息）。</p>
+<h5 id="不可否认性实现"><a href="#不可否认性实现" class="headerlink" title="不可否认性实现"></a>不可否认性实现</h5><p>公钥或非对称密钥系统提供</p>
+<p>秘密密钥或对称密钥密码系统不提供不可否认性保障，因为参与者都是用的是共享密钥。</p>
+<h3 id="密码学的概念"><a href="#密码学的概念" class="headerlink" title="密码学的概念"></a>密码学的概念</h3><h4 id="密码学术语"><a href="#密码学术语" class="headerlink" title="密码学术语"></a>密码学术语</h4><h5 id="明文消息P（plaintext）"><a href="#明文消息P（plaintext）" class="headerlink" title="明文消息P（plaintext）"></a>明文消息P（plaintext）</h5><h5 id="密文消息C（ciphertext）"><a href="#密文消息C（ciphertext）" class="headerlink" title="密文消息C（ciphertext）"></a>密文消息C（ciphertext）</h5><h5 id="加密（encrypt"><a href="#加密（encrypt" class="headerlink" title="加密（encrypt )"></a>加密（encrypt )</h5><h5 id="解密（decrypt）"><a href="#解密（decrypt）" class="headerlink" title="解密（decrypt）"></a>解密（decrypt）</h5><h5 id="密钥（key）"><a href="#密钥（key）" class="headerlink" title="密钥（key）"></a>密钥（key）</h5><p>所有的密码算法都靠密钥维持安全。</p>
+<p>多数情况下，密钥是一个极大的二进制数。</p>
+<p><strong>密钥空间</strong>：每种算法都有一个特定密钥空间（key space）。</p>
+<p>密钥空间是一个特定的数值范围，而某一特定算法的密钥在这个范围内才有效。</p>
+<p>密钥空间由位大小（bit size）决定，也就是密钥内二进制位（0 和 1）的数量。</p>
+<p>密钥空间指的是从全 0 密钥到全 1 密钥的范围，也就是从 0 到 2 n 次方的数范围，其中 n 是密钥的位大小。</p>
+<p>事实上，从密码得到的安全保护完全取决于为所用密钥保守秘密的能力。</p>
+<h4 id="科克霍夫原则"><a href="#科克霍夫原则" class="headerlink" title="科克霍夫原则"></a>科克霍夫原则</h4><p>所有的密码都依赖算法，算法（algorithm）也就是一套规则，通常是数学规则，规定了加密和解密过程应该怎么进行。</p>
+<p>科克霍夫原则（Kerckhoffs’s principle）也叫科克霍夫假说，只要密钥不被被人掌握，那么即便有关密码系统的一切都是公开的，密码系统也是安全的。</p>
+<h4 id="私钥（也叫秘密密钥）密码系统"><a href="#私钥（也叫秘密密钥）密码系统" class="headerlink" title="私钥（也叫秘密密钥）密码系统"></a>私钥（也叫秘密密钥）密码系统</h4><p>所有参与者使用一个共享密钥</p>
+<h4 id="公钥密码系统"><a href="#公钥密码系统" class="headerlink" title="公钥密码系统"></a>公钥密码系统</h4><p>每个参与者各有一个密钥对</p>
+<h4 id="密码变量（cryptovariable）-密码密钥"><a href="#密码变量（cryptovariable）-密码密钥" class="headerlink" title="密码变量（cryptovariable）&#x3D;&#x3D; 密码密钥"></a>密码变量（cryptovariable）&#x3D;&#x3D; 密码密钥</h4><h4 id="密码术（cryptography）"><a href="#密码术（cryptography）" class="headerlink" title="密码术（cryptography）"></a>密码术（cryptography）</h4><p>创建和执行秘密代码和密码的技艺</p>
+<h4 id="密码分析（cryptanalysis）"><a href="#密码分析（cryptanalysis）" class="headerlink" title="密码分析（cryptanalysis）"></a>密码分析（cryptanalysis）</h4><p>研究如何打败代码和密码</p>
+<h4 id="密码学（cryptology）"><a href="#密码学（cryptology）" class="headerlink" title="密码学（cryptology）"></a>密码学（cryptology）</h4><p>密码术+密码分析</p>
+<h4 id="密码系统（cryptosystem）"><a href="#密码系统（cryptosystem）" class="headerlink" title="密码系统（cryptosystem）"></a>密码系统（cryptosystem）</h4><p>一种代码或密码在硬件和软件中的具体实现</p>
+<h3 id="密码数学"><a href="#密码数学" class="headerlink" title="密码数学"></a>密码数学</h3><h4 id="布尔数学（Boolean-mathermatics）"><a href="#布尔数学（Boolean-mathermatics）" class="headerlink" title="布尔数学（Boolean mathermatics）"></a>布尔数学（Boolean mathermatics）</h4><p>为用于构成任何计算机神经系统的位和字节定义了规则。</p>
+<p>一般来说，计算机科学家把“开”状态称作真（true）值，把“关”状态称作假（false）值</p>
+<p>0 &#x3D; FLASE</p>
+<p>1 &#x3D; TRUE</p>
+<h4 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h4><p>密码学涉及的布尔数学利用各种逻辑函数来操控数据。</p>
+<h5 id="AND（与）"><a href="#AND（与）" class="headerlink" title="AND（与）"></a>AND（与）</h5><p>“AND”运算（用符号“^”表示）检查两个值是否都真</p>
+<p>比较两个变量每列中的值，当列中的值都为真时，输出值才为真</p>
+<h4 id="逻辑运算-1"><a href="#逻辑运算-1" class="headerlink" title="逻辑运算"></a>逻辑运算</h4>
                 
               </div>
             
@@ -309,7 +353,7 @@
   
     <span>></span>
     
-  <a href="/categories/security/secstudy/" class="category-chain-item">secstudy</a>
+  <a href="/categories/security/seccert/" class="category-chain-item">seccert</a>
   
   
 
@@ -328,7 +372,9 @@
       
         <a href="/tags/security/" class="print-no-link">#security</a>
       
-        <a href="/tags/secstudy/" class="print-no-link">#secstudy</a>
+        <a href="/tags/seccert/" class="print-no-link">#seccert</a>
+      
+        <a href="/tags/cissp/" class="print-no-link">#cissp</a>
       
     </div>
   
@@ -340,8 +386,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>yuangekecheng</div>
-      <div>https://tthours.github.io/2024/12/26/security/secstudy/yuangekecheng/</div>
+      <div>cissp-密码学和对称密钥算法</div>
+      <div>https://tthours.github.io/2024/12/27/security/seccert/cissp/cissp-密码学和对称密钥算法/</div>
     </div>
     <div class="license-meta">
       
@@ -353,7 +399,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月26日</div>
+          <div>2024年12月27日</div>
         </div>
       
       
@@ -378,18 +424,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/27/security/seccert/cissp/cissp-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%92%8C%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%E7%AE%97%E6%B3%95/" title="cissp-密码学和对称密钥算法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">cissp-密码学和对称密钥算法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/26/yunwei/yunweitips/weibo_video_download/" title="weibo_video_download">
-                        <span class="hidden-mobile">weibo_video_download</span>
+                      <a href="/2024/12/26/security/secstudy/yuangekecheng/" title="yuangekecheng">
+                        <span class="hidden-mobile">yuangekecheng</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

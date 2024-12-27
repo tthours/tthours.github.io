@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>cissp-密码学和对称密钥算法</title>
+    <link href="/2024/12/27/security/seccert/cissp/cissp-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%92%8C%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%E7%AE%97%E6%B3%95/"/>
+    <url>/2024/12/27/security/seccert/cissp/cissp-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%92%8C%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%E7%AE%97%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>密码可为已存储（<strong>静态</strong>）、通过网络传输（<strong>传输中&#x2F;动态</strong>）和存在于内存（<strong>使用中&#x2F;处理中</strong>）的敏感信息提供<strong>保密性</strong>、<strong>完整性</strong>、<strong>身份认证</strong>和<strong>不可否认性</strong>保护</p><h2 id="密码学基本知识"><a href="#密码学基本知识" class="headerlink" title="密码学基本知识"></a>密码学基本知识</h2><h3 id="密码学的目标"><a href="#密码学的目标" class="headerlink" title="密码学的目标"></a>密码学的目标</h3><h4 id="保密性confidentiality"><a href="#保密性confidentiality" class="headerlink" title="保密性confidentiality"></a>保密性confidentiality</h4><h5 id="保密性目标"><a href="#保密性目标" class="headerlink" title="保密性目标"></a>保密性目标</h5><p>确保数据在静态、传输中和使用中等三种不同状态下始终保持私密。</p><p>保密性是指为了存储的信息或个人和群体之间的通信保守秘密。</p><h5 id="保密性实现"><a href="#保密性实现" class="headerlink" title="保密性实现"></a>保密性实现</h5><h6 id="对称密码系统symmetric-cryptosystem"><a href="#对称密码系统symmetric-cryptosystem" class="headerlink" title="对称密码系统symmetric cryptosystem"></a>对称密码系统symmetric cryptosystem</h6><p>使用一个共享秘密密钥，提供给密码系统的所有用户。</p><h6 id="非对称密码系统asymmertric-cryptosystem"><a href="#非对称密码系统asymmertric-cryptosystem" class="headerlink" title="非对称密码系统asymmertric cryptosystem"></a>非对称密码系统asymmertric cryptosystem</h6><p>使用为系统每个用户单独组合的公钥和私钥。</p><h5 id="保密性关注的数据"><a href="#保密性关注的数据" class="headerlink" title="保密性关注的数据"></a>保密性关注的数据</h5><h6 id="静态数据（data-at-rest）"><a href="#静态数据（data-at-rest）" class="headerlink" title="静态数据（data at rest）"></a>静态数据（data at rest）</h6><p>被存储的数据，是指驻留在一个永久位置上等待被访问的数据。</p><p>硬盘、备份磁带、云存储服务、USB装置和其他存储介质中的数据</p><p>容易受到物理设备盗窃的影响。</p><h6 id="动态数据（data-in-montion）"><a href="#动态数据（data-in-montion）" class="headerlink" title="动态数据（data in montion）"></a>动态数据（data in montion）</h6><p>线路上的数据（线路是指承载数据通信的网络电缆），是指正在两个系统之间通过网络传送的数据。</p><p>通过公司网络、无线网络或互联网传送的数据</p><p>容易受到窃听的影响。</p><h6 id="使用中的数据（data-in-use）"><a href="#使用中的数据（data-in-use）" class="headerlink" title="使用中的数据（data in use）"></a>使用中的数据（data in use）</h6><p>是指保存在计算机系统活跃内存中，可供系统中运行的进程访问的数据</p><p>容易受到未经授权的进程访问（如果操作系统没有适当隔离不同进程）</p><h4 id="完整性integrity"><a href="#完整性integrity" class="headerlink" title="完整性integrity"></a>完整性integrity</h4><h5 id="完整性目标"><a href="#完整性目标" class="headerlink" title="完整性目标"></a>完整性目标</h5><p>确保数据没有在未经授权的情况下被更改。</p><p>如果完整性机制正常运行，消息的接收者可确定，收到的消息和发出的消息相同。</p><p>完整性检查可确保被存储数据自创建起到被访问时不曾有过更改。</p><p>完整性控制抵御所有形式的更改，其中包括第三方试图插入假信息时进行的有意篡改、有意删除部分数据和因传输过程中的故障而发生的无意更改。</p><h5 id="完整性实现"><a href="#完整性实现" class="headerlink" title="完整性实现"></a>完整性实现</h5><p>通过使用加密的消息摘要来实现，也被称为数据签名（digital signature）</p><h6 id="公钥"><a href="#公钥" class="headerlink" title="公钥"></a>公钥</h6><h6 id="秘密密钥密码系统"><a href="#秘密密钥密码系统" class="headerlink" title="秘密密钥密码系统"></a>秘密密钥密码系统</h6><h4 id="身份认证authentication"><a href="#身份认证authentication" class="headerlink" title="身份认证authentication"></a>身份认证authentication</h4><h5 id="身份认证目标"><a href="#身份认证目标" class="headerlink" title="身份认证目标"></a>身份认证目标</h5><p>用于验证系统用户自称的身份，是密码系统的一项主要功能。</p><h4 id="不可否认性non-repudiation"><a href="#不可否认性non-repudiation" class="headerlink" title="不可否认性non-repudiation"></a>不可否认性non-repudiation</h4><h5 id="不可否认性目标"><a href="#不可否认性目标" class="headerlink" title="不可否认性目标"></a>不可否认性目标</h5><p>向接受者保证：消息发自发送者，而且没有人冒充发送者。</p><p>不可否认性还防止发送者声称自己绝对没有发送过消息（也叫否认消息）。</p><h5 id="不可否认性实现"><a href="#不可否认性实现" class="headerlink" title="不可否认性实现"></a>不可否认性实现</h5><p>公钥或非对称密钥系统提供</p><p>秘密密钥或对称密钥密码系统不提供不可否认性保障，因为参与者都是用的是共享密钥。</p><h3 id="密码学的概念"><a href="#密码学的概念" class="headerlink" title="密码学的概念"></a>密码学的概念</h3><h4 id="密码学术语"><a href="#密码学术语" class="headerlink" title="密码学术语"></a>密码学术语</h4><h5 id="明文消息P（plaintext）"><a href="#明文消息P（plaintext）" class="headerlink" title="明文消息P（plaintext）"></a>明文消息P（plaintext）</h5><h5 id="密文消息C（ciphertext）"><a href="#密文消息C（ciphertext）" class="headerlink" title="密文消息C（ciphertext）"></a>密文消息C（ciphertext）</h5><h5 id="加密（encrypt"><a href="#加密（encrypt" class="headerlink" title="加密（encrypt )"></a>加密（encrypt )</h5><h5 id="解密（decrypt）"><a href="#解密（decrypt）" class="headerlink" title="解密（decrypt）"></a>解密（decrypt）</h5><h5 id="密钥（key）"><a href="#密钥（key）" class="headerlink" title="密钥（key）"></a>密钥（key）</h5><p>所有的密码算法都靠密钥维持安全。</p><p>多数情况下，密钥是一个极大的二进制数。</p><p><strong>密钥空间</strong>：每种算法都有一个特定密钥空间（key space）。</p><p>密钥空间是一个特定的数值范围，而某一特定算法的密钥在这个范围内才有效。</p><p>密钥空间由位大小（bit size）决定，也就是密钥内二进制位（0 和 1）的数量。</p><p>密钥空间指的是从全 0 密钥到全 1 密钥的范围，也就是从 0 到 2 n 次方的数范围，其中 n 是密钥的位大小。</p><p>事实上，从密码得到的安全保护完全取决于为所用密钥保守秘密的能力。</p><h4 id="科克霍夫原则"><a href="#科克霍夫原则" class="headerlink" title="科克霍夫原则"></a>科克霍夫原则</h4><p>所有的密码都依赖算法，算法（algorithm）也就是一套规则，通常是数学规则，规定了加密和解密过程应该怎么进行。</p><p>科克霍夫原则（Kerckhoffs’s principle）也叫科克霍夫假说，只要密钥不被被人掌握，那么即便有关密码系统的一切都是公开的，密码系统也是安全的。</p><h4 id="私钥（也叫秘密密钥）密码系统"><a href="#私钥（也叫秘密密钥）密码系统" class="headerlink" title="私钥（也叫秘密密钥）密码系统"></a>私钥（也叫秘密密钥）密码系统</h4><p>所有参与者使用一个共享密钥</p><h4 id="公钥密码系统"><a href="#公钥密码系统" class="headerlink" title="公钥密码系统"></a>公钥密码系统</h4><p>每个参与者各有一个密钥对</p><h4 id="密码变量（cryptovariable）-密码密钥"><a href="#密码变量（cryptovariable）-密码密钥" class="headerlink" title="密码变量（cryptovariable）&#x3D;&#x3D; 密码密钥"></a>密码变量（cryptovariable）&#x3D;&#x3D; 密码密钥</h4><h4 id="密码术（cryptography）"><a href="#密码术（cryptography）" class="headerlink" title="密码术（cryptography）"></a>密码术（cryptography）</h4><p>创建和执行秘密代码和密码的技艺</p><h4 id="密码分析（cryptanalysis）"><a href="#密码分析（cryptanalysis）" class="headerlink" title="密码分析（cryptanalysis）"></a>密码分析（cryptanalysis）</h4><p>研究如何打败代码和密码</p><h4 id="密码学（cryptology）"><a href="#密码学（cryptology）" class="headerlink" title="密码学（cryptology）"></a>密码学（cryptology）</h4><p>密码术+密码分析</p><h4 id="密码系统（cryptosystem）"><a href="#密码系统（cryptosystem）" class="headerlink" title="密码系统（cryptosystem）"></a>密码系统（cryptosystem）</h4><p>一种代码或密码在硬件和软件中的具体实现</p><h3 id="密码数学"><a href="#密码数学" class="headerlink" title="密码数学"></a>密码数学</h3><h4 id="布尔数学（Boolean-mathermatics）"><a href="#布尔数学（Boolean-mathermatics）" class="headerlink" title="布尔数学（Boolean mathermatics）"></a>布尔数学（Boolean mathermatics）</h4><p>为用于构成任何计算机神经系统的位和字节定义了规则。</p><p>一般来说，计算机科学家把“开”状态称作真（true）值，把“关”状态称作假（false）值</p><p>0 &#x3D; FLASE</p><p>1 &#x3D; TRUE</p><h4 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h4><p>密码学涉及的布尔数学利用各种逻辑函数来操控数据。</p><h5 id="AND（与）"><a href="#AND（与）" class="headerlink" title="AND（与）"></a>AND（与）</h5><p>“AND”运算（用符号“^”表示）检查两个值是否都真</p><p>比较两个变量每列中的值，当列中的值都为真时，输出值才为真</p><h4 id="逻辑运算-1"><a href="#逻辑运算-1" class="headerlink" title="逻辑运算"></a>逻辑运算</h4>]]></content>
+    
+    
+    <categories>
+      
+      <category>security</category>
+      
+      <category>seccert</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>security</tag>
+      
+      <tag>seccert</tag>
+      
+      <tag>cissp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>yuangekecheng</title>
     <link href="/2024/12/26/security/secstudy/yuangekecheng/"/>
     <url>/2024/12/26/security/secstudy/yuangekecheng/</url>
@@ -56,6 +87,35 @@
       <tag>yunweitips</tag>
       
       <tag>tips</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>secops_bas</title>
+    <link href="/2024/12/26/security/secops/secops_bas/"/>
+    <url>/2024/12/26/security/secops/secops_bas/</url>
+    
+    <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>入侵和攻击模拟（BAS）</p><p>BAS是一种先进的信息安全技术，它通过模拟真实的攻击场景来评估和提高组织的网络安全防御能力。与传统的渗透测试和漏洞管理工具相比，BAS有着显著的不同之处。传统的渗透测试通常是由安全团队执行的一系列预先计划好的攻击行动，旨在发现系统中的漏洞并评估其严重性。而BAS则更加动态和全面，它不仅模拟攻击行为，还模拟了数据泄露的过程。这使得BAS能够更加真实地反映出安全防御在实际攻击面前的反应和表现。</p><p>BAS的攻击模拟是持续进行的，它不会只在特定时间进行一次性的测试，而是像持续的网络安全监控一样运行。BAS能够及时地检测和评估组织对于新出现的威胁的防御能力。使用BAS的目的是为了确保安全措施能够在不断变化的威胁环境中有效运作。这种模拟攻击可以验证安全策略、检测潜在的弱点，并提供实时反馈，帮助组织改善其安全防御。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>security</category>
+      
+      <category>secops</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>security</tag>
+      
+      <tag>secops</tag>
       
     </tags>
     
