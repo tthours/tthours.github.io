@@ -4,6 +4,66 @@
   
   
   <entry>
+    <title>AI 造假术-揭秘这项技术背后的真相</title>
+    <link href="/2024/12/30/informationCocoon/tk_article/AI%20%E9%80%A0%E5%81%87%E6%9C%AF-%E6%8F%AD%E7%A7%98%E8%BF%99%E9%A1%B9%E6%8A%80%E6%9C%AF%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8/"/>
+    <url>/2024/12/30/informationCocoon/tk_article/AI%20%E9%80%A0%E5%81%87%E6%9C%AF-%E6%8F%AD%E7%A7%98%E8%BF%99%E9%A1%B9%E6%8A%80%E6%9C%AF%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>2024 年 12 月初，网络上出现了一段带货视频，在视频中卖力地推销某食品的居然是国家传染病医学中心主任、复旦大学附属华山医院感染科主任张文宏医生。</p><p>不少网友出于对张文宏医生的信任，不仅自己购买，还积极地把视频转发到家族群。然而，<strong>张文宏医生本人很快对此做出了澄清：该视频非其本人录制，应该是用 AI 伪造的。</strong></p><p><img src="/005ztyuLly4hwtpg9ljp0j608r0brjrm02.jpg" alt="img"></p><p>网络截图</p><p>近年来，随着人工智能技术的迅猛发展，此类 AI 伪造视频事件频频曝光。不法分子利用 AI 技术，假冒名人身份进行诈骗、发布虚假广告，甚至通过伪造视频骗取巨额财产，严重威胁社会信任体系和信息安全。</p><p>今天，我们从技术角度来剖析一下此类事件。</p><p><strong>AI 伪造视频的技术：</strong></p><p><strong>从生存对抗网络到 Deepfake</strong></p><p>这类 AI 伪造视频所用的技术并不是最近才出现的，上世纪九十年代学术界就开始了面部替换和图像生成相关技术的研究。2014 年，伊恩·古德费洛（Ian Goodfellow）提出了生成对抗网络（GAN，Generative Adversarial Network），使得计算机可以生成更为逼真且高质量的图像。</p><p>生成对抗网络由生成器（Generator）和判别器（Discriminator）两部分组成。<strong>生成器创建内容，而判别器则检测所创建的内容是不是真实的，并将结果反馈给生成器。在训练过程中，两者一攻一守，相互对抗，并在对抗中提升各自的能力，最终生成器能够生成非常逼真的画面。</strong></p><p>2017 年，有人在网络社区 Reddit 上创建了一个名为“deepfakes”的账号，并发布了一些用生成对抗网络技术制作的名人换脸视频。从此，“Deepfake”一词开始被广泛使用，通常是指代这类换脸视频所用的技术。</p><p>2018 年 1 月，一款名为 FakeApp 的桌面应用程序发布。紧接着，Faceswap、DeepFaceLab 等具有类似功能的开源工具出现了。这些工具大大降低了 Deepfake 的门槛，使不具备专业知识的普通用户也能轻松生成换脸视频。</p><p><strong>随着相关技术不断进步，今天的 Deepfake 和之前相比，不仅生成的视频分辨率更高、面部表情同步更自然，而且所需的数据更少、训练时间更短。</strong>早期 Deepfake 训练往往需要数百到上千张目标人物的图片或数分钟至数小时的视频，以获取不同角度、不同表情的脸部特征。但随着生成对抗网络技术本身的发展，迁移学习（Transfer Learning）、小样本学习（Few-Shot Learning）等技术的出现，现在仅需要几十张甚至单张照片就可以生成 Deepfake 视频。</p><p><img src="/005ztyuLly4hwtpgaoem5j60u00jzwfv02.jpg" alt="img"></p><p>图库版权图片，转载使用可能引发版权纠纷</p><p>另外，早期 Deepfake 只能生成画面，现在结合声音克隆（Voice Cloning）、语音风格迁移（Voice Style Transfer）等技术，还可以生成以假乱真的目标人物声音，并且可以令视频中的嘴部动作和声音一致。</p><p>简单来说，<strong>现在只需要有一张照片，几秒钟的语音，就可以生成 Deepfake 视频。</strong>当然，如果有更多照片和更长的语音，生成的视频也会更逼真。</p><p><strong>Deepfake 技术的</strong></p><p><strong>正面应用和负面影响</strong></p><p>Deepfake 虽然是“伪造”，但在获得被“伪造”者许可的情况下，可以有很多正面的应用。例如，2019 年，英国足球明星大卫·贝克汉姆发布了一段呼吁消灭疟疾的视频。在视频中，他使用了包括斯瓦希里语和约鲁巴语等在内的 9 种语言。而除了英语之外，其余 8 种语言都是用 Deepfake 技术生成的。</p><p>此外，Deepfake 所使用的各类技术在数字人等领域也有广泛应用，在视频主播、影视制作、教育和培训、心理治疗康复等领域都能发挥积极的作用。</p><p><strong>但任何技术都可能被用在不好的地方。</strong>在前面提到的假张文宏之前，已经出现过假靳东、假马云、假雷军、假于东来等。假冒名人卖货不是最糟糕的，<strong>Deepfake 类技术还被用在很多更恶劣的地方，例如诈骗。</strong></p><p>2024 年 12 月 20 日，BBC 报道了一则《爱情骗子利用 Deepfake 从我这里骗走 1.7 万英镑》的故事。受害人是 77 岁的尼基·麦克劳德（Nikki MacLeod）。骗子告诉她，自己在一座石油钻井平台上工作，并要求 Nikki 购买 Steam 礼品卡以及通过 Paypal 转账等方式提供金钱，以便在钻井平台上获得互联网连接，以及支付到苏格兰来见她的旅行费用。Nikki 最初持怀疑态度，但看到对方发来的钻井平台上的视频后就相信了。</p><p>2024 年 1 月，某香港公司的一名员工从公司账户转了 2500 万美元给诈骗者。骗子以首席财务官的名义和他进行了视频通话，要求他执行这笔转账。在视频通话中，该员工不仅看到了首席财务官“本人”，甚至还看到了其它“同事”。</p><p>据著名会计师事务所德勤 2024 年 5 月发布的一份报告，2023 年美国的 Deepfake 欺诈增加了 700%，造成了 123 亿美元的损失，并且这一数字在 2027 年可能会达到 400 亿美元。</p><p><img src="/005ztyuLly4hwtpgbm424j60u00hcgms02.jpg" alt="img"></p><p>图库版权图片，转载使用可能引发版权纠纷</p><p>除了诈骗之外，Deepfake 技术可以还被用来骗过人脸识别。很多移动应用会使用人脸识别来验证用户身份。为防止用照片假冒人脸，现在的人脸识别技术通常都会进行活体检测，类似 3D 结构光等活体识别技术需要特殊硬件，但只有部分手机支持。</p><p>目前，很多场合使用的还是基于手机前置摄像头的 2D 人脸识别。而 2D 人脸识别的活体检测主要是要求用户做出眨眼、点头等动作，以及用屏幕闪烁特定颜色的光线。于是就有人使用 Deepfake 技术结合一些其它的手段，来骗过人脸识别，从而盗取网络账号。</p><p><strong>如何识别和检测 Deepfake 视频？</strong></p><p><strong>制作不够精良的 Deepfake 视频用肉眼就可看出异常。</strong>例如，人物的面部表情或眼神不自然，眨眼的次数过少，面部边缘模糊，或者与背景的过渡不自然，人脸的光影效果与周围环境的光线情况不符等。但是，随着 Deepfake 技术的进步，这些异常特征也越来越少。</p><p>目前已知的 Deepfake 技术能仿冒人脸做出的表情，但还不能仿冒人脸在受到外部压力时产生的变形。所以，在视频通话时，如果怀疑遭到了 Deepfake 欺诈，可以要求对方用食指按压一侧的鼻翼，或按压一侧的脸颊。</p><p><strong>除了肉眼分辨，用 AI 来识别 AI 生成的内容也是热门的研究方向。</strong>例如合成视频可能在帧与帧之间存在不连续性，进行时序一致性分析就可能发现异常。另外，人的心脏跳动会导致皮肤出现和脉搏节律一致的细微色彩变化，通过这种色彩变化可以获取脉搏信息，而 Deepfake 的视频可能没有这种特征。</p><p>但我们也要意识到，Deepfake 使用的生成式对抗网络技术本来就是由生成器和判别器两部分组成，任何一种检测 Deepfake 的技术手段也都可以纳入到 Deepfake 的判别器中，从而生成该技术难以检测的伪造内容。</p><p><img src="/005ztyuLly4hwtpgca9etj60u00k0dh702.jpg" alt="img"></p><p>图库版权图片，转载使用可能引发版权纠纷</p><p>近年来，我国颁布实施了《互联网信息服务深度合成管理规定》《生成式人工智能服务管理暂行办法》等，但这些法律法规主要约束的是提供相关服务的平台。而随着软硬件技术的发展，目前 Deepfake 完全可以只使用运行在个人电脑中的模型完成。</p><p>所以，<strong>要应对 Deepfake 带来的各类问题，需要全流程的综合治理机制，未来需要技术、平台、法律的多元协同。</strong>用 Deepfake 假冒名人身份，欺骗他人购买产品，不仅可能违反《民法典》第 1019 条和第 1024 条，侵犯他人的肖像权、名誉权，还可能涉及《刑法》第 266 条诈骗罪、《刑法》第 222 条虚假广告罪等。对于使用 Deepfake 涉及违法乃至犯罪的行为，就需要依法进行打击。</p><h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p>【1】科普中国  AI 造假术！揭秘这项技术背后的真相 12-22 15:10</p><p><a href="https://weibo.com/ttarticle/x/m/show#/id=2309405114399823364195&_wb_client_=1">https://weibo.com/ttarticle/x/m/show#/id=2309405114399823364195&amp;_wb_client_=1</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>infomationCocoon</category>
+      
+      <category>tk</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>infomationCocoon</tag>
+      
+      <tag>tk</tag>
+      
+      <tag>AI</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>被野生松鼠咬的处理方案</title>
+    <link href="/2024/12/30/informationCocoon/medical/%E8%A2%AB%E9%87%8E%E7%94%9F%E6%9D%BE%E9%BC%A0%E5%92%AC%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88/"/>
+    <url>/2024/12/30/informationCocoon/medical/%E8%A2%AB%E9%87%8E%E7%94%9F%E6%9D%BE%E9%BC%A0%E5%92%AC%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>尽管暴露于啮齿类动物导致狂犬病的可能性微乎其微，但是面对「野生松鼠」致伤时，一方面仍然应该考虑进行暴露后处置（包括狂犬病、破伤风疫苗接种，以及被动免疫制剂使用），另一方面也应该考虑对致伤动物进行狂犬病毒检测，从而确认感染风险以及在必要情况下调整处置方案。</p><h1 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h1><p>#男生手喂公园松鼠被挠伤挨5针花1千# 这个事情的对错可能会比较颠覆既往的一些认知。</p><p>先说一个比较尴尬的事实：虽然被啮齿类动物咬伤后，通常不需要接种狂犬病疫苗，但全世界有两个国家被记录过「松鼠」相关的人类狂犬病案例。</p><p>▌病例1来自印度</p><p>印度特里凡得琅医学学院SAT医院儿科报告了喀拉拉邦一名「过去没有被任何其他动物咬伤的病史」的7岁男孩出现发热、咳嗽、烦躁不安、进食困难以及在喝水时表现出攻击性行为就诊，症状已持续2天。两个月前，患儿右腿曾被松鼠咬伤，并在当地医院接受了破伤风疫苗注射和伤口处理，但「未接种」狂犬病疫苗。</p><p>患儿在重症监护室接受「支持性治疗」，但病情持续恶化，最终在「入院4小时」后因心肺功能衰竭死亡。角膜印片免疫荧光检测结果为狂犬病阳性</p><p>▌病例2来自中国</p><p>我国「中疾控病毒所」的研究显示：2005年至2012年，我国30个省报告了19,221例狂犬病病例，主要发生在中国南部和东部的农村地区，大多与农民、学生和学龄前儿童有关。在对2010年至2011年报告的「死亡病例」的详细分析中发现，这些人类狂犬病病例主要因暴露于狗（93.7%）和猫（4.6%）所致，其余则与其他家畜和野生动物有关，包括马、猪、老鼠和「松鼠」。</p><p>需要注意的是，大多数报告的人类狂犬病病例都是「临床诊断」，而没有经过实验室检测，上述信息基于2010年至2011年疑似人类狂犬病病例的流行病学和暴露后处置的治疗数据。</p><p>▌差点出现的病例3</p><p>根据印度喜马偕尔邦西姆拉卡苏帕提帕里马哈尔州卫生与家庭福利研究所发布的信息，2019年8月10日，「斯里兰卡科伦坡」一名9岁男孩在右手食指中部被松鼠咬伤，但「伤口没有出血」，但有一小块皮肤剥落。医生将其评估为Ⅱ级暴露，并启动「两点皮内（ID）疫苗接种」作为暴露后预防（斯里兰卡这种免疫程序一共要打4次，每次2针皮内注射，可以减少疫苗抗原使用）。</p><p>当天中午「松鼠死亡」，其头部被送往科伦坡斯里兰卡医学研究所的实验室进行狂犬病检测。8月13日，实验室通过荧光抗体试验（FAT）报告（编号H 898，日期13&#x2F;08&#x2F;2019）确认松鼠为「狂犬病毒阳性」！</p><p>孩子的父母「带着报告」再次前往医院与医生会面并沟通接种被动免疫制剂。医生表示，由于伤口表浅且属于Ⅱ级暴露，不需要注射狂犬病免疫球蛋白（RIG），因为RIG可能带来的副作用风险不值得冒。尽管斯里兰卡的医院配备了人用狂犬病免疫球蛋白（HRIG），医生仍认为不应冒过敏反应（如过敏性休克）的风险。因此，在当天即8月13日按计划接种了第二剂皮内疫苗，而「未使用」RIG。</p><p>此后，斯里兰卡的儿童家长给「印度医生」发邮件并得到肯定的回复（需要使用RIG）后，在他们的坚持下给儿童注射了RIG，最终大幅降低了这名9岁儿童的狂犬病发病风险。这一切的结果，来源于家长的坚持和努力。</p><p>▌本次案例分析</p><p>在本次案例中，伤者被野生松鼠攻击后出现手指出血的情况，根据暴露等级属于「Ⅲ级暴露，结合我国对动物狂犬病毒监测水平以及既往在国内出现过疑似暴露于松鼠相关的人类狂犬病病例背景，医院采取狂犬病疫苗接种可以说是「正确」的方案。</p><p>然而有以下几点值得关注：</p><p>②是否使用被动免疫制剂：在面对松鼠所致的暴露时，如果认为需要进行狂犬病疫苗接种，那么按照标准Ⅲ级暴露的处置方式，也应该使用被动免疫制剂（比如免疫球蛋白或单克隆抗体），而新闻提到的数字是「5针和1000元」，那么根据价格计算可能未使用被动免疫制剂；</p><p>②是否属于再次暴露：如果伤者既往因全程接种过狂犬病疫苗而不适用被动免疫制剂，那么就不应该接种5针狂犬病疫苗，而是「2针」，那么如果其余3针是破伤风疫苗的话，价格也不太对；</p><p>③是否进行破伤风暴露后处置：被松鼠致伤后，除了进行狂犬病暴露后处置外，还应该进行「破伤风暴露后处置」，但从接种针次来看似乎也并不成立，也就是可能「没有」进行破伤风暴露后处置。</p><p>当然除了一些疑惑点之外，还是有积极的方面。</p><p>值得表扬的是，视频里云南大学附属医院开具的《狂犬病·破伤风预防处置知情同意书》是一个非常不错的文件，因为很多的狂犬病暴露后处置都应该伴随破伤风暴露后处置，只不过很少被提及，而这个知情同意书做的非常好。</p><p>▌小结</p><p>尽管国家卫健委发布的《常见动物致伤诊疗规范》中提到「啮齿类和免形目动物极少感染狂犬病，目前无导致人类狂犬病病例的证据」，但事实上尽管证据有限且质量不高（印度的没有对动物狂犬病毒感染情况进行检测，中国采用的是病例记录信息而非病毒检测结果），但也提示了《规范》中的表述「并不严谨」。</p><p>综上，尽管暴露于啮齿类动物导致狂犬病的可能性微乎其微，但是面对「野生松鼠」致伤时，一方面仍然应该考虑进行暴露后处置（包括狂犬病、破伤风疫苗接种，以及被动免疫制剂使用），另一方面也应该考虑对致伤动物进行狂犬病毒检测，从而确认感染风险以及在必要情况下调整处置方案。</p><h1 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h1><p>【1】</p><p><a href="https://weibo.com/1803648617/5116944095646116">https://weibo.com/1803648617/5116944095646116</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>infomationCocoon</category>
+      
+      <category>medical</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>infomationCocoon</tag>
+      
+      <tag>medical</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>cissp-密码学和对称密钥算法</title>
     <link href="/2024/12/27/security/seccert/cissp/cissp-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%92%8C%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%E7%AE%97%E6%B3%95/"/>
     <url>/2024/12/27/security/seccert/cissp/cissp-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%92%8C%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%E7%AE%97%E6%B3%95/</url>
@@ -27,6 +87,209 @@
       <tag>seccert</tag>
       
       <tag>cissp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>mtr</title>
+    <link href="/2024/12/27/network/networktools/mtr/"/>
+    <url>/2024/12/27/network/networktools/mtr/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>mtr（My Traceroute）是一款非常有用的网络诊断工具，它结合了 traceroute 和 ping 的功能，可以用来追踪数据包到达目标主机所经过的路径，并同时显示每个跃点（hop）的丢包率和平均往返时间（RTT）。这对于诊断网络问题、了解网络延迟以及定位故障点非常有用。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="Debian系统（Ubuntu-Debian）"><a href="#Debian系统（Ubuntu-Debian）" class="headerlink" title="Debian系统（Ubuntu\Debian）"></a>Debian系统（Ubuntu\Debian）</h3><pre><code class="hljs">sudo apt-get updatesudo apt-get install mtr</code></pre><h3 id="x20-Red-Hat系统（Fedora-CentOS-RHEL）"><a href="#x20-Red-Hat系统（Fedora-CentOS-RHEL）" class="headerlink" title="&#x20;Red Hat系统（Fedora, CentOS, RHEL）"></a>&#x20;Red Hat系统（Fedora, CentOS, RHEL）</h3><pre><code class="hljs">sudo dnf install mtrsudo yum install mtr</code></pre><h3 id="Mac系统"><a href="#Mac系统" class="headerlink" title="Mac系统"></a>Mac系统</h3><pre><code class="hljs">brew install mtr</code></pre><h3 id="安装验证"><a href="#安装验证" class="headerlink" title="安装验证"></a>安装验证</h3><pre><code class="hljs">mtr -c 5 8.8.8.8110.local (10.222.28.6) -&gt; 8.8.8.8 (8.8.8.8)                                         2024-07-30T14:55:57+0800Keys:  Help   Display mode   Restart statistics   Order of fields   quit                                                                     Packets               Pings Host                                                              Loss%   Snt   Last   Avg  Best  Wrst StDev 1. 10.222.28.254                                                   0.0%     3    5.9   8.7   5.9  12.9   3.7 2. 10.234.253.18                                                   0.0%     3    6.5   6.4   6.0   6.8   0.4 3. 10.234.253.109                                                  0.0%     3    8.9 111.4   8.9 316.5 177.6 4. 61.135.152.129                                                  0.0%     3    9.7  88.7   9.7 244.9 135.3 5. 192.168.255.5                                                  33.3%     3    9.6  10.0   9.6  10.4   0.6 6. 123.125.248.73                                                  0.0%     3   11.6  56.8  11.5 147.3  78.3 7. 221.216.106.109                                                66.7%     3    9.5   9.5   9.5   9.5   0.0 8. 202.96.12.53                                                   50.0%     3   11.4  11.4  11.4  11.4   0.0 9. 219.158.108.242                                                66.7%     3   47.7  47.7  47.7  47.7   0.010. 219.158.8.118                                                   0.0%     3   54.9  51.8  49.3  54.9   2.811. 219.158.103.26                                                  0.0%     3   54.4  53.3  50.9  54.5   2.012. 219.158.6.66                                                    0.0%     3   61.4  59.3  58.1  61.4   1.813. (waiting for reply)14. 162.245.124.254                                                 0.0%     2   60.0  61.6  60.0  63.2   2.315. ae-25.a00.chwahk03.hk.bb.gin.ntt.net                            0.0%     2   80.3  81.8  80.3  83.2   2.116. 203.131.250.82                                                  0.0%     2   52.2  52.9  52.2  53.6   1.017. 142.250.60.155                                                  0.0%     2   53.3  53.8  53.3  54.4   0.818. 108.170.232.111                                                 0.0%     2   51.6  53.1  51.6  54.7   2.219. dns.google         </code></pre><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><pre><code class="hljs">mtr [options] hostname_or_ip</code></pre><p>hostname_or_ip 要追踪的目标主机的域名或 IP 地址</p><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><h4 id="c-num-x20"><a href="#c-num-x20" class="headerlink" title="-c num&#x20;"></a>-c num&#x20;</h4><p>限制每个跃点的测试次数。默认情况下，mtr 会持续运行，直到手动停止。</p><h4 id="r-x20"><a href="#r-x20" class="headerlink" title="-r&#x20;"></a>-r&#x20;</h4><p>随机DNS解析结果，防止DNS污染</p><h4 id="w"><a href="#w" class="headerlink" title="-w"></a>-w</h4><p>宽屏幕模式</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><br><span class="hljs-attribute">HOST</span>: aliyun-<span class="hljs-number">39</span>_106_2_51                   Loss%   Snt   Last   Avg  Best  Wrst StDev<br>  <span class="hljs-attribute">1</span>.|-- <span class="hljs-number">10.36.72.158</span>                         <span class="hljs-number">25</span>.<span class="hljs-number">0</span>%    <span class="hljs-number">20</span>    <span class="hljs-number">1</span>.<span class="hljs-number">9</span>   <span class="hljs-number">2</span>.<span class="hljs-number">0</span>   <span class="hljs-number">1</span>.<span class="hljs-number">9</span>   <span class="hljs-number">2</span>.<span class="hljs-number">2</span>   <span class="hljs-number">0</span>.<span class="hljs-number">0</span><br>  <span class="hljs-attribute">2</span>.|-- <span class="hljs-number">11.73.7.186</span>                          <span class="hljs-number">75</span>.<span class="hljs-number">0</span>%    <span class="hljs-number">20</span>    <span class="hljs-number">2</span>.<span class="hljs-number">2</span>   <span class="hljs-number">2</span>.<span class="hljs-number">4</span>   <span class="hljs-number">2</span>.<span class="hljs-number">2</span>   <span class="hljs-number">2</span>.<span class="hljs-number">8</span>   <span class="hljs-number">0</span>.<span class="hljs-number">0</span><br>  <span class="hljs-attribute">3</span>.|-- <span class="hljs-number">10.102.252.34</span>                         <span class="hljs-number">0</span>.<span class="hljs-number">0</span>%    <span class="hljs-number">20</span>   <span class="hljs-number">15</span>.<span class="hljs-number">2</span>   <span class="hljs-number">2</span>.<span class="hljs-number">6</span>   <span class="hljs-number">1</span>.<span class="hljs-number">9</span>  <span class="hljs-number">15</span>.<span class="hljs-number">2</span>   <span class="hljs-number">3</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure><h3 id="结果解读"><a href="#结果解读" class="headerlink" title="结果解读"></a>结果解读</h3><pre><code class="hljs">Loss%：丢包百分比Snt：发送的数据包总数Last：最后一次测试的往返时间（RTT）Avg：平均往返时间（RTT）Best：最佳往返时间（RTT）Wrst：最差往返时间（RTT）IP address：跃点的 IP 地址</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>network</category>
+      
+      <category>networktools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>network</tag>
+      
+      <tag>networktools</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>traceroute</title>
+    <link href="/2024/12/27/network/networktools/traceroute/"/>
+    <url>/2024/12/27/network/networktools/traceroute/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h1 id="traceroute原理"><a href="#traceroute原理" class="headerlink" title="traceroute原理"></a>traceroute原理</h1><p>traceroute是一个网络诊断工具，主要用于跟踪 IP 数据包从源主机到目标主机所经过的路径。它通过发送一系列具有不同生存时间（TTL）值的 UDP 数据包（在某些情况下也可以是 ICMP 数据包）来实现路径追踪。</p><p>当一个数据包的 TTL 值减为 0 时，它会被当前路由器丢弃，并返回一个 ICMP “Time - Exceeded” 消息给源主机。通过分析这些返回的消息，<code>traceroute</code>就可以确定数据包经过的每个路由器的 IP 地址。</p><h1 id="traceroute命令及语法"><a href="#traceroute命令及语法" class="headerlink" title="traceroute命令及语法"></a>traceroute命令及语法</h1><h2 id="命令语法"><a href="#命令语法" class="headerlink" title="命令语法"></a>命令语法</h2><p>traceroute [选项] 目标主机名或目标IP</p><h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><h3 id="n"><a href="#n" class="headerlink" title="-n"></a>-n</h3><p>以数字形式显示IP地址，而不去进行DNS反查</p><h3 id="I（大写i）"><a href="#I（大写i）" class="headerlink" title="-I（大写i）"></a>-I（大写i）</h3><p>使用ICMP Echo请求代替UDP数据包进行探测，因为有些网络会限制UDP数据包</p><h3 id="m-NUM"><a href="#m-NUM" class="headerlink" title="-m NUM"></a>-m NUM</h3><p>设置最大跳数，即数据包最多经过的路由器数量。如果超过这个跳数还没有到达目标主机，traceroute 就会停止。例如，traceroute -m 10 8.8.8.8，表示最多追踪 10 个路由器。</p><h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><h3 id="初始阶段"><a href="#初始阶段" class="headerlink" title="初始阶段"></a>初始阶段</h3><p>traceroute发送第一个 UDP 数据包，其 TTL 值设置为 1。这个数据包到达路径上的第一个路由器后，TTL 值减为 0，路由器会返回一个 ICMP “Time - Exceeded” 消息给源主机。traceroute记录下这个路由器的 IP 地址，这就是路径中的第一跳。</p><h3 id="迭代过程"><a href="#迭代过程" class="headerlink" title="迭代过程"></a>迭代过程</h3><p>traceroute发送第二个 UDP 数据包，TTL 值设置为 2。这个数据包会经过第一个路由器（TTL 减为 1），然后到达第二个路由器（TTL 减为 0），第二个路由器返回 ICMP “Time - Exceeded” 消息，记录第二个路由器的 IP 地址，即第二跳。这个过程不断重复，每次增加 TTL 值，直到数据包到达目标主机或者达到设置的最大跳数。</p><h3 id="到达目标主机"><a href="#到达目标主机" class="headerlink" title="到达目标主机"></a>到达目标主机</h3><p>当 UDP 数据包最终到达目标主机时，目标主机可能会返回一个 ICMP “Port Unreachable” 消息（因为默认情况下traceroute使用的 UDP 端口可能没有在目标主机上打开），这表示已经成功追踪到目标主机。traceroute会记录下整个路径上的所有路由器的 IP 地址和相应的往返时间（RTT）。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>network</category>
+      
+      <category>networktools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>network</tag>
+      
+      <tag>networktools</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ping</title>
+    <link href="/2024/12/27/network/networktools/ping/"/>
+    <url>/2024/12/27/network/networktools/ping/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span>]]></content>
+    
+    
+    <categories>
+      
+      <category>network</category>
+      
+      <category>networktools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>network</tag>
+      
+      <tag>networktools</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>pathping</title>
+    <link href="/2024/12/27/network/networktools/pathping/"/>
+    <url>/2024/12/27/network/networktools/pathping/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><p>Windows系统中命令</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>network</category>
+      
+      <category>networktools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>network</tag>
+      
+      <tag>networktools</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>wireshark</title>
+    <link href="/2024/12/27/network/networktools/wireshark/"/>
+    <url>/2024/12/27/network/networktools/wireshark/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h1 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h1><h2 id="过滤ACK报文"><a href="#过滤ACK报文" class="headerlink" title="过滤ACK报文"></a>过滤ACK报文</h2><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">tcp.flags.ack <span class="hljs-operator">=</span><span class="hljs-operator">=</span> <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure><h2 id="过滤指定IP报文"><a href="#过滤指定IP报文" class="headerlink" title="过滤指定IP报文"></a>过滤指定IP报文</h2><p>显示所有目的ip或者来源ip为10.13.8.75的数据包</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">ip.addr <span class="hljs-operator">=</span><span class="hljs-operator">=</span> <span class="hljs-number">10.13</span>.<span class="hljs-number">8.75</span><br></code></pre></td></tr></table></figure><h2 id="过滤指定端口"><a href="#过滤指定端口" class="headerlink" title="过滤指定端口"></a>过滤指定端口</h2><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">udp.port <span class="hljs-operator">=</span><span class="hljs-operator">=</span> <span class="hljs-number">1900</span> <br></code></pre></td></tr></table></figure><p>显示所有目的端口和来源端口为1900端口的UDP的数据包</p><h2 id="过滤DNS报文"><a href="#过滤DNS报文" class="headerlink" title="过滤DNS报文"></a>过滤DNS报文</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">dns</span><br></code></pre></td></tr></table></figure><h2 id="过滤查询指定域名的DNS-Query"><a href="#过滤查询指定域名的DNS-Query" class="headerlink" title="过滤查询指定域名的DNS Query"></a>过滤查询指定域名的DNS Query</h2><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">dns.qry.name <span class="hljs-operator">=</span><span class="hljs-operator">=</span> <span class="hljs-string">&quot;www.xiaohongshu.com&quot;</span><br></code></pre></td></tr></table></figure><h2 id="过滤特定-DNS-记录类型"><a href="#过滤特定-DNS-记录类型" class="headerlink" title="过滤特定 DNS 记录类型"></a>过滤特定 DNS 记录类型</h2><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs abnf">dns.qry.type <span class="hljs-operator">=</span><span class="hljs-operator">=</span> <span class="hljs-string">&quot;A&quot;</span><br>dns.qry.type <span class="hljs-operator">=</span><span class="hljs-operator">=</span> <span class="hljs-string">&quot;AAAA&quot;</span><br>dns.qry.type <span class="hljs-operator">=</span><span class="hljs-operator">=</span> <span class="hljs-string">&quot;NS&quot;</span><br>dns.qry.type <span class="hljs-operator">=</span><span class="hljs-operator">=</span> <span class="hljs-string">&quot;TXT&quot;</span><br>dns.qry.type <span class="hljs-operator">=</span><span class="hljs-operator">=</span> <span class="hljs-string">&quot;MX&quot;</span><br></code></pre></td></tr></table></figure><h2 id="过滤多种协议报文-or"><a href="#过滤多种协议报文-or" class="headerlink" title="过滤多种协议报文 or"></a>过滤多种协议报文 or</h2><p>可以使用 or 关键字连接</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">udp or icmp</span><br></code></pre></td></tr></table></figure><h2 id="多个过滤条件拼接-or-and"><a href="#多个过滤条件拼接-or-and" class="headerlink" title="多个过滤条件拼接 or and"></a>多个过滤条件拼接 or and</h2><p>可以使用 or 、and关键字连接</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">udp or dns</span><br></code></pre></td></tr></table></figure><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">udp</span> <span class="hljs-keyword">and</span> dns<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>network</category>
+      
+      <category>networktools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>network</tag>
+      
+      <tag>networktools</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>tcpdump</title>
+    <link href="/2024/12/27/network/networktools/tcpdump/"/>
+    <url>/2024/12/27/network/networktools/tcpdump/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="i-网卡名"><a href="#i-网卡名" class="headerlink" title="-i 网卡名"></a>-i 网卡名</h3><p>抓取指定网卡数据包</p><p>-i any</p><p>-i eth0</p><h3 id="dst-port-端口号"><a href="#dst-port-端口号" class="headerlink" title="dst port 端口号"></a>dst port 端口号</h3><p>抓取指定目的端口数据包</p><p>dst port 80</p><h3 id="w-文件名-pcap"><a href="#w-文件名-pcap" class="headerlink" title="-w 文件名.pcap"></a>-w 文件名.pcap</h3><p>保存数据包到指定文件</p><p>-w test.pcap</p><h3 id="host-ip"><a href="#host-ip" class="headerlink" title="host ip"></a>host ip</h3><p>抓取与指定IP交互数据包</p><p>host 192.168.1.1</p><h3 id="c-num"><a href="#c-num" class="headerlink" title="-c num"></a>-c num</h3><p>抓取指定数量的数据包</p><h2 id="常见示例"><a href="#常见示例" class="headerlink" title="常见示例"></a>常见示例</h2><h3 id="抓取指定目的端口数据包"><a href="#抓取指定目的端口数据包" class="headerlink" title="抓取指定目的端口数据包"></a>抓取指定目的端口数据包</h3><pre><code class="hljs">tcpdump -i eth0 dst port 80</code></pre><h3 id="抓取与指定主机和指定目的端口交互的数据包"><a href="#抓取与指定主机和指定目的端口交互的数据包" class="headerlink" title="抓取与指定主机和指定目的端口交互的数据包"></a>抓取与指定主机和指定目的端口交互的数据包</h3><pre><code class="hljs">tcpdump -i eth0 host 10.185.16.237 and dst port 80</code></pre><h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>多个条件需要使用 and 连接</p><p>&#x9;host 192.168.1.1 and dst port 80</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>network</category>
+      
+      <category>networktools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>network</tag>
+      
+      <tag>networktools</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>netcat</title>
+    <link href="/2024/12/27/network/networktools/netcat/"/>
+    <url>/2024/12/27/network/networktools/netcat/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="debain系统"><a href="#debain系统" class="headerlink" title="debain系统"></a>debain系统</h3><pre><code class="hljs">sudo apt-get install nmap</code></pre><h3 id="Red-Hat系统"><a href="#Red-Hat系统" class="headerlink" title="Red Hat系统"></a>Red Hat系统</h3><pre><code class="hljs">sudo yum install nmap-ncatsudo dnf install nmap-ncat</code></pre><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="l-–listen"><a href="#l-–listen" class="headerlink" title="-l –listen"></a>-l –listen</h3><p>开启监听，也就是处于监听端口的状态，并不会对外发起连接</p><h3 id="u-–udp"><a href="#u-–udp" class="headerlink" title="-u –udp"></a>-u –udp</h3><p>监听UDP协议端口，默认监听TCP协议</p><h3 id="p-–source-port-端口号"><a href="#p-–source-port-端口号" class="headerlink" title="-p –source-port 端口号"></a>-p –source-port 端口号</h3><p>指定源端口，也就是本地监听端口号</p><h3 id="v-–verbose-x20"><a href="#v-–verbose-x20" class="headerlink" title="-v –verbose&#x20;"></a>-v –verbose&#x20;</h3><p>Set verbosity level (can be used several times)</p><p>显示执行过程</p><pre><code class="hljs">[root@nvm-14yhwwkhnu5v0 ~]# ncat -lvp 443Ncat: Version 7.50 ( https://nmap.org/ncat )Ncat: Listening on :::443Ncat: Listening on 0.0.0.0:443^C[root@nvm-14yhwwkhnu5v0 ~]# ncat -lp 443</code></pre><h3 id="k-–keep-open"><a href="#k-–keep-open" class="headerlink" title="-k –keep-open"></a>-k –keep-open</h3><p>Accept multiple connections in listen mode</p><p>可以接受多个连接</p><p>默认是单线程的，只允许有单个连接</p><pre><code class="hljs">1、监听单线程443[root@nvm-14yhwwkhnu5v0 ~]# ncat -lvp 443Ncat: Version 7.50 ( https://nmap.org/ncat )Ncat: Listening on :::443Ncat: Listening on 0.0.0.0:443第一个连接➜  ~ telnet 10.2.2.63 443Trying 10.2.2.63...Connected to 10.2.2.63.Escape character is &#39;^]&#39;.第二个连接➜  /tmp telnet 10.2.2.63 443Trying 10.2.2.63...telnet: connect to address 10.2.2.63: Connection refusedtelnet: Unable to connect to remote host监听连接[root@nvm-14yhwwkhnu5v0 ~]# ncat -lvp 443Ncat: Version 7.50 ( https://nmap.org/ncat )Ncat: Listening on :::443Ncat: Listening on 0.0.0.0:443Ncat: Connection from 10.222.28.6.Ncat: Connection from 10.222.28.6:52072.2、监听多线程443[root@nvm-14yhwwkhnu5v0 ~]# ncat -lvkp 443Ncat: Version 7.50 ( https://nmap.org/ncat )Ncat: Listening on :::443Ncat: Listening on 0.0.0.0:443第一个连接➜  ~ telnet 10.2.2.63 443Trying 10.2.2.63...Connected to 10.2.2.63.Escape character is &#39;^]&#39;.第二个连接➜  /tmp telnet 10.2.2.63 443Trying 10.2.2.63...Connected to 10.2.2.63.Escape character is &#39;^]&#39;.监听连接[root@nvm-14yhwwkhnu5v0 ~]# ncat -lvkp 443Ncat: Version 7.50 ( https://nmap.org/ncat )Ncat: Listening on :::443Ncat: Listening on 0.0.0.0:443Ncat: Connection from 10.222.28.6.Ncat: Connection from 10.222.28.6:52190.Ncat: Connection from 10.222.28.6.Ncat: Connection from 10.222.28.6:52191.</code></pre><h3 id="w-–wait"><a href="#w-–wait" class="headerlink" title="-w –wait &lt;time&gt;"></a>-w –wait &lt;time&gt;</h3><p>Connect timeout</p><p>设置连接超时时间</p><h3 id="z-x20"><a href="#z-x20" class="headerlink" title="-z&#x20;"></a>-z&#x20;</h3><p>Zero-I&#x2F;O mode, report connection status only</p><p>没有任何输入输出的模式，只有在扫描通信端口时使用</p><h3 id="n-–nodns"><a href="#n-–nodns" class="headerlink" title="-n –nodns"></a>-n –nodns</h3><p>Do not resolve hostnames via DNS</p><p>不使用DNS解析主机名</p><h2 id="常见示例"><a href="#常见示例" class="headerlink" title="常见示例"></a>常见示例</h2><h3 id="监听UDP端口"><a href="#监听UDP端口" class="headerlink" title="监听UDP端口"></a>监听UDP端口</h3><pre><code class="hljs">ncat --listen --udp 443</code></pre><h3 id="扫描端口开放情况"><a href="#扫描端口开放情况" class="headerlink" title="扫描端口开放情况"></a>扫描端口开放情况</h3><h4 id="TCP端口"><a href="#TCP端口" class="headerlink" title="TCP端口"></a>TCP端口</h4><pre><code class="hljs">nc -zvw time(s) IP sport-eport</code></pre><h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>network</category>
+      
+      <category>networktools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>network</tag>
+      
+      <tag>networktools</tag>
       
     </tags>
     
