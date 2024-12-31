@@ -1,0 +1,890 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="主机信息收集主机信息 hostnamectlStatic hostname ：主机名，来自&#x2F;etc&#x2F;hostname Machine ID ：设备唯一标识 Virtualization：kvm 虚拟化，可以用来标记是否是虚拟机，物理机不存在该数据 12345678910111213root@iZbp1191gh7vw52537lyxrZ:&#x2F;tmp&#x2F;test# hostn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sec_response">
+<meta property="og:url" content="https://tthours.github.io/2024/03/12/security/secresponse/sec_response/index.html">
+<meta property="og:site_name" content="tthours">
+<meta property="og:description" content="主机信息收集主机信息 hostnamectlStatic hostname ：主机名，来自&#x2F;etc&#x2F;hostname Machine ID ：设备唯一标识 Virtualization：kvm 虚拟化，可以用来标记是否是虚拟机，物理机不存在该数据 12345678910111213root@iZbp1191gh7vw52537lyxrZ:&#x2F;tmp&#x2F;test# hostn">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tthours.github.io/image-20241125140024535.png">
+<meta property="og:image" content="https://tthours.github.io/image-20241125135958626.png">
+<meta property="og:image" content="https://tthours.github.io/image-20241125140454155.png">
+<meta property="og:image" content="https://tthours.github.io/image-20241125141610204.png">
+<meta property="og:image" content="https://tthours.github.io/image-20241125140712767.png">
+<meta property="og:image" content="https://tthours.github.io/image-20241125141403152.png">
+<meta property="og:image" content="https://tthours.github.io/image-20241125141016730.png">
+<meta property="og:image" content="https://tthours.github.io/image-20241125144203503.png">
+<meta property="og:image" content="https://tthours.github.io/image-20241125165212144.png">
+<meta property="og:image" content="https://tthours.github.io/image-20241125142037647.png">
+<meta property="article:published_time" content="2024-03-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-11-25T11:37:44.467Z">
+<meta property="article:author" content="tt">
+<meta property="article:tag" content="security">
+<meta property="article:tag" content="netSec">
+<meta property="article:tag" content="secresponse">
+<meta property="article:tag" content="应急响应">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tthours.github.io/image-20241125140024535.png">
+  
+  
+  
+  <title>sec_response - tthours</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tthours.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ten thousand hours</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/hd.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="sec_response"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        tt
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-12 00:00" pubdate>
+          2024年3月12日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          27 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">sec_response</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <span id="more"></span>
+
+
+
+<h2 id="主机信息收集"><a href="#主机信息收集" class="headerlink" title="主机信息收集"></a>主机信息收集</h2><h3 id="主机信息-hostnamectl"><a href="#主机信息-hostnamectl" class="headerlink" title="主机信息 hostnamectl"></a>主机信息 hostnamectl</h3><p>Static hostname ：主机名，来自&#x2F;etc&#x2F;hostname</p>
+<p>Machine ID ：设备唯一标识</p>
+<p>Virtualization：kvm 虚拟化，可以用来标记是否是虚拟机，物理机不存在该数据</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs nix">root@iZbp1191gh7vw52537lyxrZ:<span class="hljs-operator">/</span>tmp<span class="hljs-operator">/</span>test<span class="hljs-comment"># hostnamectl</span><br> Static <span class="hljs-params">hostname:</span> iZbp1191gh7vw52537lyxrZ<br> Pretty <span class="hljs-params">hostname:</span> aliyun<span class="hljs-comment">#@##@</span><br>       Icon <span class="hljs-params">name:</span> computer-vm<br>         <span class="hljs-params">Chassis:</span> vm<br>      Machine <span class="hljs-params">ID:</span> <span class="hljs-number">8</span>da0ace235c5435eb33ae56a538def68<br>         Boot <span class="hljs-params">ID:</span> <span class="hljs-number">5755</span>d1b8ae8c4e7cbe47b72434abc7ea<br>  <span class="hljs-params">Virtualization:</span> kvm<br>Operating <span class="hljs-params">System:</span> Ubuntu <span class="hljs-number">22.04</span>.<span class="hljs-number">2</span> LTS<br>          <span class="hljs-params">Kernel:</span> Linux <span class="hljs-number">5.15</span>.<span class="hljs-number">0</span><span class="hljs-operator">-</span><span class="hljs-number">7</span>3-generic<br>    <span class="hljs-params">Architecture:</span> x86-<span class="hljs-number">64</span><br> Hardware <span class="hljs-params">Vendor:</span> Alibaba Cloud<br>  Hardware <span class="hljs-params">Model:</span> Alibaba Cloud ECS<br></code></pre></td></tr></table></figure>
+
+<h3 id="系统时间-date"><a href="#系统时间-date" class="headerlink" title="系统时间 date"></a>系统时间 date</h3><p>确认当前系统时间是否正确，为文件时间属性判断提供依据</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir">root<span class="hljs-variable">@iZbp1191gh7vw52537lyxrZ</span><span class="hljs-symbol">:/tmp/test</span><span class="hljs-comment"># date</span><br><span class="hljs-title class_">Wed</span> <span class="hljs-title class_">Mar</span> <span class="hljs-number">13</span> <span class="hljs-number">11</span><span class="hljs-symbol">:</span><span class="hljs-number">06</span><span class="hljs-symbol">:</span><span class="hljs-number">55</span> <span class="hljs-title class_">AM</span> <span class="hljs-title class_">CST</span> <span class="hljs-number">2024</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="系统开机运行时间"><a href="#系统开机运行时间" class="headerlink" title="系统开机运行时间"></a>系统开机运行时间</h3><h4 id="who-b-开机时间"><a href="#who-b-开机时间" class="headerlink" title="who -b 开机时间"></a>who -b 开机时间</h4><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir">root<span class="hljs-variable">@iZbp1191gh7vw52537lyxrZ</span><span class="hljs-symbol">:/tmp/test</span><span class="hljs-comment"># who -b</span><br>         system boot  <span class="hljs-number">2023</span><span class="hljs-number">-07</span><span class="hljs-number">-10</span> <span class="hljs-number">11</span><span class="hljs-symbol">:</span><span class="hljs-number">11</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="uptime-p-运行时长"><a href="#uptime-p-运行时长" class="headerlink" title="uptime -p 运行时长"></a>uptime -p 运行时长</h4><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir">root<span class="hljs-variable">@iZbp1191gh7vw52537lyxrZ</span><span class="hljs-symbol">:/tmp/test</span><span class="hljs-comment"># uptime -p</span><br>up <span class="hljs-number">35</span> weeks, <span class="hljs-number">2</span> days, <span class="hljs-number">3</span> minutes<br></code></pre></td></tr></table></figure>
+
+<h3 id="系统版本信息"><a href="#系统版本信息" class="headerlink" title="系统版本信息"></a>系统版本信息</h3><h4 id="lsb-release-a"><a href="#lsb-release-a" class="headerlink" title="lsb_release -a"></a><strong>lsb_release -a</strong></h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/tmp/test# lsb_release<br><span class="hljs-attribute">LSB</span> Version:	core-<span class="hljs-number">11</span>.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>ubuntu4-noarch:security-<span class="hljs-number">11</span>.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>ubuntu4-noarch<br><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/tmp/test# lsb_release -a<br><span class="hljs-attribute">LSB</span> Version:	core-<span class="hljs-number">11</span>.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>ubuntu4-noarch:security-<span class="hljs-number">11</span>.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>ubuntu4-noarch<br><span class="hljs-attribute">Distributor</span> ID:	Ubuntu<br><span class="hljs-attribute">Description</span>:	Ubuntu <span class="hljs-number">22</span>.<span class="hljs-number">04</span>.<span class="hljs-number">2</span> LTS<br><span class="hljs-attribute">Release</span>:	<span class="hljs-number">22</span>.<span class="hljs-number">04</span><br><span class="hljs-attribute">Codename</span>:	jammy<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs nix">(base) [root@aliyun-<span class="hljs-number">39</span>_106_2_51 ~]<span class="hljs-comment"># lsb_release -a</span><br>LSB <span class="hljs-params">Version:</span>	<span class="hljs-meta">:core</span>-<span class="hljs-number">4</span>.<span class="hljs-number">1</span><span class="hljs-operator">-</span>amd64:core-<span class="hljs-number">4</span>.<span class="hljs-number">1</span><span class="hljs-operator">-</span>noarch<br>Distributor <span class="hljs-params">ID:</span>	CentOS<br><span class="hljs-params">Description:</span>	CentOS Linux release <span class="hljs-number">7.8</span>.<span class="hljs-number">2003</span> (Core)<br><span class="hljs-params">Release:</span>	<span class="hljs-number">7.8</span>.<span class="hljs-number">2003</span><br><span class="hljs-params">Codename:</span>	Core<br></code></pre></td></tr></table></figure>
+
+<h5 id="CentOS系列"><a href="#CentOS系列" class="headerlink" title="CentOS系列"></a>CentOS系列</h5><p><strong>cat &#x2F;etc&#x2F;redhat-release</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) [root@110 cron.d]# <span class="hljs-built_in">cat</span> /etc/redhat-release<br>CentOS Linux release 7.9.2009 (Core)<br><br>centos6也可以查看 /etc/issue<br>[root@rdimtools1.ops.xlzbb1 /tmp]# <span class="hljs-built_in">cat</span> /etc/issue<br>CentOS release 6.5 (Final)<br>Kernel \r on an \m<br></code></pre></td></tr></table></figure>
+
+<h3 id="内核版本-uname-a"><a href="#内核版本-uname-a" class="headerlink" title="内核版本 uname -a"></a>内核版本 uname -a</h3><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs llvm">ubuntu<span class="hljs-title">@VM-8-5-ubuntu</span>:~$ uname -a<br>Linux VM<span class="hljs-number">-8</span><span class="hljs-number">-5</span>-ubuntu <span class="hljs-number">5.4</span>.<span class="hljs-number">0</span><span class="hljs-number">-77</span>-generic <span class="hljs-variable">#86</span>-Ubuntu SMP Thu Jun <span class="hljs-number">17</span> <span class="hljs-number">02</span>:<span class="hljs-number">35</span>:<span class="hljs-number">03</span> UTC <span class="hljs-number">2021</span> <span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span> <span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span> <span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span> GNU/Linux<br><br>(base) [root<span class="hljs-title">@110</span> cron.d]# uname -a<br>Linux <span class="hljs-number">110</span> <span class="hljs-number">3.10</span>.<span class="hljs-number">0</span><span class="hljs-number">-693.2</span>.<span class="hljs-number">2</span>.el<span class="hljs-number">7</span>.<span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span> <span class="hljs-variable">#1</span> SMP Tue Sep <span class="hljs-number">12</span> <span class="hljs-number">22</span>:<span class="hljs-number">26</span>:<span class="hljs-number">13</span> UTC <span class="hljs-number">2017</span> <span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span> <span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span> <span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span> GNU/Linux<br><br>[root<span class="hljs-title">@rdimtools1.ops.xlzbb1</span> /tmp]# uname -a<br>Linux rdimtools<span class="hljs-number">1</span>.ops.xlzbb<span class="hljs-number">1</span>.sinanode.com <span class="hljs-number">2.6</span>.<span class="hljs-number">32</span><span class="hljs-number">-431.11</span>.<span class="hljs-number">2</span>.el<span class="hljs-number">6</span>.toa.<span class="hljs-number">2</span>.<span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span> <span class="hljs-variable">#1</span> SMP Wed Apr <span class="hljs-number">9</span> <span class="hljs-number">15</span>:<span class="hljs-number">55</span>:<span class="hljs-number">33</span> CST <span class="hljs-number">2014</span> <span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span> <span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span> <span class="hljs-keyword">x</span><span class="hljs-number">86</span>_<span class="hljs-number">64</span> GNU/Linux<br></code></pre></td></tr></table></figure>
+
+<p>结果解释，如果只需要看内核版本，直接uname -r即可：</p>
+<p>Linux 110 3.10.0-693.2.2.el7.x86_64 #1 SMP Tue Sep 12 22:26:13 UTC 2017 x86_64 x86_64 x86_64 GNU&#x2F;Linux</p>
+<table>
+<thead>
+<tr>
+<th>内核名称(-s)</th>
+<th>主机名(-n)</th>
+<th>内核(-r)</th>
+<th>内核版本(-v)</th>
+<th>硬件32位&#x2F;64位(-m)</th>
+<th>处理器类型(-p)</th>
+<th>硬件平台(-i)</th>
+<th>操作系统(-o)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linux</td>
+<td>110</td>
+<td>3.10.0-693.2.2.el7.x86_64</td>
+<td>#1 SMP Tue Sep 12 22:26:13 UTC 2017</td>
+<td>x86_64</td>
+<td>x86_64</td>
+<td>x86_64</td>
+<td>GNU&#x2F;Linux</td>
+</tr>
+</tbody></table>
+<h3 id="主机名-hostname"><a href="#主机名-hostname" class="headerlink" title="主机名 hostname"></a>主机名 hostname</h3><p>cenots6：读取的是 &#x2F;etc&#x2F;sysconfig&#x2F;network 中的配置</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[root@rdimtools1.ops.xlzbb1 /tmp]</span><span class="hljs-comment"># cat /etc/sysconfig/network</span><br><span class="hljs-attr">NETWORKING</span>=<span class="hljs-literal">yes</span><br><span class="hljs-attr">HOSTNAME</span>=rdimtools1.ops.xlzbb1.node.com<br></code></pre></td></tr></table></figure>
+
+<p>centos7,8&#x2F;ubuntu：读取的是 &#x2F;etc&#x2F;hostname中的值</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs autoit">(base) [root<span class="hljs-symbol">@110</span> cron.d]<span class="hljs-meta"># cat /etc/hostname</span><br><span class="hljs-number">110</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="止损"><a href="#止损" class="headerlink" title="止损"></a>止损</h2><h3 id="排查异常进程"><a href="#排查异常进程" class="headerlink" title="排查异常进程"></a>排查异常进程</h3><h4 id="检查高CPU进程"><a href="#检查高CPU进程" class="headerlink" title="检查高CPU进程"></a>检查高CPU进程</h4><h5 id="top-c-o-CPU"><a href="#top-c-o-CPU" class="headerlink" title="top -c -o +%CPU"></a>top -c -o +%CPU</h5><p>以CPU占比倒序</p>
+<h5 id="ps-eo-pid-ppid-cpu-mem-cmd-–sort-cpu-head-n-5"><a href="#ps-eo-pid-ppid-cpu-mem-cmd-–sort-cpu-head-n-5" class="headerlink" title="ps -eo pid,ppid,%cpu,%mem,cmd –sort&#x3D;-%cpu | head -n 5"></a><strong>ps -eo pid,ppid,%cpu,%mem,cmd –sort&#x3D;-%cpu | head -n 5</strong></h5><p>ps查询进程，显示pid，ppid，cpu占比，内存占比，进程信息，以cpu占比倒序，只显示top5</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:~# ps -eo pid,ppid,%cpu,%mem,cmd --sort=-%cpu | head -n <span class="hljs-number">5</span><br>    <span class="hljs-attribute">PID</span>    PPID %CPU %MEM CMD<br> <span class="hljs-attribute">442637</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span>.<span class="hljs-number">7</span>  <span class="hljs-number">1</span>.<span class="hljs-number">5</span> /usr/local/aegis/aegis_client/aegis_11_83/AliYunDunMonitor<br> <span class="hljs-attribute">659535</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span>.<span class="hljs-number">5</span> <span class="hljs-number">38</span>.<span class="hljs-number">8</span> /usr/sbin/mysqld<br>     <span class="hljs-attribute">92</span>       <span class="hljs-number">2</span>  <span class="hljs-number">0</span>.<span class="hljs-number">4</span>  <span class="hljs-number">0</span>.<span class="hljs-number">0</span><span class="hljs-meta"> [kswapd0]</span><br> <span class="hljs-attribute">442626</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span>.<span class="hljs-number">4</span>  <span class="hljs-number">0</span>.<span class="hljs-number">7</span> /usr/local/aegis/aegis_client/aegis_11_83/AliYunDun<br></code></pre></td></tr></table></figure>
+
+<h4 id="检查高内存进程"><a href="#检查高内存进程" class="headerlink" title="检查高内存进程"></a>检查高内存进程</h4><h5 id="top-c-o-MEM"><a href="#top-c-o-MEM" class="headerlink" title="top -c -o +%MEM"></a>top -c -o +%MEM</h5><p>以内存占比倒序</p>
+<h5 id="ps-eo-pid-ppid-cpu-mem-cmd-–sort-mem-head-n-5"><a href="#ps-eo-pid-ppid-cpu-mem-cmd-–sort-mem-head-n-5" class="headerlink" title="ps -eo pid,ppid,%cpu,%mem,cmd –sort&#x3D;-%mem | head -n 5"></a>ps -eo pid,ppid,%cpu,%mem,cmd –sort&#x3D;-%mem | head -n 5</h5><p>ps查询进程，显示pid，ppid，cpu占比，内存占比，进程信息，以内存占比倒序，只显示top5</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:~# ps -eo pid,ppid,%cpu,%mem,cmd --sort=-%mem | head -n <span class="hljs-number">5</span><br>    <span class="hljs-attribute">PID</span>    PPID %CPU %MEM CMD<br> <span class="hljs-attribute">659535</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span>.<span class="hljs-number">5</span> <span class="hljs-number">38</span>.<span class="hljs-number">8</span> /usr/sbin/mysqld<br> <span class="hljs-attribute">577393</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span>.<span class="hljs-number">0</span>  <span class="hljs-number">2</span>.<span class="hljs-number">9</span> /sbin/multipathd -d -s<br>  <span class="hljs-attribute">82956</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span>.<span class="hljs-number">2</span>  <span class="hljs-number">2</span>.<span class="hljs-number">3</span> /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock<br> <span class="hljs-attribute">577430</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span>.<span class="hljs-number">2</span>  <span class="hljs-number">1</span>.<span class="hljs-number">5</span> /usr/bin/containerd<br></code></pre></td></tr></table></figure>
+
+<h4 id="检查高流量进程"><a href="#检查高流量进程" class="headerlink" title="检查高流量进程"></a>检查高流量进程</h4><p>需要额外命令 nethogs，可能更改某些文件时间属性，影响通过文件时间判断</p>
+<h5 id="centos命令安装"><a href="#centos命令安装" class="headerlink" title="centos命令安装"></a>centos命令安装</h5><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">yum -y <span class="hljs-keyword">install</span> epel-release <br>yum -y <span class="hljs-keyword">install</span> nethogs<br></code></pre></td></tr></table></figure>
+
+<h5 id="ubuntu命令安装"><a href="#ubuntu命令安装" class="headerlink" title="ubuntu命令安装"></a>ubuntu命令安装</h5><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">apt <span class="hljs-keyword">install</span> nethogs<br></code></pre></td></tr></table></figure>
+
+<h5 id="进程检查"><a href="#进程检查" class="headerlink" title="进程检查"></a>进程检查</h5><p>管理员权限执行 nethogs，默认会以实时流量进行降序刷新</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dns">NetHogs version <span class="hljs-number">0.8.6-3</span><br><br>    PID USER     PROGRAM                                                                                            DEV         SENT      RECEIVED<br> <span class="hljs-number">676984</span> root     sshd: root@pts/<span class="hljs-number">0</span>                                                                                   eth0        <span class="hljs-number">0</span>.<span class="hljs-number">321</span>       <span class="hljs-number">0</span>.<span class="hljs-number">067</span> KB/sec<br>      ? root     <span class="hljs-number">172.16.24.136</span>:<span class="hljs-number">44765-89.248</span>.<span class="hljs-number">165.97:56284</span>                                                                        <span class="hljs-number">0</span>.<span class="hljs-number">011</span>       <span class="hljs-number">0</span>.<span class="hljs-number">023</span> KB/sec<br>      ? root     <span class="hljs-number">172.16.24.136</span>:<span class="hljs-number">8066-162.216</span>.<span class="hljs-number">149.193:50532</span>                                                                       <span class="hljs-number">0</span>.<span class="hljs-number">011</span>       <span class="hljs-number">0</span>.<span class="hljs-number">012</span> KB/sec<br>      ? root     <span class="hljs-number">172.16.24.136</span>:<span class="hljs-number">6000-205.210</span>.<span class="hljs-number">31.156:50132</span>                                                                        <span class="hljs-number">0</span>.<span class="hljs-number">000</span>       <span class="hljs-number">0</span>.<span class="hljs-number">000</span> KB/sec<br>      ? root     <span class="hljs-number">172.16.24.136</span>:<span class="hljs-number">3306-78.128</span>.<span class="hljs-number">114.102:50289</span>                                                                        <span class="hljs-number">0</span>.<span class="hljs-number">000</span>       <span class="hljs-number">0</span>.<span class="hljs-number">000</span> KB/sec<br>      ? root     <span class="hljs-number">172.16.24.136</span>:<span class="hljs-number">35487-31.6</span>.<span class="hljs-number">65.59:23619</span>                                                                           <span class="hljs-number">0</span>.<span class="hljs-number">000</span>       <span class="hljs-number">0</span>.<span class="hljs-number">000</span> KB/sec<br>      ? root     <span class="hljs-number">172.16.24.136</span>:<span class="hljs-number">55182-100.100</span>.<span class="hljs-number">154.78:80</span>                                                                          <span class="hljs-number">0</span>.<span class="hljs-number">000</span>       <span class="hljs-number">0</span>.<span class="hljs-number">000</span> KB/sec<br> <span class="hljs-number">671886</span> root     /usr/local/aegis/aegis_client/aegis_11_91/AliYunDun                                                eth0        <span class="hljs-number">0</span>.<span class="hljs-number">000</span>       <span class="hljs-number">0</span>.<span class="hljs-number">000</span> KB/sec<br>      ? root     unknown TCP                                                                                                    <span class="hljs-number">0</span>.<span class="hljs-number">000</span>       <span class="hljs-number">0</span>.<span class="hljs-number">000</span> KB/sec<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="确认进程id-pid"><a href="#确认进程id-pid" class="headerlink" title="确认进程id(pid)"></a>确认进程id(pid)</h4><h5 id="pidof-精确匹配-已知进程全名"><a href="#pidof-精确匹配-已知进程全名" class="headerlink" title="pidof-精确匹配-已知进程全名"></a>pidof-精确匹配-已知进程全名</h5><p>pidof “process name”</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs autoit">root<span class="hljs-symbol">@iZbp1191gh7vw52537lyxrZ</span>:~<span class="hljs-meta"># pidof <span class="hljs-string">&quot;/usr/sbin/mysqld&quot;</span></span><br><span class="hljs-number">659535</span><br>root<span class="hljs-symbol">@iZbp1191gh7vw52537lyxrZ</span>:~<span class="hljs-meta"># pidof <span class="hljs-string">&quot;mysqld&quot;</span></span><br><span class="hljs-number">659535</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="ps-pgrep-模糊匹配-已知进程部分名称"><a href="#ps-pgrep-模糊匹配-已知进程部分名称" class="headerlink" title="ps&#x2F;pgrep-模糊匹配-已知进程部分名称"></a>ps&#x2F;pgrep-模糊匹配-已知进程部分名称</h5><p>ps -ef | grep “process name” | grep -v grep | awk ‘{print $2}’</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">root@iZbp1191gh7vw52537lyxrZ:~# <span class="hljs-keyword">ps</span> -ef | <span class="hljs-keyword">grep</span> <span class="hljs-string">&quot;my&quot;</span> | <span class="hljs-keyword">grep</span> -v <span class="hljs-keyword">grep</span> | awk <span class="hljs-string">&#x27;&#123;print $2&#125;&#x27;</span><br><span class="hljs-number">659535</span><br></code></pre></td></tr></table></figure>
+
+<p>pgreap -f “process name”</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs autoit">root<span class="hljs-symbol">@iZbp1191gh7vw52537lyxrZ</span>:~<span class="hljs-meta"># pgrep -f <span class="hljs-string">&quot;my&quot;</span></span><br><span class="hljs-number">659535</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="排查进程详细内容"><a href="#排查进程详细内容" class="headerlink" title="排查进程详细内容"></a>排查进程详细内容</h5><h6 id="lsof-p-pid"><a href="#lsof-p-pid" class="headerlink" title="lsof -p pid"></a>lsof -p pid</h6><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:~# lsof -p <span class="hljs-number">659535</span><br><span class="hljs-attribute">COMMAND</span>    PID  USER   FD      TYPE             DEVICE SIZE/<span class="hljs-literal">OFF</span>      NODE NAME<br><span class="hljs-attribute">mysqld</span>  <span class="hljs-number">659535</span> mysql  cwd       DIR              <span class="hljs-number">252</span>,<span class="hljs-number">3</span>     <span class="hljs-number">4096</span>    <span class="hljs-number">138978</span> /var/lib/mysql<br><span class="hljs-attribute">mysqld</span>  <span class="hljs-number">659535</span> mysql  rtd       DIR              <span class="hljs-number">252</span>,<span class="hljs-number">3</span>     <span class="hljs-number">4096</span>         <span class="hljs-number">2</span> /<br><span class="hljs-attribute">81920</span>    <span class="hljs-number">267788</span> /var/lib/mysql/#innodb_temp/temp_10.ibt<br><span class="hljs-attribute">mysqld</span>  <span class="hljs-number">659535</span> mysql   <span class="hljs-number">37</span>w      REG              <span class="hljs-number">252</span>,<span class="hljs-number">3</span>      <span class="hljs-number">157</span>    <span class="hljs-number">138921</span> /var/lib/mysql/binlog.<span class="hljs-number">000244</span><br><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:~#<br></code></pre></td></tr></table></figure>
+
+<h4 id="检查进程启动目录"><a href="#检查进程启动目录" class="headerlink" title="检查进程启动目录"></a>检查进程启动目录</h4><p>需要注意不一定是恶意文件目录</p>
+<h5 id="pwdx-pid"><a href="#pwdx-pid" class="headerlink" title="pwdx pid"></a>pwdx pid</h5><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ruby">root<span class="hljs-variable">@iZbp1191gh7vw52537lyxrZ</span><span class="hljs-symbol">:~</span><span class="hljs-comment"># pwdx 659535</span><br><span class="hljs-number">659535</span>: <span class="hljs-regexp">/var/lib</span><span class="hljs-regexp">/mysql</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="检查进程实际启动文件"><a href="#检查进程实际启动文件" class="headerlink" title="检查进程实际启动文件"></a>检查进程实际启动文件</h4><p>查看到对应进程可执行文件的绝对路径</p>
+<h5 id="ls-lat-proc-pid-exe"><a href="#ls-lat-proc-pid-exe" class="headerlink" title="ls -lat &#x2F;proc&#x2F;pid&#x2F;exe"></a>ls -lat &#x2F;proc&#x2F;pid&#x2F;exe</h5><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:~# ls -lat /proc/<span class="hljs-number">659535</span>/exe<br><span class="hljs-attribute">lrwxrwxrwx</span> <span class="hljs-number">1</span> mysql mysql <span class="hljs-number">0</span> Mar <span class="hljs-number">11</span> <span class="hljs-number">09</span>:<span class="hljs-number">35</span> /proc/<span class="hljs-number">659535</span>/exe -&gt; /usr/sbin/mysqld<br></code></pre></td></tr></table></figure>
+
+<h4 id="检查进程关联文件"><a href="#检查进程关联文件" class="headerlink" title="检查进程关联文件"></a>检查进程关联文件</h4><h5 id="cat-proc-pid-maps"><a href="#cat-proc-pid-maps" class="headerlink" title="cat &#x2F;proc&#x2F;pid&#x2F;maps"></a>cat &#x2F;proc&#x2F;pid&#x2F;maps</h5><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:~# cat /proc/<span class="hljs-number">659535</span>/maps<br><span class="hljs-attribute">55f8c0537000</span>-<span class="hljs-number">55</span>f8c0df4000 r--p <span class="hljs-number">00000000</span> fc:<span class="hljs-number">03</span> <span class="hljs-number">797247</span>                     /usr/sbin/mysqld<br><span class="hljs-attribute">55f8c0df4000</span>-<span class="hljs-number">55</span>f8c2549000 r-xp <span class="hljs-number">008</span>bd000 fc:<span class="hljs-number">03</span> <span class="hljs-number">797247</span>                     /usr/sbin/mysqld<br><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:~#<br></code></pre></td></tr></table></figure>
+
+<h4 id="检查进程启动的所有线程"><a href="#检查进程启动的所有线程" class="headerlink" title="检查进程启动的所有线程"></a>检查进程启动的所有线程</h4><h5 id="ps-H-T-p-pid"><a href="#ps-H-T-p-pid" class="headerlink" title="ps H -T -p pid"></a>ps H -T -p pid</h5><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:~# ps H -T -p <span class="hljs-number">659535</span><br>    <span class="hljs-attribute">PID</span>    SPID TTY      STAT   TIME COMMAND<br> <span class="hljs-attribute">659535</span>  <span class="hljs-number">659535</span> ?        Ssl    <span class="hljs-number">0</span>:<span class="hljs-number">00</span> /usr/sbin/mysqld<br> <span class="hljs-attribute">659535</span>  <span class="hljs-number">659538</span> ?        Ssl    <span class="hljs-number">0</span>:<span class="hljs-number">17</span> /usr/sbin/mysqld<br></code></pre></td></tr></table></figure>
+
+<p>SPID：线程ID </p>
+<p>COMMAND：线程名称</p>
+<h5 id="ps-Lf-pid"><a href="#ps-Lf-pid" class="headerlink" title="ps -Lf pid"></a>ps -Lf pid</h5><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:~# ps -Lf <span class="hljs-number">659535</span><br><span class="hljs-attribute">UID</span>          PID    PPID     LWP  C NLWP STIME TTY      STAT   TIME CMD<br><span class="hljs-attribute">mysql</span>     <span class="hljs-number">659535</span>       <span class="hljs-number">1</span>  <span class="hljs-number">659535</span>  <span class="hljs-number">0</span>   <span class="hljs-number">39</span> Mar07 ?        Ssl    <span class="hljs-number">0</span>:<span class="hljs-number">00</span> /usr/sbin/mysqld<br><span class="hljs-attribute">mysql</span>     <span class="hljs-number">659535</span>       <span class="hljs-number">1</span>  <span class="hljs-number">659538</span>  <span class="hljs-number">0</span>   <span class="hljs-number">39</span> Mar07 ?        Ssl    <span class="hljs-number">0</span>:<span class="hljs-number">17</span> /usr/sbin/mysqld<br></code></pre></td></tr></table></figure>
+
+<h3 id="排查异常网络连接"><a href="#排查异常网络连接" class="headerlink" title="排查异常网络连接"></a>排查异常网络连接</h3><h4 id="netstat-anlp-grep-ESTABLISHED"><a href="#netstat-anlp-grep-ESTABLISHED" class="headerlink" title="netstat -anlp | grep ESTABLISHED"></a>netstat -anlp | grep ESTABLISHED</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:~# netstat -anlp | grep ESTABLISHED<br><span class="hljs-attribute">tcp</span>        <span class="hljs-number">0</span>      <span class="hljs-number">0</span> <span class="hljs-number">172.16.24.136:51856</span>     <span class="hljs-number">100.100.30.28:80</span>        ESTABLISHED <span class="hljs-number">442626</span>/AliYunDun<br><span class="hljs-attribute">tcp</span>        <span class="hljs-number">0</span>     <span class="hljs-number">80</span> <span class="hljs-number">172.16.24.136:22</span>        <span class="hljs-number">218.30.113.52:1642</span>      ESTABLISHED <span class="hljs-number">671506</span>/sshd: root@p<br></code></pre></td></tr></table></figure>
+
+<h4 id="netstat-anlp-grep-LISTEN"><a href="#netstat-anlp-grep-LISTEN" class="headerlink" title="netstat -anlp | grep LISTEN"></a>netstat -anlp | grep LISTEN</h4><p>检查设备监听情况，排查是否存在高危端口、是否存在监听0.0.0.0</p>
+<h3 id="排查异常定时任务"><a href="#排查异常定时任务" class="headerlink" title="排查异常定时任务"></a>排查异常定时任务</h3><h4 id="检查系统定时任务-etc-crontab"><a href="#检查系统定时任务-etc-crontab" class="headerlink" title="检查系统定时任务&#x2F;etc&#x2F;crontab"></a>检查系统定时任务&#x2F;etc&#x2F;crontab</h4><h5 id="cat-etc-crontab"><a href="#cat-etc-crontab" class="headerlink" title="cat &#x2F;etc&#x2F;crontab"></a>cat &#x2F;etc&#x2F;crontab</h5><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs nix">root@iZbp1191gh7vw52537lyxrZ:~<span class="hljs-comment"># cat /etc/crontab</span><br><span class="hljs-comment"># /etc/crontab: system-wide crontab</span><br><span class="hljs-comment"># Unlike any other crontab you don&#x27;t have to run the `crontab&#x27;</span><br><span class="hljs-comment"># command to install the new version when you edit this file</span><br><span class="hljs-comment"># and files in /etc/cron.d. These files also have username fields,</span><br><span class="hljs-comment"># that none of the other crontabs do.</span><br><br><span class="hljs-attr">SHELL</span><span class="hljs-operator">=</span><span class="hljs-symbol">/bin/sh</span><br><span class="hljs-comment"># You can also override PATH, but by default, newer versions inherit it from the environment</span><br><span class="hljs-comment">#PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin</span><br><br><span class="hljs-comment"># Example of job definition:</span><br><span class="hljs-comment"># .---------------- minute (0 - 59)</span><br><span class="hljs-comment"># |  .------------- hour (0 - 23)</span><br><span class="hljs-comment"># |  |  .---------- day of month (1 - 31)</span><br><span class="hljs-comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="hljs-comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="hljs-comment"># |  |  |  |  |</span><br><span class="hljs-comment"># *  *  *  *  * user-name command to be executed</span><br><span class="hljs-number">17</span> <span class="hljs-operator">*</span>	<span class="hljs-operator">*</span> <span class="hljs-operator">*</span> <span class="hljs-operator">*</span>	root    cd <span class="hljs-symbol">/</span> <span class="hljs-operator">&amp;&amp;</span> run-parts <span class="hljs-operator">-</span>-report <span class="hljs-symbol">/etc/cron.hourly</span><br><span class="hljs-number">25</span> <span class="hljs-number">6</span>	<span class="hljs-operator">*</span> <span class="hljs-operator">*</span> <span class="hljs-operator">*</span>	root	test <span class="hljs-operator">-</span>x <span class="hljs-symbol">/usr/sbin/anacron</span> <span class="hljs-operator">||</span> ( cd <span class="hljs-symbol">/</span> <span class="hljs-operator">&amp;&amp;</span> run-parts <span class="hljs-operator">-</span>-report <span class="hljs-symbol">/etc/cron.daily</span> )<br><span class="hljs-number">47</span> <span class="hljs-number">6</span>	<span class="hljs-operator">*</span> <span class="hljs-operator">*</span> <span class="hljs-number">7</span>	root	test <span class="hljs-operator">-</span>x <span class="hljs-symbol">/usr/sbin/anacron</span> <span class="hljs-operator">||</span> ( cd <span class="hljs-symbol">/</span> <span class="hljs-operator">&amp;&amp;</span> run-parts <span class="hljs-operator">-</span>-report <span class="hljs-symbol">/etc/cron.weekly</span> )<br><span class="hljs-number">52</span> <span class="hljs-number">6</span>	<span class="hljs-number">1</span> <span class="hljs-operator">*</span> <span class="hljs-operator">*</span>	root	test <span class="hljs-operator">-</span>x <span class="hljs-symbol">/usr/sbin/anacron</span> <span class="hljs-operator">||</span> ( cd <span class="hljs-symbol">/</span> <span class="hljs-operator">&amp;&amp;</span> run-parts <span class="hljs-operator">-</span>-report <span class="hljs-symbol">/etc/cron.monthly</span> )<br></code></pre></td></tr></table></figure>
+
+<h4 id="检查各用户定时任务-var-spool-cron"><a href="#检查各用户定时任务-var-spool-cron" class="headerlink" title="检查各用户定时任务 &#x2F;var&#x2F;spool&#x2F;cron"></a>检查各用户定时任务 &#x2F;var&#x2F;spool&#x2F;cron</h4><h5 id="cat-var-spool-cron-username"><a href="#cat-var-spool-cron-username" class="headerlink" title="cat &#x2F;var&#x2F;spool&#x2F;cron&#x2F;username"></a>cat &#x2F;var&#x2F;spool&#x2F;cron&#x2F;username</h5><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs tap">(base) [root@aliyun-xx_xx_xx_xx cron]<span class="hljs-comment"># ls -lat /var/spool/cron/</span><br>总用量 12<br>drwx------. <span class="hljs-number"> 2 </span>root root<span class="hljs-number"> 4096 </span>3月 <span class="hljs-number"> 12 </span>17:20 .<br>-rw-------  <span class="hljs-number"> 1 </span>root root  <span class="hljs-number"> 19 </span>3月 <span class="hljs-number"> 12 </span>17:20 root<br>drwxr-xr-x.<span class="hljs-number"> 11 </span>root root<span class="hljs-number"> 4096 </span>8月 <span class="hljs-number"> 18 </span>2023 ..<br><br><br>(base) [root@aliyun-xx_xx_xx_xx cron]<span class="hljs-comment"># cat /var/spool/cron/root</span><br>* * * * * echo 111<br>您在 /var/spool/mail/root 中有新邮件<br></code></pre></td></tr></table></figure>
+
+<h5 id="检查当前用户定时任务-crontab-l"><a href="#检查当前用户定时任务-crontab-l" class="headerlink" title="检查当前用户定时任务 crontab -l"></a>检查当前用户定时任务 crontab -l</h5><p>读取&#x2F;var&#x2F;spool&#x2F;cron目录下对应用户的记录</p>
+<h5 id="检查对于用户的定时任务-crontab-u-name-l"><a href="#检查对于用户的定时任务-crontab-u-name-l" class="headerlink" title="检查对于用户的定时任务 crontab -u name -l"></a>检查对于用户的定时任务 crontab -u name -l</h5><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs autoit">(base) [root<span class="hljs-symbol">@aliyun</span>-x cron]<span class="hljs-meta"># crontab -u root -l</span><br>* * * * * echo <span class="hljs-number">111</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="需要关注的定时任务目录及文件"><a href="#需要关注的定时任务目录及文件" class="headerlink" title="需要关注的定时任务目录及文件"></a>需要关注的定时任务目录及文件</h4><h5 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/etc/</span>crontab<br><span class="hljs-regexp">/etc/</span>cron.hourly<br><span class="hljs-regexp">/etc/</span>cron.daily<br><span class="hljs-regexp">/etc/</span>cron.weekly<br><span class="hljs-regexp">/etc/</span>cron.monthly<br><span class="hljs-regexp">/etc/</span>anacrontab<br></code></pre></td></tr></table></figure>
+
+<h5 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/etc/</span>cron.d/*<br><span class="hljs-regexp">/var/</span>spool<span class="hljs-regexp">/cron/</span>*<br></code></pre></td></tr></table></figure>
+
+<h3 id="排查异常用户"><a href="#排查异常用户" class="headerlink" title="排查异常用户"></a>排查异常用户</h3><h4 id="检查特权账号"><a href="#检查特权账号" class="headerlink" title="检查特权账号"></a>检查特权账号</h4><h5 id="awk-F-‘-3-0-print-1-’-etc-passwd"><a href="#awk-F-‘-3-0-print-1-’-etc-passwd" class="headerlink" title="awk -F: ‘$3&#x3D;&#x3D;0 {print $1}’ &#x2F;etc&#x2F;passwd"></a>awk -F: ‘$3&#x3D;&#x3D;0 {print $1}’ &#x2F;etc&#x2F;passwd</h5><p>默认情况下，只有root用户是特权用户</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dart">root<span class="hljs-meta">@iZbp</span>1191gh7vw52537lyxrZ:/# awk -F: <span class="hljs-string">&#x27;<span class="hljs-subst">$3</span>==0 &#123;print <span class="hljs-subst">$1</span>&#125;&#x27;</span> /etc/passwd<br>root<br></code></pre></td></tr></table></figure>
+
+<p>读取&#x2F;etc&#x2F;passwd文件 以 : 分割字符，当第三个字符为0时，输出第一个字符</p>
+<h4 id="检查可登录账号"><a href="#检查可登录账号" class="headerlink" title="检查可登录账号"></a>检查可登录账号</h4><p>查看存在密码账户，也就是可能会登录的账户</p>
+<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nsis">awk <span class="hljs-string">&#x27;/\<span class="hljs-variable">$1</span>|\<span class="hljs-variable">$5</span>|\<span class="hljs-variable">$6</span>/ &#123;print <span class="hljs-variable">$1</span>&#125;&#x27;</span> /etc/shadow<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs swift">root<span class="hljs-meta">@iZbp1191gh7vw52537lyxrZ</span>:<span class="hljs-regexp">/# awk &#x27;/</span>\<span class="hljs-variable">$1</span><span class="hljs-operator">|</span>\<span class="hljs-variable">$5</span><span class="hljs-operator">|</span>\<span class="hljs-variable">$6</span><span class="hljs-operator">/</span> &#123;print <span class="hljs-variable">$1</span>&#125;&#x27; <span class="hljs-regexp">/etc/</span>shadow<br>root:<span class="hljs-variable">$6</span><span class="hljs-variable">$OFsjgtZl</span><span class="hljs-variable">$ng76xjs7xQZH0asW6h1RGwXSSD6nD5sIJF163Etabm8ydItXJiD0T8KRBPwmcUdG</span><span class="hljs-operator">/</span><span class="hljs-type">WDlckAtnlQOmaYVnDPis</span>.:<span class="hljs-number">19548</span>:<span class="hljs-number">0</span>:<span class="hljs-number">99999</span>:<span class="hljs-number">7</span>:::<br><br></code></pre></td></tr></table></figure>
+
+<p>读取 &#x2F;etc&#x2F;shadow 文件，匹配包含 $1 $5 $6 任意一个的字符串</p>
+<h3 id="排查异常登录"><a href="#排查异常登录" class="headerlink" title="排查异常登录"></a>排查异常登录</h3><p>检查&#x2F;var&#x2F;run&#x2F;utmp，&#x2F;var&#x2F;log&#x2F;wtmp 中的记录</p>
+<h4 id="who"><a href="#who" class="headerlink" title="who"></a>who</h4><p>查看当前登录用户信息用户名、登录方式（tty：本地登录、pst：远程登录）、登录时间、登录IP</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs subunit">[root@iZbp1191gh7vw52537lyxrZ ~]# who<br>root     tty1         2022<span class="hljs-string">-06</span><span class="hljs-string">-26</span> 09:35<br>root     pts/0        2022<span class="hljs-string">-08</span><span class="hljs-string">-24</span> 22:39 (125.33.205.114)<br></code></pre></td></tr></table></figure>
+
+<p>默认数据来源</p>
+<p>&#x2F;var&#x2F;run&#x2F;utmp 二进制文件 权限 -rw-rw-r–  root utmp</p>
+<p>&#x2F;var&#x2F;log&#x2F;wtmp 二进制文件 权限 -rw-rw-r–  root utmp</p>
+<h4 id="w"><a href="#w" class="headerlink" title="w"></a>w</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">[root@iZbp1191gh7vw52537lyxrZ ~]<span class="hljs-comment"># w</span><br> <span class="hljs-number">22</span>:<span class="hljs-number">53</span>:<span class="hljs-number">35</span> up <span class="hljs-number">59</span> days, <span class="hljs-number">13</span>:<span class="hljs-number">20</span>,  <span class="hljs-number">2</span> users,  load average: <span class="hljs-number">0.00</span>, <span class="hljs-number">0.01</span>, <span class="hljs-number">0.05</span><br><span class="hljs-keyword">USER</span>     <span class="hljs-title">TTY</span>      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT<br>root     tty1                      <span class="hljs-number">266</span>月<span class="hljs-number">22</span>  <span class="hljs-number">1</span>:<span class="hljs-number">35</span>   <span class="hljs-number">0.10s</span>  <span class="hljs-number">0.10s</span> -bash<br>root     pts/<span class="hljs-number">0</span>    <span class="hljs-number">125.33</span>.<span class="hljs-number">205.114</span>   <span class="hljs-number">22</span>:<span class="hljs-number">39</span>    <span class="hljs-number">7.00s</span>  <span class="hljs-number">0.02s</span>  <span class="hljs-number">0.00s</span> w<br></code></pre></td></tr></table></figure>
+
+<p>默认数据来源</p>
+<p>&#x2F;var&#x2F;run&#x2F;utmp 二进制文件 权限 -rw-rw-r–  root utmp</p>
+<p>&#x2F;proc</p>
+<h4 id="last"><a href="#last" class="headerlink" title="last"></a>last</h4><p>输出历史登录成功用户</p>
+<h4 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h4><p>输出历史登录用户，包含登录成功和失败</p>
+<h3 id="排查异常开机启动"><a href="#排查异常开机启动" class="headerlink" title="排查异常开机启动"></a>排查异常开机启动</h3><h4 id="开机启动目录-etc-init-d"><a href="#开机启动目录-etc-init-d" class="headerlink" title="开机启动目录&#x2F;etc&#x2F;init.d&#x2F;"></a>开机启动目录&#x2F;etc&#x2F;init.d&#x2F;</h4><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs tap">root@iZbp1191gh7vw52537lyxrZ:~<span class="hljs-comment"># ls -lat /etc/init.d/</span><br>total 184<br>drwxr-xr-x<span class="hljs-number"> 116 </span>root root<span class="hljs-number"> 4096 </span>Mar <span class="hljs-number"> 2 </span>06:03 ..<br>drwxr-xr-x  <span class="hljs-number"> 2 </span>root root<span class="hljs-number"> 4096 </span>Feb <span class="hljs-number"> 5 </span>17:08 .<br>-rwxr-xr-x  <span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 5607 </span>Jun<span class="hljs-number"> 15 </span><span class="hljs-number"> 2023 </span>mysql<br>-rwxr-xr-x  <span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 4579 </span>May<span class="hljs-number"> 31 </span><span class="hljs-number"> 2023 </span>nginx<br>-rwxr-xr-x  <span class="hljs-number"> 1 </span>root root <span class="hljs-number"> 985 </span>Dec <span class="hljs-number"> 2 </span><span class="hljs-number"> 2022 </span>grub-common<br>-rwxr-xr-x  <span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 2915 </span>May<span class="hljs-number"> 10 </span><span class="hljs-number"> 2022 </span>apport<br>-rwxr-xr-x  <span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 6871 </span>Mar <span class="hljs-number"> 8 </span><span class="hljs-number"> 2022 </span>udev<br>-rwxr-xr-x  <span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 4060 </span>Feb<span class="hljs-number"> 26 </span><span class="hljs-number"> 2022 </span>ssh<br></code></pre></td></tr></table></figure>
+
+<h3 id="排查异常文件"><a href="#排查异常文件" class="headerlink" title="排查异常文件"></a>排查异常文件</h3><p>检查文件内容使用 cat 命令，不会修改文件时间属性，如果使用vim，可能会修改文件时间属性</p>
+<h4 id="文件时间检查"><a href="#文件时间检查" class="headerlink" title="文件时间检查"></a>文件时间检查</h4><p><strong>stat filename 查看文件时间，change&#x2F;最近改动是文件落盘时间</strong></p>
+<p>示例：</p>
+<p>原始文件时间信息</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/tmp/test# stat <span class="hljs-number">11</span>.txt<br>  <span class="hljs-attribute">File</span>: <span class="hljs-number">11</span>.txt<br>  <span class="hljs-attribute">Size</span>: <span class="hljs-number">2</span>         	Blocks: <span class="hljs-number">8</span>          IO Block: <span class="hljs-number">4096</span>   regular file<br><span class="hljs-attribute">Device</span>: fc03h/<span class="hljs-number">64515</span>d	Inode: <span class="hljs-number">654221</span>      Links: <span class="hljs-number">1</span><br><span class="hljs-attribute">Access</span>: (<span class="hljs-number">0644</span>/-rw-r--r--)  Uid: (    <span class="hljs-number">0</span>/    root)   Gid: (    <span class="hljs-number">0</span>/    root)<br><span class="hljs-attribute">Access</span>: <span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">13</span> <span class="hljs-number">09</span>:<span class="hljs-number">52</span>:<span class="hljs-number">30</span>.<span class="hljs-number">511674240</span> +<span class="hljs-number">0800</span><br><span class="hljs-attribute">Modify</span>: <span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">13</span> <span class="hljs-number">09</span>:<span class="hljs-number">52</span>:<span class="hljs-number">26</span>.<span class="hljs-number">983537650</span> +<span class="hljs-number">0800</span><br><span class="hljs-attribute">Change</span>: <span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">13</span> <span class="hljs-number">09</span>:<span class="hljs-number">52</span>:<span class="hljs-number">26</span>.<span class="hljs-number">983537650</span> +<span class="hljs-number">0800</span><br> <span class="hljs-attribute">Birth</span>: <span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">13</span> <span class="hljs-number">09</span>:<span class="hljs-number">52</span>:<span class="hljs-number">26</span>.<span class="hljs-number">983537650</span> +<span class="hljs-number">0800</span><br> <br></code></pre></td></tr></table></figure>
+
+<p>vim文件wq退出，修改文件modify和change时间</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/tmp/test# vim <span class="hljs-number">11</span>.txt<br><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/tmp/test# stat <span class="hljs-number">11</span>.txt<br>  <span class="hljs-attribute">File</span>: <span class="hljs-number">11</span>.txt<br>  <span class="hljs-attribute">Size</span>: <span class="hljs-number">2</span>         	Blocks: <span class="hljs-number">8</span>          IO Block: <span class="hljs-number">4096</span>   regular file<br><span class="hljs-attribute">Device</span>: fc03h/<span class="hljs-number">64515</span>d	Inode: <span class="hljs-number">654221</span>      Links: <span class="hljs-number">1</span><br><span class="hljs-attribute">Access</span>: (<span class="hljs-number">0644</span>/-rw-r--r--)  Uid: (    <span class="hljs-number">0</span>/    root)   Gid: (    <span class="hljs-number">0</span>/    root)<br><span class="hljs-attribute">Access</span>: <span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">13</span> <span class="hljs-number">09</span>:<span class="hljs-number">52</span>:<span class="hljs-number">30</span>.<span class="hljs-number">511674240</span> +<span class="hljs-number">0800</span><br><span class="hljs-attribute">Modify</span>: <span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">13</span> <span class="hljs-number">10</span>:<span class="hljs-number">07</span>:<span class="hljs-number">33</span>.<span class="hljs-number">786640022</span> +<span class="hljs-number">0800</span><br><span class="hljs-attribute">Change</span>: <span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">13</span> <span class="hljs-number">10</span>:<span class="hljs-number">07</span>:<span class="hljs-number">33</span>.<span class="hljs-number">790640177</span> +<span class="hljs-number">0800</span><br> <span class="hljs-attribute">Birth</span>: <span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">13</span> <span class="hljs-number">09</span>:<span class="hljs-number">52</span>:<span class="hljs-number">26</span>.<span class="hljs-number">983537650</span> +<span class="hljs-number">0800</span><br></code></pre></td></tr></table></figure>
+
+<p>chmod改变文件属性，会修改Change时间</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs elixir">root<span class="hljs-variable">@iZbp1191gh7vw52537lyxrZ</span><span class="hljs-symbol">:/tmp/test</span><span class="hljs-comment"># ls -lat 11.txt</span><br>-rw-r--r-- <span class="hljs-number">1</span> root root <span class="hljs-number">2</span> <span class="hljs-title class_">Mar</span> <span class="hljs-number">13</span> <span class="hljs-number">10</span><span class="hljs-symbol">:</span><span class="hljs-number">07</span> <span class="hljs-number">11</span>.txt<br>root<span class="hljs-variable">@iZbp1191gh7vw52537lyxrZ</span><span class="hljs-symbol">:/tmp/test</span><span class="hljs-comment"># chmod o+x 11.txt</span><br>root<span class="hljs-variable">@iZbp1191gh7vw52537lyxrZ</span><span class="hljs-symbol">:/tmp/test</span><span class="hljs-comment"># ls -lat 11.txt</span><br>-rw-r--r-x <span class="hljs-number">1</span> root root <span class="hljs-number">2</span> <span class="hljs-title class_">Mar</span> <span class="hljs-number">13</span> <span class="hljs-number">10</span><span class="hljs-symbol">:</span><span class="hljs-number">07</span> <span class="hljs-number">11</span>.txt<br>root<span class="hljs-variable">@iZbp1191gh7vw52537lyxrZ</span><span class="hljs-symbol">:/tmp/test</span><span class="hljs-comment"># stat 11.txt</span><br>  <span class="hljs-symbol">File:</span> <span class="hljs-number">11</span>.txt<br>  <span class="hljs-symbol">Size:</span> <span class="hljs-number">2</span>         	<span class="hljs-symbol">Blocks:</span> <span class="hljs-number">8</span>          <span class="hljs-title class_">IO</span> <span class="hljs-symbol">Block:</span> <span class="hljs-number">4096</span>   regular file<br><span class="hljs-symbol">Device:</span> fc03h/<span class="hljs-number">64515</span>d	<span class="hljs-symbol">Inode:</span> <span class="hljs-number">654221</span>      <span class="hljs-symbol">Links:</span> <span class="hljs-number">1</span><br><span class="hljs-symbol">Access:</span> (<span class="hljs-number">0645</span>/-rw-r--r-x)  <span class="hljs-symbol">Uid:</span> (    <span class="hljs-number">0</span>/    root)   <span class="hljs-symbol">Gid:</span> (    <span class="hljs-number">0</span>/    root)<br><span class="hljs-symbol">Access:</span> <span class="hljs-number">2024</span><span class="hljs-number">-03</span><span class="hljs-number">-13</span> <span class="hljs-number">09</span><span class="hljs-symbol">:</span><span class="hljs-number">52</span><span class="hljs-symbol">:</span><span class="hljs-number">30.511674240</span> +<span class="hljs-number">0800</span><br><span class="hljs-symbol">Modify:</span> <span class="hljs-number">2024</span><span class="hljs-number">-03</span><span class="hljs-number">-13</span> <span class="hljs-number">10</span><span class="hljs-symbol">:</span><span class="hljs-number">07</span><span class="hljs-symbol">:</span><span class="hljs-number">33.786640022</span> +<span class="hljs-number">0800</span><br><span class="hljs-symbol">Change:</span> <span class="hljs-number">2024</span><span class="hljs-number">-03</span><span class="hljs-number">-13</span> <span class="hljs-number">10</span><span class="hljs-symbol">:</span><span class="hljs-number">10</span><span class="hljs-symbol">:</span><span class="hljs-number">49.314207667</span> +<span class="hljs-number">0800</span><br> <span class="hljs-symbol">Birth:</span> <span class="hljs-number">2024</span><span class="hljs-number">-03</span><span class="hljs-number">-13</span> <span class="hljs-number">09</span><span class="hljs-symbol">:</span><span class="hljs-number">52</span><span class="hljs-symbol">:</span><span class="hljs-number">26.983537650</span> +<span class="hljs-number">0800</span><br></code></pre></td></tr></table></figure>
+
+<p>web访问，会修改access时间</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/tmp/test# stat <span class="hljs-number">11</span>.txt<br>  <span class="hljs-attribute">File</span>: <span class="hljs-number">11</span>.txt<br>  <span class="hljs-attribute">Size</span>: <span class="hljs-number">2</span>         	Blocks: <span class="hljs-number">8</span>          IO Block: <span class="hljs-number">4096</span>   regular file<br><span class="hljs-attribute">Device</span>: fc03h/<span class="hljs-number">64515</span>d	Inode: <span class="hljs-number">654221</span>      Links: <span class="hljs-number">1</span><br><span class="hljs-attribute">Access</span>: (<span class="hljs-number">0645</span>/-rw-r--r-x)  Uid: (    <span class="hljs-number">0</span>/    root)   Gid: (    <span class="hljs-number">0</span>/    root)<br><span class="hljs-attribute">Access</span>: <span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">13</span> <span class="hljs-number">10</span>:<span class="hljs-number">46</span>:<span class="hljs-number">17</span>.<span class="hljs-number">408516145</span> +<span class="hljs-number">0800</span><br><span class="hljs-attribute">Modify</span>: <span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">13</span> <span class="hljs-number">10</span>:<span class="hljs-number">07</span>:<span class="hljs-number">33</span>.<span class="hljs-number">786640022</span> +<span class="hljs-number">0800</span><br><span class="hljs-attribute">Change</span>: <span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">13</span> <span class="hljs-number">10</span>:<span class="hljs-number">10</span>:<span class="hljs-number">49</span>.<span class="hljs-number">314207667</span> +<span class="hljs-number">0800</span><br> <span class="hljs-attribute">Birth</span>: <span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">13</span> <span class="hljs-number">09</span>:<span class="hljs-number">52</span>:<span class="hljs-number">26</span>.<span class="hljs-number">983537650</span> +<span class="hljs-number">0800</span><br></code></pre></td></tr></table></figure>
+
+<p>web下载文件到设备，会修改文件的access和change时间，change时间会修改为落盘时间</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs subunit">2024<span class="hljs-string">-03</span><span class="hljs-string">-13</span> 10:47:33 wget 下载<br><br>(base) [root@aliyun<span class="hljs-string">-1</span>_1_1_1 tmp]# wget http://xx.xx.xx.xx:1234/11.txt<br>-<span class="hljs-string">-2024</span><span class="hljs-string">-03</span><span class="hljs-string">-13</span> 10:47:33--  http://xx.xx.xx.xx:1234/11.txt<br>正在连接 xx.xx.xx.xx:1234... 已连接。<br>已发出 HTTP 请求，正在等待回应... 200 OK<br>长度：2 [text/plain]<br>正在保存至: “11.txt”<br><br>100%[==============================================================================================================&gt;] 2           --.-K/s 用时 0s<br><br>2024<span class="hljs-string">-03</span><span class="hljs-string">-13</span> 10:47:33 (279 KB/s) - 已保存 “11.txt” [2/2])<br><br>(base) [root@aliyun<span class="hljs-string">-1</span>_1_1_1 tmp]# stat 11.txt<br>  文件：&quot;11.txt&quot;<br>  大小：2         	块：8          IO 块：4096   普通文件<br>设备：fd01h/64769d	Inode：925677      硬链接：1<br>权限：(0644/-rw-r--r--)  Uid：(    0/    root)   Gid：(    0/    root)<br>最近访问：2024<span class="hljs-string">-03</span><span class="hljs-string">-13</span> 10:47:33.000000000 <span class="hljs-string">+0800</span><br>最近更改：2024<span class="hljs-string">-03</span><span class="hljs-string">-13</span> 10:07:33.000000000 <span class="hljs-string">+0800</span><br>最近改动：2024<span class="hljs-string">-03</span><span class="hljs-string">-13</span> 10:47:33.231719265 <span class="hljs-string">+0800</span><br>创建时间：-<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="排查tmp目录"><a href="#排查tmp目录" class="headerlink" title="排查tmp目录"></a>排查tmp目录</h4><p>任意用户可操作的目录，排查是否存在可疑文件</p>
+<p>&#x2F;tmp&#x2F;</p>
+<p>&#x2F;var&#x2F;tmp&#x2F;</p>
+<h4 id="排查近期改动文件"><a href="#排查近期改动文件" class="headerlink" title="排查近期改动文件"></a>排查近期改动文件</h4><h5 id="24小时内被改动文件查找-全局查找"><a href="#24小时内被改动文件查找-全局查找" class="headerlink" title="24小时内被改动文件查找(全局查找)"></a>24小时内被改动文件查找(全局查找)</h5><p>查找24小时内修改过的jsp文件</p>
+<p>find &#x2F; -mtime 0 -name “*.jsp”</p>
+<h5 id="72小时内被新增文件查找-全局查找"><a href="#72小时内被新增文件查找-全局查找" class="headerlink" title="72小时内被新增文件查找(全局查找)"></a>72小时内被新增文件查找(全局查找)</h5><p>查找72小时内新增的文件</p>
+<p>find &#x2F; -ctime 2 -name “*.*“</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs crystal">[root<span class="hljs-variable">@iZbp1191gh7vw52537lyxrZ</span> ~]<span class="hljs-comment"># find / -ctime -2 -name &quot;*.*&quot;</span><br><span class="hljs-regexp">/run/systemd</span><span class="hljs-regexp">/sessions/</span><span class="hljs-number">10143</span>.ref<br><span class="hljs-regexp">/run/systemd</span><span class="hljs-regexp">/sessions/</span><span class="hljs-number">10142</span>.ref<br><span class="hljs-regexp">/run/systemd</span><span class="hljs-regexp">/system/session</span>-<span class="hljs-number">10143</span>.scope.d<br><span class="hljs-regexp">/var/log</span><span class="hljs-regexp">/audit/audit</span>.log<br><span class="hljs-regexp">/var/log</span><span class="hljs-regexp">/nginx/error</span>.log-<span class="hljs-number">20220824</span><br><span class="hljs-regexp">/var/log</span><span class="hljs-regexp">/nginx/error</span>.log-<span class="hljs-number">20220823</span>.gz<br><span class="hljs-regexp">/var/log</span><span class="hljs-regexp">/nginx/error</span>.log-<span class="hljs-number">20220822</span>.gz<br><span class="hljs-regexp">/var/log</span><span class="hljs-regexp">/nginx/error</span>.log<br><span class="hljs-regexp">/var/log</span><span class="hljs-regexp">/nginx/access</span>.log-<span class="hljs-number">20220822</span>.gz<br><span class="hljs-regexp">/var/log</span><span class="hljs-regexp">/nginx/access</span>.log<br><span class="hljs-regexp">/var/log</span><span class="hljs-regexp">/nginx/access</span>.log-<span class="hljs-number">20220824</span><br><span class="hljs-regexp">/var/log</span><span class="hljs-regexp">/nginx/access</span>.log-<span class="hljs-number">20220823</span>.gz<br></code></pre></td></tr></table></figure>
+
+<h4 id="排查高权限文件"><a href="#排查高权限文件" class="headerlink" title="排查高权限文件"></a>排查高权限文件</h4><h5 id="777权限文件查找"><a href="#777权限文件查找" class="headerlink" title="777权限文件查找"></a>777权限文件查找</h5><p>find &#x2F; -iname “*.jsp” -perm 777</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs swift">[root<span class="hljs-meta">@iZbp1191gh7vw52537lyxrZ</span> <span class="hljs-regexp">/]# find /</span> <span class="hljs-operator">-</span>iname <span class="hljs-string">&quot;*.jsp&quot;</span> <span class="hljs-operator">-</span>perm <span class="hljs-number">777</span><br><span class="hljs-regexp">/tmp/</span><span class="hljs-number">1</span>.jsp<br>[root<span class="hljs-meta">@iZbp1191gh7vw52537lyxrZ</span> <span class="hljs-regexp">/]# ls -lat /</span>tmp<span class="hljs-operator">/</span><span class="hljs-number">1</span>.jsp<br><span class="hljs-operator">-</span>rwxrwxrwx <span class="hljs-number">1</span> root root <span class="hljs-number">5</span> <span class="hljs-number">8</span>月  <span class="hljs-number">24</span> <span class="hljs-number">21</span>:<span class="hljs-number">09</span> <span class="hljs-regexp">/tmp/</span><span class="hljs-number">1</span>.jsp<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="排查相关日志"><a href="#排查相关日志" class="headerlink" title="排查相关日志"></a>排查相关日志</h3><h4 id="Linux日志"><a href="#Linux日志" class="headerlink" title="Linux日志"></a>Linux日志</h4><h5 id="排查思路"><a href="#排查思路" class="headerlink" title="排查思路"></a>排查思路</h5><p>Q：</p>
+<h5 id="具体日志"><a href="#具体日志" class="headerlink" title="具体日志"></a>具体日志</h5><h6 id="历史操作命令history"><a href="#历史操作命令history" class="headerlink" title="历史操作命令history"></a>历史操作命令history</h6><p>读取 ~&#x2F;.bash_history ，默认输出格式为：num command</p>
+<p>默认保存1000条</p>
+<p>.bash_history文件权限600，每个用户独有一份</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs tap">[root@iZbp1191gh7vw52537lyxrZ ~]<span class="hljs-comment"># ls -lat ~/.bash_history</span><br>-rw-------<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 3738 </span>8月  <span class="hljs-number"> 7 </span>19:13 /root/.bash_history<br></code></pre></td></tr></table></figure>
+
+<p>正常情况下是退出bash后会将历史命令信息保存在.bash_history文件中</p>
+<h6 id="root-bash-history"><a href="#root-bash-history" class="headerlink" title="&#x2F;root&#x2F;.bash_history"></a>&#x2F;root&#x2F;.bash_history</h6><p>root 用户 history -w 写入的 history 记录文件</p>
+<h6 id="var-spool-mail-root"><a href="#var-spool-mail-root" class="headerlink" title="&#x2F;var&#x2F;spool&#x2F;mail&#x2F;root"></a>&#x2F;var&#x2F;spool&#x2F;mail&#x2F;root</h6><h6 id="var-log-wtmp"><a href="#var-log-wtmp" class="headerlink" title="&#x2F;var&#x2F;log&#x2F;wtmp"></a>&#x2F;var&#x2F;log&#x2F;wtmp</h6><h6 id="检查系统用户登录日志"><a href="#检查系统用户登录日志" class="headerlink" title="检查系统用户登录日志"></a>检查系统用户登录日志</h6><p>日志路径：&#x2F;var&#x2F;log&#x2F;secure</p>
+<h6 id="检查密码登录成功记录"><a href="#检查密码登录成功记录" class="headerlink" title="检查密码登录成功记录"></a>检查密码登录成功记录</h6><p>查看登录成功记录的来源IP判断入侵来源，可以将来源IP进行威胁情报检测，查看IP状态</p>
+<p>cat secure* | grep “Accepted password”</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs autoit">(base) [root<span class="hljs-symbol">@aliyun</span><span class="hljs-number">-1</span>_1_1_1 <span class="hljs-built_in">log</span>]<span class="hljs-meta"># cat secure* | grep <span class="hljs-string">&quot;Accepted password&quot;</span></span><br>Mar <span class="hljs-number">29</span> <span class="hljs-number">19</span>:<span class="hljs-number">25</span>:<span class="hljs-number">08</span> aliyun<span class="hljs-number">-1</span>_1_1_1 sshd[<span class="hljs-number">14458</span>]: Accepted password <span class="hljs-keyword">for</span> root from <span class="hljs-number">8.3</span><span class="hljs-number">.1</span><span class="hljs-number">.5</span> port <span class="hljs-number">16045</span> ssh2<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="Windows日志"><a href="#Windows日志" class="headerlink" title="Windows日志"></a>Windows日志</h4><p>基于Windows11专业版</p>
+<p>运行输入 eventvwr.msc 命令&#x2F;直接搜索“事件查看器”打开事件查看器</p>
+<h5 id="排查思路-1"><a href="#排查思路-1" class="headerlink" title="排查思路"></a>排查思路</h5><h6 id="检查是否存在爆破"><a href="#检查是否存在爆破" class="headerlink" title="检查是否存在爆破"></a>检查是否存在爆破</h6><p>4624 账户登录成功日志</p>
+<p>4625 账户登录失败日志</p>
+<h6 id="检查是否存在权限维持"><a href="#检查是否存在权限维持" class="headerlink" title="检查是否存在权限维持"></a>检查是否存在权限维持</h6><p>4720 新增账户日志</p>
+<p>4726 删除账户日志</p>
+<p>4724 账户密码重置</p>
+<p>7045 系统日志-服务安装</p>
+<p>4719 更改审核&#x2F;审计策略日志</p>
+<h6 id="检查是否存在权限提升"><a href="#检查是否存在权限提升" class="headerlink" title="检查是否存在权限提升"></a>检查是否存在权限提升</h6><p>4732 账户权限变更</p>
+<p>4672 账户登录分配特殊权限</p>
+<h6 id="检查是否存在日志删除等痕迹消除"><a href="#检查是否存在日志删除等痕迹消除" class="headerlink" title="检查是否存在日志删除等痕迹消除"></a>检查是否存在日志删除等痕迹消除</h6><p>1102 日志删除日志</p>
+<h5 id="安全日志"><a href="#安全日志" class="headerlink" title="安全日志"></a>安全日志</h5><h6 id="4624-账户登录成功日志"><a href="#4624-账户登录成功日志" class="headerlink" title="4624 账户登录成功日志"></a>4624 账户登录成功日志</h6><p><img src="/image-20241125140024535.png" srcset="/img/loading.gif" lazyload alt="image-20241125140024535"></p>
+<h6 id="4625-账户登录失败日志"><a href="#4625-账户登录失败日志" class="headerlink" title="4625 账户登录失败日志"></a>4625 账户登录失败日志</h6><p><img src="/image-20241125135958626.png" srcset="/img/loading.gif" lazyload alt="image-20241125135958626"></p>
+<h6 id="4720-新增账户日志"><a href="#4720-新增账户日志" class="headerlink" title="4720 新增账户日志"></a>4720 新增账户日志</h6><p><img src="/image-20241125140454155.png" srcset="/img/loading.gif" lazyload alt="image-20241125140454155"></p>
+<h6 id="4726-删除账户日志"><a href="#4726-删除账户日志" class="headerlink" title="4726 删除账户日志"></a>4726 删除账户日志</h6><p><img src="/image-20241125141610204.png" srcset="/img/loading.gif" lazyload alt="image-20241125141610204"></p>
+<h6 id="4732-账户权限变更"><a href="#4732-账户权限变更" class="headerlink" title="4732 账户权限变更"></a>4732 账户权限变更</h6><p>加入对应组</p>
+<p><img src="/image-20241125140712767.png" srcset="/img/loading.gif" lazyload alt="image-20241125140712767"></p>
+<h6 id="4672-账户登录分配特殊权限"><a href="#4672-账户登录分配特殊权限" class="headerlink" title="4672 账户登录分配特殊权限"></a>4672 账户登录分配特殊权限</h6><p><img src="/image-20241125141403152.png" srcset="/img/loading.gif" lazyload alt="image-20241125141403152"></p>
+<h6 id="4724-账户密码重置"><a href="#4724-账户密码重置" class="headerlink" title="4724 账户密码重置"></a>4724 账户密码重置</h6><p><img src="/image-20241125141016730.png" srcset="/img/loading.gif" lazyload alt="image-20241125141016730"></p>
+<h6 id="4719-更改审核-审计策略日志"><a href="#4719-更改审核-审计策略日志" class="headerlink" title="4719 更改审核&#x2F;审计策略日志"></a>4719 更改审核&#x2F;审计策略日志</h6><p><img src="/image-20241125144203503.png" srcset="/img/loading.gif" lazyload alt="image-20241125144203503"></p>
+<h6 id="1102-日志删除日志"><a href="#1102-日志删除日志" class="headerlink" title="1102 日志删除日志"></a>1102 日志删除日志</h6><p><img src="/image-20241125165212144.png" srcset="/img/loading.gif" lazyload alt="image-20241125165212144"></p>
+<h5 id="系统日志"><a href="#系统日志" class="headerlink" title="系统日志"></a>系统日志</h5><h6 id="7045-服务安装日志"><a href="#7045-服务安装日志" class="headerlink" title="7045 服务安装日志"></a>7045 服务安装日志</h6><p><img src="/image-20241125142037647.png" srcset="/img/loading.gif" lazyload alt="image-20241125142037647"></p>
+<h3 id="命令替换工具busybox"><a href="#命令替换工具busybox" class="headerlink" title="命令替换工具busybox"></a>命令替换工具busybox</h3><p><a target="_blank" rel="noopener" href="https://busybox.net/downloads/binaries/1.31.0-i686-uclibc/busybox">https://busybox.net/downloads/binaries/1.31.0-i686-uclibc/busybox</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/security/" class="category-chain-item">security</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/security/netSec/" class="category-chain-item">netSec</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/security/netSec/secresponse/" class="category-chain-item">secresponse</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/security/" class="print-no-link">#security</a>
+      
+        <a href="/tags/netSec/" class="print-no-link">#netSec</a>
+      
+        <a href="/tags/secresponse/" class="print-no-link">#secresponse</a>
+      
+        <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" class="print-no-link">#应急响应</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>sec_response</div>
+      <div>https://tthours.github.io/2024/03/12/security/secresponse/sec_response/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              TT
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/13/db/mysql/mysql_error/" title="mysql_error">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">mysql_error</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/07/yunwei/yunweiapplications/docker/docker_error/" title="docker_error">
+                        <span class="hidden-mobile">docker_error</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
