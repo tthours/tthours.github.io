@@ -1,0 +1,723 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="w显示当前登录系统的用户信息以及当前正在做什么 参数解释12345root@iZbp1191gh7vw52537lyxrZ:&#x2F;var&#x2F;log# w 14:17:40 up 209 days,  3:06,  2 users,  load average: 0.00, 0.01, 0.00USER     TTY      FROM             LOGIN@   IDLE   JCP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="w&amp;who">
+<meta property="og:url" content="https://tthours.github.io/2024/03/15/yunwei/yunweicommands/Linuxcommands/w&who/index.html">
+<meta property="og:site_name" content="tthours">
+<meta property="og:description" content="w显示当前登录系统的用户信息以及当前正在做什么 参数解释12345root@iZbp1191gh7vw52537lyxrZ:&#x2F;var&#x2F;log# w 14:17:40 up 209 days,  3:06,  2 users,  load average: 0.00, 0.01, 0.00USER     TTY      FROM             LOGIN@   IDLE   JCP">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-03-15T07:16:05.986Z">
+<meta property="article:author" content="tt">
+<meta property="article:tag" content="yunwei">
+<meta property="article:tag" content="commands">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>w&amp;who - tthours</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tthours.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ten thousand hours</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/hd.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="w&amp;who"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        tt
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-15 00:00" pubdate>
+          2024年3月15日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          916 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">w&amp;who</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <span id="more"></span>
+
+<h1 id="w"><a href="#w" class="headerlink" title="w"></a>w</h1><p>显示当前登录系统的用户信息以及当前正在做什么</p>
+<h2 id="参数解释"><a href="#参数解释" class="headerlink" title="参数解释"></a>参数解释</h2><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/var/log# w<br> <span class="hljs-attribute">14</span>:<span class="hljs-number">17</span>:<span class="hljs-number">40</span> up <span class="hljs-number">209</span> days,  <span class="hljs-number">3</span>:<span class="hljs-number">06</span>,  <span class="hljs-number">2</span> users,  load average: <span class="hljs-number">0</span>.<span class="hljs-number">00</span>, <span class="hljs-number">0</span>.<span class="hljs-number">01</span>, <span class="hljs-number">0</span>.<span class="hljs-number">00</span><br><span class="hljs-attribute">USER</span>     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">0</span>    <span class="hljs-number">218.30.113.53</span>    <span class="hljs-number">14</span>:<span class="hljs-number">06</span>    <span class="hljs-number">1</span>:<span class="hljs-number">32</span>   <span class="hljs-number">0</span>.<span class="hljs-number">02</span>s  <span class="hljs-number">0</span>.<span class="hljs-number">00</span>s pager<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">1</span>    <span class="hljs-number">218.30.113.53</span>    <span class="hljs-number">14</span>:<span class="hljs-number">06</span>    <span class="hljs-number">1</span>.<span class="hljs-number">00</span>s  <span class="hljs-number">0</span>.<span class="hljs-number">13</span>s  <span class="hljs-number">0</span>.<span class="hljs-number">00</span>s w<br></code></pre></td></tr></table></figure>
+
+<p> 14:17:40 up 209 days,  3:06,  2 users,  load average: 0.00, 0.01, 0.00</p>
+<p>当前时间  运行时长  当前用户登录个数  当前系统负载 1分钟 5分钟 15分钟</p>
+<p>USER ：登录用户</p>
+<p>TTY：登录方式，pts 远程登录  tty 本地登录</p>
+<p>FROM：登录来源IP</p>
+<p>LOGIN@：登录时间</p>
+<p>IDLE：闲置时间，也就是终端多久没有操作</p>
+<p>JCPU：对应终端所有进程占用CPU时间，不包含过去已经完成的后台任务，但是包含当前正在运行的后台任务（The JCPU time is the time used by all processes attached to the tty.  It does not include past background jobs, but  does  include currently running background jobs.）</p>
+<p>PCPU：对应终端当前进程占用CPU时间</p>
+<p>WHAT：当前登录用户操作</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>w [options] user […]</p>
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><h4 id="f-不显示登录来源"><a href="#f-不显示登录来源" class="headerlink" title="-f 不显示登录来源"></a>-f 不显示登录来源</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">[root@iZbp1191gh7vw52537lyxrZ ~]<span class="hljs-comment"># w -f</span><br> <span class="hljs-number">23</span>:<span class="hljs-number">56</span>:<span class="hljs-number">28</span> up <span class="hljs-number">59</span> days, <span class="hljs-number">14</span>:<span class="hljs-number">23</span>,  <span class="hljs-number">3</span> users,  load average: <span class="hljs-number">0.00</span>, <span class="hljs-number">0.04</span>, <span class="hljs-number">0.05</span><br><span class="hljs-keyword">USER</span>     <span class="hljs-title">TTY</span>        LOGIN@   IDLE   JCPU   PCPU WHAT<br>root     tty1      <span class="hljs-number">266</span>月<span class="hljs-number">22</span>  <span class="hljs-number">1</span>:<span class="hljs-number">04m</span>  <span class="hljs-number">0.10s</span>  <span class="hljs-number">0.10s</span> -bash<br>root     pts/<span class="hljs-number">0</span>     <span class="hljs-number">22</span>:<span class="hljs-number">39</span>    <span class="hljs-number">4.00s</span>  <span class="hljs-number">0.55s</span>  <span class="hljs-number">0.55s</span> -bash<br>root     pts/<span class="hljs-number">1</span>     <span class="hljs-number">23</span>:<span class="hljs-number">47</span>    <span class="hljs-number">8</span>:<span class="hljs-number">52</span>   <span class="hljs-number">0.00s</span>  <span class="hljs-number">0.00s</span> -bash<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="s-精简显示"><a href="#s-精简显示" class="headerlink" title="-s 精简显示"></a>-s 精简显示</h4><p>登录用户名，登录方式，登录来源IP，闲置时间，当前操作</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">[root@iZbp1191gh7vw52537lyxrZ ~]<span class="hljs-comment"># w -s</span><br> <span class="hljs-number">23</span>:<span class="hljs-number">56</span>:<span class="hljs-number">52</span> up <span class="hljs-number">59</span> days, <span class="hljs-number">14</span>:<span class="hljs-number">23</span>,  <span class="hljs-number">3</span> users,  load average: <span class="hljs-number">0.00</span>, <span class="hljs-number">0.04</span>, <span class="hljs-number">0.05</span><br><span class="hljs-keyword">USER</span>     <span class="hljs-title">TTY</span>      FROM              IDLE WHAT<br>root     tty1                       <span class="hljs-number">1</span>:<span class="hljs-number">04m</span> -bash<br>root     pts/<span class="hljs-number">0</span>    <span class="hljs-number">125.33</span>.<span class="hljs-number">205.114</span>    <span class="hljs-number">4.00s</span> -bash<br>root     pts/<span class="hljs-number">1</span>    <span class="hljs-number">125.33</span>.<span class="hljs-number">205.114</span>    <span class="hljs-number">9</span>:<span class="hljs-number">16</span>  -bash<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="h-不显示标题字段"><a href="#h-不显示标题字段" class="headerlink" title="-h 不显示标题字段"></a>-h 不显示标题字段</h4><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nix">[root@iZbp1191gh7vw52537lyxrZ ~]<span class="hljs-comment"># w -h</span><br>root     tty1                      <span class="hljs-number">266</span>月<span class="hljs-number">22</span>  <span class="hljs-number">1</span>:<span class="hljs-number">06</span>m  <span class="hljs-number">0.10</span>s  <span class="hljs-number">0.10</span>s <span class="hljs-operator">-</span>bash<br>root     pts<span class="hljs-symbol">/0</span>    <span class="hljs-number">125.33</span>.<span class="hljs-number">205.114</span>   <span class="hljs-number">22</span>:<span class="hljs-number">39</span>    <span class="hljs-number">2.00</span>s  <span class="hljs-number">0.55</span>s  <span class="hljs-number">0.55</span>s <span class="hljs-operator">-</span>bash<br>root     pts<span class="hljs-symbol">/1</span>    <span class="hljs-number">125.33</span>.<span class="hljs-number">205.114</span>   <span class="hljs-number">23</span>:<span class="hljs-number">47</span>   <span class="hljs-number">10</span>:<span class="hljs-number">42</span>   <span class="hljs-number">0.00</span>s  <span class="hljs-number">0.00</span>s <span class="hljs-operator">-</span>bash<br></code></pre></td></tr></table></figure>
+
+<h4 id="i-显示以主机名登录的"><a href="#i-显示以主机名登录的" class="headerlink" title="-i 显示以主机名登录的"></a>-i 显示以主机名登录的</h4><h4 id="V-显示命令版本"><a href="#V-显示命令版本" class="headerlink" title="-V 显示命令版本"></a>-V 显示命令版本</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:~# w -V<br><span class="hljs-attribute">w</span> from procps-ng <span class="hljs-number">3</span>.<span class="hljs-number">3</span>.<span class="hljs-number">17</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="user-显示指定用户名"><a href="#user-显示指定用户名" class="headerlink" title="user 显示指定用户名"></a>user 显示指定用户名</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:~# w root<br> <span class="hljs-attribute">14</span>:<span class="hljs-number">49</span>:<span class="hljs-number">39</span> up <span class="hljs-number">209</span> days,  <span class="hljs-number">3</span>:<span class="hljs-number">38</span>,  <span class="hljs-number">3</span> users,  load average: <span class="hljs-number">0</span>.<span class="hljs-number">03</span>, <span class="hljs-number">0</span>.<span class="hljs-number">03</span>, <span class="hljs-number">0</span>.<span class="hljs-number">00</span><br><span class="hljs-attribute">USER</span>     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">0</span>    <span class="hljs-number">218.30.113.53</span>    <span class="hljs-number">14</span>:<span class="hljs-number">06</span>    <span class="hljs-number">4</span>:<span class="hljs-number">08</span>   <span class="hljs-number">0</span>.<span class="hljs-number">02</span>s  <span class="hljs-number">0</span>.<span class="hljs-number">00</span>s pager<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">1</span>    <span class="hljs-number">218.30.113.53</span>    <span class="hljs-number">14</span>:<span class="hljs-number">06</span>   <span class="hljs-number">27</span>.<span class="hljs-number">00</span>s  <span class="hljs-number">0</span>.<span class="hljs-number">14</span>s  <span class="hljs-number">0</span>.<span class="hljs-number">00</span>s sh<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">2</span>    <span class="hljs-number">218.30.113.53</span>    <span class="hljs-number">14</span>:<span class="hljs-number">19</span>    <span class="hljs-number">3</span>.<span class="hljs-number">00</span>s  <span class="hljs-number">0</span>.<span class="hljs-number">05</span>s  <span class="hljs-number">0</span>.<span class="hljs-number">00</span>s w root<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="数据来源"><a href="#数据来源" class="headerlink" title="数据来源"></a>数据来源</h2><h3 id="登录信息-var-run-utmp"><a href="#登录信息-var-run-utmp" class="headerlink" title="登录信息 &#x2F;var&#x2F;run&#x2F;utmp"></a>登录信息 &#x2F;var&#x2F;run&#x2F;utmp</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata">[root@iZbp1191gh7vw52537lyxrZ <span class="hljs-keyword">run</span>]# <span class="hljs-keyword">ls</span> -<span class="hljs-keyword">la</span> /<span class="hljs-keyword">var</span>/<span class="hljs-keyword">run</span>/utmp<br>-rw-rw-r-- 1 root utmp 4224 8月  25 09:31 /<span class="hljs-keyword">var</span>/<span class="hljs-keyword">run</span>/utmp<br></code></pre></td></tr></table></figure>
+
+<h3 id="进程信息-proc"><a href="#进程信息-proc" class="headerlink" title="进程信息 &#x2F;proc"></a>进程信息 &#x2F;proc</h3><h1 id="who"><a href="#who" class="headerlink" title="who"></a>who</h1><p>显示当前登录用户</p>
+<h2 id="参数解释-1"><a href="#参数解释-1" class="headerlink" title="参数解释"></a>参数解释</h2><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">0</span>        <span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">04</span> <span class="hljs-number">14</span>:<span class="hljs-number">06</span> (<span class="hljs-number">218.30.113.53</span>)<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">1</span>        <span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">04</span> <span class="hljs-number">14</span>:<span class="hljs-number">06</span> (<span class="hljs-number">218.30.113.53</span>)<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">2</span>        <span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">04</span> <span class="hljs-number">14</span>:<span class="hljs-number">19</span> (<span class="hljs-number">218.30.113.53</span>)<br></code></pre></td></tr></table></figure>
+
+<p>登录用户名</p>
+<p>登录方式：pts 远程登录  tty 本地登录</p>
+<p>登录时间及登录来源IP</p>
+<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><p>who [OPTION]… [ FILE | ARG1 ARG2 ]</p>
+<h3 id="命令-1"><a href="#命令-1" class="headerlink" title="命令"></a>命令</h3><h4 id="a-–all-显示所有"><a href="#a-–all-显示所有" class="headerlink" title="-a –all 显示所有"></a>-a –all 显示所有</h4><p>等同于  -b -d –login -p -r -t -T -u</p>
+<h4 id="b-–boot-系统最近启动时间"><a href="#b-–boot-系统最近启动时间" class="headerlink" title="-b –boot 系统最近启动时间"></a>-b –boot 系统最近启动时间</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/# who -b<br>         <span class="hljs-attribute">system</span> boot  <span class="hljs-number">2023</span>-<span class="hljs-number">07</span>-<span class="hljs-number">10</span> <span class="hljs-number">11</span>:<span class="hljs-number">11</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="d-–dead-输出-dead-precess"><a href="#d-–dead-输出-dead-precess" class="headerlink" title="-d –dead 输出 dead precess"></a>-d –dead 输出 dead precess</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">root@iZbp1191gh7vw52537lyxrZ:/<span class="hljs-comment"># who -d</span><br>         pts<span class="hljs-regexp">/3        2023-08-16 12:14            122616 id=ts/</span><span class="hljs-number">3</span>  term=<span class="hljs-number">0</span> <span class="hljs-keyword">exit</span>=<span class="hljs-number">0</span><br>         pts<span class="hljs-regexp">/4        2023-07-11 02:37              5696 id=ts/</span><span class="hljs-number">4</span>  term=<span class="hljs-number">0</span> <span class="hljs-keyword">exit</span>=<span class="hljs-number">0</span><br>         pts<span class="hljs-regexp">/5        2023-07-11 03:22              5983 id=ts/</span><span class="hljs-number">5</span>  term=<span class="hljs-number">0</span> <span class="hljs-keyword">exit</span>=<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="H-–heading-输出字段标题"><a href="#H-–heading-输出字段标题" class="headerlink" title="-H –heading 输出字段标题"></a>-H –heading 输出字段标题</h4><h4 id="–ips-输出登录主机hostname对应的ip"><a href="#–ips-输出登录主机hostname对应的ip" class="headerlink" title="–ips 输出登录主机hostname对应的ip"></a>–ips 输出登录主机hostname对应的ip</h4><p>等同于 –lookup </p>
+<p>规范化存储IP，如果可用，就不存储主机名</p>
+<h4 id="l-–login-输出系统登录进程"><a href="#l-–login-输出系统登录进程" class="headerlink" title="-l –login 输出系统登录进程"></a>-l –login 输出系统登录进程</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/# who -l<br><span class="hljs-attribute">LOGIN</span>    ttyS0        <span class="hljs-number">2023</span>-<span class="hljs-number">10</span>-<span class="hljs-number">25</span> <span class="hljs-number">10</span>:<span class="hljs-number">21</span>            <span class="hljs-number">306392</span> id=tyS0<br><span class="hljs-attribute">LOGIN</span>    tty1         <span class="hljs-number">2023</span>-<span class="hljs-number">07</span>-<span class="hljs-number">10</span> <span class="hljs-number">11</span>:<span class="hljs-number">11</span>               <span class="hljs-number">821</span> id=tty1<br></code></pre></td></tr></table></figure>
+
+<h4 id="m-只显示-stdin-关联的用户名和主机名"><a href="#m-只显示-stdin-关联的用户名和主机名" class="headerlink" title="-m  只显示 stdin 关联的用户名和主机名"></a>-m  只显示 stdin 关联的用户名和主机名</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/# who -m<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">2</span>        <span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">04</span> <span class="hljs-number">14</span>:<span class="hljs-number">19</span> (<span class="hljs-number">218.30.113.53</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="p-–process-输出初始化衍生的进程"><a href="#p-–process-输出初始化衍生的进程" class="headerlink" title="-p –process 输出初始化衍生的进程"></a>-p –process 输出初始化衍生的进程</h4><h4 id="q-–count-输出当前登录的所有用户名和数量"><a href="#q-–count-输出当前登录的所有用户名和数量" class="headerlink" title="-q –count 输出当前登录的所有用户名和数量"></a>-q –count 输出当前登录的所有用户名和数量</h4><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs elixir">root<span class="hljs-variable">@iZbp1191gh7vw52537lyxrZ</span><span class="hljs-symbol">:/</span><span class="hljs-comment"># who -q</span><br>root root root<br><span class="hljs-comment"># users=3</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="r-–runlevel-输出当前运行级别"><a href="#r-–runlevel-输出当前运行级别" class="headerlink" title="-r –runlevel 输出当前运行级别"></a>-r –runlevel 输出当前运行级别</h4><p>默认是 5</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/# who -r<br>         <span class="hljs-attribute">run</span>-level <span class="hljs-number">5</span>  <span class="hljs-number">2023</span>-<span class="hljs-number">07</span>-<span class="hljs-number">10</span> <span class="hljs-number">11</span>:<span class="hljs-number">11</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="s-–short-只输出用户名，登录方式，时间"><a href="#s-–short-只输出用户名，登录方式，时间" class="headerlink" title="-s –short 只输出用户名，登录方式，时间"></a>-s –short 只输出用户名，登录方式，时间</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/# who -s<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">0</span>        <span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">04</span> <span class="hljs-number">14</span>:<span class="hljs-number">06</span> (<span class="hljs-number">218.30.113.53</span>)<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">1</span>        <span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">04</span> <span class="hljs-number">14</span>:<span class="hljs-number">06</span> (<span class="hljs-number">218.30.113.53</span>)<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">2</span>        <span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">04</span> <span class="hljs-number">14</span>:<span class="hljs-number">19</span> (<span class="hljs-number">218.30.113.53</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="t-–time-显示最后一次系统时钟更改"><a href="#t-–time-显示最后一次系统时钟更改" class="headerlink" title="-t –time 显示最后一次系统时钟更改"></a>-t –time 显示最后一次系统时钟更改</h4><h4 id="T-w-–mesg-增加用户消息状态，可能的值"><a href="#T-w-–mesg-增加用户消息状态，可能的值" class="headerlink" title="-T -w –mesg 增加用户消息状态，可能的值 + - ?"></a>-T -w –mesg 增加用户消息状态，可能的值 + - ?</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/# who -T<br><span class="hljs-attribute">root</span>     - pts/<span class="hljs-number">0</span>        <span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">04</span> <span class="hljs-number">14</span>:<span class="hljs-number">06</span> (<span class="hljs-number">218.30.113.53</span>)<br><span class="hljs-attribute">root</span>     - pts/<span class="hljs-number">1</span>        <span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">04</span> <span class="hljs-number">14</span>:<span class="hljs-number">06</span> (<span class="hljs-number">218.30.113.53</span>)<br><span class="hljs-attribute">root</span>     - pts/<span class="hljs-number">2</span>        <span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">04</span> <span class="hljs-number">14</span>:<span class="hljs-number">19</span> (<span class="hljs-number">218.30.113.53</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="u-–users-用户登录列表"><a href="#u-–users-用户登录列表" class="headerlink" title="-u –users 用户登录列表"></a>-u –users 用户登录列表</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@iZbp1191gh7vw52537lyxrZ:/# who -u<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">0</span>        <span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">04</span> <span class="hljs-number">14</span>:<span class="hljs-number">06</span> <span class="hljs-number">00</span>:<span class="hljs-number">09</span>      <span class="hljs-number">572714</span> (<span class="hljs-number">218.30.113.53</span>)<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">1</span>        <span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">04</span> <span class="hljs-number">14</span>:<span class="hljs-number">06</span> <span class="hljs-number">00</span>:<span class="hljs-number">05</span>      <span class="hljs-number">572786</span> (<span class="hljs-number">218.30.113.53</span>)<br><span class="hljs-attribute">root</span>     pts/<span class="hljs-number">2</span>        <span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">04</span> <span class="hljs-number">14</span>:<span class="hljs-number">19</span>   .        <span class="hljs-number">573045</span> (<span class="hljs-number">218.30.113.53</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="数据来源-1"><a href="#数据来源-1" class="headerlink" title="数据来源"></a>数据来源</h2><p>&#x2F;var&#x2F;run&#x2F;utmp 二进制文件 权限 -rw-rw-r–  root utmp</p>
+<p>&#x2F;var&#x2F;log&#x2F;wtmp 二进制文件 权限 -rw-rw-r–  root utmp</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/yunwei/" class="category-chain-item">yunwei</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/yunwei/commands/" class="category-chain-item">commands</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/yunwei/" class="print-no-link">#yunwei</a>
+      
+        <a href="/tags/commands/" class="print-no-link">#commands</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>w&amp;who</div>
+      <div>https://tthours.github.io/2024/03/15/yunwei/yunweicommands/Linuxcommands/w&amp;who/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              TT
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/15/yunwei/yunweicommands/Linuxcommands/ps/" title="ps">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ps</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/14/network/ip/ubuntu_static_ip_tips/" title="ubuntu_static_ip_tips">
+                        <span class="hidden-mobile">ubuntu_static_ip_tips</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

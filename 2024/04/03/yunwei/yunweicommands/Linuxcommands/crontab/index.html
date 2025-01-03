@@ -1,0 +1,747 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="简介crontab(定时任务)，是系统为用户提供定时执行任务的功能。 语法不同版本的系统，都会在通用语法的之后再扩展一些语法 crontab命令语法：crontab [-u user] [-l | -r | -e] [-i] [-s] -u user：指定用户，不指定表示当前用户，只有管理员才可以指定用户，普通用户使用-u会出现如下提示 12[test@110 &#x2F;]$ crontab -u a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="crontab">
+<meta property="og:url" content="https://tthours.github.io/2024/04/03/yunwei/yunweicommands/Linuxcommands/crontab/index.html">
+<meta property="og:site_name" content="tthours">
+<meta property="og:description" content="简介crontab(定时任务)，是系统为用户提供定时执行任务的功能。 语法不同版本的系统，都会在通用语法的之后再扩展一些语法 crontab命令语法：crontab [-u user] [-l | -r | -e] [-i] [-s] -u user：指定用户，不指定表示当前用户，只有管理员才可以指定用户，普通用户使用-u会出现如下提示 12[test@110 &#x2F;]$ crontab -u a">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-03T01:33:01.335Z">
+<meta property="article:author" content="tt">
+<meta property="article:tag" content="yunwei">
+<meta property="article:tag" content="commands">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>crontab - tthours</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tthours.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ten thousand hours</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/hd.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="crontab"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        tt
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-03 00:00" pubdate>
+          2024年4月3日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">crontab</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <span id="more"></span>
+
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>crontab(定时任务)，是系统为用户提供定时执行任务的功能。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>不同版本的系统，都会在通用语法的之后再扩展一些语法</p>
+<h3 id="crontab命令语法："><a href="#crontab命令语法：" class="headerlink" title="crontab命令语法："></a>crontab命令语法：</h3><p><strong>crontab [-u user] [-l | -r | -e] [-i] [-s]</strong></p>
+<p><strong>-u user</strong>：指定用户，不指定表示当前用户，只有管理员才可以指定用户，普通用户使用-u会出现如下提示</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir">[test<span class="hljs-variable">@110</span> /]<span class="hljs-variable">$ </span>crontab -u apache -l<br>must be privileged to <span class="hljs-keyword">use</span> -u<br></code></pre></td></tr></table></figure>
+
+<p><strong>-l</strong>：list的意思，查看定时任务列表</p>
+<p><strong>-e</strong>：edit的意思，编辑指定定时任务，退出编辑状态之后会自动重新加载（reload）定时任务</p>
+<p><strong>-r</strong>：remove的意思，删除定时任务，如果有权限就会直接删除</p>
+<p><strong>-i</strong>：和-r搭配使用，会出现提示是否删除，输入y&#x2F;Y就会删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[<span class="hljs-built_in">test</span>@110 root]$ crontab -r -i<br>crontab: really delete <span class="hljs-built_in">test</span><span class="hljs-string">&#x27;s crontab?</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>centos7扩展语法，增加了对集群的支持，-c&#x2F;-n host</p>
+<p>centos8扩展语法，增加了对集群的支持，-c&#x2F;-n host</p>
+<p><strong>-V</strong>：显示版本</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs llvm">[root<span class="hljs-title">@localhost</span> /]# cat /etc/redhat-<span class="hljs-keyword">release</span> <br>Red Hat Enterprise Linux <span class="hljs-keyword">release</span> <span class="hljs-number">8.3</span> (Ootpa)<br></code></pre></td></tr></table></figure>
+
+<h2 id="crontab格式"><a href="#crontab格式" class="headerlink" title="crontab格式"></a>crontab格式</h2><h4 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h4><p>* * * * * command(要运行的命令)</p>
+<p># +—————- minute  分钟(0 - 59) </p>
+<p># |  +————- hour    小时(0 - 23) </p>
+<p># |  |  +———- day     日期(1 - 31) </p>
+<p># |  |  |  +——- month   月份(1 - 12) </p>
+<p># |  |  |  |  +—- week    星期(0 - 7) (星期天&#x3D;0 or 7) </p>
+<p># |  |  |  |  | # *  *  *  *  *  要运行的命令**</p>
+<h4 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h4><p>* 表示允许范围内任意数字</p>
+<p>&#x2F; 表示每单元，*&#x2F;5:每5个单元</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">*<span class="hljs-string">/5</span> * * * * <span class="hljs-keyword">ls</span> <span class="hljs-comment">#每五分钟执行一次ls</span><br></code></pre></td></tr></table></figure>
+
+<p>a-b 表示从a-b的数字</p>
+<p>a,b,c 表示在a,b,c的时间点执行</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">每天早上6点追加一条字符串到一个文本。<br>0 6 * * * <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Good morning.&quot;</span> &gt;&gt; <span class="hljs-string">/tmp/test.txt</span><br><br>每两个小时追加一条字符串一个文本。-<br>0 *<span class="hljs-string">/2</span> * * * <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;two hours append text.&quot;</span> &gt;&gt; <span class="hljs-string">/tmp/test.txt</span><br><br>晚上11点到早上8点之间每两个小时，早上八点<br>0 23-7/2，8 * * * <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;sleep&quot;</span> &gt;&gt; <span class="hljs-string">/tmp/test.txt</span><br><br>每个月的4号和每个礼拜的礼拜一到礼拜三的早上11点<br>0 11 4 * 1-3 <span class="hljs-keyword">command</span> line<br><br>1月1日早上4点<br>0 4 1 1 * <span class="hljs-keyword">command</span> line<br><br>每月每天每小时的第 0 分钟执行一次 <span class="hljs-string">/bin/ls</span><br>0 * * * * <span class="hljs-string">/bin/ls</span><br><br>在 12 月内, 每天的早上 6 点到 12 点中，每隔 20 分钟执行一次 <span class="hljs-string">/usr/bin/backup</span><br>*<span class="hljs-string">/20</span> 6-12 * 12 * <span class="hljs-string">/usr/bin/backup</span><br><br>周一到周五每天下午 5<span class="hljs-function">:00</span> 寄一封信给 alex_mail_name :<br>0 17 * * 1-5 mail -s <span class="hljs-string">&quot;hi&quot;</span> alex_mail_name &lt; <span class="hljs-string">/tmp/maildata</span><br><br>每月每天的午夜 0 点 20 分, 2 点 20 分, 4 点 20 分<span class="hljs-string">....</span>执行 <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;haha&quot;</span><br>20 0-23/2 * * * <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;haha&quot;</span><br><br>晚上11点到早上8点之间每两个小时，早上8点,显示时间<br>0 23-7/2，8 * * * date<br></code></pre></td></tr></table></figure>
+
+<h2 id="不同级别crontab"><a href="#不同级别crontab" class="headerlink" title="不同级别crontab"></a>不同级别crontab</h2><h4 id="用户crontab"><a href="#用户crontab" class="headerlink" title="用户crontab"></a>用户crontab</h4><p>&#x2F;var&#x2F;spool&#x2F;cron目录</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs tap">[root@iZbp1191gh7vw52537lyxrZ cron]<span class="hljs-comment"># ls -lat /var/spool/cron</span><br>total 16<br>drwx------.<span class="hljs-number"> 2 </span>root root<span class="hljs-number"> 4096 </span>Jun<span class="hljs-number"> 14 </span>11:35 .<br>-rw------- <span class="hljs-number"> 1 </span>test test  <span class="hljs-number"> 20 </span>Jun<span class="hljs-number"> 14 </span>11:35 test<br>-rw------- <span class="hljs-number"> 1 </span>root root  <span class="hljs-number"> 20 </span>Jun <span class="hljs-number"> 6 </span>13:46 root<br>drwxr-xr-x.<span class="hljs-number"> 9 </span>root root<span class="hljs-number"> 4096 </span>Oct<span class="hljs-number"> 15 </span><span class="hljs-number"> 2017 </span>..<br></code></pre></td></tr></table></figure>
+
+<p>目录权限：</p>
+<p>​	drwx——,也就是700，所属组为root:root,表示只有root有操作权限</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">drwx</span>------. <span class="hljs-number">2</span> root root <span class="hljs-number">4096</span> Jun <span class="hljs-number">14</span> <span class="hljs-number">11</span>:<span class="hljs-number">25</span> cron/<br></code></pre></td></tr></table></figure>
+
+<p>文件权限：</p>
+<p>​	-rw——-，也就是600，所属组为对应用户，表示只有对应对应用户有查看编辑权限（root,有所有权限）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">-rw-------  1 <span class="hljs-built_in">test</span> <span class="hljs-built_in">test</span>   20 Jun 14 11:35 <span class="hljs-built_in">test</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="主系统crontab"><a href="#主系统crontab" class="headerlink" title="主系统crontab"></a>主系统crontab</h4><p>&#x2F;etc&#x2F;crontab </p>
+<p>文件权限为 -rw-r–r–，也就是644，表示任何用户都可以查看，但只有 root 可修改</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">[apache@110 cron]$ <span class="hljs-keyword">ls</span> -lat <span class="hljs-string">/etc/crontab</span><br>-rw-r<span class="hljs-params">--r--</span>. 1 root root 451 Jun 10  2014 <span class="hljs-string">/etc/crontab</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ruby">[apache<span class="hljs-variable">@110</span> cron]<span class="hljs-variable">$ </span>cat /etc/crontab<br><span class="hljs-variable constant_">SHELL</span>=<span class="hljs-regexp">/bin/bash</span><br><span class="hljs-variable constant_">PATH</span>=<span class="hljs-regexp">/sbin:/bin</span><span class="hljs-symbol">:/usr/sbin</span><span class="hljs-symbol">:/usr/bin</span><br><span class="hljs-variable constant_">MAILTO</span>=root<br><br><span class="hljs-comment"># For details see man 4 crontabs</span><br><br><span class="hljs-comment"># Example of job definition:</span><br><span class="hljs-comment"># .---------------- minute (0 - 59)</span><br><span class="hljs-comment"># |  .------------- hour (0 - 23)</span><br><span class="hljs-comment"># |  |  .---------- day of month (1 - 31)</span><br><span class="hljs-comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="hljs-comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="hljs-comment"># |  |  |  |  |</span><br><span class="hljs-comment"># *  *  *  *  * user-name  command to be executed</span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="周期性执行脚本目录"><a href="#周期性执行脚本目录" class="headerlink" title="周期性执行脚本目录"></a>周期性执行脚本目录</h4><p>&#x2F;etc&#x2F;cron.hourly:每小时执行</p>
+<p>&#x2F;etc&#x2F;cron.daily:每天执行</p>
+<p>&#x2F;etc&#x2F;cron.weekly:每周执行</p>
+<p>&#x2F;etc&#x2F;cron.monthly:每月执行</p>
+<p>目录权限均为drwxr-xr-x，也就是766</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">drwxr</span>-xr-x. <span class="hljs-number">2</span> root root <span class="hljs-number">4096</span> Jun <span class="hljs-number">10</span>  <span class="hljs-number">2014</span> /etc/cron.weekly<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="定时任务调用流程"><a href="#定时任务调用流程" class="headerlink" title="定时任务调用流程"></a>定时任务调用流程</h2><h5 id="centos7"><a href="#centos7" class="headerlink" title="centos7"></a>centos7</h5><p>ll &#x2F;etc&#x2F;cron.d</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs tap">[apache@110 cron.weekly]$ ll /etc/cron.d<br>total 8<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 128 </span>Aug <span class="hljs-number"> 9 </span><span class="hljs-number"> 2019 </span>0hourly<br>-rw-------<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 235 </span>Apr <span class="hljs-number"> 1 </span><span class="hljs-number"> 2020 </span>sysstat<br></code></pre></td></tr></table></figure>
+
+<p>cat &#x2F;etc&#x2F;cron.d&#x2F;0hourly</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ruby">[apache<span class="hljs-variable">@110</span> cron.weekly]<span class="hljs-variable">$ </span>cat /etc/cron.d/0hourly<br><span class="hljs-comment"># Run the hourly jobs</span><br><span class="hljs-variable constant_">SHELL</span>=<span class="hljs-regexp">/bin/bash</span><br><span class="hljs-variable constant_">PATH</span>=<span class="hljs-regexp">/sbin:/bin</span><span class="hljs-symbol">:/usr/sbin</span><span class="hljs-symbol">:/usr/bin</span><br><span class="hljs-variable constant_">MAILTO</span>=root<br><span class="hljs-number">01</span> * * * * root run-parts /etc/cron.hourly<br></code></pre></td></tr></table></figure>
+
+
+
+<p>ll &#x2F;etc&#x2F;cron.hourly&#x2F;</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs tap">(base) [root@110 cron]<span class="hljs-comment"># ll /etc/cron.hourly/</span><br>total 4<br>-rwxr-xr-x<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 392 </span>Aug <span class="hljs-number"> 9 </span><span class="hljs-number"> 2019 </span>0anacron<br></code></pre></td></tr></table></figure>
+
+
+
+<p>cat &#x2F;etc&#x2F;cron.hourly&#x2F;0anacron</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs awk">(base) [root@<span class="hljs-number">110</span> cron]<span class="hljs-comment"># cat /etc/cron.hourly/0anacron</span><br><span class="hljs-comment">#!/bin/sh</span><br><span class="hljs-comment"># Check whether 0anacron was run today already</span><br><span class="hljs-keyword">if</span> test -r <span class="hljs-regexp">/var/</span>spool<span class="hljs-regexp">/anacron/</span>cron.daily; then<br>    day=`cat <span class="hljs-regexp">/var/</span>spool<span class="hljs-regexp">/anacron/</span>cron.daily`<br>fi<br><span class="hljs-keyword">if</span> [ `date +%Y%m%d` = <span class="hljs-string">&quot;$day&quot;</span> ]; then<br>    <span class="hljs-keyword">exit</span> <span class="hljs-number">0</span>;<br>fi<br><br><span class="hljs-comment"># Do not run jobs when on battery power</span><br><span class="hljs-keyword">if</span> test -x <span class="hljs-regexp">/usr/</span>bin/on_ac_power; then<br>    <span class="hljs-regexp">/usr/</span>bin<span class="hljs-regexp">/on_ac_power &gt;/</span>dev/null <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span><br>    <span class="hljs-keyword">if</span> test $? -eq <span class="hljs-number">1</span>; then<br>    <span class="hljs-keyword">exit</span> <span class="hljs-number">0</span><br>    fi<br>fi<br><span class="hljs-regexp">/usr/</span>sbin/anacron -s<br></code></pre></td></tr></table></figure>
+
+
+
+<p>cat &#x2F;etc&#x2F;anacrontab</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs ruby">(base) [root<span class="hljs-variable">@110</span> cron]<span class="hljs-comment"># cat /etc/anacrontab</span><br><span class="hljs-comment"># /etc/anacrontab: configuration file for anacron</span><br><br><span class="hljs-comment"># See anacron(8) and anacrontab(5) for details.</span><br><br><span class="hljs-variable constant_">SHELL</span>=<span class="hljs-regexp">/bin/sh</span><br><span class="hljs-variable constant_">PATH</span>=<span class="hljs-regexp">/sbin:/bin</span><span class="hljs-symbol">:/usr/sbin</span><span class="hljs-symbol">:/usr/bin</span><br><span class="hljs-variable constant_">MAILTO</span>=root<br><span class="hljs-comment"># the maximal random delay added to the base delay of the jobs</span><br><span class="hljs-variable constant_">RANDOM_DELAY</span>=<span class="hljs-number">45</span><br><span class="hljs-comment"># the jobs will be started during the following hours only</span><br><span class="hljs-variable constant_">START_HOURS_RANGE</span>=<span class="hljs-number">3</span>-<span class="hljs-number">22</span><br><br><span class="hljs-comment">#period in days   delay in minutes   job-identifier   command</span><br><span class="hljs-number">1</span>       <span class="hljs-number">5</span>       cron.daily              nice run-parts /etc/cron.daily<br><span class="hljs-number">7</span>       <span class="hljs-number">25</span>      cron.weekly             nice run-parts /etc/cron.weekly<br><span class="hljs-variable">@monthly</span> <span class="hljs-number">45</span>     cron.monthly            nice run-parts /etc/cron.monthly<br></code></pre></td></tr></table></figure>
+
+<p>cat &#x2F;etc&#x2F;anacrontab</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs ruby">(base) [root<span class="hljs-variable">@110</span> cron]<span class="hljs-comment"># cat /etc/anacrontab</span><br><span class="hljs-comment"># /etc/anacrontab: configuration file for anacron</span><br><br><span class="hljs-comment"># See anacron(8) and anacrontab(5) for details.</span><br><br><span class="hljs-variable constant_">SHELL</span>=<span class="hljs-regexp">/bin/sh</span><br><span class="hljs-variable constant_">PATH</span>=<span class="hljs-regexp">/sbin:/bin</span><span class="hljs-symbol">:/usr/sbin</span><span class="hljs-symbol">:/usr/bin</span><br><span class="hljs-variable constant_">MAILTO</span>=root<br><span class="hljs-comment"># the maximal random delay added to the base delay of the jobs</span><br><span class="hljs-variable constant_">RANDOM_DELAY</span>=<span class="hljs-number">45</span><br><span class="hljs-comment"># the jobs will be started during the following hours only</span><br><span class="hljs-variable constant_">START_HOURS_RANGE</span>=<span class="hljs-number">3</span>-<span class="hljs-number">22</span><br><br><span class="hljs-comment">#period in days   delay in minutes   job-identifier   command</span><br><span class="hljs-number">1</span>       <span class="hljs-number">5</span>       cron.daily              nice run-parts /etc/cron.daily<br><span class="hljs-number">7</span>       <span class="hljs-number">25</span>      cron.weekly             nice run-parts /etc/cron.weekly<br><span class="hljs-variable">@monthly</span> <span class="hljs-number">45</span>     cron.monthly            nice run-parts /etc/cron.monthly<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>crontab -l 无法查看到 &#x2F;etc&#x2F;cron.daily 目录下的定时任务</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/yunwei/" class="category-chain-item">yunwei</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/yunwei/commands/" class="category-chain-item">commands</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/yunwei/" class="print-no-link">#yunwei</a>
+      
+        <a href="/tags/commands/" class="print-no-link">#commands</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>crontab</div>
+      <div>https://tthours.github.io/2024/04/03/yunwei/yunweicommands/Linuxcommands/crontab/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              TT
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/03/yunwei/yunweicommands/Linuxcommands/date&amp;time/" title="data&amp;time">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">data&amp;time</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/03/yunwei/yunweicommands/Linuxcommands/history/" title="history">
+                        <span class="hidden-mobile">history</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

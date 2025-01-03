@@ -1,0 +1,744 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="&#x2F;etc&#x2F;passwd存储账户的文件 只能是管理员修改，其他用户只有可读权限 12ll  &#x2F;etc&#x2F;passwd-rw-r--r-- 1 root root 1414 Aug 22 09:16 &#x2F;etc&#x2F;passwd  内容示例： 1234567891011121314151617181920212223242526272829(base) [root@110 sk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="passwd">
+<meta property="og:url" content="https://tthours.github.io/2024/04/03/yunwei/yunweicommands/Linuxcommands/passwd/index.html">
+<meta property="og:site_name" content="tthours">
+<meta property="og:description" content="&#x2F;etc&#x2F;passwd存储账户的文件 只能是管理员修改，其他用户只有可读权限 12ll  &#x2F;etc&#x2F;passwd-rw-r--r-- 1 root root 1414 Aug 22 09:16 &#x2F;etc&#x2F;passwd  内容示例： 1234567891011121314151617181920212223242526272829(base) [root@110 sk">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-03T01:38:34.775Z">
+<meta property="article:author" content="tt">
+<meta property="article:tag" content="yunwei">
+<meta property="article:tag" content="commands">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>passwd - tthours</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tthours.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ten thousand hours</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/hd.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="passwd"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        tt
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-03 00:00" pubdate>
+          2024年4月3日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">passwd</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <span id="more"></span>
+
+
+
+
+
+<h1 id="etc-passwd"><a href="#etc-passwd" class="headerlink" title="&#x2F;etc&#x2F;passwd"></a>&#x2F;etc&#x2F;passwd</h1><p>存储账户的文件</p>
+<p>只能是管理员修改，其他用户只有可读权限</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">ll  <span class="hljs-string">/etc/passwd</span><br>-rw-r<span class="hljs-params">--r--</span> 1 root root 1414 Aug 22 09<span class="hljs-function">:16</span> <span class="hljs-string">/etc/passwd</span><br></code></pre></td></tr></table></figure>
+
+<p>内容示例：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs ruby">(base) [root<span class="hljs-variable">@110</span> skel]<span class="hljs-comment"># cat /etc/passwd</span><br><span class="hljs-symbol">root:</span><span class="hljs-symbol">x:</span><span class="hljs-number">0</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span><span class="hljs-symbol">:root</span><span class="hljs-symbol">:/root</span><span class="hljs-symbol">:/bin/bash</span><br><span class="hljs-symbol">bin:</span><span class="hljs-symbol">x:</span><span class="hljs-number">1</span><span class="hljs-symbol">:</span><span class="hljs-number">1</span><span class="hljs-symbol">:bin</span><span class="hljs-symbol">:/bin</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">daemon:</span><span class="hljs-symbol">x:</span><span class="hljs-number">2</span><span class="hljs-symbol">:</span><span class="hljs-number">2</span><span class="hljs-symbol">:daemon</span><span class="hljs-symbol">:/sbin</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">adm:</span><span class="hljs-symbol">x:</span><span class="hljs-number">3</span><span class="hljs-symbol">:</span><span class="hljs-number">4</span><span class="hljs-symbol">:adm</span><span class="hljs-symbol">:/var/adm</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">lp:</span><span class="hljs-symbol">x:</span><span class="hljs-number">4</span><span class="hljs-symbol">:</span><span class="hljs-number">7</span><span class="hljs-symbol">:lp</span><span class="hljs-symbol">:/var/spool/lpd</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">sync:</span><span class="hljs-symbol">x:</span><span class="hljs-number">5</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span><span class="hljs-symbol">:sync</span><span class="hljs-symbol">:/sbin</span><span class="hljs-symbol">:/bin/sync</span><br><span class="hljs-symbol">shutdown:</span><span class="hljs-symbol">x:</span><span class="hljs-number">6</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span><span class="hljs-symbol">:shutdown</span><span class="hljs-symbol">:/sbin</span><span class="hljs-symbol">:/sbin/shutdown</span><br><span class="hljs-symbol">halt:</span><span class="hljs-symbol">x:</span><span class="hljs-number">7</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span><span class="hljs-symbol">:halt</span><span class="hljs-symbol">:/sbin</span><span class="hljs-symbol">:/sbin/halt</span><br><span class="hljs-symbol">mail:</span><span class="hljs-symbol">x:</span><span class="hljs-number">8</span><span class="hljs-symbol">:</span><span class="hljs-number">12</span><span class="hljs-symbol">:mail</span><span class="hljs-symbol">:/var/spool/mail</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">operator:</span><span class="hljs-symbol">x:</span><span class="hljs-number">11</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span><span class="hljs-symbol">:operator</span><span class="hljs-symbol">:/root</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">games:</span><span class="hljs-symbol">x:</span><span class="hljs-number">12</span><span class="hljs-symbol">:</span><span class="hljs-number">100</span><span class="hljs-symbol">:games</span><span class="hljs-symbol">:/usr/games</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">ftp:</span><span class="hljs-symbol">x:</span><span class="hljs-number">14</span><span class="hljs-symbol">:</span><span class="hljs-number">50</span><span class="hljs-symbol">:FTP</span> <span class="hljs-title class_">User</span><span class="hljs-symbol">:/var/ftp</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">nobody:</span><span class="hljs-symbol">x:</span><span class="hljs-number">99</span><span class="hljs-symbol">:</span><span class="hljs-number">99</span><span class="hljs-symbol">:Nobody</span><span class="hljs-symbol">:/</span><span class="hljs-symbol">:/sbin/nologin</span><br>systemd-<span class="hljs-symbol">network:</span><span class="hljs-symbol">x:</span><span class="hljs-number">192</span><span class="hljs-symbol">:</span><span class="hljs-number">192</span><span class="hljs-symbol">:systemd</span> <span class="hljs-title class_">Network</span> <span class="hljs-title class_">Management</span><span class="hljs-symbol">:/</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">dbus:</span><span class="hljs-symbol">x:</span><span class="hljs-number">81</span><span class="hljs-symbol">:</span><span class="hljs-number">81</span><span class="hljs-symbol">:System</span> message <span class="hljs-symbol">bus:</span>/<span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">polkitd:</span><span class="hljs-symbol">x:</span><span class="hljs-number">999</span><span class="hljs-symbol">:</span><span class="hljs-number">997</span><span class="hljs-symbol">:User</span> <span class="hljs-keyword">for</span> <span class="hljs-symbol">polkitd:</span>/<span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">postfix:</span><span class="hljs-symbol">x:</span><span class="hljs-number">89</span><span class="hljs-symbol">:</span><span class="hljs-number">89</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/var/spool/postfix</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">chrony:</span><span class="hljs-symbol">x:</span><span class="hljs-number">998</span><span class="hljs-symbol">:</span><span class="hljs-number">996</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/var/lib/chrony</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">sshd:</span><span class="hljs-symbol">x:</span><span class="hljs-number">74</span><span class="hljs-symbol">:</span><span class="hljs-number">74</span><span class="hljs-symbol">:Privilege-separated</span> <span class="hljs-variable constant_">SSH</span><span class="hljs-symbol">:/var/empty/sshd</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">ntp:</span><span class="hljs-symbol">x:</span><span class="hljs-number">38</span><span class="hljs-symbol">:</span><span class="hljs-number">38</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/etc/ntp</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">tcpdump:</span><span class="hljs-symbol">x:</span><span class="hljs-number">72</span><span class="hljs-symbol">:</span><span class="hljs-number">72</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">nscd:</span><span class="hljs-symbol">x:</span><span class="hljs-number">28</span><span class="hljs-symbol">:</span><span class="hljs-number">28</span><span class="hljs-symbol">:NSCD</span> <span class="hljs-title class_">Daemon</span><span class="hljs-symbol">:/</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">test:</span><span class="hljs-symbol">x:</span><span class="hljs-number">1000</span><span class="hljs-symbol">:</span><span class="hljs-number">1000</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/home/test</span><span class="hljs-symbol">:/bin/bash</span><br><span class="hljs-symbol">redis:</span><span class="hljs-symbol">x:</span><span class="hljs-number">997</span><span class="hljs-symbol">:</span><span class="hljs-number">993</span><span class="hljs-symbol">:Redis</span> <span class="hljs-title class_">Database</span> <span class="hljs-title class_">Server</span><span class="hljs-symbol">:/var/lib/redis</span><span class="hljs-symbol">:/sbin/nologin</span><br><span class="hljs-symbol">dovecot:</span><span class="hljs-symbol">x:</span><span class="hljs-number">97</span><span class="hljs-symbol">:</span><span class="hljs-number">97</span><span class="hljs-symbol">:Dovecot</span> <span class="hljs-variable constant_">IMAP</span> <span class="hljs-symbol">server:</span>/usr/libexec/<span class="hljs-symbol">dovecot:</span>/sbin/nologin<br><span class="hljs-symbol">dovenull:</span><span class="hljs-symbol">x:</span><span class="hljs-number">996</span><span class="hljs-symbol">:</span><span class="hljs-number">992</span><span class="hljs-symbol">:Dovecot<span class="hljs-string">&#x27;s unauthorized user:/usr/libexec/dovecot:/sbin/nologin</span></span><br><span class="hljs-string"><span class="hljs-symbol">saslauth:x:995:76:Saslauthd user:/run/saslauthd:/sbin/nologin</span></span><br><span class="hljs-string"><span class="hljs-symbol">apache:x:1001:1001::/home/apache:/bin/bash</span></span><br></code></pre></td></tr></table></figure>
+
+<p>第一列：账户名</p>
+<p>第二列：原本用于保存密码，现在密码都保存在&#x2F;etc&#x2F;shadow文件，所有都用x替代</p>
+<p>第三列：UID，用户ID，默认管理员(root)为0，也就是0表示为特权账户；1-1000默认为系统用户；也就是正常useradd添加的用户，UID都是大于1000的。</p>
+<p>第四列：GID，用户组ID，和UID相似</p>
+<p>第五列：用户说明</p>
+<p>第六列：用户家目录</p>
+<p>第七列：用户使用的shell</p>
+<p>权限提升：</p>
+<p>指定用户的uid修改为0，即可成为特权用户root，也就是说会有root的权限，也有root的限制，例如：如果有设置root不可登录，提升权限的用户也不可登录</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">C</span>:\WINDOWS\system32&gt;ssh test123@<span class="hljs-number">114.132.246.141</span><br><span class="hljs-attribute">test123</span>@<span class="hljs-number">114.132.246.141</span>&#x27;s password:<br><span class="hljs-attribute">Welcome</span> to Ubuntu <span class="hljs-number">20</span>.<span class="hljs-number">04</span> LTS (GNU/Linux <span class="hljs-number">5</span>.<span class="hljs-number">4</span>.<span class="hljs-number">0</span>-<span class="hljs-number">77</span>-generic x86_64)<br><br><span class="hljs-comment"># id</span><br><span class="hljs-attribute">uid</span>=<span class="hljs-number">0</span>(root) gid=<span class="hljs-number">0</span>(root) groups=<span class="hljs-number">0</span>(root)<br></code></pre></td></tr></table></figure>
+
+<p>默认添加的普通用户bash为&#x2F;bin&#x2F;sh，如果将bash替换为&#x2F;bin&#x2F;bash，使用被提升账户登录后就直接是root</p>
+<p>应急响应需要注意点：</p>
+<p>检查是否存在非root的特权账户</p>
+<p>awk -F: ‘$3&#x3D;&#x3D;0{print $1}’ &#x2F;etc&#x2F;passwd</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>@VM-<span class="hljs-number">8</span>-<span class="hljs-number">5</span>-ubuntu:/home/ubuntu# awk -F: &#x27;$<span class="hljs-number">3</span>==<span class="hljs-number">0</span>&#123;print $<span class="hljs-number">1</span>&#125;&#x27; /etc/passwd<br><span class="hljs-attribute">root</span><br><span class="hljs-attribute">test123</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="passwd"><a href="#passwd" class="headerlink" title="passwd"></a>passwd</h1><p>用户修改用户密码</p>
+<p>默认加密方式为sha512，也就是shadow中以$6开头</p>
+<p>test1:$6$Ld0DTWyFKov1udF7$t1zIuW.XOkBs&#x2F;SfFk1RGzLB9WMHPGgI&#x2F;bN7Q3aGsbliklViiClVLmRbaJ&#x2F;ZPzFuqp9VyoMCHnMJBJ.gLazOvf0:18953:0:99999:7:::</p>
+<p>root@VM-8-5-ubuntu:&#x2F;home&#x2F;ubuntu# ls -lat &#x2F;usr&#x2F;bin&#x2F;passwd<br>-rwsr-xr-x 1 root root 68208 Apr 16  2020 &#x2F;usr&#x2F;bin&#x2F;passwd</p>
+<h1 id="用户权限"><a href="#用户权限" class="headerlink" title="用户权限"></a>用户权限</h1><p>&#x2F;etc&#x2F;passwd第7列为用户所使用的shell，可以表示用户的部分权限</p>
+<p>常见值为 &#x2F;bin&#x2F;bash &#x2F;bin&#x2F;sh &#x2F;usr&#x2F;sbin&#x2F;nologin &#x2F;bin&#x2F;false</p>
+<p>区别</p>
+<p>&#x2F;bin&#x2F;bash 可以登录系统</p>
+<p>&#x2F;bin&#x2F;sh 可以登录系统，软链接（centos下 &#x2F;bin&#x2F;sh -&gt; bash; ubuntu 下&#x2F;bin&#x2F;sh -&gt; dash）</p>
+<p>&#x2F;usr&#x2F;sbin&#x2F;nologin 只不允许登录系统</p>
+<p>&#x2F;bin&#x2F;false 最严格的禁止login选项，一切服务均不可用</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ruby">(base) root<span class="hljs-variable">@VM</span>-<span class="hljs-number">8</span>-<span class="hljs-number">5</span>-<span class="hljs-symbol">ubuntu:</span>/home/ubuntu<span class="hljs-comment"># cat /etc/passwd | grep test | more</span><br><span class="hljs-symbol">test:</span><span class="hljs-symbol">x:</span><span class="hljs-number">1003</span><span class="hljs-symbol">:</span><span class="hljs-number">1003</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/home/test</span><span class="hljs-symbol">:/bin/sh</span><br><span class="hljs-symbol">test1:</span><span class="hljs-symbol">x:</span><span class="hljs-number">1004</span><span class="hljs-symbol">:</span><span class="hljs-number">1004</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/home/test1</span><span class="hljs-symbol">:/usr/sbin/login</span><br><span class="hljs-symbol">test2:</span><span class="hljs-symbol">x:</span><span class="hljs-number">1005</span><span class="hljs-symbol">:</span><span class="hljs-number">1005</span><span class="hljs-symbol">:</span>,,,<span class="hljs-symbol">:/home/test2</span><span class="hljs-symbol">:/bin/false</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="setuid"><a href="#setuid" class="headerlink" title="setuid"></a>setuid</h1><p>&#x2F;etc&#x2F;shadow权限为000，也就是说普通用户没有任何权限，那为什么普通用户可以修改自己的密码？</p>
+<p>查询资料得知，是因为passwd命令存在s标记，且在文件系统中&#x2F;usr&#x2F;bin&#x2F;passwd文件归属于root:root,所以在passwd运行时将以root权限。</p>
+<p>s标记来源setuid。</p>
+<p>setuid</p>
+<p>setuid设置的程序，任何用户执行时，均以该文件在文件系统中的归属者权限运行。</p>
+<p>测试案例：</p>
+<p>root环境下编写c文件，nc0.c</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;pwd.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">struct</span>  <span class="hljs-title class_">passwd</span> *pwd;<br>    pwd = <span class="hljs-built_in">getpwuid</span>(<span class="hljs-built_in">getuid</span>());<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s uid is: %d\n&quot;</span>,pwd-&gt;pw_name,<span class="hljs-built_in">geteuid</span>());<br>    <span class="hljs-built_in">sleep</span>(<span class="hljs-number">30</span>);<br>    <span class="hljs-built_in">remove</span>(<span class="hljs-string">&quot;nc0del.txt&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br> &#125;<br></code></pre></td></tr></table></figure>
+
+<p>编译生成二进制文件nc0</p>
+<p>gcc nc0.c -o nc0</p>
+<p>创建root权限文件nc0del.txt</p>
+<p>touch nc0del.txt</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs tap">root@VM-8-5-ubuntu:/opt/nc0<span class="hljs-comment"># ls -l</span><br>total 24<br>-rwxr-xr-x<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 16920 </span>Nov<span class="hljs-number"> 22 </span>22:46 nc0<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root  <span class="hljs-number"> 237 </span>Nov<span class="hljs-number"> 22 </span>22:41 nc0.c<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root    <span class="hljs-number"> 0 </span>Nov<span class="hljs-number"> 22 </span>22:42 nc0del.txt<br></code></pre></td></tr></table></figure>
+
+<p>没有设置setuid执行nc0</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs tap">$ id<br>uid=1002(nc0) gid=1002(nc0) groups=1002(nc0)<br>$ pwd<br>/opt/nc0<br>$ ls -l<br>total 24<br>-rwxr-xr-x<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 16920 </span>Nov<span class="hljs-number"> 22 </span>22:46 nc0<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root  <span class="hljs-number"> 237 </span>Nov<span class="hljs-number"> 22 </span>22:41 nc0.c<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root    <span class="hljs-number"> 0 </span>Nov<span class="hljs-number"> 22 </span>22:42 nc0del.txt<br>$ ./nc0<br>nc0 uid is: 1002<br>$ ls -l<br>total 24<br>-rwxr-xr-x<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 16920 </span>Nov<span class="hljs-number"> 22 </span>22:46 nc0<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root  <span class="hljs-number"> 237 </span>Nov<span class="hljs-number"> 22 </span>22:41 nc0.c<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root    <span class="hljs-number"> 0 </span>Nov<span class="hljs-number"> 22 </span>22:42 nc0del.txt<br></code></pre></td></tr></table></figure>
+
+<p>可以看到执行nc0，并没有删除root权限的nc0test.txt</p>
+<p>设置setuid执行nc0</p>
+<p>chmod +s nc0</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs tap">root@VM-8-5-ubuntu:/opt/nc0<span class="hljs-comment"># ls -l</span><br>total 24<br>-rwxr-xr-x<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 16920 </span>Nov<span class="hljs-number"> 22 </span>22:46 nc0<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root  <span class="hljs-number"> 237 </span>Nov<span class="hljs-number"> 22 </span>22:41 nc0.c<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root    <span class="hljs-number"> 0 </span>Nov<span class="hljs-number"> 22 </span>22:42 nc0del.txt<br>root@VM-8-5-ubuntu:/opt/nc0<span class="hljs-comment"># chmod +s nc0</span><br>root@VM-8-5-ubuntu:/opt/nc0<span class="hljs-comment"># ls -l</span><br>total 24<br>-rwsr-sr-x<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 16920 </span>Nov<span class="hljs-number"> 22 </span>22:46 nc0<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root  <span class="hljs-number"> 237 </span>Nov<span class="hljs-number"> 22 </span>22:41 nc0.c<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root    <span class="hljs-number"> 0 </span>Nov<span class="hljs-number"> 22 </span>22:42 nc0del.txt<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs tap">$ ls -l<br>total 24<br>-rwsr-sr-x<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 16920 </span>Nov<span class="hljs-number"> 22 </span>22:46 nc0<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root  <span class="hljs-number"> 237 </span>Nov<span class="hljs-number"> 22 </span>22:41 nc0.c<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root    <span class="hljs-number"> 0 </span>Nov<span class="hljs-number"> 22 </span>22:42 nc0del.txt<br>$ ./nc0<br>nc0 uid is: 0<br>$ ls -l<br>total 24<br>-rwsr-sr-x<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 16920 </span>Nov<span class="hljs-number"> 22 </span>22:46 nc0<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root  <span class="hljs-number"> 237 </span>Nov<span class="hljs-number"> 22 </span>22:41 nc0.c<br><br><br>root@VM-8-5-ubuntu:/opt/nc0<span class="hljs-comment"># ps -ef | grep nc0</span><br>root       <span class="hljs-number"> 2532 </span>   <span class="hljs-number"> 840 </span><span class="hljs-number"> 0 </span>22:45 ?        00:00:00 sshd: nc0 [priv]<br>nc0        <span class="hljs-number"> 2553 </span>     <span class="hljs-number"> 1 </span><span class="hljs-number"> 0 </span>22:45 ?        00:00:00 /lib/systemd/systemd --user<br>nc0        <span class="hljs-number"> 2562 </span>  <span class="hljs-number"> 2553 </span><span class="hljs-number"> 0 </span>22:45 ?        00:00:00 (sd-pam)<br>nc0        <span class="hljs-number"> 2633 </span>  <span class="hljs-number"> 2532 </span><span class="hljs-number"> 0 </span>22:45 ?        00:00:00 sshd: nc0@pts/1<br>nc0        <span class="hljs-number"> 2639 </span>  <span class="hljs-number"> 2633 </span><span class="hljs-number"> 0 </span>22:45 pts/1    00:00:00 -sh<br>root       <span class="hljs-number"> 4738 </span>  <span class="hljs-number"> 2639 </span><span class="hljs-number"> 0 </span>22:55 pts/1    00:00:00 ./nc0<br></code></pre></td></tr></table></figure>
+
+<p>可以看到执行nc0命令的时候是以root的权限运行的，成功删除root权限文件，同时可以看到执行的用户是root用户。</p>
+<p>常见setuid的命令</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs tap">root@VM-8-5-ubuntu:/opt/nc0<span class="hljs-comment"># ls -l /usr/bin/ | grep &quot;rws&quot;</span><br>-rwsr-sr-x<span class="hljs-number"> 1 </span>daemon daemon     <span class="hljs-number"> 55560 </span>Nov<span class="hljs-number"> 13 </span><span class="hljs-number"> 2018 </span>at<br>-rwsr-xr-x<span class="hljs-number"> 1 </span>root   root       <span class="hljs-number"> 85064 </span>Apr<span class="hljs-number"> 16 </span><span class="hljs-number"> 2020 </span>chfn<br>-rwsr-xr-x<span class="hljs-number"> 1 </span>root   root       <span class="hljs-number"> 53040 </span>Apr<span class="hljs-number"> 16 </span><span class="hljs-number"> 2020 </span>chsh<br>-rwsr-xr-x<span class="hljs-number"> 1 </span>root   root       <span class="hljs-number"> 39144 </span>Mar <span class="hljs-number"> 7 </span><span class="hljs-number"> 2020 </span>fusermount<br>-rwsr-xr-x<span class="hljs-number"> 1 </span>root   root       <span class="hljs-number"> 88464 </span>Apr<span class="hljs-number"> 16 </span><span class="hljs-number"> 2020 </span>gpasswd<br>-rwsr-xr-x<span class="hljs-number"> 1 </span>root   root       <span class="hljs-number"> 55528 </span>Apr <span class="hljs-number"> 2 </span><span class="hljs-number"> 2020 </span>mount<br>-rwsr-xr-x<span class="hljs-number"> 1 </span>root   root       <span class="hljs-number"> 44784 </span>Apr<span class="hljs-number"> 16 </span><span class="hljs-number"> 2020 </span>newgrp<br>-rwsr-xr-x<span class="hljs-number"> 1 </span>root   root       <span class="hljs-number"> 68208 </span>Apr<span class="hljs-number"> 16 </span><span class="hljs-number"> 2020 </span>passwd<br>-rwsr-xr-x<span class="hljs-number"> 1 </span>root   root       <span class="hljs-number"> 31032 </span>May<span class="hljs-number"> 26 </span>19:50 pkexec<br>-rwsr-xr-x<span class="hljs-number"> 1 </span>root   root       <span class="hljs-number"> 67816 </span>Apr <span class="hljs-number"> 2 </span><span class="hljs-number"> 2020 </span>su<br>-rwsr-xr-x<span class="hljs-number"> 1 </span>root   root      <span class="hljs-number"> 166056 </span>Jan<span class="hljs-number"> 19 </span><span class="hljs-number"> 2021 </span>sudo<br>-rwsr-xr-x<span class="hljs-number"> 1 </span>root   root       <span class="hljs-number"> 39144 </span>Apr <span class="hljs-number"> 2 </span><span class="hljs-number"> 2020 </span>umount<br></code></pre></td></tr></table></figure>
+
+
+
+<p>setuid注意事项</p>
+<p>1、setuid基于安全考虑，只在二进制文件有效</p>
+<p>测试在sh脚本的有效性，可以添加属性，但是无法生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@VM-8-5-ubuntu:/opt/nc0# <span class="hljs-built_in">cat</span> nc0.sh<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;*当前登陆的用户名:<span class="hljs-variable">$USER</span>   UID:<span class="hljs-variable">$UID</span>&quot;</span><br><span class="hljs-built_in">rm</span> -rf nc0del.txt<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs tap">root@VM-8-5-ubuntu:/opt/nc0<span class="hljs-comment"># ls -lat *</span><br>-rw-r--r--<span class="hljs-number"> 1 </span>root root    <span class="hljs-number"> 0 </span>Nov<span class="hljs-number"> 23 </span>17:06 nc0del.txt<br>-rwSr--r--<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 68 </span>Nov<span class="hljs-number"> 23 </span>17:06 nc0.sh<br>-rwsr-sr-x<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 16920 </span>Nov<span class="hljs-number"> 22 </span>22:46 nc0<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root  <span class="hljs-number"> 237 </span>Nov<span class="hljs-number"> 22 </span>22:41 nc0.c<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs tap">$ id<br>uid=1002(nc0) gid=1002(nc0) groups=1002(nc0)<br>$ cd /opt/nc0<br>$ ls -lat<br>total 36<br>drwxr-xr-x<span class="hljs-number"> 2 </span>root root <span class="hljs-number"> 4096 </span>Nov<span class="hljs-number"> 23 </span>17:06 .<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root    <span class="hljs-number"> 0 </span>Nov<span class="hljs-number"> 23 </span>17:06 nc0del.txt<br>-rwSr--r--<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 68 </span>Nov<span class="hljs-number"> 23 </span>17:06 nc0.sh<br>-rwsr-sr-x<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 16920 </span>Nov<span class="hljs-number"> 22 </span>22:46 nc0<br>drwxr-xr-x<span class="hljs-number"> 4 </span>root root <span class="hljs-number"> 4096 </span>Nov<span class="hljs-number"> 22 </span>22:42 ..<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root  <span class="hljs-number"> 237 </span>Nov<span class="hljs-number"> 22 </span>22:41 nc0.c<br>$ bash nc0.sh<br>*当前登陆的用户名:nc0   UID:1002<br>rm: cannot remove &#x27;nc0del.txt&#x27;: Permission denied<br>$<br></code></pre></td></tr></table></figure>
+
+<p>参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lsdb/p/12197090.html">https://www.cnblogs.com/lsdb/p/12197090.html</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/yunwei/" class="category-chain-item">yunwei</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/yunwei/commands/" class="category-chain-item">commands</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/yunwei/" class="print-no-link">#yunwei</a>
+      
+        <a href="/tags/commands/" class="print-no-link">#commands</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>passwd</div>
+      <div>https://tthours.github.io/2024/04/03/yunwei/yunweicommands/Linuxcommands/passwd/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              TT
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/03/yunwei/yunweicommands/Linuxcommands/ln/" title="ln">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ln</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/03/yunwei/yunweicommands/Linuxcommands/tcpdump/" title="tcpdump">
+                        <span class="hidden-mobile">tcpdump</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

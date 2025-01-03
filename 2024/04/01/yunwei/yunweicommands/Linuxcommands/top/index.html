@@ -1,0 +1,769 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言默认自带该命令 用于实时动态的查看系统的整体运行情况 命令语法top(选项) 选项-b : 以批处理模式操作 -c : 显示完整的命令 -d : 屏幕刷新间隔时间   -d ss.tt (seconds.tenths) -I ：忽略失效过程 -s ：累积模式 -i&lt;时间&gt;  : 设置间隔时间 -u&lt;用户名&gt;：指定用户名 -p&lt;进程号&gt;：指定进程 -n&amp;l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="top">
+<meta property="og:url" content="https://tthours.github.io/2024/04/01/yunwei/yunweicommands/Linuxcommands/top/index.html">
+<meta property="og:site_name" content="tthours">
+<meta property="og:description" content="前言默认自带该命令 用于实时动态的查看系统的整体运行情况 命令语法top(选项) 选项-b : 以批处理模式操作 -c : 显示完整的命令 -d : 屏幕刷新间隔时间   -d ss.tt (seconds.tenths) -I ：忽略失效过程 -s ：累积模式 -i&lt;时间&gt;  : 设置间隔时间 -u&lt;用户名&gt;：指定用户名 -p&lt;进程号&gt;：指定进程 -n&amp;l">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tthours.github.io/2024/12/16/tthours/unweicommands/Linuxcommands/top/clipboard-16377255556361.png">
+<meta property="og:image" content="https://tthours.github.io/2024/12/16/tthours/unweicommands/Linuxcommands/top/image-20240401192203874.png">
+<meta property="article:published_time" content="2024-03-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-01T11:34:11.551Z">
+<meta property="article:author" content="tt">
+<meta property="article:tag" content="yunwei">
+<meta property="article:tag" content="commands">
+<meta property="article:tag" content="top">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tthours.github.io/2024/12/16/tthours/unweicommands/Linuxcommands/top/clipboard-16377255556361.png">
+  
+  
+  
+  <title>top - tthours</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tthours.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ten thousand hours</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/hd.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="top"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        tt
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-01 00:00" pubdate>
+          2024年4月1日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">top</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <span id="more"></span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>默认自带该命令</p>
+<p>用于实时动态的查看系统的整体运行情况</p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>top(选项)</p>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p>-b : 以批处理模式操作</p>
+<p>-c : 显示完整的命令</p>
+<p>-d : 屏幕刷新间隔时间   -d ss.tt (seconds.tenths)</p>
+<p>-I ：忽略失效过程</p>
+<p>-s ：累积模式</p>
+<p>-i&lt;时间&gt;  : 设置间隔时间</p>
+<p>-u&lt;用户名&gt;：指定用户名</p>
+<p>-p&lt;进程号&gt;：指定进程</p>
+<p>-n&lt;次数&gt;：循环显示的次数</p>
+<p>-o [+&#x2F;-]fieldname1 ：指定排序字段，+表示降序，-表示升序</p>
+<h3 id="实例分析"><a href="#实例分析" class="headerlink" title="实例分析"></a>实例分析</h3><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs llvm">[root<span class="hljs-title">@VM_160_165_centos</span> ~]# top<br>top - <span class="hljs-number">20</span>:<span class="hljs-number">39</span>:<span class="hljs-number">29</span> up <span class="hljs-number">4</span> days<span class="hljs-punctuation">,</span> <span class="hljs-number">28</span> <span class="hljs-keyword">min</span><span class="hljs-punctuation">,</span>  <span class="hljs-number">2</span> users<span class="hljs-punctuation">,</span>  <span class="hljs-keyword">load</span> average: <span class="hljs-number">0.00</span><span class="hljs-punctuation">,</span> <span class="hljs-number">0.00</span><span class="hljs-punctuation">,</span> <span class="hljs-number">0.00</span><br>Tasks: <span class="hljs-number">110</span> total<span class="hljs-punctuation">,</span>   <span class="hljs-number">1</span> running<span class="hljs-punctuation">,</span> <span class="hljs-number">109</span> sleeping<span class="hljs-punctuation">,</span>   <span class="hljs-number">0</span> stopped<span class="hljs-punctuation">,</span>   <span class="hljs-number">0</span> zombie<br>Cpu(s):  <span class="hljs-number">0.2</span><span class="hljs-variable">%us</span><span class="hljs-punctuation">,</span>  <span class="hljs-number">0.2</span><span class="hljs-variable">%sy</span><span class="hljs-punctuation">,</span>  <span class="hljs-number">0.0</span><span class="hljs-variable">%ni</span><span class="hljs-punctuation">,</span> <span class="hljs-number">99.0</span><span class="hljs-variable">%id</span><span class="hljs-punctuation">,</span>  <span class="hljs-number">0.7</span><span class="hljs-variable">%wa</span><span class="hljs-punctuation">,</span>  <span class="hljs-number">0.0</span><span class="hljs-variable">%hi</span><span class="hljs-punctuation">,</span>  <span class="hljs-number">0.0</span><span class="hljs-variable">%si</span><span class="hljs-punctuation">,</span>  <span class="hljs-number">0.0</span><span class="hljs-variable">%st</span><br>Mem:   <span class="hljs-number">3922456</span>k total<span class="hljs-punctuation">,</span>  <span class="hljs-number">1292332</span>k used<span class="hljs-punctuation">,</span>  <span class="hljs-number">2630124</span>k <span class="hljs-keyword">free</span><span class="hljs-punctuation">,</span>   <span class="hljs-number">667296</span>k buffers<br>Swap:        <span class="hljs-number">0</span>k total<span class="hljs-punctuation">,</span>        <span class="hljs-number">0</span>k used<span class="hljs-punctuation">,</span>        <span class="hljs-number">0</span>k <span class="hljs-keyword">free</span><span class="hljs-punctuation">,</span>   <span class="hljs-number">427100</span>k cached<br><br>  PID USER      PR  NI  VIRT  RES  SHR S <span class="hljs-variable">%CPU</span> <span class="hljs-variable">%MEM</span>    TIME+  COMMAND                                                                          <br><span class="hljs-number">25723</span> root      <span class="hljs-number">20</span>   <span class="hljs-number">0</span> <span class="hljs-number">62160</span> <span class="hljs-number">9472</span> <span class="hljs-number">2108</span> S  <span class="hljs-number">0.3</span>  <span class="hljs-number">0.2</span>   <span class="hljs-number">0</span>:<span class="hljs-number">01.02</span> barad_agent                                                                       <br><span class="hljs-number">25724</span> root      <span class="hljs-number">20</span>   <span class="hljs-number">0</span>  <span class="hljs-number">434</span>m  <span class="hljs-number">12</span>m <span class="hljs-number">2240</span> S  <span class="hljs-number">0.3</span>  <span class="hljs-number">0.3</span>   <span class="hljs-number">0</span>:<span class="hljs-number">05.51</span> barad_agent  <br></code></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<p>top - 20:39:29		当前系统时间</p>
+<p>up 4 days, 28 min	系统运行时间</p>
+<p>2 users			当前登录用户</p>
+<p>load average: 0.00, 0.00, 0.00	系统负载，任务队列的平均长度</p>
+<p>Tasks: 110 total	总进程数</p>
+<p>1 running			正在运行的进程数</p>
+<p>109 sleeping		睡眠的进程数</p>
+<p> 0 stopped		停止的进程数</p>
+<p>0 zombie			冻结的进程数</p>
+<p>Cpu(s):  0.2%us	用户空间占用 CPU 百分比</p>
+<p>0.2%sy			内核空间占用 CPU 百分比</p>
+<p>0.0%ni			用户进程空间内改变过优先级的进程占用CPU百分比</p>
+<p>99.0%id			空闲 CPU 百分比</p>
+<p>0.7%wa			等待输入输出的 CPU 时间百分比</p>
+<p>0.0%si</p>
+<p>0.0%st</p>
+<p>Mem:   3922456k total	物理内存总量</p>
+<p>1292332k used		使用的物理内存总量</p>
+<p>2630124k free			空闲内存总量</p>
+<p>667296k buffers		用作内核缓存的内存量</p>
+<p>Swap:        0k total		交换区内存总量</p>
+<p>0k used				使用的交换区总量</p>
+<p>0k free				空闲交换区总量</p>
+<p>427100k cached		缓冲的交换区总量</p>
+<p>VIRT</p>
+<p>virtual memory usage 虚拟内存</p>
+<p>进程需要的虚拟内存大小</p>
+<p>如果进程申请 100M 内存，实际只使用 10 M ，值会增长 100M</p>
+<p>RES</p>
+<p>resident memory usage 常驻内存</p>
+<p>进程当前使用的内存大小，不包括 swap out</p>
+<p>包含其他进程的共享</p>
+<p>只统计加载的库文件所占内存大小</p>
+<p>如果进程申请 100M 内存，实际只使用 10M ，值只会增长 10M，与 VIRT 相反</p>
+<p>SHR</p>
+<p>shared memory 共享内存</p>
+<p>除了自身进程的共享内存，也包括其他进程的共享内存</p>
+<p>虽然进程只使用几个共享库的函数，但是包含了整个共享库的大小</p>
+<p>某个进程所占物理内存大小： RES - SHR</p>
+<p>swap out 后，值会下降</p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="查看每个-CPU-的使用情况"><a href="#查看每个-CPU-的使用情况" class="headerlink" title="查看每个 CPU 的使用情况"></a>查看每个 CPU 的使用情况</h3><p>top 命令之后按  1  ,会显示每个 CPU 的使用情况，如果不操作，显示的是 CPU 的平均状态</p>
+<p><img src="/2024/12/16/tthours/unweicommands/Linuxcommands/top/clipboard-16377255556361.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>load average: 237.05, 235.56, 231.97</p>
+<p>这个值是 CPU 内存 硬盘 综合的负载</p>
+<h3 id="查看指定进程的完整命令"><a href="#查看指定进程的完整命令" class="headerlink" title="查看指定进程的完整命令"></a>查看指定进程的完整命令</h3><p>top -c -p 1097</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs tap">root@VM-8-5-ubuntu:/home/ubuntu<span class="hljs-comment"># top -c -p 1097</span><br>top - 16:36:12 up<span class="hljs-number"> 1 </span>day, 17:56, <span class="hljs-number"> 2 </span>users,  load average: 0.00, 0.00, 0.00<br>Tasks:  <span class="hljs-number"> 1 </span>total,  <span class="hljs-number"> 0 </span>running,  <span class="hljs-number"> 1 </span>sleeping,  <span class="hljs-number"> 0 </span>stopped,  <span class="hljs-number"> 0 </span>zombie<br>%Cpu(s):  0.7 us,  0.2 sy,  0.0 ni, 99.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st<br>MiB Mem :   3935.6 total,   2508.0 free,    309.4 used,   1118.1 buff/cache<br>MiB Swap:      0.0 total,      0.0 free,      0.0 used.   3385.2 avail Mem<br><br>    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND<br>  <span class="hljs-number"> 1097 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span><span class="hljs-number"> 874176 </span><span class="hljs-number"> 89136 </span><span class="hljs-number"> 49940 </span>S   0.0   2.2   0:21.24 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="3、查看CPU占用"><a href="#3、查看CPU占用" class="headerlink" title="3、查看CPU占用"></a>3、查看CPU占用</h3><p><strong>top -c -o +%CPU</strong></p>
+<p>以%CPU为指标降序排列</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs tap">root@VM-8-5-ubuntu:/home/ubuntu<span class="hljs-comment"># top -c -o +%CPU</span><br>top - 16:41:52 up<span class="hljs-number"> 1 </span>day, 18:01, <span class="hljs-number"> 2 </span>users,  load average: 0.05, 0.03, 0.00<br>Tasks:<span class="hljs-number"> 115 </span>total,  <span class="hljs-number"> 1 </span>running,<span class="hljs-number"> 114 </span>sleeping,  <span class="hljs-number"> 0 </span>stopped,  <span class="hljs-number"> 0 </span>zombie<br>%Cpu(s):  0.2 us,  0.2 sy,  0.0 ni, 99.7 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st<br>MiB Mem :   3935.6 total,   2508.6 free,    308.6 used,   1118.4 buff/cache<br>MiB Swap:      0.0 total,      0.0 free,      0.0 used.   3386.0 avail Mem<br><br>    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND<br>    <span class="hljs-number"> 10 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span>     <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>S   0.3   0.0   0:01.16 [ksoftirqd/0]<br>  <span class="hljs-number"> 1670 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span> <span class="hljs-number"> 47856 </span><span class="hljs-number"> 11448 </span> <span class="hljs-number"> 3872 </span>S   0.3   0.3   1:32.43 barad_agent<br>  <span class="hljs-number"> 1671 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span><span class="hljs-number"> 491996 </span><span class="hljs-number"> 14372 </span> <span class="hljs-number"> 4312 </span>S   0.3   0.4   7:37.78 barad_agent<br></code></pre></td></tr></table></figure>
+
+
+
+<p>dmidecode | grep Product</p>
+<p>查看物理机型号</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs excel">[root@iZbp1191gh7vw52537lyxrZ ~]# dmidecode | grep <span class="hljs-built_in">Product</span><br>	<span class="hljs-built_in">Product</span> <span class="hljs-built_in">Na</span><span class="hljs-symbol">me:</span> Alibaba Cloud ECS<br></code></pre></td></tr></table></figure>
+
+<p>atop</p>
+<p>ATOP - 10                               2019&#x2F;04&#x2F;29  21:06:18                               ———                                10s elapsed</p>
+<p>PRC | sys    0.22s | user   0.17s  | #proc    809 | #trun      1 | #tslpi   800  | #tslpu   242 | #zombie    0 | clones     0  | #exit      0 |</p>
+<p>CPU | sys       2% | user      1%  | irq       0% | idle   3041% | wait    156%  | steal     0% | guest     0% | curf 2.50GHz  | curscal   ?% |</p>
+<p>CPL | avg1  235.50 | avg5  232.99  | avg15 232.35 |              |               | csw     4910 | intr   14354 |               | numcpu    32 |</p>
+<p>MEM | tot    31.3G | free  563.4M  | cache  14.2G | dirty   0.5M | buff  843.2M  | slab  980.2M | slrec 855.1M | shmem   0.2M  | shrss   0.0M |</p>
+<p>SWP | tot   128.0G | free  126.5G  |              |              |               |              |              | vmcom  18.3G  | vmlim 143.7G |</p>
+<p>DSK |          sda | busy    100%  | read      73 | write   1050 | KiB&#x2F;r      5  | KiB&#x2F;w      6 | MBr&#x2F;s   0.04 | MBw&#x2F;s   0.67  | avio 8.90 ms |</p>
+<p>NET | transport    | tcpi      13  | tcpo      13 | udpi       0 | udpo       0  | tcpao      5 | tcppo      0 | tcprs      0  | udpip   9276 |</p>
+<p>NET | network      | ipi     9745  | ipo       13 | ipfrw      0 | deliv   9292  |              |              | icmpi      0  | icmpo      0 |</p>
+<p>NET | em1       0% | pcki   10260  | pcko       1 | si 2474 Kbps | so    1 Kbps  | erri       0 | erro       0 | drpi       0  | drpo       0 |</p>
+<p>NET | em2	0% | pcki      18  | pcko       0 | si    1 Kbps | so    0 Kbps  | erri       0 | erro       0 | drpi	    0  | drpo       0 |</p>
+<p>NET | lo      —- | pcki      12  | pcko      12 | si    0 Kbps | so    0 Kbps  | erri       0 | erro       0 | drpi       0  | drpo       0 |</p>
+<p>  PID     TID   RUID       EUID        THR   SYSCPU   USRCPU    VGROW    RGROW    RDDSK    WRDSK   ST   EXC   S   CPUNR    CPU   CMD        1&#x2F;2</p>
+<p>38548       -   root       root          1    0.12s    0.05s    1852K    1852K       0K       0K   –     -   R       1     2%   atop</p>
+<p>12749       -   root	   root        144    0.02s    0.06s       0K     128K       0K       8K   –     -   S      19     1%   java</p>
+<p>38418       -   sec 	   sec          54    0.02s    0.03s       0K       0K     360K       8K   –     -   S      18     1%   java</p>
+<p>10876       -   smmsp      smmsp         1    0.00s    0.01s       0K       0K       0K       0K   –     -   D       0     0%   sendmail</p>
+<p> 7570       -   smmsp      smmsp         1    0.01s    0.00s	   0K       0K       0K       0K   –     -   D       3     0%   sendmail</p>
+<p>48544       -   root       root         10    0.00s    0.01s	   0K     360K       0K      12K   –     -   D       0     0%   node</p>
+<p>31529       -   smmsp      smmsp         1    0.01s    0.00s       0K       0K       0K       0K   –     -   D       5     0%   sendmail</p>
+<p>30859       -   mysql      mysql        16    0.01s    0.00s       0K       0K       0K       0K   –     -   S       0     0%   mysqld</p>
+<p>41246       -   root       root          4    0.00s    0.01s       0K       0K       0K       0K   –     -   S      26     0%   rsyslogd</p>
+<p>  136       -   root 	   root          1    0.01s    0.00s       0K       0K       0K       0K   –     -   S       5     0%   events&#x2F;5</p>
+<p>  204       -   root       root          1    0.01s    0.00s       0K       0K       0K       0K   –     -   S       2     0%   kblockd&#x2F;2</p>
+<p> 1788       -   root       root          1    0.01s    0.00s	   0K       0K       0K       4K   –     -   D       2     0%   flush-8:0</p>
+<p>33709       -   smmsp      smmsp         1    0.00s    0.00s	   0K       0K       0K       0K   –     -   D      18     0%   sendmail</p>
+<p>22496       -   smmsp      smmsp         1    0.00s    0.00s	   0K       0K       0K       0K   –     -   D      18     0%   sendmail</p>
+<p><img src="/2024/12/16/tthours/unweicommands/Linuxcommands/top/image-20240401192203874.png" srcset="/img/loading.gif" lazyload alt="image-20240401192203874"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>[1] Linux top命令的用法详细详解] 莫水千流 2017-01-21 09:09 </p>
+<p>链接：<a target="_blank" rel="noopener" href="http://www.cnblogs.com/zhoug2020/p/6336453.html">http://www.cnblogs.com/zhoug2020/p/6336453.html</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/yunwei/" class="category-chain-item">yunwei</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/yunwei/commands/" class="category-chain-item">commands</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/yunwei/" class="print-no-link">#yunwei</a>
+      
+        <a href="/tags/commands/" class="print-no-link">#commands</a>
+      
+        <a href="/tags/top/" class="print-no-link">#top</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>top</div>
+      <div>https://tthours.github.io/2024/04/01/yunwei/yunweicommands/Linuxcommands/top/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              TT
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/01/yunwei/yunweicommands/Linuxcommands/iostat/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/15/security/secresponse/attack_hidden/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

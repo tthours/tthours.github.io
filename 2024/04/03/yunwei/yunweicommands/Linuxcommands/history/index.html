@@ -1,0 +1,761 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="命令语法history num 显示指定条数的最新历史记录history num 123456[root@iZbp1191gh7vw52537lyxrZ ~]# history 5  106  root 2022-08-14 10:54:02  ls  107  root 2022-08-14 10:54:07  cat &#x2F;etc&#x2F;bashrc  108  root 2022-08-14 10">
+<meta property="og:type" content="article">
+<meta property="og:title" content="history">
+<meta property="og:url" content="https://tthours.github.io/2024/04/03/yunwei/yunweicommands/Linuxcommands/history/index.html">
+<meta property="og:site_name" content="tthours">
+<meta property="og:description" content="命令语法history num 显示指定条数的最新历史记录history num 123456[root@iZbp1191gh7vw52537lyxrZ ~]# history 5  106  root 2022-08-14 10:54:02  ls  107  root 2022-08-14 10:54:07  cat &#x2F;etc&#x2F;bashrc  108  root 2022-08-14 10">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-03T06:52:29.358Z">
+<meta property="article:author" content="tt">
+<meta property="article:tag" content="yunwei">
+<meta property="article:tag" content="commands">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>history - tthours</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tthours.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ten thousand hours</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/hd.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="history"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        tt
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-03 00:00" pubdate>
+          2024年4月3日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">history</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <span id="more"></span>
+
+<h2 id="命令语法"><a href="#命令语法" class="headerlink" title="命令语法"></a>命令语法</h2><h3 id="history-num-显示指定条数的最新历史记录"><a href="#history-num-显示指定条数的最新历史记录" class="headerlink" title="history num 显示指定条数的最新历史记录"></a>history num 显示指定条数的最新历史记录</h3><p>history num</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs subunit">[root@iZbp1191gh7vw52537lyxrZ ~]# history 5<br>  106  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 10:54:02  ls<br>  107  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 10:54:07  cat /etc/bashrc<br>  108  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 10:54:55  vim ~/.bashrc<br>  109  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 10:55:55  man history<br>  110  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 10:58:48  history 5<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="num-重复执行指定记录"><a href="#num-重复执行指定记录" class="headerlink" title="!num 重复执行指定记录"></a>!num 重复执行指定记录</h3><p>计数都是从1开始的</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">[root@iZbp1191gh7vw52537lyxrZ ~]<span class="hljs-comment"># history 5</span><br>  113  root 2022-08-14 11<span class="hljs-function">:01</span><span class="hljs-function">:48</span>  <span class="hljs-keyword">ls</span><br>  114  root 2022-08-14 11<span class="hljs-function">:02</span><span class="hljs-function">:02</span>  <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot; 1 &quot;</span> &gt; 1.txt<br>  115  root 2022-08-14 11<span class="hljs-function">:02</span><span class="hljs-function">:03</span>  <span class="hljs-keyword">ls</span><br>  116  root 2022-08-14 11<span class="hljs-function">:02</span><span class="hljs-function">:08</span>  <span class="hljs-keyword">history</span><br>  117  root 2022-08-14 11<span class="hljs-function">:02</span><span class="hljs-function">:15</span>  <span class="hljs-keyword">history</span> 5<br>[root@iZbp1191gh7vw52537lyxrZ ~]<span class="hljs-comment"># !115</span><br><span class="hljs-keyword">ls</span><br>1.txt<br>[root@iZbp1191gh7vw52537lyxrZ ~]<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="num-从列表末尾开始计数指定第num行命令"><a href="#num-从列表末尾开始计数指定第num行命令" class="headerlink" title="!-num 从列表末尾开始计数指定第num行命令"></a>!-num 从列表末尾开始计数指定第num行命令</h3><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs subunit">[root@iZbp1191gh7vw52537lyxrZ ~]# history 10<br>   96  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:02:15  history 5<br>   97  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:02:26  ls<br>   98  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:05:46  history 5<br>   99  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:06:06  history<br>  100  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:06:20  ls<br>  101  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:36  hi<br>  102  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:41  hitory<br>  103  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:44  history<br>  104  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:59  history 6<br>  105  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:08:04  history 10<br>[root@iZbp1191gh7vw52537lyxrZ ~]# !<span class="hljs-string">-6</span><br>ls<br>1.txt<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="执行上一条命令"><a href="#执行上一条命令" class="headerlink" title="!! 执行上一条命令"></a>!! 执行上一条命令</h3><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs subunit">[root@iZbp1191gh7vw52537lyxrZ ~]# history 10<br>   96  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:02:15  history 5<br>   97  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:02:26  ls<br>   98  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:05:46  history 5<br>   99  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:06:06  history<br>  100  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:06:20  ls<br>  101  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:36  hi<br>  102  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:41  hitory<br>  103  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:44  history<br>  104  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:59  history 6<br>  105  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:08:04  history 10<br>[root@iZbp1191gh7vw52537lyxrZ ~]# !<span class="hljs-string">-6</span><br>ls<br>1.txt<br>[root@iZbp1191gh7vw52537lyxrZ ~]# !!<br>ls<br>1.txt<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="string-执行以某字符串开头的最新命令"><a href="#string-执行以某字符串开头的最新命令" class="headerlink" title="!string 执行以某字符串开头的最新命令"></a>!string 执行以某字符串开头的最新命令</h3><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs subunit">[root@iZbp1191gh7vw52537lyxrZ ~]# history | grep ls<br>    9  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:32  ls ~/.bash_history  -lat<br>   60  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-12</span> 15:49:47  ls<br>   62  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-12</span> 15:50:11  ls<br>   64  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-12</span> 15:56:38   ls<br>   65  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-12</span> 15:56:41  ls<br>   67  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-12</span> 15:56:45  ls<br>   71  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 10:41:02  ls<br>   73  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 10:41:05  ls<br>   76  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 10:41:19  ls<br>   85  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 10:54:02  ls<br>   92  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:01:48  ls<br>   94  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:02:03  ls<br>   97  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:02:26  ls<br>  100  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 11:06:20  ls<br>  106  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:08:22  ls<br>  107  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:11:34  lsls<br>  108  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:11:46  history | grep ls<br>[root@iZbp1191gh7vw52537lyxrZ ~]# !ls<br>lsls<br>-bash: lsls: 未找到命令<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="string-p-查找以字符串开头的最新命令"><a href="#string-p-查找以字符串开头的最新命令" class="headerlink" title="!string:p 查找以字符串开头的最新命令"></a>!string:p 查找以字符串开头的最新命令</h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs autoit">[root<span class="hljs-symbol">@iZbp1191gh7vw52537lyxrZ</span> ~]<span class="hljs-meta"># !ls:p</span><br>lsls<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="string-执行包含字符串的最新命令"><a href="#string-执行包含字符串的最新命令" class="headerlink" title="!?string 执行包含字符串的最新命令"></a>!?string 执行包含字符串的最新命令</h3><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs subunit">[root@iZbp1191gh7vw52537lyxrZ ~]# history 5<br>  108  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:11:46  history | grep ls<br>  109  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:11:55  lsls<br>  110  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:15:08  pwd aaa<br>  111  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:15:25  pwd a23<br>  112  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:15:36  history 5<br>[root@iZbp1191gh7vw52537lyxrZ ~]# !?a<br>pwd a23<br>/root<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="history-d-num-删除指定行记录"><a href="#history-d-num-删除指定行记录" class="headerlink" title="history -d num 删除指定行记录"></a>history -d num 删除指定行记录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">history</span> -d 2<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="history-c-清空当前用户当前终端历史记录"><a href="#history-c-清空当前用户当前终端历史记录" class="headerlink" title="history -c 清空当前用户当前终端历史记录"></a>history -c 清空当前用户当前终端历史记录</h3><p>历史记录文件.bash_history文件内容是存在的，新开终端，还是会存在之前的历史记录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">cat</span> ~/.bash_history<br><br><span class="hljs-built_in">history</span><br><span class="hljs-comment">#1660663206</span><br><span class="hljs-built_in">history</span><br><span class="hljs-built_in">ls</span><br><span class="hljs-built_in">cd</span> /<br><span class="hljs-built_in">history</span><br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">exit</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="history-a-追加当前终端新的历史记录到历史记录文件"><a href="#history-a-追加当前终端新的历史记录到历史记录文件" class="headerlink" title="history -a 追加当前终端新的历史记录到历史记录文件"></a>history -a 追加当前终端新的历史记录到历史记录文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs bash">[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">rm</span> -rf ~/.bash_history<br><span class="hljs-built_in">history</span><br><span class="hljs-built_in">ls</span> test-a<br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">history</span> -a<br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$<br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">ls</span> test-b<br><span class="hljs-built_in">ls</span>: 无法访问test-b: 权限不够<br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">rm</span> -rf ~/.bash_history<br><span class="hljs-built_in">history</span><br><span class="hljs-built_in">ls</span> test-a<br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">history</span> -a<br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">history</span> -a<br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">rm</span> -rf ~/.bash_history<br><span class="hljs-built_in">history</span><br><span class="hljs-built_in">ls</span> test-a<br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">history</span> -a<br><span class="hljs-built_in">history</span><br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">ls</span> test-b<br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">history</span> -a<br></code></pre></td></tr></table></figure>
+
+<h3 id="history-w-将整个历史记录写入历史记录文件"><a href="#history-w-将整个历史记录写入历史记录文件" class="headerlink" title="history -w 将整个历史记录写入历史记录文件"></a>history -w 将整个历史记录写入历史记录文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">rm</span> -rf ~/.bash_history<br><span class="hljs-built_in">history</span><br><span class="hljs-built_in">ls</span> test-a<br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">history</span> -a<br><span class="hljs-built_in">history</span><br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">ls</span> test-b<br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">history</span> -a<br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$<br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">rm</span> -rf ~/.bash_history<br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">history</span> -a<br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">rm</span> -rf ~/.bash_history<br><span class="hljs-built_in">history</span> -a<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs bash">[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">rm</span> -rf ~/.bash_history<br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$<br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">history</span><br>    1  <span class="hljs-built_in">rm</span> -rf ~/.bash_history<br>    2  <span class="hljs-built_in">history</span><br>    3  <span class="hljs-built_in">ls</span> test-a<br>    4  <span class="hljs-built_in">cat</span> ~/.bash_history<br>    5  <span class="hljs-built_in">history</span> -a<br>    6  <span class="hljs-built_in">history</span><br>    7  <span class="hljs-built_in">cat</span> ~/.bash_history<br>    8  <span class="hljs-built_in">ls</span> test-b<br>    9  <span class="hljs-built_in">cat</span> ~/.bash_history<br>   10  <span class="hljs-built_in">history</span> -a<br>   11  <span class="hljs-built_in">cat</span> ~/.bash_history<br>   12  <span class="hljs-built_in">rm</span> -rf ~/.bash_history<br>   13  <span class="hljs-built_in">history</span> -a<br>   14  <span class="hljs-built_in">cat</span> ~/.bash_history<br>   15  <span class="hljs-built_in">rm</span> -rf ~/.bash_history<br>   16  <span class="hljs-built_in">history</span><br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">history</span> -w<br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">rm</span> -rf ~/.bash_history<br><span class="hljs-built_in">history</span><br><span class="hljs-built_in">ls</span> test-a<br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">history</span> -a<br><span class="hljs-built_in">history</span><br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">ls</span> test-b<br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">history</span> -a<br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">rm</span> -rf ~/.bash_history<br><span class="hljs-built_in">history</span> -a<br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-built_in">rm</span> -rf ~/.bash_history<br><span class="hljs-built_in">history</span><br><span class="hljs-built_in">history</span> -w<br></code></pre></td></tr></table></figure>
+
+<h3 id="set-o-history-禁止记录历史记录（当前会话生效）"><a href="#set-o-history-禁止记录历史记录（当前会话生效）" class="headerlink" title="set +o history 禁止记录历史记录（当前会话生效）"></a>set +o history 禁止记录历史记录（当前会话生效）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs bash">[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">set</span> +o <span class="hljs-built_in">history</span><br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">history</span><br>    1  <span class="hljs-built_in">rm</span> -rf ~/.bash_history<br>    2  <span class="hljs-built_in">history</span><br>    3  <span class="hljs-built_in">ls</span> test-a<br>    4  <span class="hljs-built_in">cat</span> ~/.bash_history<br>    5  <span class="hljs-built_in">history</span> -a<br>    6  <span class="hljs-built_in">history</span><br>    7  <span class="hljs-built_in">cat</span> ~/.bash_history<br>    8  <span class="hljs-built_in">ls</span> test-b<br>    9  <span class="hljs-built_in">cat</span> ~/.bash_history<br>   10  <span class="hljs-built_in">history</span> -a<br>   11  <span class="hljs-built_in">cat</span> ~/.bash_history<br>   12  <span class="hljs-built_in">rm</span> -rf ~/.bash_history<br>   13  <span class="hljs-built_in">history</span> -a<br>   14  <span class="hljs-built_in">cat</span> ~/.bash_history<br>   15  <span class="hljs-built_in">rm</span> -rf ~/.bash_history<br>   16  <span class="hljs-built_in">history</span><br>   17  <span class="hljs-built_in">history</span> -w<br>   18  <span class="hljs-built_in">cat</span> ~/.bash_history<br>   19  <span class="hljs-built_in">set</span> +o <span class="hljs-built_in">history</span><br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">ls</span> <span class="hljs-built_in">test</span>+ohistory<br><span class="hljs-built_in">ls</span>: 无法访问<span class="hljs-built_in">test</span>+ohistory: 权限不够<br>[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">history</span><br>    1  <span class="hljs-built_in">rm</span> -rf ~/.bash_history<br>    2  <span class="hljs-built_in">history</span><br>    3  <span class="hljs-built_in">ls</span> test-a<br>    4  <span class="hljs-built_in">cat</span> ~/.bash_history<br>    5  <span class="hljs-built_in">history</span> -a<br>    6  <span class="hljs-built_in">history</span><br>    7  <span class="hljs-built_in">cat</span> ~/.bash_history<br>    8  <span class="hljs-built_in">ls</span> test-b<br>    9  <span class="hljs-built_in">cat</span> ~/.bash_history<br>   10  <span class="hljs-built_in">history</span> -a<br>   11  <span class="hljs-built_in">cat</span> ~/.bash_history<br>   12  <span class="hljs-built_in">rm</span> -rf ~/.bash_history<br>   13  <span class="hljs-built_in">history</span> -a<br>   14  <span class="hljs-built_in">cat</span> ~/.bash_history<br>   15  <span class="hljs-built_in">rm</span> -rf ~/.bash_history<br>   16  <span class="hljs-built_in">history</span><br>   17  <span class="hljs-built_in">history</span> -w<br>   18  <span class="hljs-built_in">cat</span> ~/.bash_history<br>   19  <span class="hljs-built_in">set</span> +o <span class="hljs-built_in">history</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="set-o-history-启动记录历史记录（当前会话生效）"><a href="#set-o-history-启动记录历史记录（当前会话生效）" class="headerlink" title="set -o history 启动记录历史记录（当前会话生效）"></a>set -o history 启动记录历史记录（当前会话生效）</h3><h2 id="history配置"><a href="#history配置" class="headerlink" title="history配置"></a>history配置</h2><h3 id="history格式配置"><a href="#history格式配置" class="headerlink" title="history格式配置"></a>history格式配置</h3><h4 id="HISTTIMEFORMAT-增加操作时间"><a href="#HISTTIMEFORMAT-增加操作时间" class="headerlink" title="HISTTIMEFORMAT 增加操作时间"></a>HISTTIMEFORMAT 增加操作时间</h4><p>export HISTTIMEFORMAT&#x3D;”%F %T “</p>
+<p>%d 天</p>
+<p>%m 月</p>
+<p>%y 年</p>
+<p>%H 小时</p>
+<p>%M 分钟</p>
+<p>%S 秒</p>
+<p>%F 日期完整格式 （Y-M-D格式：2022-08-14）</p>
+<p>%T 时间完整格式（H:M:S格式：17:15:25）</p>
+<p>%c 日期时间完整格式（2022年08月14日 星期日 17时25分30秒）</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">export</span> <span class="hljs-attribute">HISTTIMEFORMAT</span>=<span class="hljs-string">&quot;`whoami` %c  &quot;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="HISTSIZE-history命令最大显示记录命令数（也就是执行history命令显示的命令条数）"><a href="#HISTSIZE-history命令最大显示记录命令数（也就是执行history命令显示的命令条数）" class="headerlink" title="HISTSIZE history命令最大显示记录命令数（也就是执行history命令显示的命令条数）"></a>HISTSIZE history命令最大显示记录命令数（也就是执行history命令显示的命令条数）</h4><p>export HISTSIZE &#x3D; 100</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs subunit">[root@iZbp1191gh7vw52537lyxrZ ~]# history | more<br>   19  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:32  history<br>   20  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:32  history<br>   21  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:32  cat /root/.bash_history<br>   22  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:32  cat /etc/passwd<br>   23  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:07:32  su test<br>  ......<br>  112  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:15:36  history 5<br>  113  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:15:49  pwd a23<br>  114  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:25:12  vim /etc/bashrc<br>  115  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:26:29  ls<br>  116  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:26:35  cat /etc/bashrc<br>  117  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:27:25  vim /root/.bash_history<br>  118  root 2022<span class="hljs-string">-08</span><span class="hljs-string">-14</span> 17:28:11  history | more<br></code></pre></td></tr></table></figure>
+
+<h4 id="HISTFILESIZE-bash-history文件保存记录最大数"><a href="#HISTFILESIZE-bash-history文件保存记录最大数" class="headerlink" title="HISTFILESIZE .bash_history文件保存记录最大数"></a>HISTFILESIZE .bash_history文件保存记录最大数</h4><p>export HISTFILESIZE&#x3D;10</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@iZbp1191gh7vw52537lyxrZ ~]# <span class="hljs-built_in">history</span><br>    1  root 2022年08月14日 星期日 17时32分30秒  <span class="hljs-built_in">cat</span> ~/.bash_history<br>    2  root 2022年08月14日 星期日 17时32分49秒  <span class="hljs-built_in">history</span><br>    3  root 2022年08月14日 星期日 17时34分05秒  <span class="hljs-built_in">date</span><br>    4  root 2022年08月14日 星期日 17时34分38秒  <span class="hljs-built_in">cat</span> ~/.bash_history<br>    5  root 2022年08月14日 星期日 17时34分42秒  <span class="hljs-built_in">history</span> -w<br>    6  root 2022年08月14日 星期日 17时36分56秒  <span class="hljs-built_in">cat</span> /root/.bash_history<br>    7  root 2022年08月14日 星期日 17时47分24秒  <span class="hljs-built_in">pwd</span><br>    8  root 2022年08月14日 星期日 17时47分28秒  <span class="hljs-built_in">ls</span> /tmp<br>    9  root 2022年08月14日 星期日 17时47分34秒  <span class="hljs-built_in">history</span><br>[root@iZbp1191gh7vw52537lyxrZ ~]# <span class="hljs-built_in">cat</span> /root/.bash_history<br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-comment">#1660469682</span><br><span class="hljs-built_in">history</span> -w<br><span class="hljs-comment">#1660469519</span><br><span class="hljs-built_in">history</span><br><span class="hljs-comment">#1660469532</span><br>vim /root/.bash_history<br><span class="hljs-comment">#1660469550</span><br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-comment">#1660469569</span><br><span class="hljs-built_in">history</span><br><span class="hljs-comment">#1660469645</span><br><span class="hljs-built_in">date</span><br><span class="hljs-comment">#1660469678</span><br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-comment">#1660469682</span><br><span class="hljs-built_in">history</span> -w<br><span class="hljs-comment">#1660469684</span><br><span class="hljs-built_in">cat</span> ~/.bash_history<br><span class="hljs-comment">#1660469130</span><br><span class="hljs-built_in">history</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="history配置文件"><a href="#history配置文件" class="headerlink" title="history配置文件"></a>history配置文件</h3><p>新开终端加载新的配置文件</p>
+<h4 id="etc-bashrc-通用配置文件"><a href="#etc-bashrc-通用配置文件" class="headerlink" title="&#x2F;etc&#x2F;bashrc 通用配置文件"></a>&#x2F;etc&#x2F;bashrc 通用配置文件</h4><p>增加配置后所有用户都会生效</p>
+<h4 id="bashrc-各用户独立配置文件，也会加载主配置文件-etc-bashrc"><a href="#bashrc-各用户独立配置文件，也会加载主配置文件-etc-bashrc" class="headerlink" title="~&#x2F;.bashrc 各用户独立配置文件，也会加载主配置文件&#x2F;etc&#x2F;bashrc"></a>~&#x2F;.bashrc 各用户独立配置文件，也会加载主配置文件&#x2F;etc&#x2F;bashrc</h4><p>root默认配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@iZbp1191gh7vw52537lyxrZ ~]# <span class="hljs-built_in">ls</span> ~/.bashrc -l<br>-rw-r--r--. 1 root root 176 12月 29 2013 /root/.bashrc<br>[root@iZbp1191gh7vw52537lyxrZ ~]# <span class="hljs-built_in">cat</span> ~/.bashrc<br><span class="hljs-comment"># .bashrc</span><br><br><span class="hljs-comment"># User specific aliases and functions</span><br><br><span class="hljs-built_in">alias</span> <span class="hljs-built_in">rm</span>=<span class="hljs-string">&#x27;rm -i&#x27;</span><br><span class="hljs-built_in">alias</span> <span class="hljs-built_in">cp</span>=<span class="hljs-string">&#x27;cp -i&#x27;</span><br><span class="hljs-built_in">alias</span> <span class="hljs-built_in">mv</span>=<span class="hljs-string">&#x27;mv -i&#x27;</span><br><br><span class="hljs-comment"># Source global definitions</span><br><span class="hljs-keyword">if</span> [ -f /etc/bashrc ]; <span class="hljs-keyword">then</span><br>	. /etc/bashrc<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>普通用户默认配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">cat</span> ~/.bashrc<br><span class="hljs-comment"># .bashrc</span><br><br><span class="hljs-comment"># Source global definitions</span><br><span class="hljs-keyword">if</span> [ -f /etc/bashrc ]; <span class="hljs-keyword">then</span><br>	. /etc/bashrc<br><span class="hljs-keyword">fi</span><br><br><span class="hljs-comment"># Uncomment the following line if you don&#x27;t like systemctl&#x27;s auto-paging feature:</span><br><span class="hljs-comment"># export SYSTEMD_PAGER=</span><br><br><span class="hljs-comment"># User specific aliases and functions</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>配置示例</p>
+<p>root</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@iZbp1191gh7vw52537lyxrZ ~]# <span class="hljs-built_in">cat</span> ~/.bashrc<br><span class="hljs-comment"># .bashrc</span><br><br><span class="hljs-comment"># User specific aliases and functions</span><br><br><span class="hljs-built_in">alias</span> <span class="hljs-built_in">rm</span>=<span class="hljs-string">&#x27;rm -i&#x27;</span><br><span class="hljs-built_in">alias</span> <span class="hljs-built_in">cp</span>=<span class="hljs-string">&#x27;cp -i&#x27;</span><br><span class="hljs-built_in">alias</span> <span class="hljs-built_in">mv</span>=<span class="hljs-string">&#x27;mv -i&#x27;</span><br><br><span class="hljs-comment"># Source global definitions</span><br><span class="hljs-keyword">if</span> [ -f /etc/bashrc ]; <span class="hljs-keyword">then</span><br>	. /etc/bashrc<br><span class="hljs-keyword">fi</span><br><br>HISTTIMEFORMAT=<span class="hljs-string">&quot;%F &quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>root history</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs subunit">[root@iZbp1191gh7vw52537lyxrZ ~]# history<br>    1  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> telnet 27.221.32.84 3317<br>    2  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> telnet 123.125.204.111 6379<br>    3  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> telnet 123.125.204.64 8500<br>    4  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> telnet 123.126.54.207 3389<br>    5  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> telnet 123.125.204.111 6379<br>    6  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> ls<br>    7  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> ls ~/.bashrc<br>    8  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> ls ~/.bashrc -l<br>    9  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> cat ~/.bashrc<br>   10  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> history<br>   11  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> vim /etc/bashrc<br>   12  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> source /etc/bashrc<br>   13  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> history<br>   14  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> source /etc/bashrc<br>   15  2022<span class="hljs-string">-08</span><span class="hljs-string">-16</span> history<br></code></pre></td></tr></table></figure>
+
+
+
+<p>test</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs nix">[test@iZbp1191gh7vw52537lyxrZ root]$ cat <span class="hljs-symbol">~/.bashrc</span><br><span class="hljs-comment"># .bashrc</span><br><br><span class="hljs-comment"># Source global definitions</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-operator">-</span>f <span class="hljs-symbol">/etc/bashrc</span> ]; <span class="hljs-keyword">then</span><br>	. <span class="hljs-symbol">/etc/bashrc</span><br>fi<br>H<span class="hljs-attr">ISTTIMEFORMAT</span><span class="hljs-operator">=</span><span class="hljs-string">&quot;%c &quot;</span><br><span class="hljs-comment"># Uncomment the following line if you don&#x27;t like systemctl&#x27;s auto-paging feature:</span><br><span class="hljs-comment"># export SYSTEMD_PAGER=</span><br><br><span class="hljs-comment"># User specific aliases and functions</span><br></code></pre></td></tr></table></figure>
+
+<p>source ~&#x2F;.bashrc</p>
+<p>test history</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash">[<span class="hljs-built_in">test</span>@iZbp1191gh7vw52537lyxrZ root]$ <span class="hljs-built_in">history</span><br>    1  2022年08月16日 星期二 23时09分35秒 <span class="hljs-built_in">history</span><br>    2  2022年08月16日 星期二 23时09分35秒 <span class="hljs-built_in">history</span> -w<br>    3  2022年08月16日 星期二 23时09分35秒 <span class="hljs-built_in">history</span><br>    4  2022年08月16日 星期二 23时09分35秒 <span class="hljs-built_in">history</span> -w<br>    5  2022年08月16日 星期二 23时09分35秒 <span class="hljs-built_in">history</span><br>    6  2022年08月16日 星期二 23时09分35秒 <span class="hljs-built_in">ls</span> -lat ~/.bash_history<br>    7  2022年08月13日 星期六 22时56分56秒 <span class="hljs-built_in">history</span><br>    8  2022年08月13日 星期六 22时57分01秒 lll<br>    9  2022年08月13日 星期六 22时57分03秒 <span class="hljs-built_in">history</span><br>   10  2022年08月14日 星期日 10时41分01秒 <span class="hljs-built_in">exit</span><br>   11  2022年08月16日 星期二 23时09分35秒 <span class="hljs-built_in">history</span><br>   12  2022年08月16日 星期二 23时09分35秒 <span class="hljs-built_in">cat</span> ~/.bashrc<br>   13  2022年08月16日 星期二 23时09分53秒 vim ~/.bashrc<br>   14  2022年08月16日 星期二 23时10分59秒 <span class="hljs-built_in">source</span> ~/.bashrc<br>   15  2022年08月16日 星期二 23时11分01秒 <span class="hljs-built_in">history</span><br>   16  2022年08月16日 星期二 23时11分27秒 <span class="hljs-built_in">cat</span> ~/.bashrc<br>   17  2022年08月16日 星期二 23时12分14秒 vim ~/.bashrc<br>   18  2022年08月16日 星期二 23时12分28秒 <span class="hljs-built_in">source</span> ~/.bashrc<br>   19  2022年08月16日 星期二 23时12分42秒 <span class="hljs-built_in">history</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>默认情况下，</p>
+<p>配置文件示例</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">export</span> <span class="hljs-attribute">HISTTIMEFORMAT</span>=<span class="hljs-string">&quot;`whoami` %c  &quot;</span><br><br><span class="hljs-built_in">export</span> <span class="hljs-attribute">HISTSIZE</span>=100<br><br><span class="hljs-built_in">export</span> <span class="hljs-attribute">HISTFILESIZE</span>=10<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="关注点"><a href="#关注点" class="headerlink" title="关注点"></a>关注点</h2><p>1、默认情况下退出终端（会话）后，会将历史记录写入～&#x2F;.bash_history文件</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/yunwei/" class="category-chain-item">yunwei</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/yunwei/commands/" class="category-chain-item">commands</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/yunwei/" class="print-no-link">#yunwei</a>
+      
+        <a href="/tags/commands/" class="print-no-link">#commands</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>history</div>
+      <div>https://tthours.github.io/2024/04/03/yunwei/yunweicommands/Linuxcommands/history/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              TT
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/03/yunwei/yunweicommands/Linuxcommands/crontab/" title="crontab">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">crontab</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/03/yunwei/yunweicommands/Linuxcommands/hostname/" title="hostname">
+                        <span class="hidden-mobile">hostname</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
