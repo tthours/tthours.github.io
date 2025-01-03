@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="简介显示系统主机名 查看主机名命令 hostname  cenots6：读取的是 &#x2F;etc&#x2F;sysconfig&#x2F;network 中的配置 123[root@rdimtools1.ops.xlzbb1 &#x2F;tmp]# cat &#x2F;etc&#x2F;sysconfig&#x2F;networkNETWORKING&#x3D;yesHOSTNAME&#x3D;rdimtools1.ops.xlzbb1.sinan">
+    <meta name="description" content="简介显示系统主机名 查看主机名命令 hostname  cenots6：读取的是 &#x2F;etc&#x2F;sysconfig&#x2F;network 中的配置 123[root@rdimtools1.ops.xlzbb1 &#x2F;tmp]# cat &#x2F;etc&#x2F;sysconfig&#x2F;networkNETWORKING&#x3D;yesHOSTNAME&#x3D;rdimtools1.ops.xlzbb1.node.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hostname">
 <meta property="og:url" content="https://tthours.github.io/2024/04/03/yunwei/yunweicommands/Linuxcommands/hostname/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="简介显示系统主机名 查看主机名命令 hostname  cenots6：读取的是 &#x2F;etc&#x2F;sysconfig&#x2F;network 中的配置 123[root@rdimtools1.ops.xlzbb1 &#x2F;tmp]# cat &#x2F;etc&#x2F;sysconfig&#x2F;networkNETWORKING&#x3D;yesHOSTNAME&#x3D;rdimtools1.ops.xlzbb1.sinan">
+<meta property="og:description" content="简介显示系统主机名 查看主机名命令 hostname  cenots6：读取的是 &#x2F;etc&#x2F;sysconfig&#x2F;network 中的配置 123[root@rdimtools1.ops.xlzbb1 &#x2F;tmp]# cat &#x2F;etc&#x2F;sysconfig&#x2F;networkNETWORKING&#x3D;yesHOSTNAME&#x3D;rdimtools1.ops.xlzbb1.node.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-02T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-04-03T01:37:11.919Z">
+<meta property="article:modified_time" content="2025-01-03T01:20:54.367Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="yunwei">
 <meta property="article:tag" content="commands">
@@ -288,7 +288,7 @@
 <h2 id="查看主机名"><a href="#查看主机名" class="headerlink" title="查看主机名"></a>查看主机名</h2><p>命令</p>
 <p>hostname </p>
 <p>cenots6：读取的是 &#x2F;etc&#x2F;sysconfig&#x2F;network 中的配置</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[root@rdimtools1.ops.xlzbb1 /tmp]</span><span class="hljs-comment"># cat /etc/sysconfig/network</span><br><span class="hljs-attr">NETWORKING</span>=<span class="hljs-literal">yes</span><br><span class="hljs-attr">HOSTNAME</span>=rdimtools1.ops.xlzbb1.sinanode.com<br></code></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[root@rdimtools1.ops.xlzbb1 /tmp]</span><span class="hljs-comment"># cat /etc/sysconfig/network</span><br><span class="hljs-attr">NETWORKING</span>=<span class="hljs-literal">yes</span><br><span class="hljs-attr">HOSTNAME</span>=rdimtools1.ops.xlzbb1.node.com<br></code></pre></td></tr></table></figure>
 
 <p>centos7,8&#x2F;ubuntu：读取的是 &#x2F;etc&#x2F;hostname中的值</p>
 <figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs autoit">(base) [root<span class="hljs-symbol">@110</span> cron.d]<span class="hljs-meta"># cat /etc/hostname</span><br><span class="hljs-number">110</span><br></code></pre></td></tr></table></figure>
