@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 防御手段 1、JS挑战 2、滑块 3、严格滑块 功能 1、主动发现风险接口 2、数据脱敏 对响应报文作出修改，例如业务将敏感数据打码或拦截等 3、防御0day攻击">
+    <meta name="description" content="可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 解码方式URL解码11&#x27;%20or%201&#x3D;1 URL decode后是 1&#x27; or 1&#x3D;1  JSON解码1&#123;&quot;a&quot;: &quot;b&quot;,&quot;c&quot;: &quot;d&quot;&#125; Json解码后是 [a,b],[c,d]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="waf_base">
 <meta property="og:url" content="https://tthours.github.io/2024/03/15/security/netsec/waf/waf_base/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 防御手段 1、JS挑战 2、滑块 3、严格滑块 功能 1、主动发现风险接口 2、数据脱敏 对响应报文作出修改，例如业务将敏感数据打码或拦截等 3、防御0day攻击">
+<meta property="og:description" content="可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 解码方式URL解码11&#x27;%20or%201&#x3D;1 URL decode后是 1&#x27; or 1&#x3D;1  JSON解码1&#123;&quot;a&quot;: &quot;b&quot;,&quot;c&quot;: &quot;d&quot;&#125; Json解码后是 [a,b],[c,d]">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-31T00:49:40.217Z">
+<meta property="article:modified_time" content="2025-02-10T09:31:36.923Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="netsec">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          91 字
+          1k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          1 分钟
+          9 分钟
         
       </span>
     
@@ -292,15 +292,86 @@
 <p>2、流量构成</p>
 <p>3、爬虫类型</p>
 <p>4、爬虫行为</p>
-<p>防御手段</p>
+<h2 id="解码方式"><a href="#解码方式" class="headerlink" title="解码方式"></a>解码方式</h2><h3 id="URL解码"><a href="#URL解码" class="headerlink" title="URL解码"></a>URL解码</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>&#x27;%<span class="hljs-number">20</span>or%<span class="hljs-number">201</span>=<span class="hljs-number">1</span> URL decode后是 <span class="hljs-number">1</span>&#x27; or <span class="hljs-number">1</span>=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="JSON解码"><a href="#JSON解码" class="headerlink" title="JSON解码"></a>JSON解码</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">&#123;&quot;<span class="hljs-selector-tag">a</span>&quot;: <span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>: <span class="hljs-string">&quot;d&quot;</span>&#125; Json解码后是 <span class="hljs-selector-attr">[a,b]</span>,<span class="hljs-selector-attr">[c,d]</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Base64-解码"><a href="#Base64-解码" class="headerlink" title="Base64 解码"></a>Base64 解码</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">MScgb3IgMT0x</span> Base64解码后是 <span class="hljs-number">1</span>&#x27; or <span class="hljs-number">1</span>=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Base64-RFC-2045-解码"><a href="#Base64-RFC-2045-解码" class="headerlink" title="Base64(RFC 2045) 解码"></a>Base64(RFC 2045) 解码</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">MSdvciAx</span>.PTEgLS0= BASE64(rfc-<span class="hljs-number">2045</span>)解码后是 <span class="hljs-number">1</span>&#x27;or <span class="hljs-number">1</span>=<span class="hljs-number">1</span> --<br></code></pre></td></tr></table></figure>
+
+<h3 id="16进制转换解码-HEX编码"><a href="#16进制转换解码-HEX编码" class="headerlink" title="16进制转换解码&#x2F;HEX编码"></a>16进制转换解码&#x2F;HEX编码</h3><p>linux中xxd和hexdump命令编码</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">\<span class="hljs-keyword">x</span><span class="hljs-number">31</span>\<span class="hljs-keyword">x</span><span class="hljs-number">27</span>\<span class="hljs-keyword">x</span><span class="hljs-number">20</span>\<span class="hljs-keyword">x</span><span class="hljs-number">6</span>f\<span class="hljs-keyword">x</span><span class="hljs-number">72</span>\<span class="hljs-keyword">x</span><span class="hljs-number">20</span>\<span class="hljs-keyword">x</span><span class="hljs-number">31</span>\<span class="hljs-keyword">x</span><span class="hljs-number">3</span>d\<span class="hljs-keyword">x</span><span class="hljs-number">31</span> Hex解码后是 <span class="hljs-number">1</span>&#x27; <span class="hljs-keyword">or</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="二进制解码-BINARY-解码"><a href="#二进制解码-BINARY-解码" class="headerlink" title="二进制解码&#x2F;BINARY 解码"></a>二进制解码&#x2F;BINARY 解码</h3><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">0011000100100111001000000111010101101110011010010110111101101110001000000111001101100101011011000110010101100011011101000010000000110001001011000110010001100001011101000110000101100010011000010111001101100101001010000010100100100011 </span>binary 解码后是 <span class="hljs-number">1</span><span class="hljs-comment">&#x27; union select 1,database()#</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="斜杠转义"><a href="#斜杠转义" class="headerlink" title="斜杠转义"></a>斜杠转义</h3><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript"><span class="hljs-string">\n</span> 斜杠反转义后是 换行(<span class="hljs-string">\x0a)</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="XML-解码"><a href="#XML-解码" class="headerlink" title="XML 解码"></a>XML 解码</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs xml">解码输入:<br><br><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">site</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>RUNOOB<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>https://www.runoob.com<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">logo</span>&gt;</span>runoob-logo.png<span class="hljs-tag">&lt;/<span class="hljs-name">logo</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">desc</span>&gt;</span>1&#x27;or &#x27;1&#x27;=&#x27;1<span class="hljs-tag">&lt;/<span class="hljs-name">desc</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">site</span>&gt;</span><br>解码输出 (4 payloads):<br><br>RUNOOB<br>https://www.runoob.com<br>runoob-logo.png<br>1&#x27;or&#x27;1&#x27;=&#x27;1<br></code></pre></td></tr></table></figure>
+
+<h3 id="PHP-序列化对象解析"><a href="#PHP-序列化对象解析" class="headerlink" title="PHP 序列化对象解析"></a>PHP 序列化对象解析</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">s</span>:<span class="hljs-number">9</span>:<span class="hljs-string">&quot;1&#x27; or 1=1&quot;</span>; php 序列化对象解析后是 <span class="hljs-number">1</span>&#x27; or <span class="hljs-number">1</span>=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="UTF7解码"><a href="#UTF7解码" class="headerlink" title="UTF7解码"></a>UTF7解码</h3><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">\<span class="hljs-keyword">x</span><span class="hljs-number">2</span>B\<span class="hljs-keyword">x</span><span class="hljs-number">2</span>F\<span class="hljs-keyword">x</span><span class="hljs-number">76</span>\<span class="hljs-keyword">x</span><span class="hljs-number">38</span>+ADw-script+AD<span class="hljs-number">4</span>- UTF<span class="hljs-number">7</span>解码后是 &lt;script&gt;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="请求特征"><a href="#请求特征" class="headerlink" title="请求特征"></a>请求特征</h2><h3 id="URI"><a href="#URI" class="headerlink" title="URI"></a>URI</h3><p>请求原始URI，未解码</p>
+<h3 id="解码后路径"><a href="#解码后路径" class="headerlink" title="解码后路径"></a>解码后路径</h3><p>用户请求中从&#x2F;开始到?结束的部分，并进行一次 URL 解码，如 &#x2F;query news</p>
+<h3 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h3><p>用户请求的 URL 中从?开始到最后的部分，并进行一次 URL 解码，如 q-1 or 1-1</p>
+<h3 id="GET-参数"><a href="#GET-参数" class="headerlink" title="GET 参数"></a>GET 参数</h3><p>用户请求的 URL 中从?开始到最后的部分，拆分为键值对形式后进行一次 URL 解码，如 参数名q参数值1or 1&#x3D;1</p>
+<h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><p>HTTP 请求的 Method，如 GET、POST</p>
+<h3 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h3><p>HTTP 请求头中的 Host</p>
+<h3 id="完整-Cookie"><a href="#完整-Cookie" class="headerlink" title="完整 Cookie"></a>完整 Cookie</h3><p>未拆分为键值对形式的 Cookie</p>
+<h3 id="Cookis-参数"><a href="#Cookis-参数" class="headerlink" title="Cookis 参数"></a>Cookis 参数</h3><p>拆分为键值对形式的 Cookie</p>
+<h3 id="User-Agent"><a href="#User-Agent" class="headerlink" title="User Agent"></a>User Agent</h3><p>HTTP 请求头中的 User-Agent</p>
+<h3 id="Referer"><a href="#Referer" class="headerlink" title="Referer"></a>Referer</h3><p>HTTP 请求头中的 Referer</p>
+<h3 id="Content-Type"><a href="#Content-Type" class="headerlink" title="Content-Type"></a>Content-Type</h3><p>HTTP 请求头中的 Content-Type</p>
+<h3 id="Content-Length"><a href="#Content-Length" class="headerlink" title="Content-Length"></a>Content-Length</h3><p>HTTP 请求头中的Content-Length</p>
+<h3 id="用户IP"><a href="#用户IP" class="headerlink" title="用户IP"></a>用户IP</h3><p>用户的客户端源 IP</p>
+<h3 id="X-Forwarded-For"><a href="#X-Forwarded-For" class="headerlink" title="X-Forwarded-For"></a>X-Forwarded-For</h3><p>HTTP 请求头中的X-Forwarded-For</p>
+<h3 id="Origin"><a href="#Origin" class="headerlink" title="Origin"></a>Origin</h3><p>HTTP 请求头中的 Origin</p>
+<h3 id="Accept-Language"><a href="#Accept-Language" class="headerlink" title="Accept-Language"></a>Accept-Language</h3><p>HTTP 请求头中的 Accept-Language</p>
+<h3 id="Authorization"><a href="#Authorization" class="headerlink" title="Authorization"></a>Authorization</h3><p>HTTP 请求头中的 Authorization</p>
+<h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><p>用户的 Session 内容(需要先配置 Session 获取方式)</p>
+<h3 id="完整-HTTP-header"><a href="#完整-HTTP-header" class="headerlink" title="完整 HTTP header"></a>完整 HTTP header</h3><p>原始 HTTP 完整请求头</p>
+<h3 id="HTTP-请求头"><a href="#HTTP-请求头" class="headerlink" title="HTTP 请求头"></a>HTTP 请求头</h3><p>拆分为键值对形式 HTTP 请求头</p>
+<h3 id="HTTP-请求头长度"><a href="#HTTP-请求头长度" class="headerlink" title="HTTP 请求头长度"></a>HTTP 请求头长度</h3><p>HTTP 请求头的长度</p>
+<h3 id="HTTP-请求体长度"><a href="#HTTP-请求体长度" class="headerlink" title="HTTP 请求体长度"></a>HTTP 请求体长度</h3><p>HTTP 完整 body 的长度</p>
+<h3 id="POST-参数"><a href="#POST-参数" class="headerlink" title="POST 参数"></a>POST 参数</h3><p>HTTP 请求 Body 中 form 类数据，拆分为键值对形式后进行一次 URL 解码</p>
+<h3 id="请求体中任意-key-长度"><a href="#请求体中任意-key-长度" class="headerlink" title="请求体中任意 key 长度"></a>请求体中任意 key 长度</h3><p>HTTP 请求 Body 中 form 类数据中的任意 key 长度</p>
+<h3 id="请求体中任意-val-长度"><a href="#请求体中任意-val-长度" class="headerlink" title="请求体中任意 val 长度"></a>请求体中任意 val 长度</h3><p>HTTP 请求 Body 中 form 类数据中的任意 val 长度</p>
+<h3 id="请求体中-key-数量"><a href="#请求体中-key-数量" class="headerlink" title="请求体中 key 数量"></a>请求体中 key 数量</h3><p>HTTP 请求 Body 中 form 类数据中的 key 数量</p>
+<h3 id="完整-Body"><a href="#完整-Body" class="headerlink" title="完整 Body"></a>完整 Body</h3><p>完整的 HTTP 请求的 Body</p>
+<h3 id="上传的文件名"><a href="#上传的文件名" class="headerlink" title="上传的文件名"></a>上传的文件名</h3><p>Content-Type 为 multipart&#x2F;form-data 或 multipart&#x2F;related 的 HTTP 请求 Body 中的文件名</p>
+<h3 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h3><p>服务端返回的 HTTP 状态码</p>
+<h3 id="HTTP响应头"><a href="#HTTP响应头" class="headerlink" title="HTTP响应头"></a>HTTP响应头</h3><p>拆分为键值对形式 HTTP 响应头</p>
+<h3 id="完整-HTTP-响应头"><a href="#完整-HTTP-响应头" class="headerlink" title="完整 HTTP 响应头"></a>完整 HTTP 响应头</h3><p>原始 HTTP 完整响应头</p>
+<h3 id="响应内容"><a href="#响应内容" class="headerlink" title="响应内容"></a>响应内容</h3><p>服务端返回的完整响应内容</p>
+<h2 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h2><p>包含<br>不包含<br>等于<br>不等于<br>正则匹配<br>正则不匹配</p>
+<h2 id="防御手段"><a href="#防御手段" class="headerlink" title="防御手段"></a>防御手段</h2><h3 id="限制访问频率"><a href="#限制访问频率" class="headerlink" title="限制访问频率"></a>限制访问频率</h3><p>对请求源访问行为（单URL、多URL和所有URL）进行分析统计，从IP、Session和用户指纹维度进行限制（访问频率限制或访问封禁），自定义频率拦截状态码和页面。</p>
+<h3 id="请求验证"><a href="#请求验证" class="headerlink" title="请求验证"></a>请求验证</h3><p>对请求源访问行为（单URL、多URL和所有URL）进行匹配，</p>
 <p>1、JS挑战</p>
 <p>2、滑块</p>
 <p>3、严格滑块</p>
-<p>功能</p>
+<h4 id="验证码验证"><a href="#验证码验证" class="headerlink" title="验证码验证"></a>验证码验证</h4><p>算式验证码、字符验证码、滑动验证</p>
+<h4 id="浏览器验证"><a href="#浏览器验证" class="headerlink" title="浏览器验证"></a>浏览器验证</h4><p>功能</p>
 <p>1、主动发现风险接口</p>
 <p>2、数据脱敏</p>
 <p>对响应报文作出修改，例如业务将敏感数据打码或拦截等</p>
 <p>3、防御0day攻击</p>
+<p>限制频率黑名单</p>
+<p>​	1、黑名单</p>
+<p>​	维度：IP&#x2F;session&#x2F;用户指纹？</p>
+<p>​	黑名单的上限和什么有关系？CPU？磁盘？</p>
+<p>​	黑名单超过上限后，对防御的影响？</p>
+<p>​	黑名单如何扩容？</p>
+<p>​	</p>
+<p>​	2、频率触发策略实际生效地址：检测&#x2F;管理？</p>
+<p>​	3、白名单</p>
+<p>​	维度：IP&#x2F;session&#x2F;用户指纹？</p>
+<p>​	白名单的上限和什么有关系？CPU？磁盘？</p>
+<p>​	白名单超过上限后，对防御的影响？</p>
+<p>​	白名单如何扩容？</p>
 
                 
               </div>
