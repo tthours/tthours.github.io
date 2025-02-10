@@ -27,8 +27,9 @@
 <meta property="og:description" content="安全专业人员必须密切关注系统本身，并确保其更高级别的保护控制并非建立在不牢靠的基础之上。 共担责任共担责任（shared responsibility）是安全设计的原则，表明任何机构都不是孤立运行的。 机构里的每个人都负有一定的安全责任。 1、建立和维护安全是CISO和安全团队的职责。依照安全规定执行自己的任务是正式员工的职责。监控环境是否存在违规行为是审计员的职责。 2、机构对利益相关方负有">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tthours.github.io/image-20250210191841477.png">
+<meta property="og:image" content="https://tthours.github.io/image-20250210200058664.png">
 <meta property="article:published_time" content="2025-02-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-02-10T11:18:45.362Z">
+<meta property="article:modified_time" content="2025-02-10T12:24:35.391Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="seccert">
@@ -232,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          866 字
+          1.9k 字
         
       </span>
     
@@ -243,7 +244,7 @@
         
         
         
-          8 分钟
+          16 分钟
         
       </span>
     
@@ -311,7 +312,30 @@
 <h3 id="保护机制"><a href="#保护机制" class="headerlink" title="保护机制"></a>保护机制</h3><h4 id="保护环-protection-ring"><a href="#保护环-protection-ring" class="headerlink" title="保护环 protection ring"></a>保护环 protection ring</h4><p>把操作系统中的代码和组件（以及应用程序、在操作系统控制下运行的其他代码）组成同心环，越靠近中心，权限级别就越高。</p>
 <p>4个环的模型（0-3）</p>
 <p><img src="/image-20250210191841477.png" srcset="/img/loading.gif" lazyload alt="image-20250210191841477"></p>
-
+<p><strong>环0： 操作系统内核</strong> - 最内层的环，环 0 具有最高级别权限，基本可以访问任何资源、文件和内存位置。操作系统内核部分始终驻留在内存中。</p>
+<p><strong>环 1： 其他操作系统组件</strong>是操作系统的非内核部分（各种被请求的任务、被执行的操作、被切换的进程等进出内存的部分）占用。</p>
+<p><strong>环 2 ：驱动程序</strong>是 I&#x2F;O 驱动程序和系统实用程序驻留的地方，能访问应用和其他程序本身无法直接访问的外围设备、特殊文件等。</p>
+<p><strong>环 3 ：用户层面的程序和应用</strong> - 是应用程序和其他程序占用。</p>
+<p>内核（kernel mode）模式&#x2F;特权（privileged mode）模式：系统层面访问，也就是环0-环2</p>
+<p>用户（user mode）模式：用户层面的程序和应用，也就是环 3 </p>
+<p>系统调用：编号较高的环中运行的进程通常必须向编号较低环中的处理程序或驱动程序请求他们所需要的服务。</p>
+<h4 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h4><p>进程状态（process state）也叫操作状态（operating state），是指进程运行的各种执行形式。</p>
+<p>操作系统任何时刻都处于以下两种模式之一</p>
+<p>管理程序状态 supervisor state：以被授予权限、可完全访问模式运行</p>
+<p>问题状态 problem state：在与用户模式下运行，权限较低，所有访问请求必须经过授权凭证检查才会被准许或拒绝</p>
+<h5 id="就绪状态"><a href="#就绪状态" class="headerlink" title="就绪状态"></a>就绪状态</h5><p>就绪状态（ ready state ）是指进程已经做好准备，被安排执行时可立即恢复或开始处理。</p>
+<h5 id="运行状态"><a href="#运行状态" class="headerlink" title="运行状态"></a>运行状态</h5><p>运行状态（running state）是指进程在CPU上执行并持续运行的状态，直到完成运行或时间片用完（进入就绪状态）或被阻塞（通常是等待IO，进入等待状态）</p>
+<h5 id="等待状态"><a href="#等待状态" class="headerlink" title="等待状态"></a>等待状态</h5><p>等待状态（waiting state）是指已准备好继续执行，只等待IO完成后，进入就绪状态</p>
+<h5 id="管理程序状态"><a href="#管理程序状态" class="headerlink" title="管理程序状态"></a>管理程序状态</h5><p>是指进程执行的操作，要求高权限（包括修改系统配置、安装设备驱动程序、修改安全配置等）时，进程进入管理程序状态。</p>
+<p>也可以说，不在用户模式（环 3 ）下的任何功能基本上都会在管理程序模式下执行。</p>
+<h5 id="停止状态"><a href="#停止状态" class="headerlink" title="停止状态"></a>停止状态</h5><p>停止状态（stopped state）是指当进程结束或必须终止（因为发生错误、需要的资源不可用、某项资源请求无法满足）时，进入停止状态，操作系统将回收分配给该进程的所有内存和资源。</p>
+<p><img src="/image-20250210200058664.png" srcset="/img/loading.gif" lazyload alt="image-20250210200058664"></p>
+<h3 id="操作模式"><a href="#操作模式" class="headerlink" title="操作模式"></a>操作模式</h3><h5 id="用户模式"><a href="#用户模式" class="headerlink" title="用户模式"></a>用户模式</h5><p>用户模式是 CPU 在执行用户应用程序时使用的基本模式，只允许执行其全部指令集 中的部分指令。</p>
+<h5 id="特权模式"><a href="#特权模式" class="headerlink" title="特权模式"></a>特权模式</h5><p>特权模式是  CPU 可以访问CPU支持的所有指令，也被称为管理程序模式、系统模式或内核模式。</p>
+<p>注意：</p>
+<p>所有用户（包括系统管理员）的应用程序都以用户模式运行。</p>
+<h3 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h3><h4 id="只读存储器-ROM"><a href="#只读存储器-ROM" class="headerlink" title="只读存储器 ROM"></a>只读存储器 ROM</h4><p>只读存储器（read-only  memory，ROM）是可以读取但不能更改（不允许写入）的存储器。通常包含“引导”信息，引导计算器启动。引导程序包含每次引导运行时的开机自检（power-on self-test，POST）系列诊断。</p>
+<h5 id="可编程只读存储器"><a href="#可编程只读存储器" class="headerlink" title="可编程只读存储器"></a>可编程只读存储器</h5><h5 id="可擦除可编程只读存储器"><a href="#可擦除可编程只读存储器" class="headerlink" title="可擦除可编程只读存储器"></a>可擦除可编程只读存储器</h5><h5 id="电子可擦除可编程只读存储器"><a href="#电子可擦除可编程只读存储器" class="headerlink" title="电子可擦除可编程只读存储器"></a>电子可擦除可编程只读存储器</h5><h5 id="闪存"><a href="#闪存" class="headerlink" title="闪存"></a>闪存</h5><h4 id="随机存取存储器-RAM"><a href="#随机存取存储器-RAM" class="headerlink" title="随机存取存储器 RAM"></a>随机存取存储器 RAM</h4><h5 id="真实内存"><a href="#真实内存" class="headerlink" title="真实内存"></a>真实内存</h5><h5 id="高速缓存-RAM"><a href="#高速缓存-RAM" class="headerlink" title="高速缓存 RAM"></a>高速缓存 RAM</h5><h4 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h4><h4 id="内存寻址"><a href="#内存寻址" class="headerlink" title="内存寻址"></a>内存寻址</h4><h5 id="寄存器寻址"><a href="#寄存器寻址" class="headerlink" title="寄存器寻址"></a>寄存器寻址</h5><h5 id="立即寻址"><a href="#立即寻址" class="headerlink" title="立即寻址"></a>立即寻址</h5><h5 id="直接寻址"><a href="#直接寻址" class="headerlink" title="直接寻址"></a>直接寻址</h5><h5 id="间接寻址"><a href="#间接寻址" class="headerlink" title="间接寻址"></a>间接寻址</h5><h5 id="基址-偏移量寻址"><a href="#基址-偏移量寻址" class="headerlink" title="基址+偏移量寻址"></a>基址+偏移量寻址</h5><h4 id="二级内存"><a href="#二级内存" class="headerlink" title="二级内存"></a>二级内存</h4><h3 id="数据存储设备"><a href="#数据存储设备" class="headerlink" title="数据存储设备"></a>数据存储设备</h3><h4 id="主存储设备与辅助存储设备"><a href="#主存储设备与辅助存储设备" class="headerlink" title="主存储设备与辅助存储设备"></a>主存储设备与辅助存储设备</h4><h4 id="易失性存储设备与非易失性存储设备"><a href="#易失性存储设备与非易失性存储设备" class="headerlink" title="易失性存储设备与非易失性存储设备"></a>易失性存储设备与非易失性存储设备</h4><h4 id="随机存取与顺序存取"><a href="#随机存取与顺序存取" class="headerlink" title="随机存取与顺序存取"></a>随机存取与顺序存取</h4><h4 id="存储器的安全问题"><a href="#存储器的安全问题" class="headerlink" title="存储器的安全问题"></a>存储器的安全问题</h4><h3 id="存储介质的安全"><a href="#存储介质的安全" class="headerlink" title="存储介质的安全"></a>存储介质的安全</h3><h4 id="发射安全"><a href="#发射安全" class="headerlink" title="发射安全"></a>发射安全</h4><h3 id="输入和输出设备"><a href="#输入和输出设备" class="headerlink" title="输入和输出设备"></a>输入和输出设备</h3>
                 
               </div>
             
