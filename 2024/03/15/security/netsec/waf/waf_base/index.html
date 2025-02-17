@@ -27,7 +27,7 @@
 <meta property="og:description" content="可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 解码方式URL解码11&#x27;%20or%201&#x3D;1 URL decode后是 1&#x27; or 1&#x3D;1  JSON解码1&#123;&quot;a&quot;: &quot;b&quot;,&quot;c&quot;: &quot;d&quot;&#125; Json解码后是 [a,b],[c,d]">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-02-10T09:31:36.923Z">
+<meta property="article:modified_time" content="2025-02-11T11:55:46.351Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="netsec">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.4k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          9 分钟
+          12 分钟
         
       </span>
     
@@ -372,6 +372,26 @@
 <p>​	白名单的上限和什么有关系？CPU？磁盘？</p>
 <p>​	白名单超过上限后，对防御的影响？</p>
 <p>​	白名单如何扩容？</p>
+<h2 id="主动防护策略"><a href="#主动防护策略" class="headerlink" title="主动防护策略"></a>主动防护策略</h2><h3 id="页面防调试"><a href="#页面防调试" class="headerlink" title="页面防调试"></a>页面防调试</h3><h4 id="技术实现方式"><a href="#技术实现方式" class="headerlink" title="技术实现方式"></a>技术实现方式</h4><h5 id="禁用开发者工具"><a href="#禁用开发者工具" class="headerlink" title="禁用开发者工具"></a><strong>禁用开发者工具</strong></h5><p>通过监听键盘事件或鼠标右键事件，阻止用户打开开发者工具。</p>
+<h6 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h6><p>javascript</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 禁用右键菜单</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;contextmenu&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>  e.<span class="hljs-title function_">preventDefault</span>();<br>&#125;);<br><br><span class="hljs-comment">// 禁用 F12、Ctrl+Shift+I、Ctrl+U 等快捷键</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;keydown&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>  <span class="hljs-keyword">if</span> (e.<span class="hljs-property">key</span> === <span class="hljs-string">&#x27;F12&#x27;</span> || (e.<span class="hljs-property">ctrlKey</span> &amp;&amp; e.<span class="hljs-property">shiftKey</span> &amp;&amp; e.<span class="hljs-property">key</span> === <span class="hljs-string">&#x27;I&#x27;</span>) || (e.<span class="hljs-property">ctrlKey</span> &amp;&amp; e.<span class="hljs-property">key</span> === <span class="hljs-string">&#x27;U&#x27;</span>)) &#123;<br>    e.<span class="hljs-title function_">preventDefault</span>();<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h6 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h6><ul>
+<li>用户可以通过浏览器设置或扩展程序绕过限制。</li>
+<li>无法完全阻止开发者工具的打开。</li>
+</ul>
+<h5 id="检测开发者工具"><a href="#检测开发者工具" class="headerlink" title="检测开发者工具"></a>检测开发者工具</h5><p>通过检测开发者工具是否打开，动态修改页面行为或阻止调试。</p>
+<h6 id="实现代码：-1"><a href="#实现代码：-1" class="headerlink" title="实现代码："></a>实现代码：</h6><p>javascript</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript">(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> <span class="hljs-title function_">devToolsOpened</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-keyword">const</span> threshold = <span class="hljs-number">160</span>; <span class="hljs-comment">// 窗口宽度或高度的差值阈值</span><br>    <span class="hljs-keyword">const</span> widthThreshold = <span class="hljs-variable language_">window</span>.<span class="hljs-property">outerWidth</span> - <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerWidth</span> &gt; threshold;<br>    <span class="hljs-keyword">const</span> heightThreshold = <span class="hljs-variable language_">window</span>.<span class="hljs-property">outerHeight</span> - <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span> &gt; threshold;<br>    <span class="hljs-keyword">return</span> widthThreshold || heightThreshold;<br>  &#125;;<br><br>  <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-title function_">devToolsOpened</span>()) &#123;<br>      <span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;开发者工具已打开，请关闭后继续使用！&#x27;</span>);<br>      <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-title function_">reload</span>(); <span class="hljs-comment">// 刷新页面</span><br>    &#125;<br>  &#125;, <span class="hljs-number">1000</span>);<br>&#125;)();<br></code></pre></td></tr></table></figure>
+
+<h6 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h6><ul>
+<li>开发者工具打开时，浏览器窗口的 <code>outerWidth</code> 和 <code>innerWidth</code> 会有明显差异。</li>
+<li>通过检测这种差异，判断开发者工具是否打开。</li>
+</ul>
+<h6 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h6><ul>
+<li>用户可以通过禁用 JavaScript 或修改浏览器设置绕过检测。</li>
+<li>部分浏览器可能不支持此方法。</li>
+</ul>
 
                 
               </div>
