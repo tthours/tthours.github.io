@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 解码方式URL解码11&#x27;%20or%201&#x3D;1 URL decode后是 1&#x27; or 1&#x3D;1  JSON解码1&#123;&quot;a&quot;: &quot;b&quot;,&quot;c&quot;: &quot;d&quot;&#125; Json解码后是 [a,b],[c,d]">
+    <meta name="description" content="技能要求精通安全防护产品的规则与策略配置熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术 可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 请求解码方式URL解码11&#x27;%20or%201&#x3D;1 URL decode后是 1&#x27; or 1&#x3D;1  JSON解码1&#123;&quot;a&quot;: &quot;b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="waf_base">
 <meta property="og:url" content="https://tthours.github.io/2024/03/15/security/netsec/waf/waf_base/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 解码方式URL解码11&#x27;%20or%201&#x3D;1 URL decode后是 1&#x27; or 1&#x3D;1  JSON解码1&#123;&quot;a&quot;: &quot;b&quot;,&quot;c&quot;: &quot;d&quot;&#125; Json解码后是 [a,b],[c,d]">
+<meta property="og:description" content="技能要求精通安全防护产品的规则与策略配置熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术 可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 请求解码方式URL解码11&#x27;%20or%201&#x3D;1 URL decode后是 1&#x27; or 1&#x3D;1  JSON解码1&#123;&quot;a&quot;: &quot;b">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-02-11T11:55:46.351Z">
+<meta property="article:modified_time" content="2025-02-18T08:11:19.674Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="netsec">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.9k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          12 分钟
+          16 分钟
         
       </span>
     
@@ -285,14 +285,13 @@
                 
                 <span id="more"></span>
 
-
-
+<h2 id="技能要求"><a href="#技能要求" class="headerlink" title="技能要求"></a>技能要求</h2><p>精通安全防护产品的规则与策略配置<br>熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术</p>
 <p>可以用于数据分析的点</p>
 <p>1、流量来源</p>
 <p>2、流量构成</p>
 <p>3、爬虫类型</p>
 <p>4、爬虫行为</p>
-<h2 id="解码方式"><a href="#解码方式" class="headerlink" title="解码方式"></a>解码方式</h2><h3 id="URL解码"><a href="#URL解码" class="headerlink" title="URL解码"></a>URL解码</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>&#x27;%<span class="hljs-number">20</span>or%<span class="hljs-number">201</span>=<span class="hljs-number">1</span> URL decode后是 <span class="hljs-number">1</span>&#x27; or <span class="hljs-number">1</span>=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<h2 id="请求解码方式"><a href="#请求解码方式" class="headerlink" title="请求解码方式"></a>请求解码方式</h2><h3 id="URL解码"><a href="#URL解码" class="headerlink" title="URL解码"></a>URL解码</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>&#x27;%<span class="hljs-number">20</span>or%<span class="hljs-number">201</span>=<span class="hljs-number">1</span> URL decode后是 <span class="hljs-number">1</span>&#x27; or <span class="hljs-number">1</span>=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="JSON解码"><a href="#JSON解码" class="headerlink" title="JSON解码"></a>JSON解码</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">&#123;&quot;<span class="hljs-selector-tag">a</span>&quot;: <span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>: <span class="hljs-string">&quot;d&quot;</span>&#125; Json解码后是 <span class="hljs-selector-attr">[a,b]</span>,<span class="hljs-selector-attr">[c,d]</span><br></code></pre></td></tr></table></figure>
 
@@ -349,30 +348,18 @@
 <h3 id="响应内容"><a href="#响应内容" class="headerlink" title="响应内容"></a>响应内容</h3><p>服务端返回的完整响应内容</p>
 <h2 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h2><p>包含<br>不包含<br>等于<br>不等于<br>正则匹配<br>正则不匹配</p>
 <h2 id="防御手段"><a href="#防御手段" class="headerlink" title="防御手段"></a>防御手段</h2><h3 id="限制访问频率"><a href="#限制访问频率" class="headerlink" title="限制访问频率"></a>限制访问频率</h3><p>对请求源访问行为（单URL、多URL和所有URL）进行分析统计，从IP、Session和用户指纹维度进行限制（访问频率限制或访问封禁），自定义频率拦截状态码和页面。</p>
-<h3 id="请求验证"><a href="#请求验证" class="headerlink" title="请求验证"></a>请求验证</h3><p>对请求源访问行为（单URL、多URL和所有URL）进行匹配，</p>
-<p>1、JS挑战</p>
-<p>2、滑块</p>
-<p>3、严格滑块</p>
+<h3 id="请求源合法性校验"><a href="#请求源合法性校验" class="headerlink" title="请求源合法性校验"></a>请求源合法性校验</h3><p>对请求源访问行为（单URL、多URL和所有URL）进行匹配记录，满足设定条件（参数频率阈值）触发验证机制</p>
 <h4 id="验证码验证"><a href="#验证码验证" class="headerlink" title="验证码验证"></a>验证码验证</h4><p>算式验证码、字符验证码、滑动验证</p>
-<h4 id="浏览器验证"><a href="#浏览器验证" class="headerlink" title="浏览器验证"></a>浏览器验证</h4><p>功能</p>
-<p>1、主动发现风险接口</p>
-<p>2、数据脱敏</p>
-<p>对响应报文作出修改，例如业务将敏感数据打码或拦截等</p>
-<p>3、防御0day攻击</p>
-<p>限制频率黑名单</p>
-<p>​	1、黑名单</p>
-<p>​	维度：IP&#x2F;session&#x2F;用户指纹？</p>
-<p>​	黑名单的上限和什么有关系？CPU？磁盘？</p>
-<p>​	黑名单超过上限后，对防御的影响？</p>
-<p>​	黑名单如何扩容？</p>
-<p>​	</p>
-<p>​	2、频率触发策略实际生效地址：检测&#x2F;管理？</p>
-<p>​	3、白名单</p>
-<p>​	维度：IP&#x2F;session&#x2F;用户指纹？</p>
-<p>​	白名单的上限和什么有关系？CPU？磁盘？</p>
-<p>​	白名单超过上限后，对防御的影响？</p>
-<p>​	白名单如何扩容？</p>
-<h2 id="主动防护策略"><a href="#主动防护策略" class="headerlink" title="主动防护策略"></a>主动防护策略</h2><h3 id="页面防调试"><a href="#页面防调试" class="headerlink" title="页面防调试"></a>页面防调试</h3><h4 id="技术实现方式"><a href="#技术实现方式" class="headerlink" title="技术实现方式"></a>技术实现方式</h4><h5 id="禁用开发者工具"><a href="#禁用开发者工具" class="headerlink" title="禁用开发者工具"></a><strong>禁用开发者工具</strong></h5><p>通过监听键盘事件或鼠标右键事件，阻止用户打开开发者工具。</p>
+<h4 id="浏览器验证"><a href="#浏览器验证" class="headerlink" title="浏览器验证"></a>浏览器验证</h4><p>JS挑战，返回一段 JavaScript 代码（如计算哈希值、生成 Cookie 等），要求客户端执行并提交结果</p>
+<h3 id="请求混淆加密"><a href="#请求混淆加密" class="headerlink" title="请求混淆加密"></a>请求混淆加密</h3><h5 id="参数加密混淆"><a href="#参数加密混淆" class="headerlink" title="参数加密混淆"></a>参数加密混淆</h5><p>对请求中所有参数或指定参数实施加密混淆</p>
+<h5 id="cookie加密"><a href="#cookie加密" class="headerlink" title="cookie加密"></a>cookie加密</h5><p>自定义签名密钥对cookie实施签名，cookie中增加相应cookie名称的字段，可以指定cookie名称，如果不指定，则对所有设置的cookie实施签名，对从客户端接受到的cookie，WAF尝试进行签名校验和解密，如果是加密或签名正确的cookie，则解密或去除签名提交给服务器，否则保持原样不变提交给服务器。</p>
+<p>也可以把客户端IP作为加密校验元素之一。</p>
+<h3 id="请求动态令牌"><a href="#请求动态令牌" class="headerlink" title="请求动态令牌"></a>请求动态令牌</h3><p>对策略生效范围内的请求,在URL或cookie中添加动态更新的令牌，并进行令牌校验，校验通过后方可正常进行业务访问操作</p>
+<h3 id="响应混淆加密"><a href="#响应混淆加密" class="headerlink" title="响应混淆加密"></a>响应混淆加密</h3><p>1、页面混淆对HTML和JS类型的响应页面进行混淆</p>
+<p>2、去除响应HTML页面中的所有注释</p>
+<h3 id="伪链接"><a href="#伪链接" class="headerlink" title="伪链接"></a>伪链接</h3><p>业务正常 html 页面中增加特定链接，正常用户不会请求，恶意用户请求特定链接（例如爬虫遍历请求页面中所有链接）会进行记录标记。</p>
+<h3 id="页面防调试"><a href="#页面防调试" class="headerlink" title="页面防调试"></a>页面防调试</h3><p>限制客户端对响应页面实施调试</p>
+<h4 id="技术实现方式"><a href="#技术实现方式" class="headerlink" title="技术实现方式"></a>技术实现方式</h4><h5 id="禁用开发者工具"><a href="#禁用开发者工具" class="headerlink" title="禁用开发者工具"></a><strong>禁用开发者工具</strong></h5><p>通过监听键盘事件或鼠标右键事件，阻止用户打开开发者工具。</p>
 <h6 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h6><p>javascript</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 禁用右键菜单</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;contextmenu&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>  e.<span class="hljs-title function_">preventDefault</span>();<br>&#125;);<br><br><span class="hljs-comment">// 禁用 F12、Ctrl+Shift+I、Ctrl+U 等快捷键</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;keydown&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>  <span class="hljs-keyword">if</span> (e.<span class="hljs-property">key</span> === <span class="hljs-string">&#x27;F12&#x27;</span> || (e.<span class="hljs-property">ctrlKey</span> &amp;&amp; e.<span class="hljs-property">shiftKey</span> &amp;&amp; e.<span class="hljs-property">key</span> === <span class="hljs-string">&#x27;I&#x27;</span>) || (e.<span class="hljs-property">ctrlKey</span> &amp;&amp; e.<span class="hljs-property">key</span> === <span class="hljs-string">&#x27;U&#x27;</span>)) &#123;<br>    e.<span class="hljs-title function_">preventDefault</span>();<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 
@@ -392,7 +379,27 @@
 <li>用户可以通过禁用 JavaScript 或修改浏览器设置绕过检测。</li>
 <li>部分浏览器可能不支持此方法。</li>
 </ul>
-
+<p>功能</p>
+<p>1、主动发现风险接口</p>
+<p>2、数据脱敏</p>
+<p>对响应报文作出修改，例如业务将敏感数据打码或拦截等</p>
+<p>3、防御0day攻击</p>
+<p>限制频率黑名单</p>
+<p>​	1、黑名单</p>
+<p>​	维度：IP&#x2F;session&#x2F;用户指纹？</p>
+<p>​	黑名单的上限和什么有关系？CPU？磁盘？</p>
+<p>​	黑名单超过上限后，对防御的影响？</p>
+<p>​	黑名单如何扩容？</p>
+<p>​	</p>
+<p>​	2、频率触发策略实际生效地址：检测&#x2F;管理？</p>
+<p>​	3、白名单</p>
+<p>​	维度：IP&#x2F;session&#x2F;用户指纹？</p>
+<p>​	白名单的上限和什么有关系？CPU？磁盘？</p>
+<p>​	白名单超过上限后，对防御的影响？</p>
+<p>​	白名单如何扩容？</p>
+<h2 id="业务保护策略"><a href="#业务保护策略" class="headerlink" title="业务保护策略"></a>业务保护策略</h2><h3 id="主动被动熔断机制"><a href="#主动被动熔断机制" class="headerlink" title="主动被动熔断机制"></a>主动被动熔断机制</h3><p>主动熔断机制：防御节点异常，WAF自动停止流量转发或检测</p>
+<p>被动熔断机制：业务流量增长，业务自动停止流量转发或检测</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
                 
               </div>
             

@@ -19,24 +19,24 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="删除空行MAC 下 command+option+F 打开搜索替换框 使用以下正则搜索 12^\s*$\n  ^ 表示行的开头 \s*表示任意数量的空白字符（包含空格、制表符等） $ 表示行的结尾 \n 表示换行符 替换框留空替换即可">
+    <meta name="description" content="upstream上游服务器组12345upstream waf_A_class &#123;    hash $client_realip;    server 127.0.0.1:43210 max_fails&#x3D;3 fail_timeout&#x3D;60s;    server 127.0.0.1:43211 max_fails&#x3D;3 fail_timeout&#x3D;60s;&#125;  hash">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sublimetips">
-<meta property="og:url" content="https://tthours.github.io/2025/02/13/yunwei/yunweitips/sublimetips/index.html">
+<meta property="og:title" content="nginx_conf">
+<meta property="og:url" content="https://tthours.github.io/2025/02/18/yunwei/applications/nginx/nginx_conf/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="删除空行MAC 下 command+option+F 打开搜索替换框 使用以下正则搜索 12^\s*$\n  ^ 表示行的开头 \s*表示任意数量的空白字符（包含空格、制表符等） $ 表示行的结尾 \n 表示换行符 替换框留空替换即可">
+<meta property="og:description" content="upstream上游服务器组12345upstream waf_A_class &#123;    hash $client_realip;    server 127.0.0.1:43210 max_fails&#x3D;3 fail_timeout&#x3D;60s;    server 127.0.0.1:43211 max_fails&#x3D;3 fail_timeout&#x3D;60s;&#125;  hash">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-02-13T03:38:55.215Z">
+<meta property="article:published_time" content="2025-02-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-02-18T06:45:01.949Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="yunwei">
-<meta property="article:tag" content="yunweitips">
-<meta property="article:tag" content="sublime">
+<meta property="article:tag" content="applications">
+<meta property="article:tag" content="nginx">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>sublimetips - tthours</title>
+  <title>nginx_conf - tthours</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="sublimetips"></span>
+            <span id="subtitle" data-typed-text="nginx_conf"></span>
           
         </div>
 
@@ -218,8 +218,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-13 00:00" pubdate>
-          2025年2月13日 凌晨
+        <time datetime="2025-02-18 00:00" pubdate>
+          2025年2月18日 凌晨
         </time>
       </span>
     
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          72 字
+          299 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -278,22 +278,31 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">sublimetips</h1>
+            <h1 id="seo-header">nginx_conf</h1>
             
             
               <div class="markdown-body">
                 
                 <span id="more"></span>
 
-<h2 id="删除空行"><a href="#删除空行" class="headerlink" title="删除空行"></a>删除空行</h2><p>MAC 下 command+option+F 打开搜索替换框</p>
-<p>使用以下正则搜索</p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs autoit">^\s*$\n<br><br></code></pre></td></tr></table></figure>
 
-<p><code>^</code> 表示行的开头</p>
-<p><code>\s*</code>表示任意数量的空白字符（包含空格、制表符等）</p>
-<p><code>$</code> 表示行的结尾</p>
-<p><code>\n</code> 表示换行符</p>
-<p>替换框留空替换即可</p>
+
+
+
+<h2 id="upstream上游服务器组"><a href="#upstream上游服务器组" class="headerlink" title="upstream上游服务器组"></a>upstream上游服务器组</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros">upstream waf_A_class &#123;<br>    hash <span class="hljs-variable">$client_realip</span>;<br>   <span class="hljs-built_in"> server </span>127.0.0.1:43210 <span class="hljs-attribute">max_fails</span>=3 <span class="hljs-attribute">fail_timeout</span>=60s;<br>   <span class="hljs-built_in"> server </span>127.0.0.1:43211 <span class="hljs-attribute">max_fails</span>=3 <span class="hljs-attribute">fail_timeout</span>=60s;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="hash-client-realip-负载算法"><a href="#hash-client-realip-负载算法" class="headerlink" title="hash $client_realip; 负载算法"></a>hash $client_realip; 负载算法</h3><p>指定负载均衡算法为<strong>基于客户端IP的哈希算法</strong></p>
+<p>$client_realip 是nginx变量，表示客户端的真实IP地址</p>
+<p>哈希算法的作用：</p>
+<p>​	根据客户端 IP 的哈希值，将同一客户端的请求固定分发到同一台后端服务器</p>
+<p>​	适用于需要会话保持（Session Persistence）的场景</p>
+<h3 id="server-后端服务器"><a href="#server-后端服务器" class="headerlink" title="server 后端服务器"></a>server 后端服务器</h3><p>server ip:port  后端服务器</p>
+<p>max_fails&#x3D;3	表示在fail_timeout内，如果服务器失败（如连接超时或返回错误）达到 3 次，将服务器标记为不可用</p>
+<p>fail_timeout&#x3D;60s	表示服务器被标记为不可用后，60秒内不再向其分发请求，60秒后再次尝试分发请求</p>
+<h3 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">http</span> &#123;<br>    <span class="hljs-section">upstream</span> waf_A_class &#123;<br>        <span class="hljs-attribute">hash</span> <span class="hljs-variable">$client_realip</span>;<br>        <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:43210</span> max_fails=<span class="hljs-number">3</span> fail_timeout=<span class="hljs-number">60s</span>;<br>        <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:43211</span> max_fails=<span class="hljs-number">3</span> fail_timeout=<span class="hljs-number">60s</span>;<br>    &#125;<br><br>    <span class="hljs-section">server</span> &#123;<br>        <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;<br>        <span class="hljs-attribute">server_name</span> example.com;<br><br>        <span class="hljs-section">location</span> / &#123;<br>            <span class="hljs-attribute">proxy_pass</span> http://waf_A_class;<br>            <span class="hljs-attribute">proxy_set_header</span> Host <span class="hljs-variable">$host</span>;<br>            <span class="hljs-attribute">proxy_set_header</span> X-Real-IP <span class="hljs-variable">$remote_addr</span>;<br>            <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>所有访问 <code>example.com</code> 的请求都会被代理到 <code>waf_A_class</code> 上游组中的服务器</p>
+<p>Nginx 会根据客户端 IP 的哈希值将请求分发到 <code>127.0.0.1:43210</code> 或 <code>127.0.0.1:43211</code></p>
 
                 
               </div>
@@ -317,7 +326,7 @@
   
     <span>></span>
     
-  <a href="/categories/yunwei/tips/" class="category-chain-item">tips</a>
+  <a href="/categories/yunwei/applications/" class="category-chain-item">applications</a>
   
   
 
@@ -336,9 +345,9 @@
       
         <a href="/tags/yunwei/" class="print-no-link">#yunwei</a>
       
-        <a href="/tags/yunweitips/" class="print-no-link">#yunweitips</a>
+        <a href="/tags/applications/" class="print-no-link">#applications</a>
       
-        <a href="/tags/sublime/" class="print-no-link">#sublime</a>
+        <a href="/tags/nginx/" class="print-no-link">#nginx</a>
       
     </div>
   
@@ -350,8 +359,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>sublimetips</div>
-      <div>https://tthours.github.io/2025/02/13/yunwei/yunweitips/sublimetips/</div>
+      <div>nginx_conf</div>
+      <div>https://tthours.github.io/2025/02/18/yunwei/applications/nginx/nginx_conf/</div>
     </div>
     <div class="license-meta">
       
@@ -363,7 +372,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月13日</div>
+          <div>2025年2月18日</div>
         </div>
       
       
@@ -388,18 +397,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/18/yunwei/applications/nginx/nginx_conf/" title="nginx_conf">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">nginx_conf</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/13/security/netsec/%E6%8C%82%E9%A9%AC/%E4%BA%BA%E5%B7%A5%E9%AA%8C%E8%AF%81%E6%8C%82%E9%A9%AC/" title="人工验证挂马">
-                        <span class="hidden-mobile">人工验证挂马</span>
+                      <a href="/2025/02/13/yunwei/yunweitips/sublimetips/" title="sublimetips">
+                        <span class="hidden-mobile">sublimetips</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
