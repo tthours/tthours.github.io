@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>cissp-11安全网络架构和组件</title>
+    <link href="/2025/02/20/security/seccert/cissp/cissp-11%E5%AE%89%E5%85%A8%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%E5%92%8C%E7%BB%84%E4%BB%B6/"/>
+    <url>/2025/02/20/security/seccert/cissp/cissp-11%E5%AE%89%E5%85%A8%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%E5%92%8C%E7%BB%84%E4%BB%B6/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h1 id="OSI模型"><a href="#OSI模型" class="headerlink" title="OSI模型"></a>OSI模型</h1><h1 id="考试要点"><a href="#考试要点" class="headerlink" title="考试要点"></a>考试要点</h1><h2 id="了解OSI模型"><a href="#了解OSI模型" class="headerlink" title="了解OSI模型"></a>了解OSI模型</h2><p>OSI模型层如下：</p><p>应用层</p><p>表示层</p><p>会话层</p><p>传输层</p><p>网络层</p><p>数据链路层</p><p>物理层</p><h2 id="理解封装"><a href="#理解封装" class="headerlink" title="理解封装"></a>理解封装</h2><p>封装是指在将每层从上一层接收到数据传递到下一层之前，向其添加头部，也有可能添加尾部。</p><p>反向操作是解封</p><h2 id="了解网络容器名称"><a href="#了解网络容器名称" class="headerlink" title="了解网络容器名称"></a>了解网络容器名称</h2><p>网络容器包括：</p><p>OSI第 5-7 层协议数据单元（PDU）</p><p>第 4 层段（TCP）或数据报（UDP）</p><p>第 3 层数据包</p><p>第 2 层帧</p><p>第 1 层比特</p><h2 id="了解协议分析器"><a href="#了解协议分析器" class="headerlink" title="了解协议分析器"></a>了解协议分析器</h2><p>协议分析器是用于检查网络流量内容的工具</p><h2 id="理解MAC地址"><a href="#理解MAC地址" class="headerlink" title="理解MAC地址"></a>理解MAC地址</h2><p>媒体访问控制（MAC）地址是以十六进制表示法编写的 6 字节（48位）二进制地址，也称为物理地址、硬件地址、NIC地址和以太网地址。</p><p>地址的前 3 个字节（24位）是组织唯一标识符（OUI），表示供应商或制造商。</p><h2 id="了解路由协议"><a href="#了解路由协议" class="headerlink" title="了解路由协议"></a>了解路由协议</h2><p>内部路由协议是距离矢量（路由信息协议 RIP 和内部网关路由协议 IGRP）和链路状态（开放最短路径优先和中间系统到中间系统）</p><p>外部路由协议是路径向量（尽管使用网络接口，有时也使用网络访问）</p><h2 id="注意常见的应用层协议"><a href="#注意常见的应用层协议" class="headerlink" title="注意常见的应用层协议"></a>注意常见的应用层协议</h2><p>Telnet</p><p>FTP</p><p>TFTP</p><p>SMTP</p><p>POP3</p><p>IMAP</p><p>DHCP</p><p>HTTP</p><p>HTTPS（TLS）</p><p>LPD</p><p>X Window</p><p>NFS</p><p>SNMP</p><h2 id="了解传输层协议"><a href="#了解传输层协议" class="headerlink" title="了解传输层协议"></a>了解传输层协议</h2><p>了解 TCP 和 UDP 之间的特性和差异</p><p>熟悉端口、会话管理和 TCP 头标志</p><h2 id="了解-DNS"><a href="#了解-DNS" class="headerlink" title="了解 DNS"></a>了解 DNS</h2><p>域名系统（DNS）是公共和专用网络中使用的分层命名方案。</p><p>DNS 将人性化的完全限定域名（FQDN）和 IP 地址连接在一起。</p><p>DNSSEC 和 DoH 都是 DNS 的安全功能。</p><h2 id="了解-DNS-中毒"><a href="#了解-DNS-中毒" class="headerlink" title="了解 DNS 中毒"></a>了解 DNS 中毒</h2><p>DNS 中毒是伪造客户端使用的 DNS 信息以到达所需系统的行为。</p><p>可以通过流氓 DNS 服务器、域欺骗、更改 HOSTS 文件、破坏 IP 配置、DNS 查询欺骗和代理伪造实现。</p><h2 id="了解域名劫持"><a href="#了解域名劫持" class="headerlink" title="了解域名劫持"></a>了解域名劫持</h2><p>域名劫持或域名盗窃是指未经有效所有者授权而更改域名注册的恶意行为。</p><h2 id="理解误植域名攻击"><a href="#理解误植域名攻击" class="headerlink" title="理解误植域名攻击"></a>理解误植域名攻击</h2><p>当用户错误的键入预期资源的域名或 IP 地址时可能发生误植域名攻击，该攻击是一种用于捕获和重定向流量的做法。</p><h2 id="了解-IP"><a href="#了解-IP" class="headerlink" title="了解 IP"></a>了解 IP</h2><p>熟悉 IPv4 和 IPv6 之间的特性和差异。</p><p>了解  IPv4 类、子网和 CIDR 表示法。</p><h2 id="了解网络层协议"><a href="#了解网络层协议" class="headerlink" title="了解网络层协议"></a>了解网络层协议</h2><p>熟悉 ICMP 和 IGMP</p><h2 id="了解-ARP"><a href="#了解-ARP" class="headerlink" title="了解 ARP"></a>了解 ARP</h2><p>地址解析协议（ARP）对于逻辑和物理寻址方案的互操作性至关重要。</p><p>ARP 用于将 IP 地址解析位 MAC 地址。</p><p>需要了解 ARP 中毒。</p><h2 id="能够举出安全通信协议的示例"><a href="#能够举出安全通信协议的示例" class="headerlink" title="能够举出安全通信协议的示例"></a>能够举出安全通信协议的示例</h2><p>IPsec</p><p>Kerberos</p><p>SSH</p><p>信令协议</p><p>S-RPC</p><p>TLS</p><h2 id="了解多层协议"><a href="#了解多层协议" class="headerlink" title="了解多层协议"></a>了解多层协议</h2><p>多层协议的好处包括：</p><p>可以在更高级的 OSI 级别上使用。</p><p>提供加密、灵活性和弹性。</p><p>多层协议的缺点是：</p><p>隐蔽通道</p><p>过滤器旁路</p><p>对网段边界的违背</p><h2 id="了解融合协议"><a href="#了解融合协议" class="headerlink" title="了解融合协议"></a>了解融合协议</h2><p>PCoE</p><p>MPLS </p><p>iSCSI</p><p>VPN</p><p>SDN</p><p>云</p><p>虚拟化</p><p>SOA</p><p>微服务</p><p>基础设施即代码（IaC）</p><p>无服务架构</p><h2 id="定义-VoIP"><a href="#定义-VoIP" class="headerlink" title="定义 VoIP"></a>定义 VoIP</h2><p>网络电话（VoIP）是一种隧道机制，将音频、视频和其他数据封装到 IP 数据包中，以支持 TCP &#x2F; IP网络连接上的语音呼叫和多媒体协作。</p><h2 id="了解网络分段的类型和目的"><a href="#了解网络分段的类型和目的" class="headerlink" title="了解网络分段的类型和目的"></a>了解网络分段的类型和目的</h2><p>网络分段可用于管理流量、提高性能和加强安全性。</p><p>网段或子网的示例包括：内网、外网和屏蔽子网。</p><h2 id="了解微分网段"><a href="#了解微分网段" class="headerlink" title="了解微分网段"></a>了解微分网段</h2><p>微分网段将内网划分为多个子区域。</p><p>子区域可能小到单个设备，例如高价值服务器、甚至客户端或端点设备。</p><p>每个区域通过内部分段防火墙（ISFW）、子网或 VLAN 和其他域分开。</p><h2 id="定义-SDN"><a href="#定义-SDN" class="headerlink" title="定义 SDN"></a>定义 SDN</h2><p>软件定义网络（SDN）是一种独特的网络操作、设计和管理方法。</p><p>SDN 旨在将基础设施层（硬件和基于硬件的设置）与控制层（数据传输管理的网络服务）分离。</p><h2 id="了解各种无线技术"><a href="#了解各种无线技术" class="headerlink" title="了解各种无线技术"></a>了解各种无线技术</h2><p>手机、蓝牙（802.15）和无线网络（802.11）都被称为无线技术。</p><p>了解各无线技术的差异、优势和劣势。</p><p>了解保护 802.11 网络安全的基础知识。</p><p>了解 RFID、NFC、LiFi、卫星、窄带和 Zigbee。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>security</category>
+      
+      <category>seccert</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>security</tag>
+      
+      <tag>seccert</tag>
+      
+      <tag>cissp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>nginx_conf</title>
     <link href="/2025/02/18/yunwei/applications/nginx/nginx_conf/"/>
     <url>/2025/02/18/yunwei/applications/nginx/nginx_conf/</url>
