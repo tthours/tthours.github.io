@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="技能要求精通安全防护产品的规则与策略配置熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术 可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 请求解码方式URL解码11&#x27;%20or%201&#x3D;1 URL decode后是 1&#x27; or 1&#x3D;1  JSON解码1&#123;&quot;a&quot;: &quot;b">
+    <meta name="description" content="技能要求精通安全防护产品的规则与策略配置熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术 WAF架构WAF技术点可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 请求解码方式URL解码11&#x27;%20or%201&#x3D;1 URL decode后是 1&#x27; or 1&#x3D;1  JSON解码1&#123;&quot;a&amp;quo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="waf_base">
 <meta property="og:url" content="https://tthours.github.io/2024/03/15/security/netsec/waf/waf_base/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="技能要求精通安全防护产品的规则与策略配置熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术 可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 请求解码方式URL解码11&#x27;%20or%201&#x3D;1 URL decode后是 1&#x27; or 1&#x3D;1  JSON解码1&#123;&quot;a&quot;: &quot;b">
+<meta property="og:description" content="技能要求精通安全防护产品的规则与策略配置熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术 WAF架构WAF技术点可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 请求解码方式URL解码11&#x27;%20or%201&#x3D;1 URL decode后是 1&#x27; or 1&#x3D;1  JSON解码1&#123;&quot;a&amp;quo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-02-18T08:11:19.674Z">
+<meta property="article:modified_time" content="2025-02-20T09:24:36.663Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="netsec">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          2.2k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          16 分钟
+          18 分钟
         
       </span>
     
@@ -285,8 +285,8 @@
                 
                 <span id="more"></span>
 
-<h2 id="技能要求"><a href="#技能要求" class="headerlink" title="技能要求"></a>技能要求</h2><p>精通安全防护产品的规则与策略配置<br>熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术</p>
-<p>可以用于数据分析的点</p>
+<h1 id="技能要求"><a href="#技能要求" class="headerlink" title="技能要求"></a>技能要求</h1><p>精通安全防护产品的规则与策略配置<br>熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术</p>
+<h1 id="WAF架构"><a href="#WAF架构" class="headerlink" title="WAF架构"></a>WAF架构</h1><h1 id="WAF技术点"><a href="#WAF技术点" class="headerlink" title="WAF技术点"></a>WAF技术点</h1><p>可以用于数据分析的点</p>
 <p>1、流量来源</p>
 <p>2、流量构成</p>
 <p>3、爬虫类型</p>
@@ -397,6 +397,29 @@
 <p>​	白名单的上限和什么有关系？CPU？磁盘？</p>
 <p>​	白名单超过上限后，对防御的影响？</p>
 <p>​	白名单如何扩容？</p>
+<h2 id="基本逻辑"><a href="#基本逻辑" class="headerlink" title="基本逻辑"></a>基本逻辑</h2><h3 id="生效阶段-nginx-access阶段"><a href="#生效阶段-nginx-access阶段" class="headerlink" title="生效阶段-nginx_access阶段"></a>生效阶段-nginx_access阶段</h3><p>access阶段生效原因：</p>
+<p>1、性能优化</p>
+<p>在请求处理早期拦截攻击，避免无效请求消耗后端资源</p>
+<p>检测时延较低（基于LuaJIT 的高效性，仅增加 1-3 ms）</p>
+<p>2、数据完备性</p>
+<p>可通过 ngx.reg.get_headers() 获取完整请求头</p>
+<p>通过 ngx.reg.get_post_args() 解析 POST 数据</p>
+<p>支持获取 SSL&#x2F;TLS 握手信息（如 ngx.var.ssl_cipher）</p>
+<p>3、拦截有效性</p>
+<p>可直接调用  ngx.exit(ngx.HTTP_FORBIDDEN) 终止请求</p>
+<p>支持返回自定义拦截页面</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">ngx.status = <span class="hljs-number">403</span><br>ngx.header[<span class="hljs-string">&quot;Content-Type&quot;</span>] = <span class="hljs-string">&quot;text/html&quot;</span><br>ngx.say(<span class="hljs-string">&quot;&lt;h1&gt;Request Blocked&lt;/h1&gt;&quot;</span>)<br>ngx.<span class="hljs-keyword">exit</span>(<span class="hljs-number">403</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>1、请求头已经完整解析：WAF可以获取完整的URI、Headers、HTTP方法等元数据。</p>
+<p>2、请求体尚未处理：允许通过配置获取POST数据，同时避免资源浪费。</p>
+<p>3、位于权限检查链：在Nginx原生 allow&#x2F;deny 等访问控制之后执行，符合安全逻辑分层。</p>
+<p>4、拦截响应未生成：可直接返回 403 等拦截响应，无需进入后续处理阶段。</p>
 <h2 id="业务保护策略"><a href="#业务保护策略" class="headerlink" title="业务保护策略"></a>业务保护策略</h2><h3 id="主动被动熔断机制"><a href="#主动被动熔断机制" class="headerlink" title="主动被动熔断机制"></a>主动被动熔断机制</h3><p>主动熔断机制：防御节点异常，WAF自动停止流量转发或检测</p>
 <p>被动熔断机制：业务流量增长，业务自动停止流量转发或检测</p>
 <h3 id=""><a href="#" class="headerlink" title=""></a></h3>
