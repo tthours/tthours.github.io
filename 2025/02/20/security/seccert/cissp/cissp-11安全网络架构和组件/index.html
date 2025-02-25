@@ -26,15 +26,16 @@
 <meta property="og:site_name" content="tthours">
 <meta property="og:description" content="OSI 模型OSI 模型的历史OSI 模型的开发旨在给所有计算机系统建立通用的通信结构或标准。 OSI 功能OSI 将网络任务划分为 7 层。 每层执行特定的任务或操作，以支持两台计算机之间的数据交换（即网络通信）。 应用层 7 表示层 6 会话层 5 传输层 4 网络层 3 数据链路层 2 物理层 1 封装解封OSI 模型代表的是多个协议（即多层协议）分层集合的协议栈。 协议层之间的通信">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tthours.github.io/image-20250225194747849.png">
 <meta property="og:image" content="https://tthours.github.io/image-20250225092301241.png">
 <meta property="article:published_time" content="2025-02-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-02-25T01:53:10.413Z">
+<meta property="article:modified_time" content="2025-02-25T12:02:40.608Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="seccert">
 <meta property="article:tag" content="cissp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://tthours.github.io/image-20250225092301241.png">
+<meta name="twitter:image" content="https://tthours.github.io/image-20250225194747849.png">
   
   
   
@@ -232,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.7k 字
+          6k 字
         
       </span>
     
@@ -243,7 +244,7 @@
         
         
         
-          48 分钟
+          51 分钟
         
       </span>
     
@@ -310,6 +311,7 @@
 <p>网络层3 :  封装的网络容器为数据包</p>
 <p>数据链路层2 ：封装的网络容器为帧</p>
 <p>物理层1 ：封装的网络容器转换为比特</p>
+<p><img src="/image-20250225194747849.png" srcset="/img/loading.gif" lazyload alt="image-20250225194747849"></p>
 <h2 id="OSI-模型层次"><a href="#OSI-模型层次" class="headerlink" title="OSI 模型层次"></a>OSI 模型层次</h2><h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>应用层（第 7 层）将用户应用程序、网络服务或操作系统与协议栈相关联。软件应用程序不在此列表中。</p>
 <p>传输文件、交换消息、连接到远程终端等所需的协议和服务在这层，例如 RDP（远程桌面协议）。</p>
 <h3 id="表示层"><a href="#表示层" class="headerlink" title="表示层"></a>表示层</h3><p>表示层（第 6 层）将通用或标准化的结构和格式强加在数据之上。</p>
@@ -381,6 +383,17 @@
 <p><strong>TFTP</strong>：UDP 69 端口，是支持不需要身份认证的文件传输的网络应用程序。用于承载网络设备配置文件，并可支持多播。<strong>不应使用 TFTP</strong>。</p>
 <p><strong>SMTP</strong>：TCP 25 端口，是一种将邮件从客户端传输到服务端或从服务端传输到另一个服务端使用的协议。<strong>只有在使用 TLS 加密创建 SMTPS 时使用</strong>。</p>
 <p><strong>POP3</strong>：TCP 110 端口，是一种用于将邮件从服务端下载到客户端（客户端存档）的协议。<strong>只有在使用 TLS 加密创建 POPS 时使用</strong>。</p>
+<p>**IMAP(IMAP4)**：TCP 143 端口，是一种用于将电子邮件从电子邮件服务器上的收件箱下载到客户端的协议，仅能从电子邮件服务器中检索标头并直接从电子邮件服务器删除邮件（即服务器归档）。仅在使用 TLS 加密创建 IMAPS 时使用。</p>
+<p>​	IMAP 和 POP3 区别：</p>
+<p>​	1、IMAP 邮件内容保存在服务器，客户端仅同步邮件的元数据（如标题、发件人等）；POP3 邮件保留在客户端本地。</p>
+<p>​	2、IMAP 适合多设备；POP3 适合单设备。</p>
+<p><strong>DHCP</strong>：UDP 67（服务器） 端口和 68（客户端）端口，用于集中控制启动时为系统分配 TCP &#x2F; IP 配置设置。</p>
+<p><strong>HTTP</strong>：TCP 80 端口，是用明文将 Web 页面元素从 Web 服务器传输到 Web 浏览器的协议。</p>
+<p><strong>HTTPS</strong>：TCP 443 端口，是 HTTP 的 TLS  加密版本。（带 TLS 的 HTTPS  支持使用 TCP 80 端口，但是仅用于服务器到服务器的通信）</p>
+<p><strong>LPD</strong>：TCP  515 端口，是一种网络服务，用于打印机作业以及将打印机作业发送到打印机。<strong>应封闭在 VPN 中使用。</strong></p>
+<p><strong>X Window</strong>：TCP 6000 ～ 6003 端口，是用于命令行操作系统的 GUI API。<strong>应封闭在 VPN 中使用。</strong></p>
+<p><strong>NFS</strong>：TCP 2049 端口，是一种网络服务，用于支持不同系统的文件共享。<strong>应封闭在 VPN 中使用。</strong></p>
+<p><strong>SNMP</strong>：UDP </p>
 <h1 id="11-12-无线网络"><a href="#11-12-无线网络" class="headerlink" title="11.12 无线网络"></a>11.12 无线网络</h1><p>802.11 是用于无线网络通信的 IEEE 标准。</p>
 <p>Wi-Fi 可以再 ad  hoc 模式（也称为点对点 Wi-Fi）或基础设施模式下部署。</p>
 <p>ad hoc 模式意味着任何两个无线网络设备都可以在没有集中控制权限（即基站或接入点）的情况下进行通信。</p>
