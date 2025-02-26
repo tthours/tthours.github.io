@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://tthours.github.io/image-20250225194747849.png">
 <meta property="og:image" content="https://tthours.github.io/image-20250225092301241.png">
 <meta property="article:published_time" content="2025-02-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-02-25T12:02:40.608Z">
+<meta property="article:modified_time" content="2025-02-26T01:47:27.447Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="seccert">
@@ -233,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6k 字
+          8.2k 字
         
       </span>
     
@@ -244,7 +244,7 @@
         
         
         
-          51 分钟
+          69 分钟
         
       </span>
     
@@ -393,8 +393,116 @@
 <p><strong>LPD</strong>：TCP  515 端口，是一种网络服务，用于打印机作业以及将打印机作业发送到打印机。<strong>应封闭在 VPN 中使用。</strong></p>
 <p><strong>X Window</strong>：TCP 6000 ～ 6003 端口，是用于命令行操作系统的 GUI API。<strong>应封闭在 VPN 中使用。</strong></p>
 <p><strong>NFS</strong>：TCP 2049 端口，是一种网络服务，用于支持不同系统的文件共享。<strong>应封闭在 VPN 中使用。</strong></p>
-<p><strong>SNMP</strong>：UDP </p>
-<h1 id="11-12-无线网络"><a href="#11-12-无线网络" class="headerlink" title="11.12 无线网络"></a>11.12 无线网络</h1><p>802.11 是用于无线网络通信的 IEEE 标准。</p>
+<p><strong>SNMP</strong>：UDP 161 端口（用于陷阱消息的是 UDP 162 端口），是一种网络服务，用于从中央监控服务器收集网络运行状况和状态信息。</p>
+<p>SNMPv3：路由器、交换机、无线接入点(WAP)、防火墙、 VPN设备和打印机均支持 SNMP 协议。</p>
+<p>早期版本的 SNMP 将明文传输的社区名用于身份认证。原始默认社区名是公共和私有的。最新版本的 SNMP 允许加密通信，以及强大的身份认证因素。</p>
+<h1 id="传输层协议"><a href="#传输层协议" class="headerlink" title="传输层协议"></a>传输层协议</h1><p>传输层建立的连接，是利用端口实现的。</p>
+<p>端口号为 16 位二进制表示，所以端口号数量为 2 的 16 次方，也就是 65536 个，范围为 0 - 65535.</p>
+<p>IP地址和端口号的组合被称为套接字。</p>
+<p>前 1024 个端口号是固定的，1025 - 65535 可以作为客户端源端口，只要没有被占用。</p>
+<h2 id="传输层协议-1"><a href="#传输层协议-1" class="headerlink" title="传输层协议"></a>传输层协议</h2><h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><p>面向连接的全双工协议</p>
+<p>连接通过三次握手实现：</p>
+<p>1、客户端将 SYN 标记的数据包发送到服务端</p>
+<p>2、服务端以 SYN+ACK 标记的数据包响应客户端</p>
+<p>3、客户端以 ACK 标记的数据包响应服务端</p>
+<p>断开连接方式：</p>
+<p>FIN 标记的数据包，正常中断</p>
+<p>RST 标记的数据包，立即或突然终止</p>
+<p>数据传输需要使用 TCP ，TCP 能保证传输，会重新发送任何未确认的段，直到收到 RST 数据包或确认数据包。</p>
+<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><p>无连接单工协议</p>
+<p>不提供错误检测或纠正</p>
+<p>不使用排序</p>
+<p>不使用流量控制机制</p>
+<p>不使用预先建立的会话</p>
+<p>UDP 开销低，可以快速传输数据，不重要数据使用 UDP 传输。</p>
+<p>常用于音视频的实时或流通信。</p>
+<h1 id="域名系统"><a href="#域名系统" class="headerlink" title="域名系统"></a>域名系统</h1><p>域名：域名或计算机名是IP地址上分配的人性化的“临时”约定。</p>
+<p>IP地址：IP地址是在 MAC 地址上分配的“临时”逻辑地址。</p>
+<p>MAC地址：MAC 地址是 “永久”的物理地址。</p>
+<p>MAC 地址是可变的。</p>
+<p>DNS：将域名转换为 IP地址</p>
+<p>ARP：将IP地址转换为 MAC 地址</p>
+<p>DNS  PTR记录：将IP地址转换为 域名</p>
+<p>IP地址可静态分配，也可以 DHCP 动态分配</p>
+<h2 id="完全限定域名（FQDN）"><a href="#完全限定域名（FQDN）" class="headerlink" title="完全限定域名（FQDN）"></a>完全限定域名（FQDN）</h2><p>包含三个主要部分：</p>
+<ul>
+<li><p>顶级域名（TLD）-  <a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a> 中的 com，右侧有一个点（通常不显示），表示整个DNS命名空间 的根。</p>
+</li>
+<li><p>注册域名 - <a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a> 中的 google</p>
+</li>
+<li><p>子域或主机名 - <a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a> 中的 www</p>
+</li>
+</ul>
+<p>FQDN 总长不能超过 253 个字符（包含点）</p>
+<p>单个部分长度不能超过 63 个字符</p>
+<p>只能包含数据、字母和连字符</p>
+<p>顶级域名 TLD 右侧有一个点（通常不显示），表示整个DNS命名空间 的根</p>
+<h2 id="DNS权威服务器"><a href="#DNS权威服务器" class="headerlink" title="DNS权威服务器"></a>DNS权威服务器</h2><p>每个注册域名都有一个指定的权威名称服务器。</p>
+<p>主权威名称服务器托管域名的区域文件，也就是 DNS 记录。</p>
+<p>辅助权威名称服务器托管域名区域文件副本，用于只读。</p>
+<h2 id="DNS查询过程"><a href="#DNS查询过程" class="headerlink" title="DNS查询过程"></a>DNS查询过程</h2><ul>
+<li>查询本地 HOST 文件和DNS缓存</li>
+<li>查询本地配置的 DNS 服务器</li>
+</ul>
+<h2 id="DNS-使用端口"><a href="#DNS-使用端口" class="headerlink" title="DNS 使用端口"></a>DNS 使用端口</h2><p>TCP 53 用于区域间传输，也就是 DNS 服务器之间交换区域文件，用于特殊查询或响应超过 512 字节的情况。</p>
+<p>UDP 53 用于典型的 DNS 查询。</p>
+<h2 id="域名系统安全扩展-DNSSEC"><a href="#域名系统安全扩展-DNSSEC" class="headerlink" title="域名系统安全扩展 DNSSEC"></a>域名系统安全扩展 DNSSEC</h2><p>域名系统安全扩展（Domain Name System Security Extensions）</p>
+<p>功能：</p>
+<p>在DNS操作期间在设备之间提供相互验证和过程加密</p>
+<p>解决的问题：</p>
+<p>减少以服务器为中心的 DNS 滥用，例如 DNS 记录中毒和 DNS 缓存中毒。</p>
+<p>适用范围：</p>
+<p>DNSSEC  仅适用于 DNS 服务器，不适用于客户端。</p>
+<h2 id="ODoH"><a href="#ODoH" class="headerlink" title="ODoH"></a>ODoH</h2><p>功能：</p>
+<p>通过 HTTPS 协议加密，将传统的 DNS  查询封装在 HTTPS 请求中，先将加密的请求传输到代理服务器，代理服务器再将请求传输到目标 DoH 服务器，目标 DoH 服务器解密查询后将结果通过代理服务器返回给客户端。</p>
+<p>解决的问题：</p>
+<p>1、加密 DNS 查询，防止窃听和篡改。</p>
+<p>2、完全隐藏用户的 IP 地址，防止 DoH 服务器关联用户身份。</p>
+<p>使用范围：</p>
+<p>ODoH&#x2F;DoH 用户客户端。</p>
+<h2 id="DNS-中毒"><a href="#DNS-中毒" class="headerlink" title="DNS 中毒"></a>DNS 中毒</h2><p>DNS 中毒（DNS Poisoning），也称为 DNS 欺骗（DNS Spoofing），是一种网络攻击手段，攻击者通过伪造 DNS 响应，将用户引导到恶意网站或服务器，而不是用户实际想要访问的目标网站。这种攻击可能导致数据泄露、钓鱼攻击、恶意软件传播等严重后果。</p>
+<h3 id="流氓-DNS-服务器"><a href="#流氓-DNS-服务器" class="headerlink" title="流氓 DNS 服务器"></a>流氓 DNS 服务器</h3><p>流氓 DNS  服务器，侦听网络流量，返回错误的 DNS 查询记录，由于客户端接收到 DNS 查询后会关闭 DNS 查询会话，导致正确的查询响应被忽略。</p>
+<p>DNS 查询存在 查询 ID(QueryID, QID)，查询响应必须包含相同的 QID。</p>
+<h3 id="DNS-缓存中毒"><a href="#DNS-缓存中毒" class="headerlink" title="DNS 缓存中毒"></a>DNS 缓存中毒</h3><p>常见攻击手法：</p>
+<p>1、攻击权威 DNS 服务器，修改权威服务器上的 DNS 记录。由于存在全球社区安全监控，攻击较少。</p>
+<p>2、攻击 DNS 缓存服务器，修改缓存服务器上的 DNS 记录。由于不存在全球社区安全监控，只受运营商监控，攻击较多。</p>
+<p>攻击影响目标均为 DNS 查询客户端。</p>
+<h3 id="DNS-域欺骗"><a href="#DNS-域欺骗" class="headerlink" title="DNS 域欺骗"></a>DNS 域欺骗</h3><p>DNS 域欺骗（DNS Pharming），是将有效网络的 URL 或 IP 地址恶意重定向到假网络的行为。</p>
+<h4 id="攻击手法"><a href="#攻击手法" class="headerlink" title="攻击手法"></a>攻击手法</h4><h5 id="修改本地-HOST-文件"><a href="#修改本地-HOST-文件" class="headerlink" title="修改本地 HOST 文件"></a>修改本地 HOST 文件</h5><h5 id="修改DNS配置"><a href="#修改DNS配置" class="headerlink" title="修改DNS配置"></a>修改DNS配置</h5><p>更改 DNS 查询IP</p>
+<h5 id="DNS查询欺骗"><a href="#DNS查询欺骗" class="headerlink" title="DNS查询欺骗"></a>DNS查询欺骗</h5><p>窃听 DNS 查询，返回虚假回复，需要包含相同 QID </p>
+<h5 id="使用代理伪造"><a href="#使用代理伪造" class="headerlink" title="使用代理伪造"></a>使用代理伪造</h5><h3 id="DNS中毒防御措施"><a href="#DNS中毒防御措施" class="headerlink" title="DNS中毒防御措施"></a>DNS中毒防御措施</h3><p>1、限制内部 DNS 服务器和外部 DNS 服务器之间的区域传输</p>
+<p>限制入站 TCP 53（限制DNS服务器之间交换）、出站 UDP 53（限制客户端查询）</p>
+<p>2、要求内部使用内部 DNS 解析所有域名</p>
+<p>限制出站 UDP 53（限制外部查询）、开启出站 TCP 53（用于DNS服务器之间交换）</p>
+<p>3、限制外部 DNS 服务器，只从特定的 DNS 服务器交换下载数据</p>
+<p>4、部署网络入侵检测系统(NIDS)以监视异常 DNS 流量</p>
+<p>5、正确加固专用网络中的所有 DNS、服务器和客户端系统</p>
+<p>6、使用 DNSSEC 保护 DNS 基础设施</p>
+<p>7、在所有支持的客户端上使用 DoH 或 ODoH</p>
+<p>8、拆分DNS服务器，区分外部和内部DNS服务器，并限制可请求范围</p>
+<p>DNS 陷坑防御机制</p>
+<p>给恶意软件提供错误的响应，阻止访问命令，防止系统被控制，也可以阻止用户访问已知的恶意或钓鱼网站。</p>
+<p>也可以理解为内部 DNS 劫持，将恶意域名劫持到特定的IP。</p>
+<h2 id="域名劫持"><a href="#域名劫持" class="headerlink" title="域名劫持"></a>域名劫持</h2><p>域名劫持或域名盗窃是在未经所有者授权的情况下更改域名注册的恶意行为。这可通过 窃取所有者的登录凭证、使用 XSRF、会话劫持、路径&#x2F;MITM 攻击或利用域名注册商系统中 的缺陷来实现。</p>
+<p>防止域名劫持的最佳措施是在登录域注册器时使用强多因素身份认证。为了防止域名注 册失效，请设置自动续费，并在续费日期前一周再次检查付款方式。</p>
+<p>其他实现域名劫持效果的方式</p>
+<p>1、误植域名攻击</p>
+<p>攻击者预测 URL 可能的输入错误，然后注册这些域名，将流量 引导到自己的网站。</p>
+<p>常见的错误：拼写错误（如 googel.com）、名称或单词的输入错误（如 gooogle.com）、变体(如 googles.com 中的复数)以及不同的顶级域(TLD)，如 google.edu 等。</p>
+<p>2、同形词攻击</p>
+<p>利用字符集的相似性来注册肉眼看起来合法的虚假国际域名 (IDN)</p>
+<p>3、URL 劫持</p>
+<p>URL 劫持指的是显示其他链接或广告的行为，该链接或广告看起来像知名产品、服务或 网站的链接或广告，但单击后会将用户重定向到其他位置、服务或产品</p>
+<p>攻击手段：</p>
+<p>发布站 点和页面、利用搜索引擎优化(SEO)</p>
+<p>使用广告软件来取代合法广告和链接</p>
+<p>4、点击劫持</p>
+<p>点击劫持攻击将用户在网页上的点击或选择重定向到另一个目标(通常是恶意的)，而不 是其预期位置。</p>
+<p>攻击手段：</p>
+<p>在显示的页面上添加不可见或隐藏的覆盖、框架或图像。</p>
+<h1 id="互联网协议网络"><a href="#互联网协议网络" class="headerlink" title="互联网协议网络"></a>互联网协议网络</h1><p>IP 为数据包提供路由寻址。</p>
+<p>IP 是无连接的，因而是一种不可靠的通估服务。</p>
+<h2 id="IPv4-IPv6"><a href="#IPv4-IPv6" class="headerlink" title="IPv4 &#x2F; IPv6"></a>IPv4 &#x2F; IPv6</h2><h1 id="11-12-无线网络"><a href="#11-12-无线网络" class="headerlink" title="11.12 无线网络"></a>11.12 无线网络</h1><p>802.11 是用于无线网络通信的 IEEE 标准。</p>
 <p>Wi-Fi 可以再 ad  hoc 模式（也称为点对点 Wi-Fi）或基础设施模式下部署。</p>
 <p>ad hoc 模式意味着任何两个无线网络设备都可以在没有集中控制权限（即基站或接入点）的情况下进行通信。</p>
 <p>​	Wi-Fi 直连是  ad hoc 模式的升级版本，可以支持 WPA2 和 WPA3（ad hoc 仅支持 WEP）。</p>
