@@ -28,8 +28,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tthours.github.io/image-20250225194747849.png">
 <meta property="og:image" content="https://tthours.github.io/image-20250225092301241.png">
+<meta property="og:image" content="https://tthours.github.io/image-20250228080835876.png">
 <meta property="article:published_time" content="2025-02-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-02-26T01:47:27.447Z">
+<meta property="article:modified_time" content="2025-02-28T01:29:30.718Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="seccert">
@@ -233,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.2k 字
+          9.4k 字
         
       </span>
     
@@ -244,7 +245,7 @@
         
         
         
-          69 分钟
+          79 分钟
         
       </span>
     
@@ -501,8 +502,93 @@
 <p>攻击手段：</p>
 <p>在显示的页面上添加不可见或隐藏的覆盖、框架或图像。</p>
 <h1 id="互联网协议网络"><a href="#互联网协议网络" class="headerlink" title="互联网协议网络"></a>互联网协议网络</h1><p>IP 为数据包提供路由寻址。</p>
-<p>IP 是无连接的，因而是一种不可靠的通估服务。</p>
-<h2 id="IPv4-IPv6"><a href="#IPv4-IPv6" class="headerlink" title="IPv4 &#x2F; IPv6"></a>IPv4 &#x2F; IPv6</h2><h1 id="11-12-无线网络"><a href="#11-12-无线网络" class="headerlink" title="11.12 无线网络"></a>11.12 无线网络</h1><p>802.11 是用于无线网络通信的 IEEE 标准。</p>
+<p>IP 是无连接的，因而是一种不可靠的通信服务。</p>
+<h2 id="IPv4-IPv6"><a href="#IPv4-IPv6" class="headerlink" title="IPv4 &#x2F; IPv6"></a>IPv4 &#x2F; IPv6</h2><p>IPv4 使用 32 位寻址方案。</p>
+<p>IPv6 使用 128 位寻址方案。</p>
+<h3 id="IPv4过渡IPv6风险"><a href="#IPv4过渡IPv6风险" class="headerlink" title="IPv4过渡IPv6风险"></a>IPv4过渡IPv6风险</h3><p>1、攻击者可用IP更多，IP 过滤和阻止列表的效果降低</p>
+<p>2、安全及监控设备需要升级支持 IPv6，否则IPv6会成为一个隐蔽通道。</p>
+<p>3、NAT 的丢失，客户端隐秘性降低。</p>
+<h3 id="同时使用v4和v6的方法"><a href="#同时使用v4和v6的方法" class="headerlink" title="同时使用v4和v6的方法"></a>同时使用v4和v6的方法</h3><p>双堆栈</p>
+<p>隧道</p>
+<p>NAT-PT</p>
+<h2 id="IP分类"><a href="#IP分类" class="headerlink" title="IP分类"></a>IP分类</h2><p>A类子网支持  16 777 214 个主机</p>
+<p>B类子网支持  65 534 个主机</p>
+<p>C类子网支持 254 个主机</p>
+<p>环回地址为 A 类网络的 127 个地址，全 0 的 A 类网络被定义为网络黑洞，到该地址的流量都将丢弃。</p>
+<p>可变长度子网掩码（VLSM）</p>
+<p>无类别域间路由（CIDR）：使用掩码位表示子网掩码</p>
+<p><img src="/image-20250228080835876.png" srcset="/img/loading.gif" lazyload alt="image-20250228080835876"></p>
+<h2 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h2><p>ICMP 用于确定网络和特定链路的运行状态。</p>
+<p>ICMP 可用于  ping，traceroute，pathping 等网络管理工具。</p>
+<p>ICMP 存在被用于基于带宽的 DoS 攻击，例如：死亡之 ping、Smurf 攻击和 ping 洪水攻击。解决方案：限制 ICMP 使用或限制吞吐量。</p>
+<h2 id="IGMP"><a href="#IGMP" class="headerlink" title="IGMP"></a>IGMP</h2><p>IGMP 允许系统支持多播，将数据传输到多个指定的接收者。</p>
+<p>IGMP 用于管理主机的动态多播组成员资格。</p>
+<p>多播可以通过简单文件传输协议（TFTP）系统来组织或缓存要发送给多个收件人的内容。</p>
+<h2 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h2><p>ARP 用于将 IP 地址（用于逻辑寻址的 32 位二进制数）解析为 MAC 地址（用于物理寻址的 48 位二进制数）。</p>
+<p>网段上的流量（例如通过交换机从客户端到默认的网关，即路由器）使用 MAC 地址从源系统定向到目标系统。</p>
+<p>ARP 承载以太网帧的有效载荷，是一个从属的第 2 层协议。</p>
+<p><strong>ARP 操作过程</strong></p>
+<p>使用缓存和广播实现操作</p>
+<p>1、检查本地缓存</p>
+<p>2、如本地不存在，则发送广播形式的 ARP 请求</p>
+<p>3、如目标不存在当前网段，使用默认网关的 MAC 地址转发</p>
+<p>4、默认网关执行自己的 ARP 过程</p>
+<p><strong>ARP滥用</strong></p>
+<p>在 ARP 缓存中插入虚假记录，可导致缓存中毒的技术</p>
+<p><strong>ARP缓存中毒或ARP欺骗形式</strong></p>
+<p>1、以伪造的回复响应 ARP 请求</p>
+<p>2、使用无目的或未经请求的 ARP 答复</p>
+<p>3、使用 ARP 命令在本地设置静态 ARP 条目，静态 ARP 条目在重新启动时不会留存。</p>
+<p><strong>ARP缓存中毒&#x2F;欺骗的防御方案</strong></p>
+<p>1、实施交换机上的端口安全（最佳方案）</p>
+<p>禁止与恶意或未经授权的设备通信，阻止来自违规系统的 ARP 答复。</p>
+<p>本地&#x2F;软件防火墙、主机入侵检测和防御系统（HIDPS）、特定端点安全产品均可阻止未请求的 ARP 回复或通告。</p>
+<p>2、实施建立静态 ARP 条目（不建议）</p>
+<p>存在攻击&#x2F;滥用风险</p>
+<p>消除适应不断网络变化的灵活性</p>
+<p><strong>ARP中毒检测工具</strong></p>
+<p>arpwatch</p>
+<h1 id="安全通信协议"><a href="#安全通信协议" class="headerlink" title="安全通信协议"></a>安全通信协议</h1><p>为特定程序的通信通道提供安全服务的协议。</p>
+<h2 id="IPsec"><a href="#IPsec" class="headerlink" title="IPsec"></a>IPsec</h2><p>Internet Protocol Security 基于IP协议</p>
+<p>使用公钥加密系统来提供加密、访问控制、不可否认性和消息验证</p>
+<p>主要用于虚拟专用网络 VPN ，可在传输或隧道模式下运行。</p>
+<h2 id="kerberos"><a href="#kerberos" class="headerlink" title="kerberos"></a>kerberos</h2><p>为用户提供单点登录（SSO）解决方案，并为登录凭证提供保护。</p>
+<p>使用混合加密来提供可靠的身份认证保护。</p>
+<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><p>Secure Shell （SSH）端对端加密技术</p>
+<p>用途：</p>
+<p>1、加密明文应用程序（rcp、rlogin、rexec）</p>
+<p>2、协议加密（SFTP）</p>
+<p>3、传输模式 VPN （即仅限主机到主机链路加密）</p>
+<h2 id="信令协议"><a href="#信令协议" class="headerlink" title="信令协议"></a>信令协议</h2><p>加密协议，为语音通信、视频会议和文本消息服务提供端到端加密。</p>
+<p>信令协议是非联邦（nofederated）协议，是名为 “Signal” 的即时通信 APP 中的核心元素。</p>
+<h2 id="安全远程过程调用"><a href="#安全远程过程调用" class="headerlink" title="安全远程过程调用"></a>安全远程过程调用</h2><p>Secure Remote Procedure Call（S-RPC）是用于跨网络服务通信的身份认 证服务，旨在防止在远程系统上未经授权执行代码。</p>
+<h2 id="传输层安全"><a href="#传输层安全" class="headerlink" title="传输层安全"></a>传输层安全</h2><p>Transport  Layer Security（TLS）是一种在 OSI 模型第 4 层运行的加密协议（加密 TCP 通信的有效载荷）。</p>
+<p>用途：</p>
+<p>1、加密 HTTPS 等 Web 通信</p>
+<p>2、加密应用层协议</p>
+<p>特点：</p>
+<p>1、支持跨不安全网络的安全客户端-服务器通信，同时防止篡改、欺骗和窃听。</p>
+<p>2、支持单向身份认证</p>
+<p>3、支持使用数字证书进行双向身份认证</p>
+<p>4、通常应用于 TCP 包的基本有效载荷，使其能封装更高层协议有效载荷</p>
+<p>5、可用于加密用户数据报协议(UDP)和会话初始协议(SIP)连接。 (SIP 是与 IP 语音相关的协议。)</p>
+<h1 id="多层协议的含义"><a href="#多层协议的含义" class="headerlink" title="多层协议的含义"></a>多层协议的含义</h1><p>TCP &#x2F; IP 是一种多层协议。</p>
+<p>HTTP -&gt; TCP -&gt; IP -&gt; 以太网</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs inform7"><span class="hljs-comment">[Ethernet <span class="hljs-comment">[IP <span class="hljs-comment">[TCP <span class="hljs-comment">[HTTP <span class="hljs-comment">[Payload]</span>]</span>]</span>]</span>]</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>TLS 加密</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs inform7"><span class="hljs-comment">[Ethernet <span class="hljs-comment">[IP <span class="hljs-comment">[TCP <span class="hljs-comment">[TLS <span class="hljs-comment">[HTTP <span class="hljs-comment">[Payload]</span>]</span>]</span>]</span>]</span>]</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>网络层IPsec加密</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs inform7"><span class="hljs-comment">[Ethernet <span class="hljs-comment">[IPsec <span class="hljs-comment">[IP <span class="hljs-comment">[TCP <span class="hljs-comment">[TLS <span class="hljs-comment">[HTTP <span class="hljs-comment">[Payload]</span>]</span>]</span>]</span>]</span>]</span>]</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="11-12-无线网络"><a href="#11-12-无线网络" class="headerlink" title="11.12 无线网络"></a>11.12 无线网络</h1><p>802.11 是用于无线网络通信的 IEEE 标准。</p>
 <p>Wi-Fi 可以再 ad  hoc 模式（也称为点对点 Wi-Fi）或基础设施模式下部署。</p>
 <p>ad hoc 模式意味着任何两个无线网络设备都可以在没有集中控制权限（即基站或接入点）的情况下进行通信。</p>
 <p>​	Wi-Fi 直连是  ad hoc 模式的升级版本，可以支持 WPA2 和 WPA3（ad hoc 仅支持 WEP）。</p>

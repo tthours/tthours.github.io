@@ -19,23 +19,33 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="SCA概念Software Composition Analysis 软件成分分析 SCA原理分析源码提取项目依赖的第三方组件及其版本、许可证等信息，生成软件物料清单（SBOM，Software Bill-of-Materials），根据SBOM分析项目是否使用了存在已知漏洞的组件，后期其它组件爆出漏洞时也可根据SBOM快速排查受影响项目。 开源工具DependencyCheckDepen">
+    <meta name="description" content="SCA概念Software Composition Analysis 软件成分分析 SCA原理分析源码提取项目依赖的第三方组件及其版本、许可证等信息，生成软件物料清单（SBOM，Software Bill-of-Materials），根据SBOM分析项目是否使用了存在已知漏洞的组件，后期其它组件爆出漏洞时也可根据SBOM快速排查受影响项目。 SCA供应链风险风险与挑战      二方包：内">
 <meta property="og:type" content="article">
 <meta property="og:title" content="devsecops_sca">
 <meta property="og:url" content="https://tthours.github.io/2025/01/13/security/codesec/devsecops_sca/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="SCA概念Software Composition Analysis 软件成分分析 SCA原理分析源码提取项目依赖的第三方组件及其版本、许可证等信息，生成软件物料清单（SBOM，Software Bill-of-Materials），根据SBOM分析项目是否使用了存在已知漏洞的组件，后期其它组件爆出漏洞时也可根据SBOM快速排查受影响项目。 开源工具DependencyCheckDepen">
+<meta property="og:description" content="SCA概念Software Composition Analysis 软件成分分析 SCA原理分析源码提取项目依赖的第三方组件及其版本、许可证等信息，生成软件物料清单（SBOM，Software Bill-of-Materials），根据SBOM分析项目是否使用了存在已知漏洞的组件，后期其它组件爆出漏洞时也可根据SBOM快速排查受影响项目。 SCA供应链风险风险与挑战      二方包：内">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tthours.github.io/image-20250227140806385.png">
+<meta property="og:image" content="https://tthours.github.io/image-20250227141106532.png">
+<meta property="og:image" content="https://tthours.github.io/image-20250227141241117.png">
+<meta property="og:image" content="https://tthours.github.io/image-20250227141659095.png">
+<meta property="og:image" content="https://tthours.github.io/image-20250227141822011.png">
+<meta property="og:image" content="https://tthours.github.io/image-20250227141931821.png">
+<meta property="og:image" content="https://tthours.github.io/image-20250227142534854.png">
+<meta property="og:image" content="https://tthours.github.io/image-20250227142744052.png">
+<meta property="og:image" content="https://tthours.github.io/image-20250227143232537.png">
+<meta property="og:image" content="https://tthours.github.io/image-20250227143306433.png">
 <meta property="og:image" content="https://tthours.github.io/image-20250113190710639.png">
 <meta property="og:image" content="https://tthours.github.io/image-20250115090958288.png">
 <meta property="article:published_time" content="2025-01-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-15T01:10:23.996Z">
+<meta property="article:modified_time" content="2025-02-27T07:36:58.105Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="codesec">
 <meta property="article:tag" content="devsecops">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://tthours.github.io/image-20250113190710639.png">
+<meta name="twitter:image" content="https://tthours.github.io/image-20250227140806385.png">
   
   
   
@@ -233,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          343 字
+          393 字
         
       </span>
     
@@ -244,7 +254,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -292,6 +302,19 @@
 
 <h1 id="SCA概念"><a href="#SCA概念" class="headerlink" title="SCA概念"></a>SCA概念</h1><p>Software Composition Analysis <strong>软件成分分析</strong></p>
 <h1 id="SCA原理"><a href="#SCA原理" class="headerlink" title="SCA原理"></a>SCA原理</h1><p><strong>分析源码提取项目依赖的第三方组件及其版本、许可证</strong>等信息，生成软件物料清单（SBOM，Software Bill-of-Materials），根据SBOM分析项目是否使用了存在已知漏洞的组件，后期其它组件爆出漏洞时也可根据SBOM快速排查受影响项目。</p>
+<h1 id="SCA供应链风险"><a href="#SCA供应链风险" class="headerlink" title="SCA供应链风险"></a>SCA供应链风险</h1><h2 id="风险与挑战"><a href="#风险与挑战" class="headerlink" title="风险与挑战"></a>风险与挑战</h2><p><img src="/image-20250227140806385.png" srcset="/img/loading.gif" lazyload alt="image-20250227140806385"></p>
+<p><img src="/image-20250227141106532.png" srcset="/img/loading.gif" lazyload alt="image-20250227141106532"></p>
+<p><img src="/image-20250227141241117.png" srcset="/img/loading.gif" lazyload alt="image-20250227141241117"></p>
+<p><img src="/image-20250227141659095.png" srcset="/img/loading.gif" lazyload alt="image-20250227141659095"></p>
+<p><img src="/image-20250227141822011.png" srcset="/img/loading.gif" lazyload alt="image-20250227141822011"></p>
+<p><img src="/image-20250227141931821.png" srcset="/img/loading.gif" lazyload alt="image-20250227141931821"></p>
+<p>二方包：内部开发的组件</p>
+<p>检测能力外放，提供给测试人员使用</p>
+<p>漏洞可达性-提升漏洞检测准确性</p>
+<p><img src="/image-20250227142534854.png" srcset="/img/loading.gif" lazyload alt="image-20250227142534854"></p>
+<p><img src="/image-20250227142744052.png" srcset="/img/loading.gif" lazyload alt="image-20250227142744052"></p>
+<p><img src="/image-20250227143232537.png" srcset="/img/loading.gif" lazyload alt="image-20250227143232537"></p>
+<p><img src="/image-20250227143306433.png" srcset="/img/loading.gif" lazyload alt="image-20250227143306433"></p>
 <h1 id="开源工具"><a href="#开源工具" class="headerlink" title="开源工具"></a>开源工具</h1><h2 id="DependencyCheck"><a href="#DependencyCheck" class="headerlink" title="DependencyCheck"></a>DependencyCheck</h2><h2 id="DependencyTrack"><a href="#DependencyTrack" class="headerlink" title="DependencyTrack"></a>DependencyTrack</h2><h3 id="DependencyTrack简介"><a href="#DependencyTrack简介" class="headerlink" title="DependencyTrack简介"></a>DependencyTrack简介</h3><p>Dependency-Track 是一个智能组件分析平台，使组织能够识别和降低软件供应链中的风险。</p>
 <p>支持多个情报源，包括国家漏洞数据库 （NVD）、Sonatype OSS 索引、GitHub Advisories、Snyk、OSV 和来自基于风险的安全的 VulnDB，发现易受攻击的组件</p>
 <h3 id="DependencyTrack原理"><a href="#DependencyTrack原理" class="headerlink" title="DependencyTrack原理"></a>DependencyTrack原理</h3><p>获取SBOM</p>
