@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://tthours.github.io/image-20250225092301241.png">
 <meta property="og:image" content="https://tthours.github.io/image-20250228080835876.png">
 <meta property="article:published_time" content="2025-02-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-01T14:44:40.135Z">
+<meta property="article:modified_time" content="2025-03-03T01:43:40.351Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="seccert">
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.8k 字
+          12k 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          82 分钟
+          104 分钟
         
       </span>
     
@@ -606,9 +606,51 @@
 <h5 id="SAN风险"><a href="#SAN风险" class="headerlink" title="SAN风险"></a>SAN风险</h5><p>可能导致单点故障，需要进行冗余集成以保证可用性。</p>
 <h4 id="以太网光纤通道FCoE"><a href="#以太网光纤通道FCoE" class="headerlink" title="以太网光纤通道FCoE"></a>以太网光纤通道FCoE</h4><p>以太网光纤通道（Fibre Channel over Ethernet，FCoE）是一种网络数据存储解决方案（SAN 或 NAS），允许高达 128 Gbps 的文件传输速率。</p>
 <p>运行在第 2 层，用于光纤电缆和铜缆。</p>
-<p>FCoE 用于封装以太网网络上的光纤通道通信</p>
+<p>FCoE 用于封装以太网网络上的光纤通道通信，光纤通道可以作为网络层或 OSI 第 3 层协议运行，将 IP 替换为标准以太网网络的有效载荷。</p>
+<h4 id="多协议标签交换MPLS"><a href="#多协议标签交换MPLS" class="headerlink" title="多协议标签交换MPLS"></a>多协议标签交换MPLS</h4><p>多协议标签交换（Multiprotocol Label Switching，MPLS）是一种高吞吐量的高性能网络技术，基于短路径标签（而不是更长的网络地址）来引导网络上的数据。</p>
+<h4 id="互联网小型计算机系统接口iSCSI"><a href="#互联网小型计算机系统接口iSCSI" class="headerlink" title="互联网小型计算机系统接口iSCSI"></a>互联网小型计算机系统接口iSCSI</h4><p>互联网小型计算机系统接口（Internet  Small Computer System Interface，iSCSI）是一种基于 IP 的网络存储标准，运行在第 3 层。</p>
+<p>可通过 LAN、WAN 或公共互联网连接启用与位置无关的文件存储、传输和检索。</p>
+<h4 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h4><h4 id="SDN"><a href="#SDN" class="headerlink" title="SDN"></a>SDN</h4><h4 id="云"><a href="#云" class="headerlink" title="云"></a>云</h4><h4 id="虚拟化"><a href="#虚拟化" class="headerlink" title="虚拟化"></a>虚拟化</h4><h4 id="SOA"><a href="#SOA" class="headerlink" title="SOA"></a>SOA</h4><h4 id="微服务（microservices）"><a href="#微服务（microservices）" class="headerlink" title="微服务（microservices）"></a>微服务（microservices）</h4><h4 id="基础设施即代码（IaC）"><a href="#基础设施即代码（IaC）" class="headerlink" title="基础设施即代码（IaC）"></a>基础设施即代码（IaC）</h4><h4 id="无服务器架构（serverless-architecture）"><a href="#无服务器架构（serverless-architecture）" class="headerlink" title="无服务器架构（serverless architecture）"></a>无服务器架构（serverless architecture）</h4><h2 id="11-10-2网络电话"><a href="#11-10-2网络电话" class="headerlink" title="11.10.2网络电话"></a>11.10.2网络电话</h2><p>网络电话（Voice over IP，VoIP）是一种隧道机制，将音频、视频和其他数据封装到IP数据包中，以支持语音呼叫和多媒体协作。</p>
+<h3 id="网络电话-VoIP-风险"><a href="#网络电话-VoIP-风险" class="headerlink" title="网络电话 VoIP 风险"></a>网络电话 VoIP 风险</h3><ul>
+<li>许多 VoIP 工具都可以轻易用来伪造来电显示，因此黑客可以执行 vishing （VoIP网络）攻击或语音垃圾邮件（SPIT）攻击</li>
+<li>呼叫管理器系统和 VoIP 电话本身可能容易受到主机操作系统攻击和 DoS 攻击</li>
+<li>攻击者可能通过伪造呼叫管理器或端点连接协商或响应消息来执行 MITM&#x2F;路径攻击</li>
+<li>由于 VoIP 流量是未加密网络流量，可通过解码 VoIP 流量来监听 VoIP 通信</li>
+<li>如果在与桌面和服务器系统相同的交换机上部署 VoIP 电话，存在允许 802.1X 身份认证伪造以及 VLAN 和 VoIP 跳转（即跨越已验证通道跳转）</li>
+</ul>
+<h3 id="网络电话-VoIP-安全改进"><a href="#网络电话-VoIP-安全改进" class="headerlink" title="网络电话 VoIP 安全改进"></a>网络电话 VoIP 安全改进</h3><p>安全实时传输协议或安全 RTP （SRTP）是对 VoIP 通信中使用的实时传输协议（RTP）的安全改进。</p>
+<p>SRTP 通过强加密和可靠的身份认证，将拒绝服务、路径攻击和其他 VoIP 攻击的风险降至最低。</p>
+<h2 id="11-10-3软件定义网络SDN"><a href="#11-10-3软件定义网络SDN" class="headerlink" title="11.10.3软件定义网络SDN"></a>11.10.3软件定义网络SDN</h2><p>软件定义网络（software-defined networking，SDN）是一种独特的网络操作、设计和管理方法。</p>
+<h3 id="SDN-目的"><a href="#SDN-目的" class="headerlink" title="SDN 目的"></a>SDN 目的</h3><p>将基础设施层（也称为数据平面和转发平面-硬件和基于硬件的设置）与控制层（即数据传输管理的网络服务）分离。</p>
+<p>控制平面使用协议来决定向何处发送流量。</p>
+<p>数据平面包含决定是否转发流量的规则。</p>
+<p>通过基于属性的访问控制（ABAC）访问控制。</p>
+<p>SDN 解决方案取代了路由器和交换机等传统网络设备，使组织可以选择使用更简单的网络设备（接受 SDN 控制器的指令）处理流量路由。消除了传统网络协议的复杂性、消除了IP寻址、子网、路由等传统网络概念。</p>
+<p>SDN 提供一宗新的网络设备，该设计可直接从集中位置编程，灵活，独立于供应商，并且基于开放标准。</p>
+<p>SDN 也被看作网络虚拟化，允许数据传输路径、通信决策树和流控制在 SDN 控制层中虚拟化，而不是以每个设备为基础在硬件上处理。</p>
+<p>虚拟 SAN （VSAN）通过虚拟化绕过了 SAN 复杂硬件要求带来的复杂性。</p>
+<p>虚拟 SAN 或软件定义的共享存储系统是 SAN 在虚拟化网络或 SDN 上的虚拟重现。</p>
+<p>SDN 衍生品软件定义存储（SDS），SDS 是 SAN 或 NAS 的 SDN 版本。是一种策略驱动的存储管理和资源调配解决方案，独立于实际的底层存储硬件，是有效的虚拟存储。</p>
+<p>软件定义广域网（SDWAN 或 SD-WAN）是 SDN 的一种演变，用于远程数据中心、远端位置和 WAN 链路上的云服务之间的连接管理和服务控制。</p>
+<h1 id="11-11微分网段"><a href="#11-11微分网段" class="headerlink" title="11.11微分网段"></a>11.11微分网段</h1><p>微分网络是将网络分割或细分为更小的组织单元网格。</p>
+<h2 id="微分网段优势"><a href="#微分网段优势" class="headerlink" title="微分网段优势"></a>微分网段优势</h2><h3 id="提高性能"><a href="#提高性能" class="headerlink" title="提高性能"></a>提高性能</h3><p>网络分段可以通过组织体系来提高性能，经常通信的系统位于同一分段。广播域的划分可以显著提供大型网络的性能。</p>
+<h3 id="减少通信问题"><a href="#减少通信问题" class="headerlink" title="减少通信问题"></a>减少通信问题</h3><p>可减少拥塞并抑制通信问题，如广播风暴。</p>
+<h3 id="提供安全"><a href="#提供安全" class="headerlink" title="提供安全"></a>提供安全</h3><p>可通过隔离通信流量和用户访问权限来提高安全性。</p>
+<h2 id="微分网段实施"><a href="#微分网段实施" class="headerlink" title="微分网段实施"></a>微分网段实施</h2><p>单独或组合使用基于交换机的 VLAN、路由器或防火墙来创建分段。</p>
+<h2 id="网段类型"><a href="#网段类型" class="headerlink" title="网段类型"></a>网段类型</h2><p>专用 LAN</p>
+<p>内网</p>
+<p>屏蔽子网</p>
+<p>外联网</p>
+<h2 id="微分网络措施"><a href="#微分网络措施" class="headerlink" title="微分网络措施"></a>微分网络措施</h2><p>每个区域通过内部分段防火墙（ISFW）、子网、VLAN 或其他虚拟网络解决方案与其他域分开。</p>
+<p>域之间的所有通信都会经过过滤，可能需要进行身份认证，通常需要会话加密，并且可能受到允许列表和阻止列表的控制。</p>
+<p>与本地网络外部的实体进行通信时，必须封装通信以供转发，类似于使用 VPN 访问远程网络</p>
+<p>微分网络是实现零信任的关键要素。</p>
+<p>虚拟可扩展 LAN（VXLAN）是一种封装协议，可以使 VLAN 跨子网和地理距离扩展。</p>
+<p>VLAN  通常仅限于第 2 层网络域，并且不能包含来自其他网络的成员，只能通过路由器入口访问。</p>
+<p>VXLAN 允许创建多达 1600 万个虚拟网络，而传统 VLAN 仅限于 4096 个。</p>
+<p>VXLAN 可用作实现微分网段的手段，而且不仅限于本地实体。</p>
 <h1 id="11-12-无线网络"><a href="#11-12-无线网络" class="headerlink" title="11.12 无线网络"></a>11.12 无线网络</h1><p>802.11 是用于无线网络通信的 IEEE 标准。</p>
-<p>Wi-Fi 可以再 ad  hoc 模式（也称为点对点 Wi-Fi）或基础设施模式下部署。</p>
+<p>Wi-Fi 可以在 ad  hoc 模式（也称为点对点 Wi-Fi）或基础设施模式下部署。</p>
 <p>ad hoc 模式意味着任何两个无线网络设备都可以在没有集中控制权限（即基站或接入点）的情况下进行通信。</p>
 <p>​	Wi-Fi 直连是  ad hoc 模式的升级版本，可以支持 WPA2 和 WPA3（ad hoc 仅支持 WEP）。</p>
 <p>基础设施模式意味着需要无线接入点（WAP），并且强制执行无线网络访问限制。</p>
@@ -628,7 +670,7 @@
 <p>​	优势：只处理无线信号，管理、安全、路由、过滤等都集中在管理控制台上。</p>
 <p>基于控制器的 WAP 是中央控制器管理的 Thin AP。</p>
 <p>独立 WAP 是一个 Fat AP，可在本地掌控设备上的所有管理功能。</p>
-<h2 id="保护-SSID"><a href="#保护-SSID" class="headerlink" title="保护 SSID"></a>保护 SSID</h2><p>为无线网络分配 SSID 用于区分不同无线网络。</p>
+<h2 id="11-12-1保护-SSID"><a href="#11-12-1保护-SSID" class="headerlink" title="11.12.1保护 SSID"></a>11.12.1保护 SSID</h2><p>为无线网络分配 SSID 用于区分不同无线网络。</p>
 <p>基础结构模式 SSID 有两种类型：</p>
 <p>扩展服务集标识符（ESSID），是使用 WAP 时无线网络的名称。</p>
 <p>基本服务集标识符（BSSID），是基站的 MAC 地址，用于区分支持 ESSID 的多个基站。</p>
@@ -636,8 +678,52 @@
 <p>标准安全实践规定在部署之前应该将默认 SSID  更改为唯一的 SSID。</p>
 <p>WAP 通过信标帧的特殊传输来广播 SSID 。</p>
 <p>信标帧允许其范围内的任何无线 NIC （网络接入卡）看到无线网络并使其连接尽可能简单。</p>
-<h2 id="11-12-4-无线安全"><a href="#11-12-4-无线安全" class="headerlink" title="11.12.4 无线安全"></a>11.12.4 无线安全</h2><h3 id="802-1X-EAP"><a href="#802-1X-EAP" class="headerlink" title="802.1X&#x2F;EAP"></a>802.1X&#x2F;EAP</h3><p>WAP、WAP2 和 WAP3802.1X </p>
-<h1 id="考试要点"><a href="#考试要点" class="headerlink" title="考试要点"></a>考试要点</h1><h2 id="了解OSI模型"><a href="#了解OSI模型" class="headerlink" title="了解OSI模型"></a>了解OSI模型</h2><p>OSI模型层如下：</p>
+<p><strong>保护 SSID 安全措施</strong></p>
+<p>1、应该禁用 SSID 的默认广播以保持无线网络的安全（不是真正的安全机制）</p>
+<p>2、使用 WPA2 或 WPA3，可靠的身份认证和加密解决方案</p>
+<h2 id="11-12-2无线信道"><a href="#11-12-2无线信道" class="headerlink" title="11.12.2无线信道"></a>11.12.2无线信道</h2><p>在无线信号的指定频率内对频率的细分称为信道。</p>
+<p>当两个或更多个 2.4 GHz 接入点在物理上相对靠近彼此时，一个信道上的信号可能干扰另一个信道上的信号。规避方式：尽可能区别物理上靠近的接入点的信道，以最小化信道重叠干扰。</p>
+<p>5 GHz 无线设计旨在避免信道重叠和干扰问题，信道间隔更大。2.4 GHz 信道宽 22 MHz，间隔 5MHz，5 GHz 信道宽 20 MHz，间隔 20 MHz。</p>
+<p>相邻的信道可以被组合到更大宽度的信道中以获得更快的吞吐量。</p>
+<p>2.4 GHz 覆盖面积大，速度较慢</p>
+<p>5 GHz 覆盖面积小，速度更快，穿墙能力弱</p>
+<h2 id="11-12-3进行现场调查"><a href="#11-12-3进行现场调查" class="headerlink" title="11.12.3进行现场调查"></a>11.12.3进行现场调查</h2><p>WAP 位置是通过执行现场调查并生成热图来确定的。</p>
+<p>现场调查是指使用射频信号检测器对无线信号强度、质量和干扰进行正式评估。</p>
+<p>现场调查的目标是最大限度地提高所需区域（如家庭或办公室）的性能，同时尽量减少外部区域未经授权的访问。</p>
+<h2 id="11-12-4-无线安全"><a href="#11-12-4-无线安全" class="headerlink" title="11.12.4 无线安全"></a>11.12.4 无线安全</h2><p><strong>开放系统身份认证OSA</strong></p>
+<p>开放系统身份认证（Open System Authentication），以明文形式传输所有内容，不提供保密性和安全性。</p>
+<p><strong>共享密钥身份认证SKA</strong></p>
+<p>共享密钥身份认证（Share Key Authentication），必须在网络通信发生前进行某种形式的身份认证，802.11 标准为 SKA 定义有线等效保密的可选技术。</p>
+<h3 id="WEP"><a href="#WEP" class="headerlink" title="WEP"></a>WEP</h3><p>有线等效保密（Wired Equivalent Privacy）</p>
+<p>使用预定义的共享 Rivest Cipher 4（RC4）密钥进行身份认证（即SKA）和加密。</p>
+<p>共享密钥是静态的，且在 WAP 和客户端之间共享。</p>
+<p>由于 RC 4 的实施存在缺陷，WEP 很弱。</p>
+<h3 id="WPA"><a href="#WPA" class="headerlink" title="WPA"></a>WPA</h3><p>Wi-Fi 受保护访问（Wi-Fi Protected Access，WPA）是 WEP 的替代品。</p>
+<p>WPA 不再使用相同的静态密钥来加密所有通信，与每个主机协商一个唯一的密钥集，将认证和加密分离。</p>
+<p>WPA 使用 RC4 算法，并采用临时密钥完整协议（TKIP）或 Cisco替代品-轻量级可扩展身份认证协议（LEAP）</p>
+<p>针对 WPA 的攻击（即 coWPAtty 和基于 GPU 的破解攻击）使得 WPA 不再安全。</p>
+<h3 id="WPA2"><a href="#WPA2" class="headerlink" title="WPA2"></a>WPA2</h3><p>IEEE 802.11i 或Wi-Fi受保护访问2（Wi-Fi Protected Access 2，WPA2）取代了 WEP 和 WPA 。</p>
+<p>使用 AES-CCMP 加密，而不是 RC4。</p>
+<p><strong>IEEE 802.11i &#x2F; WPA2 身份认证选项</strong></p>
+<p>1、预共享密钥（PSK）或个人（PER）模式</p>
+<p>PSK 使用静态固定密码进行身份认证。</p>
+<p>2、IEEE 802.1X 或企业（ENT）模式</p>
+<p>ENT 支持使用现有 AAA 服务（如 RADIUS - UDP 1812 端口或 TACACS+ - TCP 49 端口）进行身份认证。</p>
+<h3 id="WPA3"><a href="#WPA3" class="headerlink" title="WPA3"></a>WPA3</h3><p>WPA3-ENT 使用 192 位 AES CCMP 加密</p>
+<p>WPA3-PSK 使用 128 位 AES CCMP 加密，将预共享密钥身份认证替换为对等同步身份认证。</p>
+<p>对等同步身份认证（Simultaneous Authentication of Equals，SAE）使用蜻蜓密钥交换（Dragonfly Key Exchange）的零知识证明过程， 该过程是 Diffie-Hellman 的衍生物。该过程使用预设密码以及客户端和 AP 的 MAC 地址来执行身份认证和会话密钥交换。</p>
+<p>WPA3 还实现了 IEEE 802.11w-2009 管理帧保护，因此大多数网络管理操作都具有保密性、完整性、源身份认证和重播保护。</p>
+<h3 id="802-1X-EAP"><a href="#802-1X-EAP" class="headerlink" title="802.1X&#x2F;EAP"></a>802.1X&#x2F;EAP</h3><p>WAP、WAP2 和 WAP3 都支持 802.1X&#x2F;EAP 的企业（ENT）身份认证，是一种基于端口的标准网络访问控制，可确保客户端在进行正确身份之前无法与资源通信。</p>
+<p>802.1X 是一种切换系统，允许无线网络利用现有网络基础设施的身份认证服务。</p>
+<p>使用 802.1X ，可以将其他技术和解决方案（如RADIUS、TACACS、证书、智能卡、令牌设备和生物识别技术）集成到无线网络中以提供相互身份认证和多因素身份认证。</p>
+<p>可扩展身份认证协议（EAP）是一个身份认证框架，允许新的身份认证技术与现有的无线或点对点连接技术兼容。</p>
+<h3 id="LEAP"><a href="#LEAP" class="headerlink" title="LEAP"></a>LEAP</h3><p>轻量级可扩展身份认证协议（Lightweight Extensible Authentication Protocol，LEAP）是针对 WPA 的 TKIP 的 Cisco 专有替代方案。</p>
+<h4 id="LEAP-安全风险"><a href="#LEAP-安全风险" class="headerlink" title="LEAP 安全风险"></a>LEAP 安全风险</h4><p>尽可能避免使用 LEAP</p>
+<p>建议使用 EAP-TLS</p>
+<p>使用 LEAP ，则必须使用强密码</p>
+<h3 id="PEAP"><a href="#PEAP" class="headerlink" title="PEAP"></a>PEAP</h3><p>受保护的可扩展身份认证协议（Protected Extensible Authentication Protocol）将 EAP 方法封装在提供身份认证和可能加密的 TLS 隧道中。</p>
+<p>EAP 通常不加密。 PEAP 可为 EAP 方法提供加密。</p>
+<h2 id="11-12-5Wi-Fi保护设置"><a href="#11-12-5Wi-Fi保护设置" class="headerlink" title="11.12.5Wi-Fi保护设置"></a>11.12.5Wi-Fi保护设置</h2><h1 id="考试要点"><a href="#考试要点" class="headerlink" title="考试要点"></a>考试要点</h1><h2 id="了解OSI模型"><a href="#了解OSI模型" class="headerlink" title="了解OSI模型"></a>了解OSI模型</h2><p>OSI模型层如下：</p>
 <p>应用层</p>
 <p>表示层</p>
 <p>会话层</p>
