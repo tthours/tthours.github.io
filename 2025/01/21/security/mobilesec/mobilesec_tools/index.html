@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="DLP分类终端DLP网络DLP">
+    <meta name="description" content="fridafrida简介Frida 是一个动态插桩工具，允许你在运行时修改应用程序的行为，无需源码。它广泛用于逆向工程、安全测试和调试，支持 Android、iOS、Windows、macOS 等平台。 frida部署主机端部署MAC部署环境Python 3.13.1 pip-25.0.1 安装工具1pip install frida-tools  12345678910111213141">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dlp">
-<meta property="og:url" content="https://tthours.github.io/2025/01/21/security/itsec/dlp/index.html">
+<meta property="og:url" content="https://tthours.github.io/2025/01/21/security/mobilesec/mobilesec_tools/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="DLP分类终端DLP网络DLP">
+<meta property="og:description" content="fridafrida简介Frida 是一个动态插桩工具，允许你在运行时修改应用程序的行为，无需源码。它广泛用于逆向工程、安全测试和调试，支持 Android、iOS、Windows、macOS 等平台。 frida部署主机端部署MAC部署环境Python 3.13.1 pip-25.0.1 安装工具1pip install frida-tools  12345678910111213141">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-21T03:38:47.528Z">
+<meta property="article:modified_time" content="2025-03-06T07:49:08.665Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="itsec">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7 字
+          950 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -285,7 +285,97 @@
                 
                 <span id="more"></span>
 
-<h1 id="DLP分类"><a href="#DLP分类" class="headerlink" title="DLP分类"></a>DLP分类</h1><h2 id="终端DLP"><a href="#终端DLP" class="headerlink" title="终端DLP"></a>终端DLP</h2><h2 id="网络DLP"><a href="#网络DLP" class="headerlink" title="网络DLP"></a>网络DLP</h2>
+
+
+<h1 id="frida"><a href="#frida" class="headerlink" title="frida"></a>frida</h1><h2 id="frida简介"><a href="#frida简介" class="headerlink" title="frida简介"></a>frida简介</h2><p>Frida 是一个动态插桩工具，允许你在运行时修改应用程序的行为，无需源码。它广泛用于逆向工程、安全测试和调试，支持 Android、iOS、Windows、macOS 等平台。</p>
+<h2 id="frida部署"><a href="#frida部署" class="headerlink" title="frida部署"></a>frida部署</h2><h3 id="主机端部署"><a href="#主机端部署" class="headerlink" title="主机端部署"></a>主机端部署</h3><h4 id="MAC部署"><a href="#MAC部署" class="headerlink" title="MAC部署"></a>MAC部署</h4><h5 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h5><p>Python 3.13.1</p>
+<p>pip-25.0.1</p>
+<h5 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h5><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> frida-tools<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs gradle">(firdavenv) ➜  opt pip install frida-tools<br>Collecting frida-tools<br>  Downloading frida-tools-<span class="hljs-number">13.6</span>.<span class="hljs-number">1</span>.tar.gz (<span class="hljs-number">4.6</span> MB)<br>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class="hljs-number">4.6</span><span class="hljs-regexp">/4.6 MB 17.4 kB/</span>s eta <span class="hljs-number">0</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><br>  Installing build <span class="hljs-keyword">dependencies</span> ... done<br>  Getting requirements to build wheel ... done<br>  Preparing metadata (pyproject.toml) ... done<br>Collecting colorama&lt;<span class="hljs-number">1.0</span>.<span class="hljs-number">0</span>,&gt;=<span class="hljs-number">0.2</span>.<span class="hljs-number">7</span> (<span class="hljs-keyword">from</span> frida-tools)<br>  Downloading colorama-<span class="hljs-number">0.4</span>.<span class="hljs-number">6</span>-py2.py3-none-<span class="hljs-keyword">any</span>.whl.metadata (<span class="hljs-number">17</span> kB)<br>Collecting frida&lt;<span class="hljs-number">17.0</span>.<span class="hljs-number">0</span>,&gt;=<span class="hljs-number">16.2</span>.<span class="hljs-number">2</span> (<span class="hljs-keyword">from</span> frida-tools)<br>  Downloading frida-<span class="hljs-number">16.6</span>.<span class="hljs-number">6</span>-cp37-abi3-macosx_11_0_arm64.whl.metadata (<span class="hljs-number">2.2</span> kB)<br>Collecting prompt-toolkit&lt;<span class="hljs-number">4.0</span>.<span class="hljs-number">0</span>,&gt;=<span class="hljs-number">2.0</span>.<span class="hljs-number">0</span> (<span class="hljs-keyword">from</span> frida-tools)<br>  Downloading prompt_toolkit-<span class="hljs-number">3.0</span>.<span class="hljs-number">50</span>-py3-none-<span class="hljs-keyword">any</span>.whl.metadata (<span class="hljs-number">6.6</span> kB)<br>Collecting pygments&lt;<span class="hljs-number">3.0</span>.<span class="hljs-number">0</span>,&gt;=<span class="hljs-number">2.0</span>.<span class="hljs-number">2</span> (<span class="hljs-keyword">from</span> frida-tools)<br>  Downloading pygments-<span class="hljs-number">2.19</span>.<span class="hljs-number">1</span>-py3-none-<span class="hljs-keyword">any</span>.whl.metadata (<span class="hljs-number">2.5</span> kB)<br>Collecting websockets&lt;<span class="hljs-number">14.0</span>.<span class="hljs-number">0</span>,&gt;=<span class="hljs-number">13.0</span>.<span class="hljs-number">0</span> (<span class="hljs-keyword">from</span> frida-tools)<br>  Downloading websockets-<span class="hljs-number">13.1</span>-cp313-cp313-macosx_11_0_arm64.whl.metadata (<span class="hljs-number">6.8</span> kB)<br>Collecting wcwidth (<span class="hljs-keyword">from</span> prompt-toolkit&lt;<span class="hljs-number">4.0</span>.<span class="hljs-number">0</span>,&gt;=<span class="hljs-number">2.0</span>.<span class="hljs-number">0</span>-&gt;frida-tools)<br>  Downloading wcwidth-<span class="hljs-number">0.2</span>.<span class="hljs-number">13</span>-py2.py3-none-<span class="hljs-keyword">any</span>.whl.metadata (<span class="hljs-number">14</span> kB)<br>Downloading colorama-<span class="hljs-number">0.4</span>.<span class="hljs-number">6</span>-py2.py3-none-<span class="hljs-keyword">any</span>.whl (<span class="hljs-number">25</span> kB)<br>Downloading frida-<span class="hljs-number">16.6</span>.<span class="hljs-number">6</span>-cp37-abi3-macosx_11_0_arm64.whl (<span class="hljs-number">30.9</span> MB)<br>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class="hljs-number">30.9</span><span class="hljs-regexp">/30.9 MB 262.1 kB/</span>s eta <span class="hljs-number">0</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><br>Downloading prompt_toolkit-<span class="hljs-number">3.0</span>.<span class="hljs-number">50</span>-py3-none-<span class="hljs-keyword">any</span>.whl (<span class="hljs-number">387</span> kB)<br>Downloading pygments-<span class="hljs-number">2.19</span>.<span class="hljs-number">1</span>-py3-none-<span class="hljs-keyword">any</span>.whl (<span class="hljs-number">1.2</span> MB)<br>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class="hljs-number">1.2</span><span class="hljs-regexp">/1.2 MB 139.0 kB/</span>s eta <span class="hljs-number">0</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><br>Downloading websockets-<span class="hljs-number">13.1</span>-cp313-cp313-macosx_11_0_arm64.whl (<span class="hljs-number">155</span> kB)<br>Downloading wcwidth-<span class="hljs-number">0.2</span>.<span class="hljs-number">13</span>-py2.py3-none-<span class="hljs-keyword">any</span>.whl (<span class="hljs-number">34</span> kB)<br>Building wheels <span class="hljs-keyword">for</span> collected packages: frida-tools<br>  Building wheel <span class="hljs-keyword">for</span> frida-tools (pyproject.toml) ... done<br>  Created wheel <span class="hljs-keyword">for</span> frida-tools: filename=frida_tools-<span class="hljs-number">13.6</span>.<span class="hljs-number">1</span>-py3-none-<span class="hljs-keyword">any</span>.whl <span class="hljs-keyword">size</span>=<span class="hljs-number">4639028</span> sha256=ca2d55ad771c3d7b768f5521e20573791f1add532e9c25c7fc1533b40fd96cac<br>  Stored in directory: <span class="hljs-regexp">/Users/</span>admin<span class="hljs-regexp">/Library/</span>Caches<span class="hljs-regexp">/pip/</span>wheels<span class="hljs-regexp">/a0/</span>c8<span class="hljs-regexp">/a2/</span>cd8cff3b44976fa7a13d8238ef617bc309c347faf0c69e89b8<br>Successfully built frida-tools<br>Installing collected packages: wcwidth, websockets, pygments, prompt-toolkit, frida, colorama, frida-tools<br>Successfully installed colorama-<span class="hljs-number">0.4</span>.<span class="hljs-number">6</span> frida-<span class="hljs-number">16.6</span>.<span class="hljs-number">6</span> frida-tools-<span class="hljs-number">13.6</span>.<span class="hljs-number">1</span> prompt-toolkit-<span class="hljs-number">3.0</span>.<span class="hljs-number">50</span> pygments-<span class="hljs-number">2.19</span>.<span class="hljs-number">1</span> wcwidth-<span class="hljs-number">0.2</span>.<span class="hljs-number">13</span> websockets-<span class="hljs-number">13.1</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="frida检测机制"><a href="#frida检测机制" class="headerlink" title="frida检测机制"></a>frida检测机制</h2><h3 id="检测-Frida-server-的运行"><a href="#检测-Frida-server-的运行" class="headerlink" title="检测 Frida-server 的运行"></a>检测 Frida-server 的运行</h3><ul>
+<li>检查设备上是否有 Frida-server 进程</li>
+<li>检查端口（如默认的 27042）是否被占用</li>
+</ul>
+<h3 id="检测注入痕迹"><a href="#检测注入痕迹" class="headerlink" title="检测注入痕迹"></a>检测注入痕迹</h3><ul>
+<li>检查内存中是否有 Frida 的动态库，例如：libfrida-gadget.so</li>
+<li>检查加载的模块或符号表中是否有 Frida 相关字符串</li>
+</ul>
+<h3 id="检测文件系统"><a href="#检测文件系统" class="headerlink" title="检测文件系统"></a>检测文件系统</h3><ul>
+<li>检查是否存在 &#x2F;data&#x2F;local&#x2F;tmp&#x2F;frida-server  或 类似路径</li>
+<li>检查设备是否已经被 root &#x2F; jailbreak （Frida 通常需要权限）</li>
+</ul>
+<h3 id="检测端口或网络通信"><a href="#检测端口或网络通信" class="headerlink" title="检测端口或网络通信"></a>检测端口或网络通信</h3><ul>
+<li>检查是否有连接到 Frida 默认端口的流量</li>
+</ul>
+<h3 id="检测行为异常"><a href="#检测行为异常" class="headerlink" title="检测行为异常"></a>检测行为异常</h3><ul>
+<li>检查函数调用是否被 Hook （例如通过检查函数地址或堆栈）</li>
+<li>检查 javascript 引擎的痕迹（例如 V8 引擎）</li>
+</ul>
+<h3 id="环境检查"><a href="#环境检查" class="headerlink" title="环境检查"></a>环境检查</h3><ul>
+<li>检查是否运行在模拟器或调试环境中（Frida 常与此类环境搭配使用）</li>
+</ul>
+<h2 id="Frida-检测绕过技术"><a href="#Frida-检测绕过技术" class="headerlink" title="Frida 检测绕过技术"></a>Frida 检测绕过技术</h2><h3 id="隐藏-Frida-server"><a href="#隐藏-Frida-server" class="headerlink" title="隐藏 Frida-server"></a>隐藏 Frida-server</h3><ul>
+<li>重命名进程<ul>
+<li>修改 frida-server 文件名，避免被简单进程名检测</li>
+<li>例如：在设备上执行 <code>mv /data/local/tmp/frida-server /data/local/tmp/fakeprocess</code></li>
+</ul>
+</li>
+<li>修改默认端口<ul>
+<li>编译自定义版本的 Frida ，改变默认的 27042 端口</li>
+<li>使用命令： frida-server -l 0.0.0.0:12345 指定新端口</li>
+</ul>
+</li>
+<li>隐藏网络通信<ul>
+<li>使用本地 Unix 套接字代替 TCP 通信，减少网络痕迹</li>
+</ul>
+</li>
+</ul>
+<h3 id="绕过内存检测"><a href="#绕过内存检测" class="headerlink" title="绕过内存检测"></a>绕过内存检测</h3><ul>
+<li><p>动态加载 Frida</p>
+<ul>
+<li>使用 Frida 的 Gadget 模式（libfrida-gadget.so），将其注入应用启动时，而不是依赖外部 frida-server</li>
+<li>修改 Gadget 的配置文件，避免加载时暴露</li>
+</ul>
+</li>
+<li><p>字符串混淆</p>
+<ul>
+<li>修改 Frida 源码，混淆关键字符串，例如：frida、gadget，然后重新编译</li>
+<li>示例：将 libfrida-gadget.so 重命名为 libcustom.so，并移除可识别符号</li>
+</ul>
+</li>
+<li><p>内存隐藏</p>
+<ul>
+<li>使用工具，如 ptrace 或自定义加载器，在注入后擦除 Frida 的内存痕迹</li>
+</ul>
+</li>
+</ul>
+<h3 id="绕过文件系统检测"><a href="#绕过文件系统检测" class="headerlink" title="绕过文件系统检测"></a>绕过文件系统检测</h3><ul>
+<li>更改路径<ul>
+<li>将 frida-server 放在非常规路径 （如  &#x2F;data&#x2F;data&#x2F;com.example.app&#x2F;），并限制文件权限</li>
+</ul>
+</li>
+<li>无文件注入<ul>
+<li>使用 memfd_create 或其他内存加载技术，直接将 Frida 加载到内存中，避免文件落地</li>
+</ul>
+</li>
+</ul>
+<h3 id="绕过行为检测"><a href="#绕过行为检测" class="headerlink" title="绕过行为检测"></a>绕过行为检测</h3><ul>
+<li>延迟注入<ul>
+<li>在应用启动后再注入 Frida，避免初始化的检测逻辑</li>
+<li>示例：使用脚本等待特定条件，如某个类加载，再执行注入</li>
+</ul>
+</li>
+<li></li>
+</ul>
+
                 
               </div>
             
@@ -342,7 +432,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>dlp</div>
-      <div>https://tthours.github.io/2025/01/21/security/itsec/dlp/</div>
+      <div>https://tthours.github.io/2025/01/21/security/mobilesec/mobilesec_tools/</div>
     </div>
     <div class="license-meta">
       
@@ -379,9 +469,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/26/security/secattack/messageCollect/UA_Collect/" title="UA_Collect">
+                      <a href="/2025/01/21/security/itsec/dlp/" title="dlp">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">UA_Collect</span>
+                        <span class="hidden-mobile">dlp</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -389,8 +479,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/21/security/mobilesec/mobilesec_tools/" title="dlp">
-                        <span class="hidden-mobile">dlp</span>
+                      <a href="/2025/01/15/yunwei/applications/vim_base/" title="vim_base">
+                        <span class="hidden-mobile">vim_base</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
