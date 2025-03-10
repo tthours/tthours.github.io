@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="技能要求精通安全防护产品的规则与策略配置熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术 WAF架构WAF技术点可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 请求解码方式URL解码11&#x27;%20or%201&#x3D;1 URL decode后是 1&#x27; or 1&#x3D;1  JSON解码1&#123;&quot;a&amp;quo">
+    <meta name="description" content="技能要求精通安全防护产品的规则与策略配置熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术 WAF分类软 WAF以纯软件形式提供 WAF 防护 代表产品：安全狗、云锁、D 盾 硬 WAF以纯硬件形式提供 WAF 防护 架构： 用户 -&gt; 硬件 WAF -&gt; 业务 云 WAF以云服务形式提供 WAF 防护 用户 -&gt; 云 WAF -&gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="waf_base">
 <meta property="og:url" content="https://tthours.github.io/2024/03/15/security/netsec/waf/waf_base/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="技能要求精通安全防护产品的规则与策略配置熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术 WAF架构WAF技术点可以用于数据分析的点 1、流量来源 2、流量构成 3、爬虫类型 4、爬虫行为 请求解码方式URL解码11&#x27;%20or%201&#x3D;1 URL decode后是 1&#x27; or 1&#x3D;1  JSON解码1&#123;&quot;a&amp;quo">
+<meta property="og:description" content="技能要求精通安全防护产品的规则与策略配置熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术 WAF分类软 WAF以纯软件形式提供 WAF 防护 代表产品：安全狗、云锁、D 盾 硬 WAF以纯硬件形式提供 WAF 防护 架构： 用户 -&gt; 硬件 WAF -&gt; 业务 云 WAF以云服务形式提供 WAF 防护 用户 -&gt; 云 WAF -&gt;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-02-20T09:24:36.663Z">
+<meta property="article:modified_time" content="2025-03-10T03:15:34.424Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="netsec">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          2.3k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          18 分钟
+          20 分钟
         
       </span>
     
@@ -286,6 +286,20 @@
                 <span id="more"></span>
 
 <h1 id="技能要求"><a href="#技能要求" class="headerlink" title="技能要求"></a>技能要求</h1><p>精通安全防护产品的规则与策略配置<br>熟悉 WAF 系统的主流架构设计以及其中关键技术点，如正则，语义分析，防CC和爬虫技术</p>
+<h1 id="WAF分类"><a href="#WAF分类" class="headerlink" title="WAF分类"></a>WAF分类</h1><h2 id="软-WAF"><a href="#软-WAF" class="headerlink" title="软 WAF"></a>软 WAF</h2><p>以纯软件形式提供 WAF 防护</p>
+<p>代表产品：安全狗、云锁、D 盾</p>
+<h2 id="硬-WAF"><a href="#硬-WAF" class="headerlink" title="硬 WAF"></a>硬 WAF</h2><p>以纯硬件形式提供 WAF 防护</p>
+<p>架构：</p>
+<p>用户 -&gt; 硬件 WAF -&gt; 业务</p>
+<h2 id="云-WAF"><a href="#云-WAF" class="headerlink" title="云 WAF"></a>云 WAF</h2><p>以云服务形式提供 WAF 防护</p>
+<p>用户 -&gt; 云 WAF -&gt; 业务</p>
+<p>代表产品：</p>
+<p>阿里云云盾、腾讯云WAF</p>
+<h1 id="WAF-部署方式"><a href="#WAF-部署方式" class="headerlink" title="WAF 部署方式"></a>WAF 部署方式</h1><h2 id="透明代理"><a href="#透明代理" class="headerlink" title="透明代理"></a>透明代理</h2><p>将 WAF 串联接入到客户端与 WebServer 之间。</p>
+<h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><h2 id="镜像流量"><a href="#镜像流量" class="headerlink" title="镜像流量"></a>镜像流量</h2><p>通过网络设备复制一份流量给到 WAF ，WAF 检测识别 HTTP 攻击请求。</p>
+<p>不改变原有流量走向，网络层完全透明。</p>
+<p>不支持对攻击请求实时拦截。</p>
+<p>仅支持对 HTTP 流量的检测分析，也就是需要在证书卸载之后</p>
 <h1 id="WAF架构"><a href="#WAF架构" class="headerlink" title="WAF架构"></a>WAF架构</h1><h1 id="WAF技术点"><a href="#WAF技术点" class="headerlink" title="WAF技术点"></a>WAF技术点</h1><p>可以用于数据分析的点</p>
 <p>1、流量来源</p>
 <p>2、流量构成</p>

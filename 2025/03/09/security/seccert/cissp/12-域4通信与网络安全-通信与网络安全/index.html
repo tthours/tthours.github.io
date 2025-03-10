@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="12.17考试要点了解 PPP点对点协议（PPP）是一种封装协议，旨在支持通过拨号或点对点链路传输 IP 流量。 最初用于身份认证的 PPP 选项是 PAP、CHAP 和 EAP 。 PAP、CHAP 和 EAP定义PAP 以明文形式传输用户名和密码 CHAP 使用无法重播的质询-响应对话执行身份认证 EAP 允许定制身份认证安全解决方案 能够提供 EAP 的示例大约 40 多种">
+    <meta name="description" content="通信与网络安全要点通信安全的作用在于检测、预防甚至纠正数据传输过程中的错误（提供完整性与保密性保护）。 通信安全的目的是在满足数据交换与数据共享的同时，保证网络的安全。 12.1协议安全机制TCP&#x2F;IP（Transmission Control Protocol&#x2F;Internet Protocol，传输控制协议&#x2F;互联网协议）是互联网及大多数网络中使用的主要协议族。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="12-域4通信与网络安全-通信与网络安全">
 <meta property="og:url" content="https://tthours.github.io/2025/03/09/security/seccert/cissp/12-%E5%9F%9F4%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="12.17考试要点了解 PPP点对点协议（PPP）是一种封装协议，旨在支持通过拨号或点对点链路传输 IP 流量。 最初用于身份认证的 PPP 选项是 PAP、CHAP 和 EAP 。 PAP、CHAP 和 EAP定义PAP 以明文形式传输用户名和密码 CHAP 使用无法重播的质询-响应对话执行身份认证 EAP 允许定制身份认证安全解决方案 能够提供 EAP 的示例大约 40 多种">
+<meta property="og:description" content="通信与网络安全要点通信安全的作用在于检测、预防甚至纠正数据传输过程中的错误（提供完整性与保密性保护）。 通信安全的目的是在满足数据交换与数据共享的同时，保证网络的安全。 12.1协议安全机制TCP&#x2F;IP（Transmission Control Protocol&#x2F;Internet Protocol，传输控制协议&#x2F;互联网协议）是互联网及大多数网络中使用的主要协议族。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-08T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-10T01:37:19.143Z">
+<meta property="article:modified_time" content="2025-03-10T14:43:48.345Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="seccert">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          2.6k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          14 分钟
+          22 分钟
         
       </span>
     
@@ -285,12 +285,51 @@
                 
                 <span id="more"></span>
 
-
-
-
-
-
-
+<h1 id="通信与网络安全要点"><a href="#通信与网络安全要点" class="headerlink" title="通信与网络安全要点"></a>通信与网络安全要点</h1><p>通信安全的作用在于检测、预防甚至纠正数据传输过程中的错误（提供完整性与保密性保护）。</p>
+<p>通信安全的目的是在满足数据交换与数据共享的同时，保证网络的安全。</p>
+<h1 id="12-1协议安全机制"><a href="#12-1协议安全机制" class="headerlink" title="12.1协议安全机制"></a>12.1协议安全机制</h1><p>TCP&#x2F;IP（Transmission Control Protocol&#x2F;Internet Protocol，传输控制协议&#x2F;互联网协议）是互联网及大多数网络中使用的主要协议族。</p>
+<p>虽然是 TCP&#x2F;IP 的基础协议族，也有数百个甚至数千个单独的协议、机制及应用在互联网中广发使用。有些提供安全服务、有些保护完整性、有些保护保密性，有些提供安全身份认证及访问控制。</p>
+<h3 id="12-1-1身份认证协议"><a href="#12-1-1身份认证协议" class="headerlink" title="12.1.1身份认证协议"></a>12.1.1身份认证协议</h3><p>点对点协议（Point-to-Point Protocol，PPP）是一种封装协议，旨在支持通过拨号或点对点链路传输 IP 流量。</p>
+<p>数据链路层协议，允许支持串行链路的 WAN 设备的多供应商操作。</p>
+<p>PPP 是许多现代通信的基础，也是通信认证的基础。</p>
+<p>PPP 包括广泛的通信服务，如 IP 地址的分配和管理、同步通信的管理、标准化封装、多路复用、链路配置、链路质量测试、错误检测以及功能或选项协商（如压缩）。</p>
+<p>PPP 取代了串行线路网间协议（SLIP）。</p>
+<p>PPP 支持自动连接配置、错误检测、全双工通信和身份认证选项。</p>
+<h4 id="PPP选项-PAP"><a href="#PPP选项-PAP" class="headerlink" title="PPP选项-PAP"></a>PPP选项-PAP</h4><p>PAP（Password  Authentication Protocol，密码身份认证协议）</p>
+<p>使用明文传输用户名与密码</p>
+<p>不提供任何形式的加密，只提供简单的传输途径，把登录证书从客户端传递到身份认证服务器。</p>
+<h4 id="PPP选项-CHAP"><a href="#PPP选项-CHAP" class="headerlink" title="PPP选项-CHAP"></a>PPP选项-CHAP</h4><p>CHAP（Challenge Handshake Authentication Protocol，征询握手身份认证协议）</p>
+<p>采用无法重发的挑战-应答对话进行验证。</p>
+<p>挑战是服务器发出的随机数，客户端使用该随机数和密码哈希来计算单向函数产生的响应。</p>
+<p>在已经建立的完整通信会话期间，CHAP 周期性重复验证远程系统，以确保远程用户身份持续有效。</p>
+<p>CHAP 基于 MD5 ，已不再安全。</p>
+<h4 id="PPP选项-EAP"><a href="#PPP选项-EAP" class="headerlink" title="PPP选项-EAP"></a>PPP选项-EAP</h4><p>EAP（Extensible Authentication Protocol，可扩展身份认证协议）</p>
+<p>一种身份认证框架，而不是真实协议。</p>
+<p>EAP 支持可定制的身份认证安全解决方案，如智能卡、令牌和生物身份认证。</p>
+<p>一些 EAP 方案使用加密，但另一些不使用加密。</p>
+<h5 id="LEAP"><a href="#LEAP" class="headerlink" title="LEAP"></a>LEAP</h5><p>LEAP（Lightweight Extensible Authentication Protocol，轻量级可扩展身份认证协议）</p>
+<p>Cisco 专有 WPA TKIP 替代方案。</p>
+<p>旨在解决  TKIP 中的缺陷。</p>
+<p><strong>由于 WPA2 的发展，LEAP 现已过时，需要避免使用 LEAP</strong> 。</p>
+<h5 id="EAP-FAST"><a href="#EAP-FAST" class="headerlink" title="EAP-FAST"></a>EAP-FAST</h5><p>EAP-FAST（EAP Flexible  Authentication via Secure Tunneling，EAP 通过安全隧道进行灵活的身份认证）</p>
+<p>一种 Cisco 协议</p>
+<p>旨在取代 LEAP</p>
+<h5 id="PEAP"><a href="#PEAP" class="headerlink" title="PEAP"></a>PEAP</h5><p>PEAP（Protected Extensible  Authentication Protocol，受保护的可扩展身份认证协议）</p>
+<p>TLS 隧道中封装 EAP 协议。</p>
+<p>PEAP 优于 EAP，因为 PEAP 自身实现了安全性。</p>
+<p>PEAP 支持交叉验证。</p>
+<h5 id="EAP-SIM"><a href="#EAP-SIM" class="headerlink" title="EAP-SIM"></a>EAP-SIM</h5><p>EAP-SIM （EAP Subscriber Identity Module，EAP 用户识别模块）</p>
+<p>通过全球移动通信系统（GSM）网络认证移动设备的一种手段。</p>
+<p>向每个用户&#x2F;设备发放一张身份识别模块（SIM）卡，该卡与用户的账户和服务级别相关。</p>
+<h5 id="EAP-MD5"><a href="#EAP-MD5" class="headerlink" title="EAP-MD5"></a>EAP-MD5</h5><p>使用 MD5 哈希密码的最早 EAP 方法之一，<strong>现已被弃用</strong>。</p>
+<h5 id="EAP-POTP"><a href="#EAP-POTP" class="headerlink" title="EAP-POTP"></a>EAP-POTP</h5><p>EAP-POTP（EAP Protected One-Time Password，EAP保护的一次性密码）</p>
+<p>支持在多因素身份认证中使用 OTP 令牌（包括硬件设备和软件解决方案）</p>
+<p>用于单向和交叉身份认证</p>
+<h5 id="EAP-TLS"><a href="#EAP-TLS" class="headerlink" title="EAP-TLS"></a>EAP-TLS</h5><p>EAP-TLS（EAP Transport Layer Security，EAP 传输层安全）</p>
+<p>一个开放的 IEIF 标准</p>
+<p>用于保护身份认证流量的 TLS 协议的实现。</p>
+<h5 id="EAP-TTLS"><a href="#EAP-TTLS" class="headerlink" title="EAP-TTLS"></a>EAP-TTLS</h5><p>EAP-TTLS（EAP Tunneled Transport Layer Security，EAP隧道传输层安全）</p>
+<p>EAP-TLS 的扩展，在身份认证进行之前在端点之间创建类似于 VPN 的隧道，确保即使是客户端的用户们，也不会以明文传输。</p>
 <h1 id="12-17考试要点"><a href="#12-17考试要点" class="headerlink" title="12.17考试要点"></a>12.17考试要点</h1><h2 id="了解-PPP"><a href="#了解-PPP" class="headerlink" title="了解 PPP"></a>了解 PPP</h2><p>点对点协议（PPP）是一种封装协议，旨在支持通过拨号或点对点链路传输 IP 流量。</p>
 <p>最初用于身份认证的 PPP 选项是 PAP、CHAP 和 EAP 。</p>
 <h2 id="PAP、CHAP-和-EAP定义"><a href="#PAP、CHAP-和-EAP定义" class="headerlink" title="PAP、CHAP 和 EAP定义"></a>PAP、CHAP 和 EAP定义</h2><p>PAP 以明文形式传输用户名和密码</p>
