@@ -27,7 +27,7 @@
 <meta property="og:description" content="通信与网络安全要点通信安全的作用在于检测、预防甚至纠正数据传输过程中的错误（提供完整性与保密性保护）。 通信安全的目的是在满足数据交换与数据共享的同时，保证网络的安全。 12.1协议安全机制TCP&#x2F;IP（Transmission Control Protocol&#x2F;Internet Protocol，传输控制协议&#x2F;互联网协议）是互联网及大多数网络中使用的主要协议族。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-08T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-10T14:43:48.345Z">
+<meta property="article:modified_time" content="2025-03-11T01:34:29.106Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="seccert">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          4.1k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          22 分钟
+          35 分钟
         
       </span>
     
@@ -330,7 +330,83 @@
 <p>用于保护身份认证流量的 TLS 协议的实现。</p>
 <h5 id="EAP-TTLS"><a href="#EAP-TTLS" class="headerlink" title="EAP-TTLS"></a>EAP-TTLS</h5><p>EAP-TTLS（EAP Tunneled Transport Layer Security，EAP隧道传输层安全）</p>
 <p>EAP-TLS 的扩展，在身份认证进行之前在端点之间创建类似于 VPN 的隧道，确保即使是客户端的用户们，也不会以明文传输。</p>
-<h1 id="12-17考试要点"><a href="#12-17考试要点" class="headerlink" title="12.17考试要点"></a>12.17考试要点</h1><h2 id="了解-PPP"><a href="#了解-PPP" class="headerlink" title="了解 PPP"></a>了解 PPP</h2><p>点对点协议（PPP）是一种封装协议，旨在支持通过拨号或点对点链路传输 IP 流量。</p>
+<p>IEEE 802.1X 定义了封装 EAP 的使用，以支持 LAN  连接的广泛身份认证选项。</p>
+<p>802.1X 标准被命名为 “基于端口的网络访问控制”，端口指的是任何网络链路。</p>
+<p>802.1X 是企业无线身份认证的基础，802.1X 将无线客户端身份认证请求转发到专用远程身份认证服务器或 AAA 服务器（通常为 RADIUS 或 TACACS+），以此方式充当身份认证代理。</p>
+<p>802.1X 不是一种无线技术（即 IEEE 802.11），是一种认证技术，可以在需要认证的任何地方使用，包括 WAP、防火墙、路由器、交换机、代理、VPN 网关和远程访问服务器（RAS）&#x2F;网络访问服务器（NAS）。</p>
+<p>802.1X 容易受到中间人（MITM）攻击（也称为路径攻击）和劫持攻击，因为身份认证机制仅在建立连接时发生。并非所有 802.1X 或 EAP 认证方法都是安全的。</p>
+<p>​	解决方案：1、使用 802.1X&#x2F;EAP 提供的身份认证保护；2、使用定期的会话期间重新身份认证；3、实施会话加密</p>
+<h2 id="12-1-2端口安全"><a href="#12-1-2端口安全" class="headerlink" title="12.1.2端口安全"></a>12.1.2端口安全</h2><h3 id="端口安全含义"><a href="#端口安全含义" class="headerlink" title="端口安全含义"></a>端口安全含义</h3><p>1、表示对所有连接点的物理控制</p>
+<p>限制未经授权的用户或设备连接到开放端口。</p>
+<p>使用智能配线架。</p>
+<p>2、管理 TCP 和 UDP 端口</p>
+<p>防火墙、IDS、IPS 和其他安全工具可以检测到端口扫描，并阻止或发回虚假&#x2F;误导性信息，降低端口扫描的效率。</p>
+<h3 id="端口安全措施"><a href="#端口安全措施" class="headerlink" title="端口安全措施"></a>端口安全措施</h3><p>在交换机、路由器、智能配线架甚至无线网络上实施端口身份认证，也就是 IEEE 802.1X。</p>
+<h2 id="12-1-3服务质量"><a href="#12-1-3服务质量" class="headerlink" title="12.1.3服务质量"></a>12.1.3服务质量</h2><p>维护和保护可用性</p>
+<p>服务质量（QoS）是对网络通信效率和性能的监督和管理。</p>
+<p>要测量的项目包括吞吐量、比特率、数据包丢失、延迟、抖动、传输延迟和可用性。</p>
+<p>高优先级或时间敏感流量（如 VoIP）可以按优先级排列，其他流量可以根据需要进行抑制。</p>
+<p>节流或整形可以在协议或 IP 基础上实现，以设置最大使用或消耗限制。</p>
+<h1 id="12-2语音通信的安全"><a href="#12-2语音通信的安全" class="headerlink" title="12.2语音通信的安全"></a>12.2语音通信的安全</h1><p>电讯包括公共交换电话网（PSTN）（又名普通老式电话服务，或POTS）、专用交换机（PBX）、移动&#x2F;蜂窝服务和 VoIP。</p>
+<h2 id="12-2-1公共交换电话网"><a href="#12-2-1公共交换电话网" class="headerlink" title="12.2.1公共交换电话网"></a>12.2.1公共交换电话网</h2><p>PBX 和 PSTN 语音通信容易受到拦截、窃听、tapping 及其他破解技术的攻击。</p>
+<p>安全措施：</p>
+<p>1、组织的物理范围内，通过物理安全来保护语音通信的安全。</p>
+<p>2、组织场所外部，语音通信的安全主要由提供通信线路租用服务的公司来负责。</p>
+<p>如果语音通信重要，应该部署并使用加密通信机制。</p>
+<h2 id="VoIP"><a href="#VoIP" class="headerlink" title="VoIP"></a>VoIP</h2><p>VoIP（Voice over Internet Protocol，网络电话）是一种将语音封装在 IP 包中的技术。</p>
+<p>支持在 TCP&#x2F;IP 网络中打电话。</p>
+<p>VoIP可以使用安全实时传输协议（SRTP）来提供加密。</p>
+<p>VoIP 不是一种单一的技术，尽管使用通用的标准化协议。</p>
+<p>VoIP 除非位于同一 VoIP 提供商的网络内，否则无法确保连接受到端对端加密的保护。</p>
+<p><strong>VoIP 存在的攻击风险</strong></p>
+<p>中间人&#x2F;路径攻击</p>
+<p>劫持</p>
+<p>域欺骗</p>
+<p>拒绝服务（DOS）</p>
+<p>语音钓鱼</p>
+<p>电话飞客</p>
+<p>欺骗</p>
+<p>滥用</p>
+<p><strong>VoIP 通信的保护措施</strong></p>
+<ul>
+<li>使用强密码和双因素身份认证</li>
+<li>记录通话记录并检查是否有异常活动</li>
+<li>阻止国际电话</li>
+<li>将 VoIP 外包给受信任的 SaaS</li>
+<li>更新 VoIP 设备固件</li>
+<li>限制对 VoIP 相关网络设备的物理访问</li>
+<li>使用 VoIP 安全最佳实践培训用户</li>
+<li>阻止不存在或无效的原始号码，防止 IP电话上的幽灵呼叫</li>
+<li>部署带有 VoIP 评估功能的 NIPS</li>
+</ul>
+<h2 id="12-2-3-语音钓鱼和电话飞客"><a href="#12-2-3-语音钓鱼和电话飞客" class="headerlink" title="12.2.3 语音钓鱼和电话飞客"></a>12.2.3 语音钓鱼和电话飞客</h2><p>vishing 基于语音的网络钓鱼</p>
+<p>语音钓鱼的防御方针，以教育用户如何应对任何形式的交流</p>
+<ul>
+<li><p>要一直对任何看起来奇怪的、来历不明的或意外的语音通信倍加小心</p>
+</li>
+<li><p>在继续进行涉及敏感、个人、财务或机密信息的通话之前，要一直进行身份认证</p>
+</li>
+<li><p>对于所有单一语音请求的网络变更行为，要进行“回叫”授权。</p>
+<p>回叫授权过程：</p>
+<p>首先断开来电者的通话</p>
+<p>然后使用来电者的预设号码回叫该用户（该号码通常存储在公司目录中）以验证用户身份</p>
+</li>
+<li><p>对信息（用户名、密码、IP地址、经理姓名、拨入号码等）进行分级，并清楚地标识出可通过语音通信讨论或确认的信息</p>
+</li>
+<li><p>如果有人通过电话索要特权信息，而且此人应该知道此种行为是违法公司安全策略的，那么，可以询问此人请求信息的原因，并再次验证身份，将此种活动报告给安全管理员</p>
+</li>
+<li><p>严禁通过单一语音通信交出或更改密码</p>
+</li>
+<li><p>阻止与语音钓鱼关联的号码</p>
+</li>
+<li><p>不要假设显示的来电 ID  是有效的。应该利用来电 ID 标示不想和谁说话，而不是确认谁在打电话。</p>
+</li>
+</ul>
+<p>电话飞客（phreaker）的恶意攻击滥用电话系统的方式与攻击者滥用计算机的方式大致相同（“ph”代表“电话”）。</p>
+<p>电话飞客攻击通常是针对电话系统和语音服务的一种特定类型的攻击。</p>
+<p>利用各种技术绕过电话系统，拨打免费长途电话，改变电话服务功能，窃取专用服务，甚至造成服务中断。</p>
+<p>飞客可以攻击 移动设备、PBX 系统和 VoIP 解决方案。</p>
+<h2 id="PBX欺骗与滥用"><a href="#PBX欺骗与滥用" class="headerlink" title="PBX欺骗与滥用"></a>PBX欺骗与滥用</h2><h1 id="12-17考试要点"><a href="#12-17考试要点" class="headerlink" title="12.17考试要点"></a>12.17考试要点</h1><h2 id="了解-PPP"><a href="#了解-PPP" class="headerlink" title="了解 PPP"></a>了解 PPP</h2><p>点对点协议（PPP）是一种封装协议，旨在支持通过拨号或点对点链路传输 IP 流量。</p>
 <p>最初用于身份认证的 PPP 选项是 PAP、CHAP 和 EAP 。</p>
 <h2 id="PAP、CHAP-和-EAP定义"><a href="#PAP、CHAP-和-EAP定义" class="headerlink" title="PAP、CHAP 和 EAP定义"></a>PAP、CHAP 和 EAP定义</h2><p>PAP 以明文形式传输用户名和密码</p>
 <p>CHAP 使用无法重播的质询-响应对话执行身份认证</p>
