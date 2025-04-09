@@ -27,7 +27,7 @@
 <meta property="og:description" content="安装debain系统sudo apt-get install nmap  Red Hat系统sudo yum install nmap-ncat sudo dnf install nmap-ncat  语法-l –listen开启监听，也就是处于监听端口的状态，并不会对外发起连接 -u –udp监听UDP协议端口，默认监听TCP协议 -p –source-port 端口号指定源端口，也就是">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-26T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-27T03:32:08.291Z">
+<meta property="article:modified_time" content="2025-04-09T02:24:17.437Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="network">
 <meta property="article:tag" content="networktools">
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          422 字
+          416 字
         
       </span>
     
@@ -296,18 +296,18 @@ sudo dnf install nmap-ncat
 <h3 id="p-–source-port-端口号"><a href="#p-–source-port-端口号" class="headerlink" title="-p –source-port 端口号"></a>-p –source-port 端口号</h3><p>指定源端口，也就是本地监听端口号</p>
 <h3 id="v-–verbose-x20"><a href="#v-–verbose-x20" class="headerlink" title="-v –verbose&#x20;"></a>-v –verbose&#x20;</h3><p>Set verbosity level (can be used several times)</p>
 <p>显示执行过程</p>
-<pre><code class="hljs">[root@nvm-14yhwwkhnu5v0 ~]# ncat -lvp 443
+<pre><code class="hljs">[root@nvm- ~]# ncat -lvp 443
 Ncat: Version 7.50 ( https://nmap.org/ncat )
 Ncat: Listening on :::443
 Ncat: Listening on 0.0.0.0:443
 ^C
-[root@nvm-14yhwwkhnu5v0 ~]# ncat -lp 443
+[root@nvm- ~]# ncat -lp 443
 </code></pre>
 <h3 id="k-–keep-open"><a href="#k-–keep-open" class="headerlink" title="-k –keep-open"></a>-k –keep-open</h3><p>Accept multiple connections in listen mode</p>
 <p>可以接受多个连接</p>
 <p>默认是单线程的，只允许有单个连接</p>
 <pre><code class="hljs">1、监听单线程443
-[root@nvm-14yhwwkhnu5v0 ~]# ncat -lvp 443
+[root@nvm- ~]# ncat -lvp 443
 Ncat: Version 7.50 ( https://nmap.org/ncat )
 Ncat: Listening on :::443
 Ncat: Listening on 0.0.0.0:443
@@ -325,7 +325,7 @@ telnet: connect to address 10.2.2.63: Connection refused
 telnet: Unable to connect to remote host
 
 监听连接
-[root@nvm-14yhwwkhnu5v0 ~]# ncat -lvp 443
+[root@nvm- ~]# ncat -lvp 443
 Ncat: Version 7.50 ( https://nmap.org/ncat )
 Ncat: Listening on :::443
 Ncat: Listening on 0.0.0.0:443
@@ -333,7 +333,7 @@ Ncat: Connection from 10.222.28.6.
 Ncat: Connection from 10.222.28.6:52072.
 
 2、监听多线程443
-[root@nvm-14yhwwkhnu5v0 ~]# ncat -lvkp 443
+[root@nvm- ~]# ncat -lvkp 443
 Ncat: Version 7.50 ( https://nmap.org/ncat )
 Ncat: Listening on :::443
 Ncat: Listening on 0.0.0.0:443
@@ -351,7 +351,7 @@ Connected to 10.2.2.63.
 Escape character is &#39;^]&#39;.
 
 监听连接
-[root@nvm-14yhwwkhnu5v0 ~]# ncat -lvkp 443
+[root@nvm- ~]# ncat -lvkp 443
 Ncat: Version 7.50 ( https://nmap.org/ncat )
 Ncat: Listening on :::443
 Ncat: Listening on 0.0.0.0:443
