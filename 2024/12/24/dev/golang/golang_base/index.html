@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="下载地址官方网址 go.dev&#x2F;dl&#x2F; golang.org&#x2F;dl&#x2F; 安装注意事项解压到指定目录源码解压到&#x2F;usr&#x2F;local 修改配置文件vim ~&#x2F;.bashrc export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go export GOPATH&#x3D;$HOME&#x2F;g">
+    <meta name="description" content="下载安装下载地址官方网址 go.dev&#x2F;dl&#x2F; golang.org&#x2F;dl&#x2F; 安装注意事项解压到指定目录源码解压到&#x2F;usr&#x2F;local 1tar -C &#x2F;usr&#x2F;local -zxvf go1.24.2.linux-amd64.tar.gz    修改配置文件vim ~&#x2F;.bashrc export GOROOT&#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="golang_base">
 <meta property="og:url" content="https://tthours.github.io/2024/12/24/dev/golang/golang_base/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="下载地址官方网址 go.dev&#x2F;dl&#x2F; golang.org&#x2F;dl&#x2F; 安装注意事项解压到指定目录源码解压到&#x2F;usr&#x2F;local 修改配置文件vim ~&#x2F;.bashrc export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go export GOPATH&#x3D;$HOME&#x2F;g">
+<meta property="og:description" content="下载安装下载地址官方网址 go.dev&#x2F;dl&#x2F; golang.org&#x2F;dl&#x2F; 安装注意事项解压到指定目录源码解压到&#x2F;usr&#x2F;local 1tar -C &#x2F;usr&#x2F;local -zxvf go1.24.2.linux-amd64.tar.gz    修改配置文件vim ~&#x2F;.bashrc export GOROOT&#x3D;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-23T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-25T11:05:36.135Z">
+<meta property="article:modified_time" content="2025-04-18T02:31:03.716Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="dev">
 <meta property="article:tag" content="golang">
@@ -284,17 +284,27 @@
                 
                 <span id="more"></span>
 
-<h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p>官方网址</p>
+<h1 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h1><h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p>官方网址</p>
 <p>go.dev&#x2F;dl&#x2F;</p>
 <p>golang.org&#x2F;dl&#x2F;</p>
 <h2 id="安装注意事项"><a href="#安装注意事项" class="headerlink" title="安装注意事项"></a>安装注意事项</h2><h3 id="解压到指定目录"><a href="#解压到指定目录" class="headerlink" title="解压到指定目录"></a>解压到指定目录</h3><p>源码解压到&#x2F;usr&#x2F;local</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">tar</span> -C /usr/local -zxvf go1.<span class="hljs-number">24</span>.<span class="hljs-number">2</span>.linux-amd64.tar.gz<br></code></pre></td></tr></table></figure>
+
+
+
 <h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>vim ~&#x2F;.bashrc</p>
 <p>export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go</p>
 <p>export GOPATH&#x3D;$HOME&#x2F;go</p>
 <p>export PATH&#x3D;$PATH:$GOROOT&#x2F;bin:$GOPATH&#x2F;bin</p>
 <p>GOROOT  go语言源码包所在位置</p>
 <p>GOPATH   开发者GO项目的默认路径，也就是代码路径</p>
-<h2 id="语言结构"><a href="#语言结构" class="headerlink" title="语言结构"></a>语言结构</h2><h3 id="基础组成"><a href="#基础组成" class="headerlink" title="基础组成"></a>基础组成</h3><h4 id="包声明"><a href="#包声明" class="headerlink" title="包声明"></a>包声明</h4><p>必须在非注释的第一行表明文件属于哪个包，例如：package main</p>
+<h3 id="加载配置文件"><a href="#加载配置文件" class="headerlink" title="加载配置文件"></a>加载配置文件</h3><p>source ~&#x2F;.bashrc</p>
+<h3 id="安装验证"><a href="#安装验证" class="headerlink" title="安装验证"></a>安装验证</h3><p>go -V</p>
+<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">go</span> build -o dataanalyze dataanalyze.<span class="hljs-keyword">go</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="语言结构"><a href="#语言结构" class="headerlink" title="语言结构"></a>语言结构</h2><h3 id="基础组成"><a href="#基础组成" class="headerlink" title="基础组成"></a>基础组成</h3><h4 id="包声明"><a href="#包声明" class="headerlink" title="包声明"></a>包声明</h4><p>必须在非注释的第一行表明文件属于哪个包，例如：package main</p>
 <p>package main 表示该文件是可独立执行的程序，每个Go应用程序都包含一个名为 main 的包</p>
 <h4 id="引入包"><a href="#引入包" class="headerlink" title="引入包"></a>引入包</h4><p>import “包名”</p>
 <p>import “fmt”，告诉程序需要使用 fmt 包，fmt 包实现了格式化IO（输入&#x2F;输出）的函数</p>
@@ -395,14 +405,14 @@
 <td align="left">uintptr</td>
 </tr>
 </tbody></table>
-<h3 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h3><h4 id="fmt-Sprintf"><a href="#fmt-Sprintf" class="headerlink" title="fmt.Sprintf"></a>fmt.Sprintf</h4><h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><p>fmt.Sprintf(格式化样式, 参数列表…)</p>
+<h3 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h3><h4 id="fmt-Sprintf"><a href="#fmt-Sprintf" class="headerlink" title="fmt.Sprintf"></a>fmt.Sprintf</h4><h5 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h5><p>fmt.Sprintf(格式化样式, 参数列表…)</p>
 <p>格式化样式：字符串形式，格式化符号以 % 开头， %s 字符串格式，%d 十进制的整数格式</p>
 <p>参数列表：多个参数以逗号分隔，个数必须与格式化样式中的个数一一对应，否则运行时会报错。</p>
 <p>根据格式化参数生成格式化的字符串并写入标准输出</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">var</span> inttype = <span class="hljs-number">123</span><br>	<span class="hljs-keyword">var</span> stringtype = <span class="hljs-string">&quot;test&quot;</span><br>	<span class="hljs-keyword">var</span> splice = <span class="hljs-string">&quot;int=%d&amp;str=%s&quot;</span><br>	<span class="hljs-keyword">var</span> spliceresult = fmt.Sprintf(splice, inttype, stringtype)<br>	fmt.Println(spliceresult)<br>&#125;<br>➜  gocode <span class="hljs-keyword">go</span> run printgo.<span class="hljs-keyword">go</span><br><span class="hljs-type">int</span>=<span class="hljs-number">123</span>&amp;str=test<br></code></pre></td></tr></table></figure>
 
 <h4 id="fmt-Printf"><a href="#fmt-Printf" class="headerlink" title="fmt.Printf"></a>fmt.Printf</h4><p>根据格式化参数生成格式化的字符串并返回该字符串</p>
-<h5 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h5><p>fmt.Printf(格式化样式, 参数列表…)</p>
+<h5 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h5><p>fmt.Printf(格式化样式, 参数列表…)</p>
 <p>格式化样式：字符串形式，格式化符号以 % 开头， %s 字符串格式，%d 十进制的整数格式。<br>参数列表：多个参数以逗号分隔，个数必须与格式化样式中的个数一一对应，否则运行时会报错。</p>
 <h4 id="字符串格式化符号"><a href="#字符串格式化符号" class="headerlink" title="字符串格式化符号"></a>字符串格式化符号</h4><h5 id="v"><a href="#v" class="headerlink" title="%v"></a>%v</h5><p>按照值的本来值输出</p>
 <h5 id="v-1"><a href="#v-1" class="headerlink" title="%+v"></a>%+v</h5><p>在 %v 基础上，对结构体字段名和值进行展开</p>
