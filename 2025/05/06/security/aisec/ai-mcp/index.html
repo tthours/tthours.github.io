@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="常见概念RAG（检索增强生成）上下文信息检索方法，利用基于向量的搜索从数据库或知识库中检索相关知识，使模型能够补充最新的信息。 Function CallMCP 协议Anthropic 发布 Model Context Protocol 模型上下文协议 旨在统一规范大语言模型与外部数据源和工具之间的通信，建立 AI  与外部数据、工具交互的标准，类似中间件 核心组件Host本地运行的 AI 应">
+    <meta name="description" content="1 简述Anthropic 发布 Model Context Protocol 模型上下文协议 旨在统一规范大语言模型与外部数据源和工具之间的通信，建立 AI  与外部数据、工具交互的标准，类似中间件 2 架构核心组件Host本地运行的 AI 应用环境，为执行基于 AI 的任务提供环境。 托管 MCP 客户端，确保与外部 MCP 服务器的通信。 ClientMCP 客户端，在主机和 MCP S">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ai-base">
-<meta property="og:url" content="https://tthours.github.io/2025/02/26/security/aisec/ai-base/index.html">
+<meta property="og:title" content="ai-mcp">
+<meta property="og:url" content="https://tthours.github.io/2025/05/06/security/aisec/ai-mcp/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="常见概念RAG（检索增强生成）上下文信息检索方法，利用基于向量的搜索从数据库或知识库中检索相关知识，使模型能够补充最新的信息。 Function CallMCP 协议Anthropic 发布 Model Context Protocol 模型上下文协议 旨在统一规范大语言模型与外部数据源和工具之间的通信，建立 AI  与外部数据、工具交互的标准，类似中间件 核心组件Host本地运行的 AI 应">
+<meta property="og:description" content="1 简述Anthropic 发布 Model Context Protocol 模型上下文协议 旨在统一规范大语言模型与外部数据源和工具之间的通信，建立 AI  与外部数据、工具交互的标准，类似中间件 2 架构核心组件Host本地运行的 AI 应用环境，为执行基于 AI 的任务提供环境。 托管 MCP 客户端，确保与外部 MCP 服务器的通信。 ClientMCP 客户端，在主机和 MCP S">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-06T07:07:41.456Z">
+<meta property="article:published_time" content="2025-05-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-05-06T09:18:13.248Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="aisec">
@@ -35,7 +35,7 @@
   
   
   
-  <title>ai-base - tthours</title>
+  <title>ai-mcp - tthours</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ai-base"></span>
+            <span id="subtitle" data-typed-text="ai-mcp"></span>
           
         </div>
 
@@ -217,8 +217,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-26 00:00" pubdate>
-          2025年2月26日 凌晨
+        <time datetime="2025-05-06 00:00" pubdate>
+          2025年5月6日 凌晨
         </time>
       </span>
     
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          506 字
+          370 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          5 分钟
+          4 分钟
         
       </span>
     
@@ -277,41 +277,29 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">ai-base</h1>
+            <h1 id="seo-header">ai-mcp</h1>
             
             
               <div class="markdown-body">
                 
                 <span id="more"></span>
 
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="常见概念"><a href="#常见概念" class="headerlink" title="常见概念"></a>常见概念</h1><h2 id="RAG（检索增强生成）"><a href="#RAG（检索增强生成）" class="headerlink" title="RAG（检索增强生成）"></a>RAG（检索增强生成）</h2><p>上下文信息检索方法，利用基于向量的搜索从数据库或知识库中检索相关知识，使模型能够补充最新的信息。</p>
-<h2 id="Function-Call"><a href="#Function-Call" class="headerlink" title="Function Call"></a>Function Call</h2><h2 id="MCP-协议"><a href="#MCP-协议" class="headerlink" title="MCP 协议"></a>MCP 协议</h2><p>Anthropic 发布</p>
+<h2 id="1-简述"><a href="#1-简述" class="headerlink" title="1 简述"></a>1 简述</h2><p>Anthropic 发布</p>
 <p>Model Context Protocol 模型上下文协议</p>
 <p><strong>旨在统一规范大语言模型与外部数据源和工具之间的通信</strong>，建立 AI  与外部数据、工具交互的标准，类似中间件</p>
-<h3 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h3><h4 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h4><p>本地运行的 AI 应用环境。</p>
+<h2 id="2-架构"><a href="#2-架构" class="headerlink" title="2 架构"></a>2 架构</h2><h3 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h3><h4 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h4><p>本地运行的 AI 应用环境，为执行基于 AI 的任务提供环境。</p>
+<p>托管 MCP 客户端，确保与外部 MCP 服务器的通信。</p>
 <h4 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h4><p>MCP 客户端，在主机和 MCP Server 中保持连接，例如：Claude 客户端、Cline等应用程序都内置 MCP Client 客户端。</p>
+<p>MCP 客户端通过传输层与 MCP 服务器通信，促进安全、可靠的数据交换以及主机与外部资源之间的顺畅交互。</p>
 <h4 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h4><p>MCP 插件所对应的服务端。</p>
+<h5 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a>核心功能</h5><h6 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h6><p>启用外部操作</p>
+<p>允许 MCP 服务器调用外部服务和 API ，代表 AI 模型执行操作。</p>
+<p>通过上下文自主选择和调用适当的工具，遵循标准化的供应-消费模型，使工具模块化、可重用。</p>
+<h6 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h6><p>向 AI 模型暴露数据。</p>
+<p>资源提供对结构化和非结构化数据集的访问，数据集可以由 MCP 服务器暴露给 AI 模型。</p>
+<h6 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h6><p>用于工作流程优化的可重用模版。</p>
+<p>提示是 MCP 服务器生成和维护的预定义模版和工作流程，用于优化 AI 响应和简化重复性任务。</p>
 <h4 id="通信流程"><a href="#通信流程" class="headerlink" title="通信流程"></a>通信流程</h4><p>用户 -&gt;  Host -&gt; Client -&gt; Server</p>
-<h2 id="A2A"><a href="#A2A" class="headerlink" title="A2A"></a>A2A</h2><p>Google 发布</p>
-<p>Agent2Agent 协议，促进 AI Agent之间的通信协作</p>
-<p>A2A负责解决Agent间的通信问题，MCP解决的是Agent与工具间的通信问题。</p>
-<h2 id="Ollama"><a href="#Ollama" class="headerlink" title="Ollama"></a>Ollama</h2><p><strong>Ollama</strong> 是一个用于在本地运行、管理和与大型语言模型（LLMs）交互的开源工具。它旨在简化 LLMs 的部署和使用，特别适合开发者和研究人员在本地环境中快速测试和运行 AI 模型。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ollama/ollama">https://github.com/ollama/ollama</a></p>
-<p><a target="_blank" rel="noopener" href="https://ollama.com/">https://ollama.com/</a></p>
-<h2 id="Open-WebUI"><a href="#Open-WebUI" class="headerlink" title="Open WebUI"></a>Open WebUI</h2><p><strong>Open WebUI is an <a target="_blank" rel="noopener" href="https://docs.openwebui.com/features/plugin/">extensible</a>, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.</strong> It supports various LLM runners like <strong>Ollama</strong> and <strong>OpenAI-compatible APIs</strong>, with <strong>built-in inference engine</strong> for RAG, making it a <strong>powerful AI deployment solution</strong>.</p>
-<p>Open WebUI 是一个可扩展、功能丰富且用户友好的自托管 AI 平台，设计为完全离线运行。它支持诸如 Ollama 和兼容 OpenAI 的 API 等多种 LLM 运行器，并内置了用于 RAG 的推理引擎，使其成为强大的 AI 部署解决方案。</p>
-<p><a target="_blank" rel="noopener" href="https://docs.openwebui.com/">https://docs.openwebui.com/</a></p>
-<h2 id="LM-Studio"><a href="#LM-Studio" class="headerlink" title="LM Studio"></a>LM Studio</h2><p>LM Studio is a desktop app for developing and experimenting with LLMs locally on your computer.</p>
-<p>LM Studio 是一款桌面应用程序，可在您的计算机上本地开发和试验大型语言模型。</p>
-<p><a target="_blank" rel="noopener" href="https://lmstudio.ai/">https://lmstudio.ai/</a></p>
-<h1 id="常见术语"><a href="#常见术语" class="headerlink" title="常见术语"></a>常见术语</h1><h2 id="NLP"><a href="#NLP" class="headerlink" title="NLP"></a>NLP</h2><p>自然语言处理</p>
-<h2 id="LLMs"><a href="#LLMs" class="headerlink" title="LLMs"></a>LLMs</h2><p>大型语言模型</p>
-<h2 id="Xb"><a href="#Xb" class="headerlink" title="Xb"></a>Xb</h2><p>模型参数量</p>
-<p>x billion，7b 为 7 billion，也就是 70 亿个</p>
-<p>参数量是模型中可训练的权重参数总数，</p>
-<h1 id="风险端口"><a href="#风险端口" class="headerlink" title="风险端口"></a>风险端口</h1><h2 id="11434-Ollama"><a href="#11434-Ollama" class="headerlink" title="11434 Ollama"></a>11434 Ollama</h2><h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><h3 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><p>建议在 Python 虚拟环境中安装依赖项，以避免与系统 Python 环境冲突</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 -m venv deepseek_env<br><span class="hljs-built_in">source</span> deepseek_env/bin/activate<br></code></pre></td></tr></table></figure>
-
 
                 
               </div>
@@ -366,8 +354,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ai-base</div>
-      <div>https://tthours.github.io/2025/02/26/security/aisec/ai-base/</div>
+      <div>ai-mcp</div>
+      <div>https://tthours.github.io/2025/05/06/security/aisec/ai-mcp/</div>
     </div>
     <div class="license-meta">
       
@@ -379,7 +367,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月26日</div>
+          <div>2025年5月6日</div>
         </div>
       
       
@@ -404,9 +392,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/26/security/aisec/ai-Ollma/" title="ai-Ollma">
+                      <a href="/2025/05/06/security/aisec/ai-functioncall/" title="">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ai-Ollma</span>
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -414,8 +402,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/25/yunwei/applications/openresty/openresty_base/" title="openresty_base">
-                        <span class="hidden-mobile">openresty_base</span>
+                      <a href="/2025/04/30/security/seccert/cissp/10-%E5%9F%9F3%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%B7%A5%E7%A8%8B+%E5%9F%9F7%E5%AE%89%E5%85%A8%E8%BF%90%E8%90%A5-%E7%89%A9%E7%90%86%E5%AE%89%E5%85%A8%E8%A6%81%E6%B1%82/" title="10-域3安全架构与工程+域7安全运营-物理安全要求">
+                        <span class="hidden-mobile">10-域3安全架构与工程+域7安全运营-物理安全要求</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
