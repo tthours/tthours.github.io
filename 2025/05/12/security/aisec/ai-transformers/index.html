@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="transformershttps:&#x2F;&#x2F;github.com&#x2F;huggingface&#x2F;transformers&#x2F;blob&#x2F;main&#x2F;i18n&#x2F;README_zh-hans.md 安装创建虚拟环境conda create -n transformers python&#x3D;3.12 conda activate transformers pip 安装pip install transform">
+    <meta name="description" content="transformershttps:&#x2F;&#x2F;github.com&#x2F;huggingface&#x2F;transformers&#x2F;blob&#x2F;main&#x2F;i18n&#x2F;README_zh-hans.md Hugging Face 出品的 工具包，实现了大量的主流预训练 使用 PyTorch 或 TensorFlow 快速训练一个模型 安装创建虚拟环境conda create -n transformers python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ai-transformers">
 <meta property="og:url" content="https://tthours.github.io/2025/05/12/security/aisec/ai-transformers/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="transformershttps:&#x2F;&#x2F;github.com&#x2F;huggingface&#x2F;transformers&#x2F;blob&#x2F;main&#x2F;i18n&#x2F;README_zh-hans.md 安装创建虚拟环境conda create -n transformers python&#x3D;3.12 conda activate transformers pip 安装pip install transform">
+<meta property="og:description" content="transformershttps:&#x2F;&#x2F;github.com&#x2F;huggingface&#x2F;transformers&#x2F;blob&#x2F;main&#x2F;i18n&#x2F;README_zh-hans.md Hugging Face 出品的 工具包，实现了大量的主流预训练 使用 PyTorch 或 TensorFlow 快速训练一个模型 安装创建虚拟环境conda create -n transformers python">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-12T09:34:17.957Z">
+<meta property="article:modified_time" content="2025-05-13T12:46:31.001Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="aisec">
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          31 字
+          775 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          1 分钟
+          7 分钟
         
       </span>
     
@@ -285,6 +285,8 @@
                 <span id="more"></span>
 
 <h1 id="transformers"><a href="#transformers" class="headerlink" title="transformers"></a>transformers</h1><p><a target="_blank" rel="noopener" href="https://github.com/huggingface/transformers/blob/main/i18n/README_zh-hans.md">https://github.com/huggingface/transformers/blob/main/i18n/README_zh-hans.md</a></p>
+<p>Hugging Face 出品的 工具包，实现了大量的主流预训练</p>
+<p>使用 PyTorch 或 TensorFlow 快速训练一个模型</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><p>conda create -n transformers python&#x3D;3.12</p>
 <p>conda activate transformers</p>
 <h3 id="pip-安装"><a href="#pip-安装" class="headerlink" title="pip 安装"></a>pip 安装</h3><p>pip install transformers</p>
@@ -295,6 +297,126 @@
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> flax<br></code></pre></td></tr></table></figure>
 
 
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> transformers <span class="hljs-keyword">import</span> pipeline<br><br><span class="hljs-comment"># 使用情绪分析流水线</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>classifier = pipeline(<span class="hljs-string">&#x27;sentiment-analysis&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>classifier(<span class="hljs-string">&#x27;We are very happy to introduce pipeline to the transformers repository.&#x27;</span>)<br>[&#123;<span class="hljs-string">&#x27;label&#x27;</span>: <span class="hljs-string">&#x27;POSITIVE&#x27;</span>, <span class="hljs-string">&#x27;score&#x27;</span>: <span class="hljs-number">0.9996980428695679</span>&#125;]<br></code></pre></td></tr></table></figure>
+
+<p>classifier &#x3D; pipeline(‘sentiment-analysis’)  下载预训练 sentiment-analysis 模型</p>
+<h3 id="pipeline"><a href="#pipeline" class="headerlink" title="pipeline"></a>pipeline</h3><p>推理 API</p>
+<p>支持 GPU、Apple Silicon 和半精度权重</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>pipeline &#x3D; pipeline(“text-generation”, model&#x3D;model_name, device&#x3D;”cuda”) </p>
+<p>model：指定使用的模型名称或模型对象</p>
+<p>tokenizer：指定使用的分词器名称或分词器对象</p>
+<p>device：指定运行设备，如 <code>&#39;cpu&#39;</code> 或 <code>&#39;cuda&#39;</code>，GPU推理时，device&#x3D;0 or device&#x3D;1 or device&#x3D;2(数字为选择第几张显卡);当使用CPU推理时，device&#x3D;cpu</p>
+<p>batch_size：批处理大小，适用于批量处理输入</p>
+<h4 id="支持的任务列表"><a href="#支持的任务列表" class="headerlink" title="支持的任务列表"></a>支持的任务列表</h4><table>
+<thead>
+<tr>
+<th><strong>任务</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>模态</strong></th>
+<th><strong>Pipeline</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文本分类</td>
+<td>为给定的文本序列分配一个标签</td>
+<td>NLP</td>
+<td>pipeline(task&#x3D;“sentiment-analysis”)</td>
+</tr>
+<tr>
+<td>文本生成</td>
+<td>根据给定的提示生成文本</td>
+<td>NLP</td>
+<td>pipeline(task&#x3D;“text-generation”)</td>
+</tr>
+<tr>
+<td>命名实体识别</td>
+<td>为序列里的每个 token 分配一个标签（人, 组织, 地址等等）</td>
+<td>NLP</td>
+<td>pipeline(task&#x3D;“ner”)</td>
+</tr>
+<tr>
+<td>问答系统</td>
+<td>通过给定的上下文和问题, 在文本中提取答案</td>
+<td>NLP</td>
+<td>pipeline(task&#x3D;“question-answering”)</td>
+</tr>
+<tr>
+<td>掩盖填充</td>
+<td>预测出正确的在序列中被掩盖的token</td>
+<td>NLP</td>
+<td>pipeline(task&#x3D;“fill-mask”)</td>
+</tr>
+<tr>
+<td>文本摘要</td>
+<td>为文本序列或文档生成总结</td>
+<td>NLP</td>
+<td>pipeline(task&#x3D;“summarization”)</td>
+</tr>
+<tr>
+<td>文本翻译</td>
+<td>将文本从一种语言翻译为另一种语言</td>
+<td>NLP</td>
+<td>pipeline(task&#x3D;“translation”)</td>
+</tr>
+<tr>
+<td>图像分类</td>
+<td>为图像分配一个标签</td>
+<td>Computer vision</td>
+<td>pipeline(task&#x3D;“image-classification”)</td>
+</tr>
+<tr>
+<td>图像分割</td>
+<td>为图像中每个独立的像素分配标签（支持语义、全景和实例分割）</td>
+<td>Computer vision</td>
+<td>pipeline(task&#x3D;“image-segmentation”)</td>
+</tr>
+<tr>
+<td>目标检测</td>
+<td>预测图像中目标对象的边界框和类别</td>
+<td>Computer vision</td>
+<td>pipeline(task&#x3D;“object-detection”)</td>
+</tr>
+<tr>
+<td>音频分类</td>
+<td>给音频文件分配一个标签</td>
+<td>Audio</td>
+<td>pipeline(task&#x3D;“audio-classification”)</td>
+</tr>
+<tr>
+<td>自动语音识别</td>
+<td>将音频文件中的语音提取为文本</td>
+<td>Audio</td>
+<td>pipeline(task&#x3D;“automatic-speech-recognition”)</td>
+</tr>
+<tr>
+<td>视觉问答</td>
+<td>给定一个图像和一个问题，正确地回答有关图像的问题</td>
+<td>Multimodal</td>
+<td>pipeline(task&#x3D;“vqa”)</td>
+</tr>
+</tbody></table>
+<h3 id="AutoClass"><a href="#AutoClass" class="headerlink" title="AutoClass"></a>AutoClass</h3><p>AutoModelForSequenceClassification 和 AutoTokenizer 一起支持在上面用到的 pipeline()</p>
+<p>AutoClass 是一个能够通过预训练模型的名称或路径自动查找其架构的快捷方式</p>
+<h4 id="AutoTokenizer"><a href="#AutoTokenizer" class="headerlink" title="AutoTokenizer"></a>AutoTokenizer</h4><p>分词器负责预处理文本，将文本转换为用于输入模型的数字数组</p>
+<h4 id="AutoModel"><a href="#AutoModel" class="headerlink" title="AutoModel"></a>AutoModel</h4><h5 id="Pytorch"><a href="#Pytorch" class="headerlink" title="Pytorch"></a>Pytorch</h5><p>Transformers 提供了一种简单统一的方式来加载预训练的实例</p>
+<p>需要为任务选择正确的 AutoModel</p>
+<p>文本（或序列）分类，加载 AutoModelForSequenceClassification</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf">from transformers import AutoModelForSequenceClassification<br>model_name <span class="hljs-operator">=</span> <span class="hljs-string">&quot;nlptown/bert-base-multilingual-uncased-sentiment&quot;</span><br>pt_model <span class="hljs-operator">=</span> AutoModelForSequenceClassification.from_pretrained(model_name)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="TensorFlow"><a href="#TensorFlow" class="headerlink" title="TensorFlow"></a>TensorFlow</h5><p>Transformers 提供了一种简单统一的方式来加载预训练的实例</p>
+<p>需要为任务选择正确的 TFAutoModel</p>
+<p>文本（或序列）分类，加载 TFAutoModelForSequenceClassification</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf">from transformers import TFAutoModelForSequenceClassification<br>model_name <span class="hljs-operator">=</span> <span class="hljs-string">&quot;nlptown/bert-base-multilingual-uncased-sentiment&quot;</span><br>tf_model <span class="hljs-operator">=</span> TFAutoModelForSequenceClassification.from_pretrained(model_name)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="保存模型"><a href="#保存模型" class="headerlink" title="保存模型"></a>保存模型</h4><p>模型微调后，可以保存模型，并在需要使用时重新加载</p>
+<h5 id="Pytorch-1"><a href="#Pytorch-1" class="headerlink" title="Pytorch"></a>Pytorch</h5><h5 id="TensorFlow-1"><a href="#TensorFlow-1" class="headerlink" title="TensorFlow"></a>TensorFlow</h5>
                 
               </div>
             
