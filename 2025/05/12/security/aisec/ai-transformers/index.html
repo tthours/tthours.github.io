@@ -27,7 +27,7 @@
 <meta property="og:description" content="transformershttps:&#x2F;&#x2F;github.com&#x2F;huggingface&#x2F;transformers&#x2F;blob&#x2F;main&#x2F;i18n&#x2F;README_zh-hans.md Hugging Face 出品的 工具包，实现了大量的主流预训练 使用 PyTorch 或 TensorFlow 快速训练一个模型 安装创建虚拟环境conda create -n transformers python">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-15T02:52:21.734Z">
+<meta property="article:modified_time" content="2025-05-19T08:31:06.970Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="aisec">
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          798 字
+          1.1k 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          7 分钟
+          10 分钟
         
       </span>
     
@@ -402,7 +402,34 @@
 <h5 id="tokenizer"><a href="#tokenizer" class="headerlink" title="tokenizer"></a>tokenizer</h5><h6 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h6><p><strong>max_length</strong>：模型支持的最大序列长度，超过后会被截断</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">max_length</span>=<span class="hljs-number">512</span><br></code></pre></td></tr></table></figure>
 
-<p><strong>padding：</strong></p>
+<p><strong>padding：</strong> True</p>
+<p>自动对批次中的文本进行填充（Padding），使所有序列长度一致</p>
+<p>填充规则：</p>
+<ul>
+<li>按照 padding_side ，默认为 right，在右侧填充</li>
+<li>填充符号由 pad_token 决定</li>
+</ul>
+<p><strong>truncation</strong>：True </p>
+<p>自动截断超过 max_length 的序列</p>
+<p>截断规则：</p>
+<ul>
+<li>按照 truncation_side ，默认为 right ，从右侧截断</li>
+<li>截断后保留的 token 数量不超过 max_length</li>
+</ul>
+<p><strong>return_tensors</strong></p>
+<p>指定返回张量的框架类</p>
+<p>可选值：</p>
+<ul>
+<li><p>pt：返回 PyTorch 张量（torch.Tensor）</p>
+<p>返回值中包含 input_ids、attention_mask 字段</p>
+<p>input_ids：每个 token 的 ID（包括特殊 token 如 [CLS] 和 [SEP]）</p>
+<p>attention_mask：标记哪些位置是有效 token（1），哪些是填充（0）</p>
+</li>
+<li><p>tf：返回 TensorFlow 张量（tf.Tensor）</p>
+</li>
+<li><p>np：返回 NumPy 数组（np.ndarray）</p>
+</li>
+</ul>
 <h4 id="AutoModel"><a href="#AutoModel" class="headerlink" title="AutoModel"></a>AutoModel</h4><h5 id="Pytorch"><a href="#Pytorch" class="headerlink" title="Pytorch"></a>Pytorch</h5><p>Transformers 提供了一种简单统一的方式来加载预训练的实例</p>
 <p>需要为任务选择正确的 AutoModel</p>
 <p>文本（或序列）分类，加载 AutoModelForSequenceClassification</p>
@@ -420,7 +447,33 @@
 
 
 <h4 id="保存模型"><a href="#保存模型" class="headerlink" title="保存模型"></a>保存模型</h4><p>模型微调后，可以保存模型，并在需要使用时重新加载</p>
-<h5 id="Pytorch-1"><a href="#Pytorch-1" class="headerlink" title="Pytorch"></a>Pytorch</h5><h5 id="TensorFlow-1"><a href="#TensorFlow-1" class="headerlink" title="TensorFlow"></a>TensorFlow</h5>
+<h5 id="Pytorch-1"><a href="#Pytorch-1" class="headerlink" title="Pytorch"></a>Pytorch</h5><p><strong>保存模型</strong></p>
+<p>pt_model.save_pretrained(pt_save_directory)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>pt_save_directory = <span class="hljs-string">&quot;./pt_save_pretrained&quot;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>tokenizer.save_pretrained(pt_save_directory)<br>(<span class="hljs-string">&#x27;./pt_save_pretrained/tokenizer_config.json&#x27;</span>, <span class="hljs-string">&#x27;./pt_save_pretrained/special_tokens_map.json&#x27;</span>, <span class="hljs-string">&#x27;./pt_save_pretrained/vocab.txt&#x27;</span>, <span class="hljs-string">&#x27;./pt_save_pretrained/added_tokens.json&#x27;</span>, <span class="hljs-string">&#x27;./pt_save_pretrained/tokenizer.json&#x27;</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>pt_model.save_pretrained(pt_save_directory)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs tap">(transformers) [root@ transformers]<span class="hljs-comment"># ls -lat pt_save_pretrained/</span><br>total 657156<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 669464588 </span>May<span class="hljs-number"> 19 </span>16:20 model.safetensors<br>drwxr-xr-x<span class="hljs-number"> 2 </span>root root     <span class="hljs-number"> 4096 </span>May<span class="hljs-number"> 19 </span>16:20 .<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root     <span class="hljs-number"> 1109 </span>May<span class="hljs-number"> 19 </span>16:20 config.json<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root  <span class="hljs-number"> 2563623 </span>May<span class="hljs-number"> 19 </span>16:20 tokenizer.json<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root   <span class="hljs-number"> 871891 </span>May<span class="hljs-number"> 19 </span>16:20 vocab.txt<br>drwxr-xr-x<span class="hljs-number"> 3 </span>root root     <span class="hljs-number"> 4096 </span>May<span class="hljs-number"> 19 </span>16:20 ..<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root      <span class="hljs-number"> 125 </span>May<span class="hljs-number"> 19 </span>16:20 special_tokens_map.json<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root     <span class="hljs-number"> 1290 </span>May<span class="hljs-number"> 19 </span>16:20 tokenizer_config.json<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>加载模型</strong></p>
+<p>PreTrainedModel.from_pretrained()</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">pt_model</span> = AutoModelForSequenceClassification.from_pretrained(<span class="hljs-string">&quot;./pt_save_pretrained&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="TensorFlow-1"><a href="#TensorFlow-1" class="headerlink" title="TensorFlow"></a>TensorFlow</h5><p><strong>保存模型</strong></p>
+<p>TFPreTrainedModel.save_pretrained()</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">tf_save_directory = <span class="hljs-string">&quot;./tf_save_pretrained&quot;</span><br>tokenizer<span class="hljs-selector-class">.save_pretrained</span>(tf_save_directory)<br>tf_model<span class="hljs-selector-class">.save_pretrained</span>(tf_save_directory)<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>加载模型</strong></p>
+<p>TFPreTrainedModel.from_pretrained()</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">tf_model</span> = TFAutoModelForSequenceClassification.from_pretrained(<span class="hljs-string">&quot;./tf_save_pretrained&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="自定义模型构建"><a href="#自定义模型构建" class="headerlink" title="自定义模型构建"></a>自定义模型构建</h3>
                 
               </div>
             
