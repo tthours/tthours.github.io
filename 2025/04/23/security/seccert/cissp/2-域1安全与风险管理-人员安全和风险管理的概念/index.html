@@ -28,8 +28,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tthours.github.io/image-20250516080534841.png">
 <meta property="og:image" content="https://tthours.github.io/image-20250516092259545.png">
+<meta property="og:image" content="https://tthours.github.io/image-20250516224508032.png">
 <meta property="article:published_time" content="2025-04-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-16T01:27:42.356Z">
+<meta property="article:modified_time" content="2025-05-19T01:28:26.051Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="seccert">
@@ -233,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          12k 字
+          14k 字
         
       </span>
     
@@ -244,7 +245,7 @@
         
         
         
-          103 分钟
+          117 分钟
         
       </span>
     
@@ -583,7 +584,117 @@
 <p>EF 表示单个风险发生时对整体资产价值造成的损失预计值。</p>
 <p>可替换资产（硬件），EF 很小，不可替换资产（数据库等），EF 很大</p>
 <p>EF 用百分比表示</p>
-<h5 id="单一损失期望"><a href="#单一损失期望" class="headerlink" title="单一损失期望"></a>单一损失期望</h5><h5 id="年度发生率"><a href="#年度发生率" class="headerlink" title="年度发生率"></a>年度发生率</h5><h5 id="年度损失期望"><a href="#年度损失期望" class="headerlink" title="年度损失期望"></a>年度损失期望</h5><h1 id="2-3-社会工程"><a href="#2-3-社会工程" class="headerlink" title="2.3 社会工程"></a>2.3 社会工程</h1><p>社会工程是一种利用人类天性和人类行为的攻击形式。</p>
+<h5 id="单一损失期望-SLE"><a href="#单一损失期望-SLE" class="headerlink" title="单一损失期望 SLE"></a>单一损失期望 SLE</h5><p>单一损失期望（SLE）是特定资产发生单一真实威胁的潜在损失，也就是可能造成的损失。</p>
+<p>SLE 计算公式：<br>    SLE &#x3D; 资产价值（AV）* 暴露因子（EF）</p>
+<p>或更简单</p>
+<p>​	SLE &#x3D; AV * EF</p>
+<p>例如：</p>
+<p>​	资产价值为 200 000 美元，特定威胁的暴露因子 EF 45% ，特定威胁的 SLE 为 200 000 * 45% &#x3D; 90 000 美元</p>
+<h5 id="年度发生率-ARO"><a href="#年度发生率-ARO" class="headerlink" title="年度发生率 ARO"></a>年度发生率 ARO</h5><p>在一年内特定威胁或风险发生（即真实发生）的预期频率。</p>
+<p>ARO 可能为 0 （几乎不发生），可能很大（经常发生）</p>
+<p>ARO 来源</p>
+<ul>
+<li>查看历史内部数据</li>
+<li>执行统计分析</li>
+<li>咨询公众或订阅的风险总账&#x2F;登记册</li>
+<li>与顾问合作获取</li>
+</ul>
+<p>某些 ARO 是通过将单个威胁发生的可能性乘以引起威胁的用户数量计算的，因此也被称为<strong>概率测定</strong></p>
+<h5 id="年度损失期望-ALE-最常用"><a href="#年度损失期望-ALE-最常用" class="headerlink" title="年度损失期望 ALE - 最常用"></a>年度损失期望 ALE - 最常用</h5><p>针对特定资产的单一特定威胁实际发生的所有实例，在年度内可能造成的损失成本。</p>
+<p>ALE 的计算公式：</p>
+<p>​	ALE &#x3D; 单一损失期望 （SLE） * 年度发生率（ARO）</p>
+<p>​	ALE &#x3D; SLE * ARO</p>
+<p>或</p>
+<p>​	ALE &#x3D; 资产价值（AV）* 暴露因子（EF）* 年度发生率（ARO）</p>
+<p>​	ALE &#x3D; AV * EF * ARO</p>
+<p>数值最大的 ALE 就是组织面临的最大问题，也是风险响应中要解决的第一个问题。</p>
+<p><img src="/image-20250516224508032.png" srcset="/img/loading.gif" lazyload alt="image-20250516224508032"></p>
+<h2 id="2-2-5-风险响应"><a href="#2-2-5-风险响应" class="headerlink" title="2.2.5 风险响应"></a>2.2.5 风险响应</h2><p>风险评估用于识别风险并设定关键优先级</p>
+<p>风险响应用于为每个已识别风险确定最佳的防御方案</p>
+<p>对风险可能的响应（与组织风险偏好和风险容忍度有关）</p>
+<ul>
+<li>降低或缓解风险</li>
+<li>转让或转移风险</li>
+<li>威慑风险</li>
+<li>规避风险</li>
+<li>接受风险</li>
+<li>拒绝或忽略风险</li>
+</ul>
+<p>风险偏好：</p>
+<p>组织愿意在所有资产中承担的风险总量。</p>
+<p>风险能力：<br>组织能够承担的风险水平</p>
+<p>风险承受能力：</p>
+<p>组织将接受的每个资产-威胁组合的风险数量或水平</p>
+<p>风险限值：</p>
+<p>在采取进一步风险管理措施之前可以容忍的高于风险目标的最大风险水平</p>
+<h3 id="风险响应方式"><a href="#风险响应方式" class="headerlink" title="风险响应方式"></a>风险响应方式</h3><h4 id="风险缓解-risk-mitigation"><a href="#风险缓解-risk-mitigation" class="headerlink" title="风险缓解 risk mitigation"></a>风险缓解 risk mitigation</h4><p>降低风险或缓解风险是指通过实施防护措施、安全控制和安全对策以减少或消除脆弱性或阻止威胁。</p>
+<p>常见范例：</p>
+<ul>
+<li>加密</li>
+<li>防火墙</li>
+</ul>
+<h4 id="风险转让-risk-assignment"><a href="#风险转让-risk-assignment" class="headerlink" title="风险转让 risk assignment"></a>风险转让 risk assignment</h4><p>风险转让或风险转移指将风险带来的损失转嫁给另一个实体或组织。</p>
+<p>常见范例</p>
+<ul>
+<li>外包</li>
+<li>传统保险</li>
+<li>网络安全保险</li>
+</ul>
+<h4 id="风险威慑-risk-deterrence"><a href="#风险威慑-risk-deterrence" class="headerlink" title="风险威慑 risk deterrence"></a>风险威慑 risk deterrence</h4><p>风险威慑是对可能违反安全和策略的违规者实施震慑的过程。</p>
+<p>目的：</p>
+<p>说服威胁主体不进行攻击。</p>
+<p>常见事例：</p>
+<ul>
+<li>实施审计</li>
+<li>安全摄像头</li>
+<li>警告横幅</li>
+<li>使用安保人员</li>
+</ul>
+<h4 id="风险规避-risk-avoidance"><a href="#风险规避-risk-avoidance" class="headerlink" title="风险规避 risk avoidance"></a>风险规避 risk avoidance</h4><p>风险规避是选择替代的选项或活动的过程，替代选项或活动的风险低于默认的、通用的、权宜的或廉价的选项。</p>
+<h4 id="风险接受-risk-acceptance"><a href="#风险接受-risk-acceptance" class="headerlink" title="风险接受 risk acceptance"></a>风险接受 risk acceptance</h4><p>风险接受或风险容忍是成本&#x2F;收益分析表明控制措施的成本将超过风险可能造成的损失之后的结果。</p>
+<p>管理层已经接受风险造成的后果和损失。</p>
+<p>接受风险需要明确的书面陈述，并由高级管理人员书面签字。</p>
+<h4 id="风险拒绝-risk-rejection"><a href="#风险拒绝-risk-rejection" class="headerlink" title="风险拒绝 risk rejection"></a>风险拒绝 risk rejection</h4><p>一个不可接受的但可能发生的风险响应是拒绝风险或忽略风险。</p>
+<p>风险拒绝不是有效的或审慎的应尽关心&#x2F;尽职审查的风险响应方式。</p>
+<h3 id="风险类型"><a href="#风险类型" class="headerlink" title="风险类型"></a>风险类型</h3><h4 id="固有风险-初始风险-起始风险"><a href="#固有风险-初始风险-起始风险" class="headerlink" title="固有风险&#x2F;初始风险&#x2F;起始风险"></a>固有风险&#x2F;初始风险&#x2F;起始风险</h4><p>没有执行任何风险管理工作之前，自然、原生或默认的风险水平</p>
+<p>可能存在的地方：</p>
+<p>供应链</p>
+<p>开发人员操作</p>
+<p>系统的设计</p>
+<p>架构或组织的知识和技能基础</p>
+<h4 id="残余风险"><a href="#残余风险" class="headerlink" title="残余风险"></a>残余风险</h4><p>采取防火措施、安全控制或安全对策后，剩余的的风险。</p>
+<p>管理层选择接受而不去减轻的风险。</p>
+<p>不具有成本效益的防护措施。</p>
+<h4 id="总风险"><a href="#总风险" class="headerlink" title="总风险"></a>总风险</h4><p>没有实施防护措施的情况下组织面临的全部风险</p>
+<p>总风险 &#x3D; 威胁 *  脆弱性 * 资产价值</p>
+<h4 id="控制间隙"><a href="#控制间隙" class="headerlink" title="控制间隙"></a>控制间隙</h4><p>通过实施防护措施而减少的风险。</p>
+<p>总风险 - 控制间隙 &#x3D; 残余风险</p>
+<h3 id="定期评估"><a href="#定期评估" class="headerlink" title="定期评估"></a>定期评估</h3><p>风险处理和风险管理一样，都不是一次性的，需要持续维护和重复确认安全。</p>
+<h3 id="控制风险"><a href="#控制风险" class="headerlink" title="控制风险"></a>控制风险</h3><p>将安全对策部署到环境中时引入的风险。</p>
+<p><strong>风险评估和风险响应必须是迭代化操作，自我回顾以进行持续改进。</strong></p>
+<h2 id="2-2-6-安全控制的成本与收益"><a href="#2-2-6-安全控制的成本与收益" class="headerlink" title="2.2.6 安全控制的成本与收益"></a>2.2.6 安全控制的成本与收益</h2><p>对于每个资产-威胁组合（也就是已经识别的风险），必须编制一份可能的或可用的防护措施清单。</p>
+<p>列出清单后，评估防护措施的收益和相关联的资产-威胁组合的成本。</p>
+<h3 id="防护措施、安全控制和安全对策效果"><a href="#防护措施、安全控制和安全对策效果" class="headerlink" title="防护措施、安全控制和安全对策效果"></a>防护措施、安全控制和安全对策效果</h3><h4 id="降低潜在破坏比例-ARO"><a href="#降低潜在破坏比例-ARO" class="headerlink" title="降低潜在破坏比例 ARO"></a>降低潜在破坏比例 ARO</h4><p>是否部署措施，单个事件发生时造成的损失 SLE 是一样的。</p>
+<h4 id="降低损害数量或严重程度-EF"><a href="#降低损害数量或严重程度-EF" class="headerlink" title="降低损害数量或严重程度 EF"></a>降低损害数量或严重程度 EF</h4><p>部署措施会比没有部署措施单个事件造成的损失要小。</p>
+<h3 id="潜在-ALE"><a href="#潜在-ALE" class="headerlink" title="潜在 ALE"></a>潜在 ALE</h3><p>ALE &#x3D; AV * EF * ARO</p>
+<p>初始资产-风险组合的ALE 为 ALE1</p>
+<p>特定防护措施的 ALE 为 ALE2</p>
+<h3 id="防护措施成本"><a href="#防护措施成本" class="headerlink" title="防护措施成本"></a>防护措施成本</h3><p>需要对组织中部署的防护措施的年度成本进行估算，也就是年度成本（ACS）</p>
+<h4 id="影响-ACS-常见因素"><a href="#影响-ACS-常见因素" class="headerlink" title="影响 ACS 常见因素"></a>影响 ACS 常见因素</h4><ul>
+<li>购买、开发和许可的成本</li>
+<li>实施和定制的成本</li>
+<li>年度运营、维护、管理的费用</li>
+<li>年度维修和升级的成本</li>
+<li>生产率的提高或降低</li>
+<li>环境的改变</li>
+<li>测试和评估的成本</li>
+</ul>
+<p>受保护资产的价值决定了保护机制的最大支出。</p>
+<p>如果 ACS 大于 ALE1（特定威胁给特定资产带来的潜在年度损失），防护措施就是不具备成本效益的解决方案。</p>
+<p>如果全部防护方案措施都不具备成本效益，接受风险</p>
+<p><strong>安全具有成本效益</strong>。</p>
+<p><strong>防护措施前的 ALE - 防护措施实施后的 ALE -防护措施年度成本 ACS &#x3D; 防护措施对公司的价值</strong></p>
+<h1 id="2-3-社会工程"><a href="#2-3-社会工程" class="headerlink" title="2.3 社会工程"></a>2.3 社会工程</h1><p>社会工程是一种利用人类天性和人类行为的攻击形式。</p>
 <p>社会工程攻击利用的是人类的特性。</p>
 <p>必须考虑人员给组织带来的风险并实施安全策略以最小化这些风险并处理这些风险。</p>
 <p>社会工程攻击有两种主要形式：</p>
