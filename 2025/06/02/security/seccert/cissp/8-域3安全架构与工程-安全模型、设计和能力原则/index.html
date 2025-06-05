@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://tthours.github.io/image-20250604112829152.png">
 <meta property="og:image" content="https://tthours.github.io/image-20250604113853144.png">
 <meta property="article:published_time" content="2025-06-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-04T03:39:50.866Z">
+<meta property="article:modified_time" content="2025-06-05T01:49:49.429Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="seccert">
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.7k 字
+          9.5k 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          56 分钟
+          79 分钟
         
       </span>
     
@@ -575,9 +575,175 @@
 <p><img src="/image-20250604113853144.png" srcset="/img/loading.gif" lazyload alt="image-20250604113853144"></p>
 <p>Clark-Wilson 模型定义的数据项和规程：</p>
 <ul>
-<li>受约束数据项（</li>
+<li><p>受约束数据项（constrained data item，CDI）指完整性受安全模型保护的任何数据项。</p>
+</li>
+<li><p>无约束数据项（unconstrained data item，UDI）指不受安全模型控制的任何数据项。</p>
+<p>任何输入但未经验证的数据或任何输入，都属于无约束数据项。</p>
+</li>
+<li><p>完整性验证规程（integrity verification procedure，IVP）扫描数据项并确认其完整性的规程。</p>
+</li>
+<li><p>转换规程（transformation procedure，TP）指被允许修改 CDI 的唯一规程。通过 TP 限制对 CDI 的访问，</p>
+</li>
 </ul>
-<h2 id="8-3-10-Brewer-and-Nash-模型"><a href="#8-3-10-Brewer-and-Nash-模型" class="headerlink" title="8.3.10 Brewer and Nash 模型"></a>8.3.10 Brewer and Nash 模型</h2><h2 id="8-3-11-Goguen-Meseguer-模型"><a href="#8-3-11-Goguen-Meseguer-模型" class="headerlink" title="8.3.11 Goguen-Meseguer 模型"></a>8.3.11 Goguen-Meseguer 模型</h2><h2 id="8-3-12-Sutherland-模型"><a href="#8-3-12-Sutherland-模型" class="headerlink" title="8.3.12 Sutherland 模型"></a>8.3.12 Sutherland 模型</h2><h2 id="8-3-13-Graham-Denning-模型"><a href="#8-3-13-Graham-Denning-模型" class="headerlink" title="8.3.13 Graham-Denning 模型"></a>8.3.13 Graham-Denning 模型</h2><h2 id="8-3-14-Harrison-Ruzzo-Ullman-模型"><a href="#8-3-14-Harrison-Ruzzo-Ullman-模型" class="headerlink" title="8.3.14 Harrison-Ruzzo-Ullman 模型"></a>8.3.14 Harrison-Ruzzo-Ullman 模型</h2><h1 id="8-4-根据系统安全要求挑选控制"><a href="#8-4-根据系统安全要求挑选控制" class="headerlink" title="8.4 根据系统安全要求挑选控制"></a>8.4 根据系统安全要求挑选控制</h1><h2 id="8-4-1-通用准则"><a href="#8-4-1-通用准则" class="headerlink" title="8.4.1 通用准则"></a>8.4.1 通用准则</h2><h2 id="8-4-2-操作授权"><a href="#8-4-2-操作授权" class="headerlink" title="8.4.2 操作授权"></a>8.4.2 操作授权</h2><h1 id="8-5-理解信息系统的安全能力"><a href="#8-5-理解信息系统的安全能力" class="headerlink" title="8.5 理解信息系统的安全能力"></a>8.5 理解信息系统的安全能力</h1><h2 id="8-5-1-内存保护"><a href="#8-5-1-内存保护" class="headerlink" title="8.5.1 内存保护"></a>8.5.1 内存保护</h2><h2 id="8-5-2-虚拟化"><a href="#8-5-2-虚拟化" class="headerlink" title="8.5.2 虚拟化"></a>8.5.2 虚拟化</h2><h2 id="8-5-3-可信平台模块"><a href="#8-5-3-可信平台模块" class="headerlink" title="8.5.3 可信平台模块"></a>8.5.3 可信平台模块</h2><h2 id="8-5-4-接口"><a href="#8-5-4-接口" class="headerlink" title="8.5.4 接口"></a>8.5.4 接口</h2><h2 id="8-5-5-容错"><a href="#8-5-5-容错" class="headerlink" title="8.5.5 容错"></a>8.5.5 容错</h2><h2 id="8-5-6-加密-解密"><a href="#8-5-6-加密-解密" class="headerlink" title="8.5.6 加密&#x2F;解密"></a>8.5.6 加密&#x2F;解密</h2><h1 id="8-6-本章小节"><a href="#8-6-本章小节" class="headerlink" title="8.6 本章小节"></a>8.6 本章小节</h1><h1 id="8-7-考试要点"><a href="#8-7-考试要点" class="headerlink" title="8.7 考试要点"></a>8.7 考试要点</h1><h2 id="能够从访问的角度定义客体和主体"><a href="#能够从访问的角度定义客体和主体" class="headerlink" title="能够从访问的角度定义客体和主体"></a>能够从访问的角度定义客体和主体</h2><p>主体是指对资源提出访问请求的用户或进程。</p>
+<p>Clark-Wilson 模型根据安全标签授予对客体的访问权，但仅通过转换规程和受限接口模型（restricted interface model）授予。</p>
+<p>Clark-Wilson 模型可确保数据不会被任何未经授权的用户更改。</p>
+<p>Clark-Wilson 模型执行了职责分离。</p>
+<h2 id="8-3-10-Brewer-and-Nash-模型"><a href="#8-3-10-Brewer-and-Nash-模型" class="headerlink" title="8.3.10 Brewer and Nash 模型"></a>8.3.10 Brewer and Nash 模型</h2><p>Brewer and Nash 模型是为了让访问控制可以根据用户先前的活动动态地作出改变。</p>
+<p>Brewer and Nash 模型适用于单个集成的数据库，寻求创建对利益冲突概念敏感的安全域。</p>
+<p>Brewer and Nash 模型创建一类数据，定义哪些安全域存在潜在冲突，并阻止有权访问属于特定冲突类别安全域的任何主体访问  属于相同冲突类别的任何其他安全域。</p>
+<p>Brewer and Nash 在每个冲突类别内使用数据隔离原则。</p>
+<p>必须动态更新冲突类的成员和定义。</p>
+<h2 id="8-3-11-Goguen-Meseguer-模型"><a href="#8-3-11-Goguen-Meseguer-模型" class="headerlink" title="8.3.11 Goguen-Meseguer 模型"></a>8.3.11 Goguen-Meseguer 模型</h2><p>Goguen-Meseguer 模型是一个完整性模型。</p>
+<p>Goguen-Meseguer 模型是非干涉性概念理论的基础。</p>
+<p>Goguen-Meseguer 模型以主体可访问的预先确定的客体集或域为基础。</p>
+<p>Goguen-Meseguer 模型的根基是自动控制理论和域隔离。</p>
+<p>只允许主体对预定客体执行预定操作。</p>
+<p>一个主体域的成员将不能干扰另一个主体域的成员。</p>
+<p>主体不能干扰彼此的活动。</p>
+<h2 id="8-3-12-Sutherland-模型"><a href="#8-3-12-Sutherland-模型" class="headerlink" title="8.3.12 Sutherland 模型"></a>8.3.12 Sutherland 模型</h2><p>Sutherland 模型是一个完整性模型，专注于通过防止干扰来支持完整性。</p>
+<p>Sutherland 模型基于状态机模型和信息流模型。</p>
+<p>Sutherland 模型通过只使用预先定义的安全状态来保持完整性和阻止干扰。</p>
+<p>使用 Sutherland 模型的例子：防止隐蔽信道被用来影响进程或活动的结果。</p>
+<h2 id="8-3-13-Graham-Denning-模型"><a href="#8-3-13-Graham-Denning-模型" class="headerlink" title="8.3.13 Graham-Denning 模型"></a>8.3.13 Graham-Denning 模型</h2><p>Graham-Denning 模型专注于主体和客体的安全创建和删除。</p>
+<p>Graham-Denning 模型是八条主要保护规则或操作的集合，用于定义某些安全操作的边界。</p>
+<ul>
+<li>安全创建客体</li>
+<li>安全创建主体</li>
+<li>安全删除客体</li>
+<li>安全删除主体</li>
+<li>安全提供读取访问权</li>
+<li>安全提供授权访问权</li>
+<li>安全提供删除访问权</li>
+<li>安全提供传输访问权</li>
+</ul>
+<p>主体在一组客体上执行某些操作的具体能力或权限通常被定义在一个访问矩阵（也叫访问控制矩阵）中。</p>
+<h2 id="8-3-14-Harrison-Ruzzo-Ullman-模型"><a href="#8-3-14-Harrison-Ruzzo-Ullman-模型" class="headerlink" title="8.3.14 Harrison-Ruzzo-Ullman 模型"></a>8.3.14 Harrison-Ruzzo-Ullman 模型</h2><p>Harrison-Ruzzo-Ullman（HRU）模型专注于给主体分配客体的访问权限以及这些被分配权限的韧性。</p>
+<p>HRU 是 Graham-Denning 模型的扩展。</p>
+<p>HRU 建立一个有限规程集（或访问权限集）为中心，利用规程编辑或更改主体对客体的访问权限。</p>
+<p>HRU 模型定义了一个有限命令或基元（primitive）集，以便控制授权主体修改矩阵的方式。</p>
+<p>“星”计划，也就是“安全信任保障和风险”计划，简称 STAR。</p>
+<p>该计划致力于通过审计、透明度和标准来提高云服务提供商CSP的安全性。</p>
+<h1 id="8-4-根据系统安全要求挑选控制"><a href="#8-4-根据系统安全要求挑选控制" class="headerlink" title="8.4 根据系统安全要求挑选控制"></a>8.4 根据系统安全要求挑选控制</h1><p>安全评估常常由可信的第三方负责进行。</p>
+<h2 id="8-4-1-通用准则-CC"><a href="#8-4-1-通用准则-CC" class="headerlink" title="8.4.1 通用准则 CC"></a>8.4.1 通用准则 CC</h2><p>“通用准则”（Common Criteria，CC）定义了测试和确认系统安全能力的各种级别，级别上标注的数字表示执行了哪种测试和确认。</p>
+<p>最高 CC 评级，也不能保证系统绝对安全。</p>
+<p>“通用准则” 是一个动态主观性产品评估模型。</p>
+<h3 id="“通用准则”CC-指南的目标"><a href="#“通用准则”CC-指南的目标" class="headerlink" title="“通用准则”CC 指南的目标"></a>“通用准则”CC 指南的目标</h3><ul>
+<li>提升购买者对已评估和已评级的 IT 产品安全性的信心</li>
+<li>消除重复评估</li>
+<li>提高安全评估的效率和效果</li>
+<li>确保 IT 产品的评估符合一致的高标准</li>
+<li>推广评估并提高已评估和评级 IT 产品的可用性</li>
+<li>评估受评对象（TOE）的功能和保证（可信程度）</li>
+</ul>
+<h3 id="“通用准则”CC-进程基于的元素"><a href="#“通用准则”CC-进程基于的元素" class="headerlink" title="“通用准则”CC 进程基于的元素"></a>“通用准则”CC 进程基于的元素</h3><h4 id="保护轮廓-PP"><a href="#保护轮廓-PP" class="headerlink" title="保护轮廓 PP"></a>保护轮廓 PP</h4><p>保护轮廓（protection profile，PP）为接受评估的产品规定了安全要求和保护措施，</p>
+<p>保护轮廓 PP，也可以视为客户的安全期望。</p>
+<h4 id="安全目标-ST"><a href="#安全目标-ST" class="headerlink" title="安全目标 ST"></a>安全目标 ST</h4><p>安全目标（security targets，ST）规定了应该被供应商纳入受评估对象的安全性能。</p>
+<p>安全目标 ST 可以视为已经执行的安全措施或将要提供的安全措施。</p>
+<p><strong>寻求 PP 与  ST 最接近或匹配度最好的产品</strong></p>
+<p>评估保证级别（evaluation assurance level，EAL）</p>
+<p>EAL 存在 7 个级别，数字越大，级别越高</p>
+<table>
+<thead>
+<tr>
+<th>级别</th>
+<th>保证（可信度）级别</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>EAL1</td>
+<td>功能测试</td>
+<td>适用于对正常运行的可信度有一定要求，但安全威胁并不严重的情况。在保护个人信息方面，当需要对应尽关心的执行做出独立保证时，不妨用这个级别。</td>
+</tr>
+<tr>
+<td>EAL2</td>
+<td>结构测试</td>
+<td>适用于依照良好商业实践规范交付设计信息和测试结果的情况。当开发人员或用户要求得到<strong>低到中等级别</strong>且有独立保证的安全性时，这个级别适用。该级别特别适用于评估旧系统。</td>
+</tr>
+<tr>
+<td>EAL3</td>
+<td>系统性测试和检查</td>
+<td>适用于安全工程始于设计阶段且始终没有实质性更改的情况。当开发人员或用户要求得到<strong>中等级别</strong>且有独立保证的安全性时，这个级别适用</td>
+</tr>
+<tr>
+<td>EAL4</td>
+<td>系统性设计、测试和审查</td>
+<td>适用于使用严格、主动安全工程和良好商业开发实践规范的情况。这个级别不需要大量专业知识、技能和资源。涉及对受评估对象所有安全功能的独立测试。</td>
+</tr>
+<tr>
+<td>EAL5</td>
+<td>半正式设计和测试</td>
+<td>根据严格的安全工程和商业开发实践规范（包括专业安全工程技术）进行半正式测试。适用于开发人员或用户在规划开发方法以及严格开发的过程中要求得到<strong>高级别</strong>且有独立保证的安全性的情况</td>
+</tr>
+<tr>
+<td>EAL6</td>
+<td>半正式验证、设计和测试</td>
+<td>在设计、开发和测试的所有阶段借助直接、严格的安全工程技术生产优质的受评估对象。适用于需要面对高风险情况的受评估对象，其中受保护资产的价值值得为其增加成本。大范围测试可以降低被渗透的风险、存在隐蔽信道的可能性以及面对攻击的脆弱性。</td>
+</tr>
+<tr>
+<td>EAL7</td>
+<td>正式验证、设计和测试</td>
+<td>只用于最高风险情况或涉及高价值资产的情况。仅适用于被严格要求的安全功能必须接受大范围正式分析和测试的受评估对象。</td>
+</tr>
+</tbody></table>
+<p>通用准则 CC  指南是进行安全评级的<strong>部分</strong>最佳技术。</p>
+<p>CC 不能确保对数据操作方式是安全的。</p>
+<p>CC 没有解决管理问题</p>
+<p>CC 不包括现场安全评估，也就是物理安全相关控制</p>
+<p>CC 不涉及对电磁辐射的控制</p>
+<p>CC 没有明确规定密码算法强度进行评级的标准</p>
+<h2 id="8-4-2-操作授权-ATO"><a href="#8-4-2-操作授权-ATO" class="headerlink" title="8.4.2 操作授权 ATO"></a>8.4.2 操作授权 ATO</h2><p>必须得到正式批准才能将有安全保障的设备用于 IT 操作目的，也就是操作授权（Authorization To Operate，ATO）。</p>
+<p>操作授权 ATO 是风险管理框架（RMF）定义的一个概念的当前说法，取代了以前使用的“认证”。</p>
+<p>操作授权的评估和分配由授权官员（Authorizing Official，AO）负责执行。</p>
+<p>DAA 被指定的批准机构</p>
+<p>AA 批准机构</p>
+<p>SCA 安全控制评估员</p>
+<p>RO 推荐官</p>
+<p><strong>操作授权的有效期通常为 5  年</strong>，可以调整时间期限。</p>
+<h3 id="导致操作授权重新申请的情况"><a href="#导致操作授权重新申请的情况" class="headerlink" title="导致操作授权重新申请的情况"></a>导致操作授权重新申请的情况</h3><ul>
+<li>操作授权的时间期限到期</li>
+<li>系统遭遇严重安全事件</li>
+<li>系统发生重大安全变化</li>
+</ul>
+<h3 id="授权官员可以作出-4-种授权决定"><a href="#授权官员可以作出-4-种授权决定" class="headerlink" title="授权官员可以作出 4 种授权决定"></a>授权官员可以作出 4 种授权决定</h3><h4 id="操作授权"><a href="#操作授权" class="headerlink" title="操作授权"></a>操作授权</h4><p>当组织对风险的管理达到可接受水平，授权官员做出操作授权决定。</p>
+<h4 id="通用控制授权"><a href="#通用控制授权" class="headerlink" title="通用控制授权"></a>通用控制授权</h4><p>当安全控制继承自另一家供应商，且与通用控制CC相关的风险处于可接受水平并已从同一位授权官员处得到了操作授权时。</p>
+<h4 id="使用授权"><a href="#使用授权" class="headerlink" title="使用授权"></a>使用授权</h4><p>当一家第三方供应商（例如云）提供的 IT&#x2F;IS 服务器被认为达到可接受风险水平时。</p>
+<p>使用授权决定可以用来接受另一授权官员的操作授权。</p>
+<h4 id="拒绝授权"><a href="#拒绝授权" class="headerlink" title="拒绝授权"></a>拒绝授权</h4><p>当风险不可接受时</p>
+<h1 id="8-5-理解信息系统的安全能力"><a href="#8-5-理解信息系统的安全能力" class="headerlink" title="8.5 理解信息系统的安全能力"></a>8.5 理解信息系统的安全能力</h1><h2 id="8-5-1-内存保护"><a href="#8-5-1-内存保护" class="headerlink" title="8.5.1 内存保护"></a>8.5.1 内存保护</h2><p>执行内存保护是必须的。</p>
+<p>内存保护目的：</p>
+<p>防止活动进程与并非专门指派或分配的内存区域交互。</p>
+<p>内存保护措施：</p>
+<p>隔离</p>
+<p>虚拟内存</p>
+<p>分段</p>
+<p>内存管理</p>
+<p>保护环</p>
+<p>缓冲区（即内存）溢出保护</p>
+<h2 id="8-5-2-虚拟化"><a href="#8-5-2-虚拟化" class="headerlink" title="8.5.2 虚拟化"></a>8.5.2 虚拟化</h2><p>虚拟化技术用于在一台主机的内存中运行一个或多个操作系统，或者运行与主机操作系统不兼容的应用程序。</p>
+<p>虚拟化是隔离操作系统，测试可疑软件或执行其他安全保护机制的一种工具。</p>
+<h2 id="8-5-3-可信平台模块-TPM"><a href="#8-5-3-可信平台模块-TPM" class="headerlink" title="8.5.3 可信平台模块 TPM"></a>8.5.3 可信平台模块 TPM</h2><p>可信平台模块（Trusted Platform Module，TPM）</p>
+<p>TPM 是主板上密码处理器芯片的规范，也是规范执行方案的称谓。</p>
+<p><strong>TPM 可以用于执行基于密码的安全保护机制。</strong></p>
+<p>TPM 芯片通常用于硬件支持的或操作系统执行的本地存储设备加密系统存储和处理密码密钥。</p>
+<p>硬件安全模块（HSM）是 TPM 的实例。</p>
+<p>HSM 是一种密码处理器，管理&#x2F;存储数字加密密钥，提升密码运算速度，支持数字签名，改进身份认证。</p>
+<p>HSM 可以是主板上的芯片，也可以是扩展卡。</p>
+<p>HSM 包含防篡改保护机制。</p>
+<h2 id="8-5-4-接口"><a href="#8-5-4-接口" class="headerlink" title="8.5.4 接口"></a>8.5.4 接口</h2><p>受约束或受限制接口（constrained  or  restricted interface ）在应用程序内执行，目的是使用户只能按照自己的权限执行操作或查看数据。</p>
+<p>完全权限用户访问所有功能，有限权限用户访问有限功能。</p>
+<p>应用程序约束接口方法：</p>
+<ul>
+<li>用户无权使用的功能隐藏起来</li>
+<li>用户无权使用的功能禁用</li>
+</ul>
+<p>受约束接口使用的是 Clark-Wilson 安全模型的一种实际执行方式。</p>
+<h2 id="8-5-5-容错"><a href="#8-5-5-容错" class="headerlink" title="8.5.5 容错"></a>8.5.5 容错</h2><p>容错（fault tolerance）是指系统虽然发生故障，但仍能继续运行的能力。</p>
+<p>添加冗余组件。</p>
+<p>容错是安全设计的基本要素。</p>
+<h2 id="8-5-6-加密-解密"><a href="#8-5-6-加密-解密" class="headerlink" title="8.5.6 加密&#x2F;解密"></a>8.5.6 加密&#x2F;解密</h2><p>加密是指把明文转换成密文的过程。</p>
+<p>解密是加密过程的反向过程。</p>
+<h1 id="8-6-本章小节"><a href="#8-6-本章小节" class="headerlink" title="8.6 本章小节"></a>8.6 本章小节</h1><h1 id="8-7-考试要点"><a href="#8-7-考试要点" class="headerlink" title="8.7 考试要点"></a>8.7 考试要点</h1><h2 id="能够从访问的角度定义客体和主体"><a href="#能够从访问的角度定义客体和主体" class="headerlink" title="能够从访问的角度定义客体和主体"></a>能够从访问的角度定义客体和主体</h2><p>主体是指对资源提出访问请求的用户或进程。</p>
 <p>客体是指用户或进程想要访问的资源。</p>
 <h2 id="能够描述开放和封闭系统"><a href="#能够描述开放和封闭系统" class="headerlink" title="能够描述开放和封闭系统"></a>能够描述开放和封闭系统</h2><p>开放系统采用行业标准设计，通常易于和别的开放系统集成。</p>
 <p>封闭系统通常由专有硬件和软件组成，规范不公开，通常比较难和其他系统集成。</p>
