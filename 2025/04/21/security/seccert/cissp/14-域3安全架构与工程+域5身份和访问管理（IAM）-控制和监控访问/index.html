@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tthours.github.io/image-20250605230200590.png">
 <meta property="article:published_time" content="2025-04-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-05T15:10:44.277Z">
+<meta property="article:modified_time" content="2025-06-07T01:52:18.948Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="seccert">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          6.2k 字
         
       </span>
     
@@ -243,7 +243,7 @@
         
         
         
-          21 分钟
+          52 分钟
         
       </span>
     
@@ -383,7 +383,203 @@
 <p>MAC 强制访问控制模型 中使用隔离区，也就是不同的安全域，有助于加强因需可知原则。</p>
 <p>MAC 强制访问控制模型是禁止性的，不是允许性的，遵循隐式拒绝原则。</p>
 <p>MAC 模型比 DAC 模型更安全，但 MAC模型不具有灵活性和可扩展性。</p>
-<h3 id="5-基于风险的访问控制"><a href="#5-基于风险的访问控制" class="headerlink" title="5. 基于风险的访问控制"></a>5. 基于风险的访问控制</h3><h1 id="14-2-实现认证系统"><a href="#14-2-实现认证系统" class="headerlink" title="14.2 实现认证系统"></a>14.2 实现认证系统</h1><h2 id="14-2-1-互联网上实现-SSO"><a href="#14-2-1-互联网上实现-SSO" class="headerlink" title="14.2.1 互联网上实现 SSO"></a>14.2.1 互联网上实现 SSO</h2><h3 id="1-XML"><a href="#1-XML" class="headerlink" title="1. XML"></a>1. XML</h3><h3 id="2-SAML"><a href="#2-SAML" class="headerlink" title="2. SAML"></a>2. SAML</h3><h3 id="3-OAuth"><a href="#3-OAuth" class="headerlink" title="3. OAuth"></a>3. OAuth</h3><h3 id="4-OpenID"><a href="#4-OpenID" class="headerlink" title="4. OpenID"></a>4. OpenID</h3><h3 id="5-OIDC"><a href="#5-OIDC" class="headerlink" title="5. OIDC"></a>5. OIDC</h3><h3 id="6-比较-SAML、OAuth、OpenID-和-OIDC"><a href="#6-比较-SAML、OAuth、OpenID-和-OIDC" class="headerlink" title="6. 比较 SAML、OAuth、OpenID 和 OIDC"></a>6. 比较 SAML、OAuth、OpenID 和 OIDC</h3><h2 id="14-2-2-在内部网络上实现-SSO"><a href="#14-2-2-在内部网络上实现-SSO" class="headerlink" title="14.2.2 在内部网络上实现 SSO"></a>14.2.2 在内部网络上实现 SSO</h2><h3 id="1-AAA-协议"><a href="#1-AAA-协议" class="headerlink" title="1. AAA 协议"></a>1. AAA 协议</h3><h3 id="2-Kerberos"><a href="#2-Kerberos" class="headerlink" title="2. Kerberos"></a>2. Kerberos</h3><h3 id="3-RADIUS"><a href="#3-RADIUS" class="headerlink" title="3. RADIUS"></a>3. RADIUS</h3><h3 id="4-TACACS"><a href="#4-TACACS" class="headerlink" title="4. TACACS+"></a>4. TACACS+</h3><h1 id="14-3-了解访问控制攻击"><a href="#14-3-了解访问控制攻击" class="headerlink" title="14.3 了解访问控制攻击"></a>14.3 了解访问控制攻击</h1><h2 id="14-3-1-常见访问控制攻击"><a href="#14-3-1-常见访问控制攻击" class="headerlink" title="14.3.1 常见访问控制攻击"></a>14.3.1 常见访问控制攻击</h2><h2 id="14-3-2-特权提升"><a href="#14-3-2-特权提升" class="headerlink" title="14.3.2 特权提升"></a>14.3.2 特权提升</h2><h3 id="1-使用-su-和-sudo-命令"><a href="#1-使用-su-和-sudo-命令" class="headerlink" title="1. 使用 su 和 sudo 命令"></a>1. 使用 su 和 sudo 命令</h3><h3 id="2-尽量减少-sudo-命令的使用"><a href="#2-尽量减少-sudo-命令的使用" class="headerlink" title="2. 尽量减少 sudo 命令的使用"></a>2. 尽量减少 sudo 命令的使用</h3><h3 id="3-口令攻击"><a href="#3-口令攻击" class="headerlink" title="3. 口令攻击"></a>3. 口令攻击</h3><h3 id="4-字典攻击"><a href="#4-字典攻击" class="headerlink" title="4. 字典攻击"></a>4. 字典攻击</h3><h3 id="5-暴力破解攻击"><a href="#5-暴力破解攻击" class="headerlink" title="5.  暴力破解攻击"></a>5.  暴力破解攻击</h3><h3 id="6-喷射攻击"><a href="#6-喷射攻击" class="headerlink" title="6. 喷射攻击"></a>6. 喷射攻击</h3><h3 id="7-凭证填充攻击"><a href="#7-凭证填充攻击" class="headerlink" title="7. 凭证填充攻击"></a>7. 凭证填充攻击</h3><h3 id="8-生日攻击"><a href="#8-生日攻击" class="headerlink" title="8. 生日攻击"></a>8. 生日攻击</h3><h3 id="9-彩虹表攻击"><a href="#9-彩虹表攻击" class="headerlink" title="9. 彩虹表攻击"></a>9. 彩虹表攻击</h3><h3 id="10-Mimikatz"><a href="#10-Mimikatz" class="headerlink" title="10. Mimikatz"></a>10. Mimikatz</h3><h3 id="11-哈希传递攻击"><a href="#11-哈希传递攻击" class="headerlink" title="11. 哈希传递攻击"></a>11. 哈希传递攻击</h3><h3 id="12-Kerberos-漏洞利用攻击"><a href="#12-Kerberos-漏洞利用攻击" class="headerlink" title="12. Kerberos 漏洞利用攻击"></a>12. Kerberos 漏洞利用攻击</h3><h3 id="13-嗅探攻击"><a href="#13-嗅探攻击" class="headerlink" title="13. 嗅探攻击"></a>13. 嗅探攻击</h3><h3 id="14-欺骗攻击"><a href="#14-欺骗攻击" class="headerlink" title="14. 欺骗攻击"></a>14. 欺骗攻击</h3><h2 id="14-3-3-核心保护方法"><a href="#14-3-3-核心保护方法" class="headerlink" title="14.3.3 核心保护方法"></a>14.3.3 核心保护方法</h2><h1 id="14-4-本章小结"><a href="#14-4-本章小结" class="headerlink" title="14.4 本章小结"></a>14.4 本章小结</h1><p>14章易错点</p>
+<p>安全分类代表敏感度级别，未分类的标签是最不敏感的数据。</p>
+<h5 id="MAC-模型的分类环境"><a href="#MAC-模型的分类环境" class="headerlink" title="MAC 模型的分类环境"></a>MAC 模型的分类环境</h5><h6 id="分层环境"><a href="#分层环境" class="headerlink" title="分层环境"></a>分层环境</h6><p>分层环境将各种分类标签关联到按低安全性、中等安全性、高安全性排序的结果。</p>
+<p>高级别允许访问低级别，低级别不允许访问高级别。</p>
+<h6 id="分区环境"><a href="#分区环境" class="headerlink" title="分区环境"></a>分区环境</h6><p>安全域之间是无关联的，每个域代表单独的隔离区。</p>
+<h6 id="混合环境"><a href="#混合环境" class="headerlink" title="混合环境"></a>混合环境</h6><p>混合环境结合了分层和分区的概念，每个分层级别可能包含多个子分区，子分区之间是相互隔离的。</p>
+<p>实现了访问的精细化控制，随着规模增大，混合 MAC 环境越来越难以管理。</p>
+<h3 id="5-基于风险的访问控制"><a href="#5-基于风险的访问控制" class="headerlink" title="5. 基于风险的访问控制"></a>5. 基于风险的访问控制</h3><p>较新</p>
+<p>实现复杂</p>
+<h4 id="研究的元素"><a href="#研究的元素" class="headerlink" title="研究的元素"></a>研究的元素</h4><ul>
+<li><p>环境</p>
+<p>使用 IP 地址人的地理位置等信息</p>
+</li>
+<li><p>情景</p>
+<p>包含“设备正在做什么”</p>
+</li>
+<li><p>安全策略</p>
+<p>​	代码软件，依据现有数据所出基于风险的决策。</p>
+</li>
+</ul>
+<p>权限授予之前，检查或要求的措施：<br><strong>多因素身份认证</strong>：拒绝使用一种身份认证因素的用户访问</p>
+<p><strong>合规的移动设备</strong>：要求设备满足特定的安全需求，例如最新的操作系统和设备加密等。</p>
+<p>基于风险的访问控制模型可以使用二进制规则来控制访问。</p>
+<p>移动设备管理（MDM）配合。</p>
+<h1 id="14-2-实现认证系统"><a href="#14-2-实现认证系统" class="headerlink" title="14.2 实现认证系统"></a>14.2 实现认证系统</h1><p>FIM：联合身份管理</p>
+<p>SSO：单点登录</p>
+<p>FIM 允许不同组织联合使用 SSO。</p>
+<h2 id="14-2-1-互联网上实现-SSO"><a href="#14-2-1-互联网上实现-SSO" class="headerlink" title="14.2.1 互联网上实现 SSO"></a>14.2.1 互联网上实现 SSO</h2><h3 id="1-XML"><a href="#1-XML" class="headerlink" title="1. XML"></a>1. XML</h3><p>可扩展标记语言（XML）包含标记，从而描述所需要的数据。</p>
+<p>依托 XML 格式导入导出数据，使 XML 称为交换信息的通用语言。</p>
+<p>云服务商使用 XML 或 基于 XML  的其他语言。</p>
+<h3 id="2-SAML"><a href="#2-SAML" class="headerlink" title="2. SAML"></a>2. SAML</h3><p>安全断言标记语言（SAML）是一种基于 XML的开放标准，通常用于在联邦组织之间交换身份认证和授权（AA）信息。</p>
+<p>SAML 提供支持浏览器访问的 SSO 功能。</p>
+<p>结构化信息标准促进组织（OASIS）。</p>
+<p>2005 年 SAML 2.0 被纳入 OASIS 标准。</p>
+<p>SAML 2.0 规范使用三个实体：委托人、服务提供商和身份提供者。</p>
+<p><strong>委托人或用户代理</strong>：用户</p>
+<p><strong>服务提供商</strong>（SP）：站点</p>
+<p><strong>身份提供者（IdP）</strong>：持有身份认证和授权信息的第三方</p>
+<p>身份提供者 IdP 发送三种类型 XML 消息（称为声明）</p>
+<p><strong>认证声明</strong>：</p>
+<p>证明用户代理提供了正确的身份凭证，标识身份认证方法，并表示用户代理登录时间</p>
+<p><strong>授权声明</strong>：</p>
+<p>表明用户代理是否有权访问所请求的服务。如果拒绝，会说明原因。</p>
+<p><strong>属性声明</strong>：</p>
+<p>关于用户代理的任何信息。</p>
+<h3 id="3-OAuth"><a href="#3-OAuth" class="headerlink" title="3. OAuth"></a>3. OAuth</h3><p>OAuth 2.0 ：开放授权，是RFC 维护的一个授权框架。</p>
+<p>OAuth 2.0 不向后兼容 OAuth 1.0。</p>
+<h3 id="4-OpenID"><a href="#4-OpenID" class="headerlink" title="4. OpenID"></a>4. OpenID</h3><p>OpenID 也是一个开放标准。</p>
+<p>提供去中心化身份认证，允许用户使用一组凭证登录多个不相关的网站，凭证由第三方服务维护，也就是 OpenID 提供方。</p>
+<p>OpenID 标识符在前台交换，易于发现。</p>
+<h3 id="5-OIDC"><a href="#5-OIDC" class="headerlink" title="5. OIDC"></a>5. OIDC</h3><p>OpenID Connect （OIDC）是使用 OAuth 2.0 授权框架的身份认证层。</p>
+<p>OIDC 同时提供身份认证和授权。</p>
+<p>OIDC 建立在 OpenID 创建的技术之上，使用 JavaScript 对象表示法（JSON）Web 令牌（JWT），也可以称为 ID 令牌。</p>
+<p>JWT 提供身份认证，包含用户个人资料信息。</p>
+<p>OIDC 过程大部分在后台。</p>
+<p>OAuth 和 OIDC 组合使用，OAuth 提供授权，OIDC 使用 OAuth 框架来授权，并使用 OpenID 技术进行身份认证。</p>
+<h3 id="6-比较-SAML、OAuth、OpenID-和-OIDC"><a href="#6-比较-SAML、OAuth、OpenID-和-OIDC" class="headerlink" title="6. 比较 SAML、OAuth、OpenID 和 OIDC"></a>6. 比较 SAML、OAuth、OpenID 和 OIDC</h3><h4 id="SAML-要点"><a href="#SAML-要点" class="headerlink" title="SAML 要点"></a>SAML 要点</h4><ul>
+<li>SAML 2.0 是一种基于 XML 的开放标准。</li>
+<li>OASIS  在 2005 年 将 SAML 2.0  纳入标准。</li>
+<li>SAML 2.0 使用三个实体，即主体（用户）、服务提供商SP（网络）、身份提供者IdP（持有认证和授权信息的第三方）</li>
+<li>SAML 可以提供主体的认证、授权和属性信息。</li>
+</ul>
+<h4 id="OAuth-要点"><a href="#OAuth-要点" class="headerlink" title="OAuth 要点"></a>OAuth 要点</h4><ul>
+<li>OAuth 是一个授权框架，而不是一个认证协议。</li>
+<li>RFC 6749 描述了 OAuth2.0</li>
+<li>OAuth 使用 API  交换信息</li>
+<li>应用程序从身份提供者那里获取访问令牌</li>
+<li>应用程序包含用于授权的访问令牌</li>
+</ul>
+<h4 id="OpenID-要点"><a href="#OpenID-要点" class="headerlink" title="OpenID 要点"></a>OpenID 要点</h4><ul>
+<li>OpenID 是一种身份认证标准。</li>
+<li>OpenID Foundation 维护。</li>
+<li>OpenID 提供商提供去中心的身份认证。</li>
+<li>用户在站点上输入 OpenID 标识符，OpenID 提供商会验证次标识符。</li>
+</ul>
+<h4 id="OIDC-要点"><a href="#OIDC-要点" class="headerlink" title="OIDC 要点"></a>OIDC 要点</h4><ul>
+<li>OIDC 是 使用 OAuth 2.0 的身份认证层。</li>
+<li>建立在 OpenID 身份认证标准之上。</li>
+<li>提供身份认证和授权</li>
+<li>建立在 OpenID 之上，但使用 JSON Web （JWT）令牌</li>
+</ul>
+<h2 id="14-2-2-在内部网络上实现-SSO"><a href="#14-2-2-在内部网络上实现-SSO" class="headerlink" title="14.2.2 在内部网络上实现 SSO"></a>14.2.2 在内部网络上实现 SSO</h2><p>重点关注 Kerberos 。</p>
+<p>远程访问协议：RAUDIUS 和 TACACS+</p>
+<h3 id="1-AAA-协议"><a href="#1-AAA-协议" class="headerlink" title="1. AAA 协议"></a>1. AAA 协议</h3><p>提供身份认证、授权和计费的协议被称为 AAA 协议。</p>
+<p>AAA 协议通过远程访问系统，例如VPN，提供集中式访问控制。</p>
+<p>AAA 协议使用身份标识、身份认证、授权和问责制的访问控制要素。</p>
+<p>计费要素可以跟踪用户的网络资源使用情况。</p>
+<h3 id="2-Kerberos"><a href="#2-Kerberos" class="headerlink" title="2. Kerberos"></a>2. Kerberos</h3><p>票证身份认证是一种采用第三方实体来证明身份并提供身份认证的机制。</p>
+<p>Kerberos 主要目的是身份认证，签发票证，访问资源时提供票证。</p>
+<p>Kerberos 为用户提供单点登录解决方案并保护登录凭证。</p>
+<p>Kerberos 第 5 版基于 AES 对称加密协议，实现对称密钥加密（也称为密钥加密）。</p>
+<p>Kerberos 使用端到端安全，为身份认证流量提供保密性和完整性，并可以预防窃听和重放攻击。</p>
+<h4 id="kerberos-要素"><a href="#kerberos-要素" class="headerlink" title="kerberos 要素"></a>kerberos 要素</h4><h5 id="密钥分发中心"><a href="#密钥分发中心" class="headerlink" title="密钥分发中心"></a>密钥分发中心</h5><p>密钥分发中心是提供身份认证服务的可信第三方。</p>
+<p>使用对称加密技术。</p>
+<p>所有客户端和服务器都需要向 KDC 注册。</p>
+<p>KDC 维护所有网络成员的密钥。</p>
+<h5 id="Kerberos身份认证服务器"><a href="#Kerberos身份认证服务器" class="headerlink" title="Kerberos身份认证服务器"></a>Kerberos身份认证服务器</h5><p>身份认证服务器承载 KDC 的功能：票证授予服务（TGS）和身份认证服务（AS）</p>
+<p>KDC ？</p>
+<h5 id="票证"><a href="#票证" class="headerlink" title="票证"></a>票证</h5><p>票证是一种加密消息，可证明主体被授权访问对象。</p>
+<p>票证也被称为服务票证（ST）。</p>
+<p>主体（如用户）请求访问对象（如文件）的票证，如果已通过认证和授权，Kerberos 会颁发票证。</p>
+<p>Kerberos 票证具有特定的生命周期和使用参数。</p>
+<h5 id="票证授予的票证"><a href="#票证授予的票证" class="headerlink" title="票证授予的票证"></a>票证授予的票证</h5><p>票证授予的票证（TGT）提供证据，证明主体已通过 KDC 的身份认证并且可以请求票证来访问其他对象。</p>
+<p>TGT 是经过加密的，包括对称密钥、到期时间和用户 IP 地址。</p>
+<h5 id="Kerberos-主体"><a href="#Kerberos-主体" class="headerlink" title="Kerberos 主体"></a>Kerberos 主体</h5><p>Kerberos 向 Kerberos 主体发出票证。</p>
+<p>Kerberos 主体通常是用户，但也可以是请求票证的任何实体。</p>
+<h5 id="Kerberos-领域"><a href="#Kerberos-领域" class="headerlink" title="Kerberos 领域"></a>Kerberos 领域</h5><p>一般而言，领域是指由某物控制或统治的区域。</p>
+<p>kerberos 领域是由 Kerberos 控制的逻辑区域（如域）。</p>
+<p>领域内的主体可以从 Kerberos 请求票证，而 kerberos 可以向领域内的主体发出票证。</p>
+<p>Kerberos 的账户数据库存储在目录服务中，例如微软的目录服务 AD。</p>
+<p>Kerberos 在客户端、网络服务器和 KDC 之间交换票证。</p>
+<p>加密票证可以确保登录凭证、会话密钥和身份认证消息永远不会以明文形式传输。</p>
+<p>Kerberos 登录流程工作原理：</p>
+<p>1、用户在客户端输入用户名和密码</p>
+<p>2、客户端使用 AES 对用户名和密码进行加密并将其传输的 KDC（认证服务器）</p>
+<p>3、KDC 根据已知的凭证数据库来验证用户名</p>
+<p>4、KDC 生成一个对称密钥，密钥由客户端和 Kerberos 服务器使用</p>
+<p>KDC 使用用户口令的哈希值对密钥进行加密，KDC 生成一个加密的附带时间戳的 TGT </p>
+<p>5、KDC（认证服务器）将加密的对称密钥、加密的带时间戳的 TGT 传输给客户端</p>
+<p>6、客户端存储 TGT 使用，直到过期</p>
+<p>客户端使用用户口令的哈希值来解密对称密钥。</p>
+<p>客户端的口令永远不会通过网络传输，只是进行验证。也就是通过 KDC 生成的对称密钥。</p>
+<p>客户端访问对象资源时，必须通过 Kerberos 服务器获得服务票证，用 TGT 换 服务票证</p>
+<p>步骤：</p>
+<p>1、客户端将自己的 TGT 发送到 KDC（认证服务器），并请求访问资源</p>
+<p>2、KDC 验证 TGT  是否有效并检查其访问控制矩阵，进而验证用户是否具有足够的权限来访问请求资源。</p>
+<p>3、KDC （认证服务器）生成服务票证并将其发送到客户端。</p>
+<p>4、客户端将服务票证发送到托管资源的服务器或服务</p>
+<p>5、托管资源的服务器或服务通过 KDC （认证服务器）验证票证的有效性</p>
+<p>6、一旦验证通过，Kerberos 活动结束，客户端和服务端建立会话，进行通信。</p>
+<p>Kerberos 是一种通用身份认证机制，适用于本地局域网、远程访问和客户端&#x2F;服务器资源请求。</p>
+<p>Kerberos 存在单点故障风险，KDC 数据泄露，会导致每个系统的密钥都被泄露；KDC 脱机将无法进行主体身份认证。</p>
+<p>Kerberos 具有严格的时间要求，默认配置要求所有系统保持 5 分钟以内的时间同步。</p>
+<p>网络内部配置时间同步系统，AD域内，一个域控制器（DC）与 NTP 服务器保持时间同步，其他 DC 服务器与第一个 DC  服务器保持同步。</p>
+<h3 id="3-RADIUS"><a href="#3-RADIUS" class="headerlink" title="3. RADIUS"></a>3. RADIUS</h3><p>远程认证拨入用户服务（RADIUS）集中认证远程访问连接，例如 VPN。</p>
+<p>RADIUS 适用于组织拥有多台网络访问服务器（或远程访问服务器）的情况。</p>
+<p>用户 -&gt;  网络访问服务器（RADIUS的客户端） -&gt; RADIUS 服务器（身份认证服务器）。</p>
+<p>互联网服务器提供商（ISP）使用 RADIUS 实施身份认证。</p>
+<p>用户 -&gt; ISP -&gt; RADIUS 服务器</p>
+<p>组织也可以使用 RADIUS ，且通常基于位置的安全来实现 RADIUS。</p>
+<p>RADIUS 默认使用用户数据报协议（UDP），仅加密口令的交互过程。</p>
+<p>RFC 6614 定义可以使用传输控制协议 TCP 上的传输层安全性（TLS）对整个会话进行加密，RADIUS 使用 TCP 2083 端口。</p>
+<p>RADIUS 使用 UDP 1812 端口传输 RADIUS 消息，使用 UDP 1813 端口传输 RADIUS 计费信息。</p>
+<h3 id="4-TACACS"><a href="#4-TACACS" class="headerlink" title="4. TACACS+"></a>4. TACACS+</h3><p>Cisco 开发了增强型终端访问控制器访问控制系统（TACACS+）。</p>
+<p>TACACS+ 将身份认证、授权和计费划分为独立的进程，可以部署在不同服务器上。</p>
+<p>与 RADIUS 一样，TACACS+可以加密所有身份认证信息（口令+会话）。</p>
+<p>TACACS+ 使用 TCP 49 端口。可靠性更高。</p>
+<h1 id="14-3-了解访问控制攻击"><a href="#14-3-了解访问控制攻击" class="headerlink" title="14.3 了解访问控制攻击"></a>14.3 了解访问控制攻击</h1><p>攻击者表示恶意入侵者。</p>
+<p>攻击是企图利用系统漏洞并破坏保密性、完整性和可用性的所有尝试。</p>
+<h3 id="风险要素"><a href="#风险要素" class="headerlink" title="风险要素"></a>风险要素</h3><h4 id="风险"><a href="#风险" class="headerlink" title="风险"></a>风险</h4><p>风险是利用漏洞造成损失（例如资产损坏）的可能性。</p>
+<h4 id="威胁"><a href="#威胁" class="headerlink" title="威胁"></a>威胁</h4><p>威胁是可能导致不良结果的潜在事件，包括攻击者的潜在攻击、自然灾害事件、员工的意外行为。</p>
+<h4 id="漏洞"><a href="#漏洞" class="headerlink" title="漏洞"></a>漏洞</h4><p>漏洞是任意类型的弱点。</p>
+<p>弱点可能是硬件或软件的缺陷或限制造成的，也可能源自安全控制的缺乏。</p>
+<p>风险管理试图通过实施控制措施或对策来减少或消除漏洞，或减少潜在威胁的影响。</p>
+<p>消除风险是不可能或不可取的，专注于降低风险。</p>
+<h2 id="14-3-1-常见访问控制攻击"><a href="#14-3-1-常见访问控制攻击" class="headerlink" title="14.3.1 常见访问控制攻击"></a>14.3.1 常见访问控制攻击</h2><h2 id="14-3-2-特权提升"><a href="#14-3-2-特权提升" class="headerlink" title="14.3.2 特权提升"></a>14.3.2 特权提升</h2><p>特权提升是指给予用户的特权超过了其应该有的权限。</p>
+<p>本地管理员有本地设备的权限</p>
+<p>域管理员有全域的权限</p>
+<p>普通用户不应该有和管理员相同的权限</p>
+<p>攻击者使用特权提升技术来获得额外的特权。</p>
+<p>特权提升分为横向特权提升和垂直特权提升。</p>
+<p>横向特权提升为获得更多相同的权限，也可以称为横向移动。</p>
+<p>垂直特权提升为获得更高的权限。</p>
+<p>托管服务账户的重要考虑因素是确保账户仅具有服务或应用程序所需的特权。</p>
+<p>创建新的服务托管账户，给予最小权限。</p>
+<h3 id="1-使用-su-和-sudo-命令"><a href="#1-使用-su-和-sudo-命令" class="headerlink" title="1. 使用 su 和 sudo 命令"></a>1. 使用 su 和 sudo 命令</h3><p>Linux 系统 root 账户，被称为超级用户 （superuser）账户。</p>
+<p>su 命令默认切换到 root 账户，并需要输入 root 账户口令。</p>
+<p>sudo 命令是超级用户执行（superuser do）。</p>
+<p>sudo 组用户切换到 root 权限时不需要 root 账户口令，仅需要用户口令即可。</p>
+<p>命令前添加 sudo ，则以 root 身份运行命令，日志记录普通用户使用 sudo 执行的所有命令。</p>
+<p>使用 su命令切换到 su 账户，日志记录则记录 su 账户而不是普通用户账户记录活动。</p>
+<h3 id="2-尽量减少-sudo-命令的使用"><a href="#2-尽量减少-sudo-命令的使用" class="headerlink" title="2. 尽量减少 sudo 命令的使用"></a>2. 尽量减少 sudo 命令的使用</h3><p>减少使用 sudo 命令，可以限制风险。</p>
+<p>Windows 中也是最好创建服务账户，而不是使用本地系统账户。</p>
+<h3 id="3-口令攻击"><a href="#3-口令攻击" class="headerlink" title="3. 口令攻击"></a>3. 口令攻击</h3><p>口令是最脆弱的身份认证方式。</p>
+<p>特权账户的口令被获取，选择重建整个系统，而不是接受风险。</p>
+<p>强口令（strong password）有助于防止口令攻击，要求字符类型的组合足够长。</p>
+<p>避免使用明文存储口令，使用强哈希函数（SHA-3）生成口令的哈希值，存储口令的哈希值。</p>
+<p>注意：相同口令运算时，哈希算法始终产生相同的哈希值。</p>
+<p>不可以使用 MD5 等弱哈希函数进行口令的哈希计算。</p>
+<p>避免使用默认口令。</p>
+<h3 id="4-字典攻击"><a href="#4-字典攻击" class="headerlink" title="4. 字典攻击"></a>4. 字典攻击</h3><p>字典攻击是指尝试通过使用预定义数据库中的每个可能密码或公共或预期密码列表来发现密码。</p>
+<p>一次性构造的密码是以前使用过的密码，但是只更改其中一个字符。</p>
+<h3 id="5-暴力破解攻击"><a href="#5-暴力破解攻击" class="headerlink" title="5.  暴力破解攻击"></a>5.  暴力破解攻击</h3><p>暴力破解攻击是指通过尝试所有可能的字母、数字和符号的组合来找到用户的口令。</p>
+<p>混合攻击（hybrid attack）先进行字典攻击，再使用一对一构造的口令来执行暴力破解攻击。</p>
+<p>口令越长，包含字符类型越多，抵御暴力破解的能力就越强。</p>
+<p>哈希计算口令进行认证优势：</p>
+<ul>
+<li>避免口令在网络上明文传输</li>
+<li>口令也不会以明文存储</li>
+<li></li>
+</ul>
+<p>比较分析或反向哈希匹配攻击：</p>
+<p>直接计算口令的哈希值，使用哈希值进行比对猜测原始口令。</p>
+<p>GPU 正在被用于暴力破解。</p>
+<p>长口令需要更长的时间破解。</p>
+<h3 id="6-喷射攻击"><a href="#6-喷射攻击" class="headerlink" title="6. 喷射攻击"></a>6. 喷射攻击</h3><p>喷射攻击（spraying attack）是一种特殊类型的暴力破解攻击，口令固定，变换不同账户名和系统进行尝试。</p>
+<p>在线密码攻击中使用喷射攻击，并试图绕过账户锁定的安全控制措施。</p>
+<h3 id="7-凭证填充攻击"><a href="#7-凭证填充攻击" class="headerlink" title="7. 凭证填充攻击"></a>7. 凭证填充攻击</h3><h3 id="8-生日攻击"><a href="#8-生日攻击" class="headerlink" title="8. 生日攻击"></a>8. 生日攻击</h3><h3 id="9-彩虹表攻击"><a href="#9-彩虹表攻击" class="headerlink" title="9. 彩虹表攻击"></a>9. 彩虹表攻击</h3><h3 id="10-Mimikatz"><a href="#10-Mimikatz" class="headerlink" title="10. Mimikatz"></a>10. Mimikatz</h3><h3 id="11-哈希传递攻击"><a href="#11-哈希传递攻击" class="headerlink" title="11. 哈希传递攻击"></a>11. 哈希传递攻击</h3><h3 id="12-Kerberos-漏洞利用攻击"><a href="#12-Kerberos-漏洞利用攻击" class="headerlink" title="12. Kerberos 漏洞利用攻击"></a>12. Kerberos 漏洞利用攻击</h3><h3 id="13-嗅探攻击"><a href="#13-嗅探攻击" class="headerlink" title="13. 嗅探攻击"></a>13. 嗅探攻击</h3><h3 id="14-欺骗攻击"><a href="#14-欺骗攻击" class="headerlink" title="14. 欺骗攻击"></a>14. 欺骗攻击</h3><h2 id="14-3-3-核心保护方法"><a href="#14-3-3-核心保护方法" class="headerlink" title="14.3.3 核心保护方法"></a>14.3.3 核心保护方法</h2><h1 id="14-4-本章小结"><a href="#14-4-本章小结" class="headerlink" title="14.4 本章小结"></a>14.4 本章小结</h1><p>14章易错点</p>
 <p>访问控制模型 MAC、DAC、RBAC</p>
 <p>互联网上实现 SSO XML、SAML、OAuth、OpenID、OIDC</p>
 <p>NAC</p>
