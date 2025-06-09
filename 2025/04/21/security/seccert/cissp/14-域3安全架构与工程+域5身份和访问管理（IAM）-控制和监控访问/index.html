@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tthours.github.io/image-20250605230200590.png">
 <meta property="article:published_time" content="2025-04-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-07T01:52:18.948Z">
+<meta property="article:modified_time" content="2025-06-07T11:24:56.902Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="seccert">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.2k 字
+          9.6k 字
         
       </span>
     
@@ -243,7 +243,7 @@
         
         
         
-          52 分钟
+          80 分钟
         
       </span>
     
@@ -579,10 +579,196 @@
 <p>长口令需要更长的时间破解。</p>
 <h3 id="6-喷射攻击"><a href="#6-喷射攻击" class="headerlink" title="6. 喷射攻击"></a>6. 喷射攻击</h3><p>喷射攻击（spraying attack）是一种特殊类型的暴力破解攻击，口令固定，变换不同账户名和系统进行尝试。</p>
 <p>在线密码攻击中使用喷射攻击，并试图绕过账户锁定的安全控制措施。</p>
-<h3 id="7-凭证填充攻击"><a href="#7-凭证填充攻击" class="headerlink" title="7. 凭证填充攻击"></a>7. 凭证填充攻击</h3><h3 id="8-生日攻击"><a href="#8-生日攻击" class="headerlink" title="8. 生日攻击"></a>8. 生日攻击</h3><h3 id="9-彩虹表攻击"><a href="#9-彩虹表攻击" class="headerlink" title="9. 彩虹表攻击"></a>9. 彩虹表攻击</h3><h3 id="10-Mimikatz"><a href="#10-Mimikatz" class="headerlink" title="10. Mimikatz"></a>10. Mimikatz</h3><h3 id="11-哈希传递攻击"><a href="#11-哈希传递攻击" class="headerlink" title="11. 哈希传递攻击"></a>11. 哈希传递攻击</h3><h3 id="12-Kerberos-漏洞利用攻击"><a href="#12-Kerberos-漏洞利用攻击" class="headerlink" title="12. Kerberos 漏洞利用攻击"></a>12. Kerberos 漏洞利用攻击</h3><h3 id="13-嗅探攻击"><a href="#13-嗅探攻击" class="headerlink" title="13. 嗅探攻击"></a>13. 嗅探攻击</h3><h3 id="14-欺骗攻击"><a href="#14-欺骗攻击" class="headerlink" title="14. 欺骗攻击"></a>14. 欺骗攻击</h3><h2 id="14-3-3-核心保护方法"><a href="#14-3-3-核心保护方法" class="headerlink" title="14.3.3 核心保护方法"></a>14.3.3 核心保护方法</h2><h1 id="14-4-本章小结"><a href="#14-4-本章小结" class="headerlink" title="14.4 本章小结"></a>14.4 本章小结</h1><p>14章易错点</p>
-<p>访问控制模型 MAC、DAC、RBAC</p>
+<h3 id="7-凭证填充攻击"><a href="#7-凭证填充攻击" class="headerlink" title="7. 凭证填充攻击"></a>7. 凭证填充攻击</h3><p>口令喷射攻击试图绕过账户锁定策略。</p>
+<p>凭证填充攻击仅检查每个站点的单用户名及口令，也就是同一个账户口令组合在多个站点尝试。</p>
+<h3 id="8-生日攻击"><a href="#8-生日攻击" class="headerlink" title="8. 生日攻击"></a>8. 生日攻击</h3><p>生日攻击的重点是寻求碰撞，类似于查找具有相同哈希值的任何两个密码。</p>
+<p>366 个不同的哈希值，那么只有 23  个哈希值样本的攻击者有 50% 的机会发现具有相同哈希值的两个密码。</p>
+<p>生日攻击防御方案：<br>使用足够长度的哈希算法，并使用盐。</p>
+<h3 id="9-彩虹表攻击"><a href="#9-彩虹表攻击" class="headerlink" title="9. 彩虹表攻击"></a>9. 彩虹表攻击</h3><p>彩虹表通过使用大量预计算的哈希数据库来减少所需的时间。</p>
+<p>彩虹表攻击只是比较哈希值，直至找到匹配项，可以显著减少破解口令所需的时间。</p>
+<p>彩虹表攻击防御方案：</p>
+<p>使用加盐（salt）口令来降低彩虹表攻击的有效性。</p>
+<p>盐是在进行哈希计算之前添加到口令中的一组随机位。</p>
+<p>Argon2、bcrypt 和 PBKDF2 是三种常用的加盐密码算法。</p>
+<p>添加外部胡椒，也就是存储在别处的大常数，会更增加攻击的困难程度。</p>
+<h3 id="10-Mimikatz"><a href="#10-Mimikatz" class="headerlink" title="10. Mimikatz"></a>10. Mimikatz</h3><p>2007 年发布了 Mimikatz 工具。</p>
+<p>Mimikatz 通过读取内存凭证来进行漏洞利用。</p>
+<p>Mimikatz 功能：</p>
+<p><strong>从内存中读取口令</strong></p>
+<p>可以提取和读取存储在本地安全机构子系统服务进程中的明文口令和 PIN。</p>
+<p><strong>提取 Kerberos 票证</strong></p>
+<p>Mimikatz 包含一个访问 Kerberos API 的 Kerberos 模块。</p>
+<p><strong>提取证书和私钥</strong></p>
+<p>包含一个 Windows CryptoAPI 模块，该模块可以提取系统上的证书以及证书相关联的私钥。</p>
+<p><strong>读取内存中的 LM 和 NTLM 口令哈希值</strong></p>
+<p>某些 Windows 系统仍然会创建哈希值并将其存储在内存中。</p>
+<p><strong>在本地安全机构子系统服务（LSASS）中读取明文口令</strong></p>
+<p>LSASS 通常不会以明文形式存储口令，但恶意软件可以修改注册表，启动摘要认证（digest authentication）后 可以读取口令。</p>
+<p><strong>枚举正在运行的进程</strong></p>
+<p>攻击者可以使用此功能来识别用于向其他目标发起攻击的进程。</p>
+<p>攻击者可以在远程系统上将 Mimikatz 当作无文件恶意软件运行，使用 PowerShell 脚本 将 Mimikatz 加载到内存中。</p>
+<h3 id="11-哈希传递（PtH）攻击"><a href="#11-哈希传递（PtH）攻击" class="headerlink" title="11. 哈希传递（PtH）攻击"></a>11. 哈希传递（PtH）攻击</h3><p>哈希传递 PtH 攻击是指攻击者将捕获的口令哈希值发送到身份认证服务。</p>
+<p>主要与使用 NTLM（NT LAN Manager）或 Kerberos 的 Windows 系统相关。</p>
+<p>攻击步骤：<br>1、使用 Mimikatz 等工具捕获用户口令哈希值。</p>
+<p>2、攻击者使用凭证进行身份认证。</p>
+<p>3、成功登录，攻击者可以使用登录成功账户在整个网络中漫游。</p>
+<p>防御方案：<br>防止第一台计算机被感染。</p>
+<h3 id="12-Kerberos-漏洞利用攻击"><a href="#12-Kerberos-漏洞利用攻击" class="headerlink" title="12. Kerberos 漏洞利用攻击"></a>12. Kerberos 漏洞利用攻击</h3><p>微软活动目录将 Kerberos 用作主要的身份认证协议。</p>
+<p>Kerberos 容易受到 MimiKatz、Rubeus（C# 语言编写，适用于Windows系统）、Impacket（用 Python 语言编写，适用于 Linux 系统）</p>
+<p>Kerberos 漏洞利用攻击内容：</p>
+<p><strong>超哈希传递攻击</strong></p>
+<p>也称为传递密钥</p>
+<p>NTLM 被禁用时，系统仍然会创建 NTLM 哈希值存储在内存中，使用该方法替代哈希传递攻击。</p>
+<p>攻击者使用用户口令哈希获取的票证TGT，并使用 TGT 访问网络资源。</p>
+<p><strong>票证传递</strong></p>
+<p>攻击者试图获取 lsass.exe 进程中保存的票证，冒充用户。</p>
+<p><strong>白银票证（silver ticket）</strong>TGS</p>
+<p>使用截获的服务账户 NTLM 哈希值创建票证授予服务（TGS）票证，从而获取服务账户的所有特权。</p>
+<p><strong>黄金票证</strong> TGT</p>
+<p>获得 Kerberos 服务账户（KRBTGT）的哈希值，攻击者可以在活动目录中随意创建票证。</p>
+<p>KRBTGT 账户使用口令的哈希值对域内的所有 Kerberos 票证进行加密和签名。</p>
+<p>KRBTGT 账户口令永远不会变，其哈希值也永远不会改变。</p>
+<p>黄金票证允许攻击者创建伪造的 Kerberos 票证并为任何服务请求 TGS 票证。</p>
+<p><strong>Kerberos 暴力破解</strong></p>
+<p>攻击者在 Linux 系统上运行 kerbrute.py 或在 Windows 系统上运行 Rubeus，猜测口令和用户名。</p>
+<p><strong>ASREPRoast</strong></p>
+<p>识别未启用 Kerberos 预身份认证的用户。</p>
+<p>Kerberos 预身份认证是 Kerberos 的一项安全功能，有助于抵御口令猜测攻击。</p>
+<p>攻击内容：</p>
+<p>禁用预身份认证</p>
+<p>攻击者向 KDC 认证服务器发送身份认证请求</p>
+<p>KDC 返回票证授予票证（TGT），使用客户端的口令进行加密</p>
+<p>攻击者发起离线攻击来解密票证获取客户的口令</p>
+<p><strong>Kerberoasting</strong></p>
+<p>收集加密的票证授予服务（TGS）票证。</p>
+<p>服务账户使用 TGS 票证。</p>
+<p>目的在于找到没有 Kerberos 预身份认证的用户。</p>
+<h3 id="13-嗅探攻击"><a href="#13-嗅探攻击" class="headerlink" title="13. 嗅探攻击"></a>13. 嗅探攻击</h3><p>指捕获通过网络发送的数据包，目的是分析数据包。</p>
+<p>嗅探器（也称为数据包分析器或协议分析器）。</p>
+<p>嗅探攻击可以捕获和读取通过网络以明文形式发送的任何数据，包括口令。</p>
+<p><strong>嗅探攻击防御技术</strong></p>
+<ul>
+<li>加密通过网络发送的所有敏感数据（包括口令）。Kerberos 会加密票证。</li>
+<li>避免使用 HTTP、FTP、Telnet 等不安全的协议，应该使用 HTTPS、SFTP、SSH 等安全协议</li>
+<li>无法加密时，使用一次性口令</li>
+<li>使用物理安全措施保护网络设备。</li>
+<li>监控网络来获取嗅探器的特征，例如入侵检测系统。</li>
+</ul>
+<h3 id="14-欺骗攻击"><a href="#14-欺骗攻击" class="headerlink" title="14. 欺骗攻击"></a>14. 欺骗攻击</h3><p>欺骗也被称为伪装：是伪装成某种东西或某个人。</p>
+<p>使用他人凭证</p>
+<p>网络钓鱼</p>
+<p>IP 欺骗攻击，伪造 IP 地址</p>
+<p><strong>电子邮件欺骗</strong></p>
+<p>垃圾邮件发送者在“发件人”字段中使用假冒的电子邮件地址。</p>
+<p><strong>电话号码欺骗</strong></p>
+<p>利用来电显示服务，让呼叫者将其号码替换为另一个号码，VoIP 系统常用的技术。</p>
+<h2 id="14-3-3-核心保护方法"><a href="#14-3-3-核心保护方法" class="headerlink" title="14.3.3 核心保护方法"></a>14.3.3 核心保护方法</h2><h3 id="控制对系统的物理访问"><a href="#控制对系统的物理访问" class="headerlink" title="控制对系统的物理访问"></a>控制对系统的物理访问</h3><h3 id="控制对文件的电子访问"><a href="#控制对文件的电子访问" class="headerlink" title="控制对文件的电子访问"></a>控制对文件的电子访问</h3><p>严密控制和监控对所有重要数据的电子访问，包括保持口令的文件。</p>
+<p>需要调查未授权的口令数据库文件访问行为。</p>
+<h3 id="哈希和加盐口令"><a href="#哈希和加盐口令" class="headerlink" title="哈希和加盐口令"></a>哈希和加盐口令</h3><p>使用 Argon2、bcrypt 和 PBKDF2 等协议为口令加盐，考虑使用外部胡椒来保护口令</p>
+<p>强口令+盐+胡椒</p>
+<h3 id="使用口令掩码"><a href="#使用口令掩码" class="headerlink" title="使用口令掩码"></a>使用口令掩码</h3><p>确保应用程序永远不会在屏幕上明文显示口令。</p>
+<p>降低肩窥的危害，避免不了利用观察键盘输入获取口令。</p>
+<h3 id="部署多因素身份认证"><a href="#部署多因素身份认证" class="headerlink" title="部署多因素身份认证"></a>部署多因素身份认证</h3><h3 id="使用账户锁定控制"><a href="#使用账户锁定控制" class="headerlink" title="使用账户锁定控制"></a>使用账户锁定控制</h3><p>账户锁定机制有助于抵御在线口令攻击。</p>
+<p>用户输入错误口令达到指定次数后，会锁定账户。</p>
+<p>不能阻止对被盗口令数据库的离线破解。</p>
+<h3 id="使用上次登录通知"><a href="#使用上次登录通知" class="headerlink" title="使用上次登录通知"></a>使用上次登录通知</h3><p>显示上次成功登录时间、日期和位置（计算机名、IP 地址）</p>
+<p>用于让用户发现其他人是否登录了自己的账户。</p>
+<h3 id="用户安全意识培训"><a href="#用户安全意识培训" class="headerlink" title="用户安全意识培训"></a>用户安全意识培训</h3><p>确保用户理解安全的重要性和使用强口令的好处。</p>
+<p>告知用户避免共享或抄写口令。</p>
+<p>提示用户如何创建强口令，并提供预防肩窥的措施。</p>
+<p>告知不要使用相同口令。</p>
+<p>告知常见社会工程攻击。</p>
+<h1 id="14-4-本章小结"><a href="#14-4-本章小结" class="headerlink" title="14.4 本章小结"></a>14.4 本章小结</h1><h1 id="14-5-考试要点"><a href="#14-5-考试要点" class="headerlink" title="14.5 考试要点"></a>14.5 考试要点</h1><h2 id="识别常见的授权机制"><a href="#识别常见的授权机制" class="headerlink" title="识别常见的授权机制"></a>识别常见的授权机制</h2><p>基于经身份认证的主体的特权，授权机制确保请求活动或回客体的访问是可以实现的。</p>
+<p>常见授权机制：<br>隐式拒绝</p>
+<p>访问控制矩阵</p>
+<p>能力表</p>
+<p>约束接口</p>
+<p>依赖内容的控制</p>
+<p>基于上下文的控制</p>
+<p>授权机制遵循因需可知、最小特征和职责分离等安全原则。</p>
+<h2 id="了解自主访问控制-DAC-模型的核心概念"><a href="#了解自主访问控制-DAC-模型的核心概念" class="headerlink" title="了解自主访问控制 DAC 模型的核心概念"></a>了解自主访问控制 DAC 模型的核心概念</h2><p>DAC 模型中，每个对象都有一个所有者，所有者可以修改对象的访问权限。</p>
+<p>每个对象都有一个定义权限（文件读取或修改）的访问控制列表。</p>
+<p>其他访问控制模型都是非自主访问控制模型，管理员集中管理非自主访问控制模型。</p>
+<h2 id="了解基于角色的访问控制（RBAC）模型的核心概念"><a href="#了解基于角色的访问控制（RBAC）模型的核心概念" class="headerlink" title="了解基于角色的访问控制（RBAC）模型的核心概念"></a>了解基于角色的访问控制（RBAC）模型的核心概念</h2><p>RBAC 模型使用基于任务的角色。</p>
+<p>当管理员将用户移入角色或组，用户获得权限。</p>
+<p>管理员移出角色或组，用户失去权限。</p>
+<h2 id="了解基于规则的访问控制模型的核心概念"><a href="#了解基于规则的访问控制模型的核心概念" class="headerlink" title="了解基于规则的访问控制模型的核心概念"></a>了解基于规则的访问控制模型的核心概念</h2><p>基于规则的访问控制模型使用一组规则、限制或过滤器来确定访问。</p>
+<p>防火墙的访问控制列表定义了允许访问和阻止访问的规则列表。</p>
+<h2 id="了解强制访问控制（MAC）模型的核心概念"><a href="#了解强制访问控制（MAC）模型的核心概念" class="headerlink" title="了解强制访问控制（MAC）模型的核心概念"></a>了解强制访问控制（MAC）模型的核心概念</h2><p>MAC 模型使用标签来标识安全域。</p>
+<p>主体需要具备相匹配的标签菜可以反问对象。</p>
+<p>MAC 模型强制实施因需可知原则，并支持分层环境、分区环境或两者组合而成的混合环境。</p>
+<p>MAC 模型通常被称为基于格的模型。</p>
+<h2 id="了解基于风险的访问控制模型的核心概念"><a href="#了解基于风险的访问控制模型的核心概念" class="headerlink" title="了解基于风险的访问控制模型的核心概念"></a>了解基于风险的访问控制模型的核心概念</h2><p>基于风险的访问控制模型评估环境和情景，并依据基于软件的安全策略做出决策。</p>
+<p>可以基于多种因素来控制访问，例如基于IP、多重身份认证以及用户设备。</p>
+<p>高级实现可以使用机器学习来评估风险。</p>
+<h2 id="了解互联网使用的单点登录方法"><a href="#了解互联网使用的单点登录方法" class="headerlink" title="了解互联网使用的单点登录方法"></a>了解互联网使用的单点登录方法</h2><p>单点登录 SSO 是一种机制，允许主体经过一次身份认证便可访问多个对象。</p>
+<p>安全断言标记语言SAML：基于 XML 的开放标准，用于交换身份认证和授权信息。</p>
+<p>OAuth2.0 ：RFC 6749 中描述的授权框架，并得到许多在线网站的支持。</p>
+<p>OASIS 维护 OpenID 和 OpenID Connect (OIDC )。</p>
+<p>OpenID 提供身份认证。</p>
+<p>OIDC 使用 OAuth 框架并基于 OpenID 标准来提供身份认证和授权。</p>
+<h2 id="了解-Kerberos"><a href="#了解-Kerberos" class="headerlink" title="了解 Kerberos"></a>了解 Kerberos</h2><p>Kerberos 是最常用的单点登录方法。</p>
+<p>Kerberos 主要用途是身份认证。</p>
+<p>Kerberos 使用对称密码技术和票证来证明身份标识并提供身份认证。</p>
+<p>一台服务器与网络时间协议 NTP 保持时间同步，其他客户端保持时间同步。</p>
+<h2 id="了解-AAA-协议的目的"><a href="#了解-AAA-协议的目的" class="headerlink" title="了解 AAA 协议的目的"></a>了解 AAA 协议的目的</h2><p>AAA 协议提供集中的身份认证，授权和记账服务。</p>
+<p>网络访问（或远程访问）系统使用 AAA 协议。</p>
+<p>网络接入服务器是 RADIUS 服务器的客户端，RADIUS 服务器提供 AAA 服务。</p>
+<p>RADIUS 使用 UDP协议，仅对口令进行加密。</p>
+<p>TACACS+ 使用 TCP 协议，对整个会话进行加密。</p>
+<p>Diameter 基于 RADIUS ，改进了 RADIUS 的缺陷，但是 Diameter 与 RADIUS 不兼容。</p>
+<h2 id="了解特权提升"><a href="#了解特权提升" class="headerlink" title="了解特权提升"></a>了解特权提升</h2><p>使用特权提升技术获得额外特权。</p>
+<p>横向提升：获得相同特权的其他设备</p>
+<p>垂直提升：提高特权</p>
+<p>限制授予服务账户的特权，减少 sudo 账户的使用，可以降低特权提升的成功率。</p>
+<h2 id="了解哈希传递攻击"><a href="#了解哈希传递攻击" class="headerlink" title="了解哈希传递攻击"></a>了解哈希传递攻击</h2><p>允许攻击者利用捕获的用户口令哈希值来冒充用户。</p>
+<p>哈希传递攻击利用 NTLM 漏洞，可会利用其他协议（Kerberos）攻击。</p>
+<h2 id="了解-Kerberos-漏洞利用攻击"><a href="#了解-Kerberos-漏洞利用攻击" class="headerlink" title="了解 Kerberos 漏洞利用攻击"></a>了解 Kerberos 漏洞利用攻击</h2><p>Kerberos 攻击试图利用 Kerberos 票证中的漏洞。</p>
+<p>攻击者捕获 lsass.exe 进程中保存的票证并发起票证传递攻击。</p>
+<p>白银票证授予攻击者服务账户的所有权限。</p>
+<p>获得 Kerberos 服务账户（KRBTGT）的口令哈希值后，攻击者可以创建黄金票证，从而在活动目录中随意创建票证 。</p>
+<h2 id="了解暴力破解攻击和字典攻击的工作原理"><a href="#了解暴力破解攻击和字典攻击的工作原理" class="headerlink" title="了解暴力破解攻击和字典攻击的工作原理"></a>了解暴力破解攻击和字典攻击的工作原理</h2><p>针对被盗口令数据库文件或系统的登录提示执行的暴力破解攻击和字典攻击，目的都是获得口令。</p>
+<p>暴力破解：攻击者遍历键盘字符的所有可能组合</p>
+<p>字典攻击：使用预定义的可能口令列表</p>
+<p>账户锁定控制机制可以有效抵御在线攻击。</p>
+<h2 id="了解盐和胡椒预防口令攻击的工作原理"><a href="#了解盐和胡椒预防口令攻击的工作原理" class="headerlink" title="了解盐和胡椒预防口令攻击的工作原理"></a>了解盐和胡椒预防口令攻击的工作原理</h2><p>加盐是在进行哈希计算之前向口令添加额外的位，有助于抵御彩虹表攻击。</p>
+<p>常见加盐算法：Argon2、bcrypt 和 PBKDF2</p>
+<p>盐和口令哈希值存储在同一个数据库。</p>
+<p>胡椒是一个非常大的常数，进一步提高哈希口令的安全性。</p>
+<p>胡椒存储在哈希口令数据库之外的地方。</p>
+<h2 id="了解嗅探攻击"><a href="#了解嗅探攻击" class="headerlink" title="了解嗅探攻击"></a>了解嗅探攻击</h2><p>在嗅探攻击&#x2F;窥探攻击中，攻击者使用数据包捕获工具（如嗅探器或协议分析器）来捕获、分析和读取网络发送的数据。</p>
+<p>攻击者读取网络中的明文数据。</p>
+<p>传输加密，可以有效抵御嗅探攻击。</p>
+<h2 id="了解欺骗攻击"><a href="#了解欺骗攻击" class="headerlink" title="了解欺骗攻击"></a>了解欺骗攻击</h2><p>欺骗是伪装成某物或其他人。</p>
+<p>欺骗可用于访问控制攻击。</p>
+<p>获取用户凭证，冒用身份。</p>
+<p>欺骗攻击包括电子邮件欺骗、电话号码欺骗、IP 欺骗。</p>
+<p>网络钓鱼攻击使用欺骗方法。</p>
+<h1 id="14章易错点"><a href="#14章易错点" class="headerlink" title="14章易错点"></a>14章易错点</h1><p>访问控制模型 MAC、DAC、RBAC</p>
 <p>互联网上实现 SSO XML、SAML、OAuth、OpenID、OIDC</p>
 <p>NAC</p>
+<p>B✅</p>
+<p>B✅</p>
+<p>B✅</p>
+<p>A✅</p>
+<p>D✅</p>
+<p>A✅</p>
+<p>D✅</p>
+<p>BC❌ B</p>
+<p>A❌ B</p>
+<p>B✅</p>
+<p>C✅</p>
+<p>A✅</p>
+<p>A✅</p>
+<p>B❌ A</p>
+<p>​	OpenID Connect（OIDC）使用 JSON Web 令牌（JWT）</p>
+<p>​	OpenID 提供身份认证，但不包括配置信息</p>
+<p>D✅</p>
+<p>C✅</p>
+<p>B✅</p>
+<p>B✅</p>
+<p>D✅</p>
+<p>C✅</p>
 
                 
               </div>
