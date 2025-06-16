@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="考试要点解释关系数据库管理系统（RDBMS）的基本架构了解关系数据库的结构。 能够解释表（关系）、行（记录&#x2F;元组）和列（字段&#x2F;属性）的功能。 知道如何在表和各种类型的键间定义关系。 描述由聚合和推理形成的数据库安全威胁。 解释专家系统、机器学习和神经网络如何工作专家系统包括两个主要组件： 包含一系列 if&#x2F;then 规则的知识库；使用知识库信息得到其他数据的推">
+    <meta name="description" content="20.1 系统开发控制概述软件开发是由技能和安全意识各异的开发者实施的一项复杂且具有挑战性的任务。 由于恶意的或粗心的开发人员创建后门、缓冲区溢出漏洞或其他导致系统被恶意人员利用的弱点，可能存在巨大的安全漏洞。 需要在系统开发生命周期内引入安全控制。 20.1.1 软件开发在系统开发的每个阶段都应当考虑安全性。 给系统构建安全性往往比向现有系统中添加安全性容易的多，必须从软件开发项目的初期">
 <meta property="og:type" content="article">
 <meta property="og:title" content="20-域3安全架构与工程+域8软件开发安全-软件开发安全">
 <meta property="og:url" content="https://tthours.github.io/2025/04/21/security/seccert/cissp/20-%E5%9F%9F3%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%B7%A5%E7%A8%8B+%E5%9F%9F8%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="考试要点解释关系数据库管理系统（RDBMS）的基本架构了解关系数据库的结构。 能够解释表（关系）、行（记录&#x2F;元组）和列（字段&#x2F;属性）的功能。 知道如何在表和各种类型的键间定义关系。 描述由聚合和推理形成的数据库安全威胁。 解释专家系统、机器学习和神经网络如何工作专家系统包括两个主要组件： 包含一系列 if&#x2F;then 规则的知识库；使用知识库信息得到其他数据的推">
+<meta property="og:description" content="20.1 系统开发控制概述软件开发是由技能和安全意识各异的开发者实施的一项复杂且具有挑战性的任务。 由于恶意的或粗心的开发人员创建后门、缓冲区溢出漏洞或其他导致系统被恶意人员利用的弱点，可能存在巨大的安全漏洞。 需要在系统开发生命周期内引入安全控制。 20.1.1 软件开发在系统开发的每个阶段都应当考虑安全性。 给系统构建安全性往往比向现有系统中添加安全性容易的多，必须从软件开发项目的初期">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-21T11:27:56.642Z">
+<meta property="article:modified_time" content="2025-06-16T15:26:38.949Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="seccert">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          958 字
+          2.4k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          8 分钟
+          21 分钟
         
       </span>
     
@@ -287,7 +287,36 @@
 
 
 
-<h1 id="考试要点"><a href="#考试要点" class="headerlink" title="考试要点"></a>考试要点</h1><h2 id="解释关系数据库管理系统（RDBMS）的基本架构"><a href="#解释关系数据库管理系统（RDBMS）的基本架构" class="headerlink" title="解释关系数据库管理系统（RDBMS）的基本架构"></a>解释关系数据库管理系统（RDBMS）的基本架构</h2><p>了解关系数据库的结构。</p>
+<h1 id="20-1-系统开发控制概述"><a href="#20-1-系统开发控制概述" class="headerlink" title="20.1 系统开发控制概述"></a>20.1 系统开发控制概述</h1><p>软件开发是由技能和安全意识各异的开发者实施的一项复杂且具有挑战性的任务。</p>
+<p>由于恶意的或粗心的开发人员创建后门、缓冲区溢出漏洞或其他导致系统被恶意人员利用的弱点，可能存在巨大的安全漏洞。</p>
+<p>需要在系统开发生命周期内引入安全控制。</p>
+<h2 id="20-1-1-软件开发"><a href="#20-1-1-软件开发" class="headerlink" title="20.1.1 软件开发"></a>20.1.1 软件开发</h2><p>在系统开发的每个阶段都应当考虑安全性。</p>
+<p>给系统构建安全性往往比向现有系统中添加安全性容易的多，必须从软件开发项目的初期就考虑安全性。</p>
+<h3 id="1-编程语言"><a href="#1-编程语言" class="headerlink" title="1.编程语言"></a>1.编程语言</h3><p>计算机只能理解二进制代码。</p>
+<p>使用二进制数字的语言被称为机器语言。</p>
+<p>汇编语言是一种使用助记符来表示 CPU 基本指令的高级语言。</p>
+<p>编译型和解释型语言。</p>
+<h4 id="编译型语言"><a href="#编译型语言" class="headerlink" title="编译型语言"></a>编译型语言</h4><p>C、Java、FORTRAN</p>
+<p>用户不能查看或更改可执行文件中的指令，逆向人员借助反编译器（二进制-&gt;源代码）和反汇编器（二进制-&gt;汇编）逆转编译过程。</p>
+<p>代码保护技术通过各种技术防止或阻止反编译或反汇编的使用。</p>
+<p>跨系统移植。</p>
+<h4 id="解释型语言"><a href="#解释型语言" class="headerlink" title="解释型语言"></a>解释型语言</h4><p>Python、R、JavaScript 和 VBScript</p>
+<p>分发源代码</p>
+<p>用户可以查看原始指令</p>
+<p>编译型代码不容易被第三方操纵，用户也无法查看，存在嵌入恶意代码绕过检测。</p>
+<p>解释型代码用户可查看，可以发现别人添加的恶意代码，自己也可以添加恶意代码。</p>
+<h4 id="库"><a href="#库" class="headerlink" title="库"></a>库</h4><p>库就是包括可重用代码的共享代码库。</p>
+<p>提高开发效率。</p>
+<p>开源项目提供或商业购买或内部维护。</p>
+<p>开发人员应该知道他们使用的共享代码来源，并随时了解库中出现的漏洞。</p>
+<h4 id="开发工具集"><a href="#开发工具集" class="headerlink" title="开发工具集"></a>开发工具集</h4><p>开发人员使用各种工具来帮助他们工作，其中最重要的是集成开发环境(IDE) 。 IDE 为程</p>
+<p>序员提供了一个单一的环境，在这里他们可以编写代码，测试代码，调试代码和编译代码（如</p>
+<p>果适用）。 </p>
+<h3 id="2-面向对象编程"><a href="#2-面向对象编程" class="headerlink" title="2.面向对象编程"></a>2.面向对象编程</h3><p>许多现代编程语言（例如 C++ 、 Java 和．NET 语言）都支持面向对象编程(OOP) 的概念。</p>
+<h3 id="3-保证"><a href="#3-保证" class="headerlink" title="3.保证"></a>3.保证</h3><h3 id="4-避免和抑制系统故障"><a href="#4-避免和抑制系统故障" class="headerlink" title="4.避免和抑制系统故障"></a>4.避免和抑制系统故障</h3><h2 id="20-1-2-系统开发生命周期"><a href="#20-1-2-系统开发生命周期" class="headerlink" title="20.1.2 系统开发生命周期"></a>20.1.2 系统开发生命周期</h2><h3 id="1-概念定义"><a href="#1-概念定义" class="headerlink" title="1.概念定义"></a>1.概念定义</h3><h3 id="2-功能需求确定"><a href="#2-功能需求确定" class="headerlink" title="2.功能需求确定"></a>2.功能需求确定</h3><h3 id="3-控制规范的制订"><a href="#3-控制规范的制订" class="headerlink" title="3.控制规范的制订"></a>3.控制规范的制订</h3><h3 id="4-设计审查"><a href="#4-设计审查" class="headerlink" title="4.设计审查"></a>4.设计审查</h3><h3 id="5-编码"><a href="#5-编码" class="headerlink" title="5.编码"></a>5.编码</h3><h3 id="6-代码审查演练"><a href="#6-代码审查演练" class="headerlink" title="6.代码审查演练"></a>6.代码审查演练</h3><h3 id="7-系统测试审查"><a href="#7-系统测试审查" class="headerlink" title="7.系统测试审查"></a>7.系统测试审查</h3><h3 id="8-维护和变更管理"><a href="#8-维护和变更管理" class="headerlink" title="8.维护和变更管理"></a>8.维护和变更管理</h3><h2 id="20-1-3-生命周期模型"><a href="#20-1-3-生命周期模型" class="headerlink" title="20.1.3 生命周期模型"></a>20.1.3 生命周期模型</h2><h3 id="1-瀑布模型"><a href="#1-瀑布模型" class="headerlink" title="1.瀑布模型"></a>1.瀑布模型</h3><h3 id="2-螺旋模型"><a href="#2-螺旋模型" class="headerlink" title="2.螺旋模型"></a>2.螺旋模型</h3><h3 id="3-敏捷软件开发"><a href="#3-敏捷软件开发" class="headerlink" title="3.敏捷软件开发"></a>3.敏捷软件开发</h3><h3 id="4-能力成熟度模型-SW-CMM"><a href="#4-能力成熟度模型-SW-CMM" class="headerlink" title="4.能力成熟度模型 SW-CMM"></a>4.能力成熟度模型 SW-CMM</h3><h3 id="5-IDEAL-模型"><a href="#5-IDEAL-模型" class="headerlink" title="5.IDEAL 模型"></a>5.IDEAL 模型</h3><h2 id="20-1-4-甘特图和-PERT"><a href="#20-1-4-甘特图和-PERT" class="headerlink" title="20.1.4 甘特图和 PERT"></a>20.1.4 甘特图和 PERT</h2><h2 id="20-1-5-变更和配置管理"><a href="#20-1-5-变更和配置管理" class="headerlink" title="20.1.5 变更和配置管理"></a>20.1.5 变更和配置管理</h2><h2 id="20-1-6-DevOps"><a href="#20-1-6-DevOps" class="headerlink" title="20.1.6 DevOps"></a>20.1.6 DevOps</h2><h2 id="20-1-7-应用编程接口"><a href="#20-1-7-应用编程接口" class="headerlink" title="20.1.7 应用编程接口"></a>20.1.7 应用编程接口</h2><h2 id="20-1-8-软件测试"><a href="#20-1-8-软件测试" class="headerlink" title="20.1.8 软件测试"></a>20.1.8 软件测试</h2><h2 id="20-1-9-代码仓库"><a href="#20-1-9-代码仓库" class="headerlink" title="20.1.9 代码仓库"></a>20.1.9 代码仓库</h2><h2 id="20-1-10-服务水平协议-SLA"><a href="#20-1-10-服务水平协议-SLA" class="headerlink" title="20.1.10 服务水平协议 SLA"></a>20.1.10 服务水平协议 SLA</h2><h2 id="20-1-11-第三方软件采购"><a href="#20-1-11-第三方软件采购" class="headerlink" title="20.1.11 第三方软件采购"></a>20.1.11 第三方软件采购</h2><h1 id="20-2-创建数据库和数据仓储"><a href="#20-2-创建数据库和数据仓储" class="headerlink" title="20.2 创建数据库和数据仓储"></a>20.2 创建数据库和数据仓储</h1><h2 id="20-2-1-数据库管理系统的体系结构"><a href="#20-2-1-数据库管理系统的体系结构" class="headerlink" title="20.2.1 数据库管理系统的体系结构"></a>20.2.1 数据库管理系统的体系结构</h2><h3 id="1-层次式数据库和分布式数据库"><a href="#1-层次式数据库和分布式数据库" class="headerlink" title="1.层次式数据库和分布式数据库"></a>1.层次式数据库和分布式数据库</h3><h3 id="2-关系数据库"><a href="#2-关系数据库" class="headerlink" title="2.关系数据库"></a>2.关系数据库</h3><ol start="3">
+<li></li>
+</ol>
+<h2 id="20-2-2-数据库事务"><a href="#20-2-2-数据库事务" class="headerlink" title="20.2.2 数据库事务"></a>20.2.2 数据库事务</h2><h2 id="20-2-3-多级数据库的安全性"><a href="#20-2-3-多级数据库的安全性" class="headerlink" title="20.2.3 多级数据库的安全性"></a>20.2.3 多级数据库的安全性</h2><h3 id="1-并发性"><a href="#1-并发性" class="headerlink" title="1.并发性"></a>1.并发性</h3><h3 id="2-其他安全机制"><a href="#2-其他安全机制" class="headerlink" title="2.其他安全机制"></a>2.其他安全机制</h3><h2 id="20-2-4-开放数据库互连"><a href="#20-2-4-开放数据库互连" class="headerlink" title="20.2.4 开放数据库互连"></a>20.2.4 开放数据库互连</h2><h2 id="20-2-5-NoSQL"><a href="#20-2-5-NoSQL" class="headerlink" title="20.2.5 NoSQL"></a>20.2.5 NoSQL</h2><h1 id="20-3-存储器威胁"><a href="#20-3-存储器威胁" class="headerlink" title="20.3 存储器威胁"></a>20.3 存储器威胁</h1><h1 id="20-4-理解基于知识的系统"><a href="#20-4-理解基于知识的系统" class="headerlink" title="20.4 理解基于知识的系统"></a>20.4 理解基于知识的系统</h1><h2 id="20-4-1-专家系统"><a href="#20-4-1-专家系统" class="headerlink" title="20.4.1 专家系统"></a>20.4.1 专家系统</h2><h2 id="20-4-2-机器学习"><a href="#20-4-2-机器学习" class="headerlink" title="20.4.2 机器学习"></a>20.4.2 机器学习</h2><h2 id="20-4-3-神经网络"><a href="#20-4-3-神经网络" class="headerlink" title="20.4.3 神经网络"></a>20.4.3 神经网络</h2><h1 id="20-5-本章小结"><a href="#20-5-本章小结" class="headerlink" title="20.5 本章小结"></a>20.5 本章小结</h1><h1 id="20-6-考试要点"><a href="#20-6-考试要点" class="headerlink" title="20.6 考试要点"></a>20.6 考试要点</h1><h2 id="解释关系数据库管理系统（RDBMS）的基本架构"><a href="#解释关系数据库管理系统（RDBMS）的基本架构" class="headerlink" title="解释关系数据库管理系统（RDBMS）的基本架构"></a>解释关系数据库管理系统（RDBMS）的基本架构</h2><p>了解关系数据库的结构。</p>
 <p>能够解释表（关系）、行（记录&#x2F;元组）和列（字段&#x2F;属性）的功能。</p>
 <p>知道如何在表和各种类型的键间定义关系。</p>
 <p>描述由聚合和推理形成的数据库安全威胁。</p>
@@ -322,6 +351,49 @@
 <h1 id="易错点"><a href="#易错点" class="headerlink" title="易错点"></a>易错点</h1><p>变更和配置管理</p>
 <p>SAMM</p>
 <p>污染</p>
+<p>A✅</p>
+<p>B✅</p>
+<p>A❌ C</p>
+<p>​	请求控制为用户提供了请求变更的框架，为开发人员提供了对这些请求进行优先级排序的机会</p>
+<p>​	配置控制确保根据变更和配置管理策略对软件版本进行更改</p>
+<p>​	请求控制为用户请求变更提供了一个有组织的框架</p>
+<p>​	变更审计用于确保生产和环境和变更记录一致</p>
+<p>C✅</p>
+<p>C❌ B</p>
+<p>​	迭代瀑布</p>
+<p>B✅</p>
+<p>C✅</p>
+<p>A❌ D</p>
+<p>​	聚合攻击涉及使用专门的数据库函数组合大量数据库记录信息，以揭示可能比单个记录中信息更敏感的信息。</p>
+<p>​	推理攻击使用演绎原理从现有数据得出结论。</p>
+<p>​	污染是高分类级别和低分类级别数据的混合</p>
+<p>​	多实例化是为不同安全级别的用户创建不同的数据库记录，相同主键值的多个记录插入具有不同分类即被的数据库中</p>
+<p>​	操控是对数据库中数据进行授权或未经授权的修改。</p>
+<p>A❌ C</p>
+<p>D✅</p>
+<p>D❌ C</p>
+<p>​	专家系统使用由一系列 if&#x2F;then 语句组成的知识库来根据人类专家的先前经验做出决策。</p>
+<p>C❌ D</p>
+<p>​	软件成熟度模型 SW-CMM 中，管理级（第 4 级）中，组织使用定量方法来获得对开发过程的详细了解。</p>
+<p>B✅</p>
+<p>A✅</p>
+<p>A✅</p>
+<p>​	甘特图是一种条形图，显示了项目和调度之间随时间变化的相互关系</p>
+<p>​	PERT 图关注任务之间的相互关系，而不是调度的具体细节。</p>
+<p>​	条形图用于表示数据</p>
+<p>​	维恩图用于显示集合之间的关系。</p>
+<p>C✅</p>
+<p>B❌ D</p>
+<p>​	</p>
+<p>C✅</p>
+<p>A❌ C</p>
+<p>​	隔离性原则规定，在同一个数据上操作的两个事务必须临时彼此分离，以便一个事务不干扰另一个事务。</p>
+<p>​	原子性原则规定，如果事务的任何部分失败，必须回滚整个事务。</p>
+<p>​	一致性原则规定，数据库必须始终处于符合数据库模型规则的状态</p>
+<p>​	持久性原则规定，必须保留提交到数据库的事务。</p>
+<p>B✅</p>
+<p>​	表的基数是指表的行数。</p>
+<p>​	表的度数是指表的列数。</p>
 
                 
               </div>
