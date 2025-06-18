@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="考试要点理解病毒使用的传播技术病毒使用 4 种主要的传播技术渗透系统并传播恶意载荷。 4种技术是： 文件感染病毒 服务注入病毒 主引导记录病毒 宏病毒 需要理解这些技术以有效地确保网络上的系统免受恶意代码的侵犯。 解释勒索软件造成的威胁勒索软件使用传统的恶意软件技术感染系统，然后使用只有攻击者知道的密钥加密该系统上的数据。接着，攻击者要求受害者支付赎金以换取解密密钥。 知道反病毒软件包">
+    <meta name="description" content="21.1 恶意软件恶意软件包括广泛的软件威胁，利用网络、操作系统、软件和物理安全漏洞对计算机系统散播恶意载荷。 某些恶意代码对象（如计算机病毒和特洛伊木马）依靠用户对计算机的不知情或不当使用在系统间传播。 其他一些恶意代码对象（例如蠕虫）依靠自身的力量在脆弱的系统间迅速传播。 21.1.1 恶意代码的来源早期，恶意代码的编写者都是相当有经验（可能误入歧途）的软件开发人员，他们会为自己精心构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="21-域3安全架构与工程+域7安全运营+域8软件开发安全-恶意代码和应用攻击">
 <meta property="og:url" content="https://tthours.github.io/2025/04/21/security/seccert/cissp/21-%E5%9F%9F3%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%B7%A5%E7%A8%8B+%E5%9F%9F7%E5%AE%89%E5%85%A8%E8%BF%90%E8%90%A5+%E5%9F%9F8%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8-%E6%81%B6%E6%84%8F%E4%BB%A3%E7%A0%81%E5%92%8C%E5%BA%94%E7%94%A8%E6%94%BB%E5%87%BB/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="考试要点理解病毒使用的传播技术病毒使用 4 种主要的传播技术渗透系统并传播恶意载荷。 4种技术是： 文件感染病毒 服务注入病毒 主引导记录病毒 宏病毒 需要理解这些技术以有效地确保网络上的系统免受恶意代码的侵犯。 解释勒索软件造成的威胁勒索软件使用传统的恶意软件技术感染系统，然后使用只有攻击者知道的密钥加密该系统上的数据。接着，攻击者要求受害者支付赎金以换取解密密钥。 知道反病毒软件包">
+<meta property="og:description" content="21.1 恶意软件恶意软件包括广泛的软件威胁，利用网络、操作系统、软件和物理安全漏洞对计算机系统散播恶意载荷。 某些恶意代码对象（如计算机病毒和特洛伊木马）依靠用户对计算机的不知情或不当使用在系统间传播。 其他一些恶意代码对象（例如蠕虫）依靠自身的力量在脆弱的系统间迅速传播。 21.1.1 恶意代码的来源早期，恶意代码的编写者都是相当有经验（可能误入歧途）的软件开发人员，他们会为自己精心构">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-18T01:17:03.733Z">
+<meta property="article:modified_time" content="2025-06-18T13:00:50.003Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="seccert">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          828 字
+          1.8k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          7 分钟
+          16 分钟
         
       </span>
     
@@ -287,9 +287,23 @@
 
 
 
-
-
-<h1 id="考试要点"><a href="#考试要点" class="headerlink" title="考试要点"></a>考试要点</h1><h2 id="理解病毒使用的传播技术"><a href="#理解病毒使用的传播技术" class="headerlink" title="理解病毒使用的传播技术"></a>理解病毒使用的传播技术</h2><p>病毒使用 4 种主要的传播技术渗透系统并传播恶意载荷。</p>
+<h1 id="21-1-恶意软件"><a href="#21-1-恶意软件" class="headerlink" title="21.1 恶意软件"></a>21.1 恶意软件</h1><p>恶意软件包括广泛的软件威胁，利用网络、操作系统、软件和物理安全漏洞对计算机系统散播恶意载荷。</p>
+<p>某些恶意代码对象（如计算机病毒和特洛伊木马）依靠用户对计算机的不知情或不当使用在系统间传播。</p>
+<p>其他一些恶意代码对象（例如蠕虫）依靠自身的力量在脆弱的系统间迅速传播。</p>
+<h2 id="21-1-1-恶意代码的来源"><a href="#21-1-1-恶意代码的来源" class="headerlink" title="21.1.1 恶意代码的来源"></a>21.1.1 恶意代码的来源</h2><p>早期，恶意代码的编写者都是相当有经验（可能误入歧途）的软件开发人员，他们会为自己精心构思的、富有创意的恶意代码技术感到骄傲。</p>
+<p>脚本小子使用的工具可能免费提供给那些具有更危险犯罪意图的人。</p>
+<p>恶意软件开发的最新趋势是高级持续性威胁 APT 的兴起。</p>
+<p>APT 攻击者和其他恶意软件作者之间的主要区别是，恶意软件开发人员通常掌握软件供应商不知道的零日漏洞。</p>
+<p>APT 构建的恶意软件具有高度针对性，旨在只影响少量的敌方系统（通常少到 一个）。</p>
+<h2 id="21-1-2-病毒"><a href="#21-1-2-病毒" class="headerlink" title="21.1.2 病毒"></a>21.1.2 病毒</h2><p>计算机病毒主要有两个功能：传播和有效载荷执行。</p>
+<p>病毒编写者和反病毒技术人员之间已展开竞赛。</p>
+<p>传播功能定义了病毒如何在系统间扩散，从而感染每一台计算机。</p>
+<p>病毒的有效载荷执行病毒编写者想到的恶意活动，可能对系统或数据的保密性、完整性或可用性产生负面影响。</p>
+<h3 id="1-病毒传播技术"><a href="#1-病毒传播技术" class="headerlink" title="1. 病毒传播技术"></a>1. 病毒传播技术</h3><p>病毒必须包含能在系统间进行传播的技术。</p>
+<p>常见传播途径：交换磁盘、共享网络资源、发送电子邮件等其他共享数据手段。</p>
+<h4 id="常见的-4-种传播技术"><a href="#常见的-4-种传播技术" class="headerlink" title="常见的 4 种传播技术"></a>常见的 4 种传播技术</h4><h5 id="主引导记录病毒"><a href="#主引导记录病毒" class="headerlink" title="主引导记录病毒"></a>主引导记录病毒</h5><p>主引导记录（master boot record，MBR）病毒是已知最早的病毒感染形式。</p>
+<p>主引导记录病毒攻击 MBR –  可启动介质（如硬盘或 U 盘）上用于在计算机启动过程中加载操作系统的部分。</p>
+<h3 id="2-病毒技术"><a href="#2-病毒技术" class="headerlink" title="2. 病毒技术"></a>2. 病毒技术</h3><h3 id="3-病毒恶作剧"><a href="#3-病毒恶作剧" class="headerlink" title="3. 病毒恶作剧"></a>3. 病毒恶作剧</h3><h2 id="21-1-3-逻辑炸弹"><a href="#21-1-3-逻辑炸弹" class="headerlink" title="21.1.3 逻辑炸弹"></a>21.1.3 逻辑炸弹</h2><h2 id="21-1-4-特洛伊木马"><a href="#21-1-4-特洛伊木马" class="headerlink" title="21.1.4 特洛伊木马"></a>21.1.4 特洛伊木马</h2><h2 id="21-1-5-蠕虫"><a href="#21-1-5-蠕虫" class="headerlink" title="21.1.5 蠕虫"></a>21.1.5 蠕虫</h2><h3 id="1-Code-Red-蠕虫"><a href="#1-Code-Red-蠕虫" class="headerlink" title="1. Code Red 蠕虫"></a>1. Code Red 蠕虫</h3><h3 id="2-震网病毒"><a href="#2-震网病毒" class="headerlink" title="2. 震网病毒"></a>2. 震网病毒</h3><h2 id="21-1-6-间谍软件与广告软件"><a href="#21-1-6-间谍软件与广告软件" class="headerlink" title="21.1.6 间谍软件与广告软件"></a>21.1.6 间谍软件与广告软件</h2><h2 id="21-1-7-勒索软件"><a href="#21-1-7-勒索软件" class="headerlink" title="21.1.7 勒索软件"></a>21.1.7 勒索软件</h2><h2 id="21-1-8-恶意脚本"><a href="#21-1-8-恶意脚本" class="headerlink" title="21.1.8 恶意脚本"></a>21.1.8 恶意脚本</h2><h2 id="21-1-9-零日攻击"><a href="#21-1-9-零日攻击" class="headerlink" title="21.1.9 零日攻击"></a>21.1.9 零日攻击</h2><h1 id="21-2-恶意软件预防"><a href="#21-2-恶意软件预防" class="headerlink" title="21.2 恶意软件预防"></a>21.2 恶意软件预防</h1><h2 id="21-2-1-易受恶意软件攻击的平台"><a href="#21-2-1-易受恶意软件攻击的平台" class="headerlink" title="21.2.1 易受恶意软件攻击的平台"></a>21.2.1 易受恶意软件攻击的平台</h2><h2 id="21-2-2-反恶意软件"><a href="#21-2-2-反恶意软件" class="headerlink" title="21.2.2 反恶意软件"></a>21.2.2 反恶意软件</h2><h2 id="21-2-3-完整性监控"><a href="#21-2-3-完整性监控" class="headerlink" title="21.2.3 完整性监控"></a>21.2.3 完整性监控</h2><h2 id="21-2-4-高级威胁保护"><a href="#21-2-4-高级威胁保护" class="headerlink" title="21.2.4 高级威胁保护"></a>21.2.4 高级威胁保护</h2><h1 id="21-3-应用程序攻击"><a href="#21-3-应用程序攻击" class="headerlink" title="21.3 应用程序攻击"></a>21.3 应用程序攻击</h1><h2 id="21-3-1-缓冲区溢出"><a href="#21-3-1-缓冲区溢出" class="headerlink" title="21.3.1 缓冲区溢出"></a>21.3.1 缓冲区溢出</h2><h2 id="21-3-2-检查时间到使用时间"><a href="#21-3-2-检查时间到使用时间" class="headerlink" title="21.3.2 检查时间到使用时间"></a>21.3.2 检查时间到使用时间</h2><h2 id="21-3-3-后门"><a href="#21-3-3-后门" class="headerlink" title="21.3.3 后门"></a>21.3.3 后门</h2><h2 id="21-3-4-特权提升和-rootkit"><a href="#21-3-4-特权提升和-rootkit" class="headerlink" title="21.3.4 特权提升和 rootkit"></a>21.3.4 特权提升和 rootkit</h2><h1 id="21-4-注入漏洞"><a href="#21-4-注入漏洞" class="headerlink" title="21.4 注入漏洞"></a>21.4 注入漏洞</h1><h2 id="21-4-1-SQL-注入攻击"><a href="#21-4-1-SQL-注入攻击" class="headerlink" title="21.4.1 SQL 注入攻击"></a>21.4.1 SQL 注入攻击</h2><h3 id="1-基于内容的盲注"><a href="#1-基于内容的盲注" class="headerlink" title="1. 基于内容的盲注"></a>1. 基于内容的盲注</h3><h3 id="2-基于计时的盲注"><a href="#2-基于计时的盲注" class="headerlink" title="2. 基于计时的盲注"></a>2. 基于计时的盲注</h3><h2 id="21-4-2-代码注入攻击"><a href="#21-4-2-代码注入攻击" class="headerlink" title="21.4.2 代码注入攻击"></a>21.4.2 代码注入攻击</h2><h2 id="21-4-3-命令注入攻击"><a href="#21-4-3-命令注入攻击" class="headerlink" title="21.4.3 命令注入攻击"></a>21.4.3 命令注入攻击</h2><h1 id="21-5-利用授权漏洞"><a href="#21-5-利用授权漏洞" class="headerlink" title="21.5 利用授权漏洞"></a>21.5 利用授权漏洞</h1><h2 id="21-5-1-不安全的直接对象引用"><a href="#21-5-1-不安全的直接对象引用" class="headerlink" title="21.5.1 不安全的直接对象引用"></a>21.5.1 不安全的直接对象引用</h2><h2 id="21-5-2-目录遍历"><a href="#21-5-2-目录遍历" class="headerlink" title="21.5.2 目录遍历"></a>21.5.2 目录遍历</h2><h2 id="21-5-3-文件包含"><a href="#21-5-3-文件包含" class="headerlink" title="21.5.3 文件包含"></a>21.5.3 文件包含</h2><h1 id="21-6-利用-Web-应用程序漏洞"><a href="#21-6-利用-Web-应用程序漏洞" class="headerlink" title="21.6 利用 Web 应用程序漏洞"></a>21.6 利用 Web 应用程序漏洞</h1><h2 id="21-6-1-跨站脚本"><a href="#21-6-1-跨站脚本" class="headerlink" title="21.6.1 跨站脚本"></a>21.6.1 跨站脚本</h2><h3 id="1-反射-XSS"><a href="#1-反射-XSS" class="headerlink" title="1. 反射 XSS"></a>1. 反射 XSS</h3><h3 id="2-存储-持续-XSS"><a href="#2-存储-持续-XSS" class="headerlink" title="2. 存储&#x2F;持续 XSS"></a>2. 存储&#x2F;持续 XSS</h3><h2 id="21-6-2-请求伪造"><a href="#21-6-2-请求伪造" class="headerlink" title="21.6.2 请求伪造"></a>21.6.2 请求伪造</h2><h3 id="1-跨站请求伪造"><a href="#1-跨站请求伪造" class="headerlink" title="1. 跨站请求伪造"></a>1. 跨站请求伪造</h3><h3 id="2-服务器端请求伪造"><a href="#2-服务器端请求伪造" class="headerlink" title="2. 服务器端请求伪造"></a>2. 服务器端请求伪造</h3><h2 id="21-6-3-会话劫持"><a href="#21-6-3-会话劫持" class="headerlink" title="21.6.3 会话劫持"></a>21.6.3 会话劫持</h2><h1 id="21-7-应用程序安全控制"><a href="#21-7-应用程序安全控制" class="headerlink" title="21.7 应用程序安全控制"></a>21.7 应用程序安全控制</h1><h2 id="21-7-1-输入验证"><a href="#21-7-1-输入验证" class="headerlink" title="21.7.1 输入验证"></a>21.7.1 输入验证</h2><h2 id="21-7-2-Web-应用程序防火墙"><a href="#21-7-2-Web-应用程序防火墙" class="headerlink" title="21.7.2 Web 应用程序防火墙"></a>21.7.2 Web 应用程序防火墙</h2><h2 id="21-7-3-数据库安全"><a href="#21-7-3-数据库安全" class="headerlink" title="21.7.3 数据库安全"></a>21.7.3 数据库安全</h2><h3 id="1-参数化查询和存储过程"><a href="#1-参数化查询和存储过程" class="headerlink" title="1. 参数化查询和存储过程"></a>1. 参数化查询和存储过程</h3><h3 id="2-混淆和伪装"><a href="#2-混淆和伪装" class="headerlink" title="2. 混淆和伪装"></a>2. 混淆和伪装</h3><h2 id="21-7-4-代码安全"><a href="#21-7-4-代码安全" class="headerlink" title="21.7.4 代码安全"></a>21.7.4 代码安全</h2><h3 id="1-代码签名"><a href="#1-代码签名" class="headerlink" title="1. 代码签名"></a>1. 代码签名</h3><h3 id="2-代码重用"><a href="#2-代码重用" class="headerlink" title="2. 代码重用"></a>2. 代码重用</h3><h3 id="3-软件多样性"><a href="#3-软件多样性" class="headerlink" title="3. 软件多样性"></a>3. 软件多样性</h3><h3 id="4-代码仓库"><a href="#4-代码仓库" class="headerlink" title="4. 代码仓库"></a>4. 代码仓库</h3><h3 id="5-完整性度量"><a href="#5-完整性度量" class="headerlink" title="5. 完整性度量"></a>5. 完整性度量</h3><h3 id="6-应用程序韧性"><a href="#6-应用程序韧性" class="headerlink" title="6. 应用程序韧性"></a>6. 应用程序韧性</h3><h1 id="21-8-安全编码实践"><a href="#21-8-安全编码实践" class="headerlink" title="21.8 安全编码实践"></a>21.8 安全编码实践</h1><h2 id="21-8-1-源代码注释"><a href="#21-8-1-源代码注释" class="headerlink" title="21.8.1 源代码注释"></a>21.8.1 源代码注释</h2><h2 id="21-8-2-错误处理"><a href="#21-8-2-错误处理" class="headerlink" title="21.8.2 错误处理"></a>21.8.2 错误处理</h2><h2 id="21-8-3-硬编码凭证"><a href="#21-8-3-硬编码凭证" class="headerlink" title="21.8.3 硬编码凭证"></a>21.8.3 硬编码凭证</h2><h2 id="21-8-4-内存管理"><a href="#21-8-4-内存管理" class="headerlink" title="21.8.4 内存管理"></a>21.8.4 内存管理</h2><h3 id="1-资源耗尽"><a href="#1-资源耗尽" class="headerlink" title="1. 资源耗尽"></a>1. 资源耗尽</h3><h3 id="2-指针解引用"><a href="#2-指针解引用" class="headerlink" title="2. 指针解引用"></a>2. 指针解引用</h3><h1 id="21-9-本章小结"><a href="#21-9-本章小结" class="headerlink" title="21.9 本章小结"></a>21.9 本章小结</h1><h1 id="21-10-考试要点"><a href="#21-10-考试要点" class="headerlink" title="21.10 考试要点"></a>21.10 考试要点</h1><h2 id="理解病毒使用的传播技术"><a href="#理解病毒使用的传播技术" class="headerlink" title="理解病毒使用的传播技术"></a>理解病毒使用的传播技术</h2><p>病毒使用 4 种主要的传播技术渗透系统并传播恶意载荷。</p>
 <p>4种技术是：</p>
 <p>文件感染病毒</p>
 <p>服务注入病毒</p>
