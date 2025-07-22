@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="常见概念RAG（检索增强生成）上下文信息检索方法，利用基于向量的搜索从数据库或知识库中检索相关知识，使模型能够补充最新的信息。 Function CallMCP 协议Anthropic 发布 Model Context Protocol 模型上下文协议 旨在统一规范大语言模型与外部数据源和工具之间的通信，建立 AI  与外部数据、工具交互的标准，类似中间件 核心组件Host本地运行的 AI 应">
+    <meta name="description" content="常见概念RAG（检索增强生成）RAG（Retrieval Augmented Generation，RAG） 上下文信息检索方法，利用基于向量的搜索从数据库或知识库中检索相关知识，检索结果作为上下文，辅助大语言模型（Large Language Model，LLM）生成答案。 Function CallMCP 协议Anthropic 发布 Model Context Protocol 模型上下">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ai-base">
 <meta property="og:url" content="https://tthours.github.io/2025/02/26/security/aisec/ai-base/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="常见概念RAG（检索增强生成）上下文信息检索方法，利用基于向量的搜索从数据库或知识库中检索相关知识，使模型能够补充最新的信息。 Function CallMCP 协议Anthropic 发布 Model Context Protocol 模型上下文协议 旨在统一规范大语言模型与外部数据源和工具之间的通信，建立 AI  与外部数据、工具交互的标准，类似中间件 核心组件Host本地运行的 AI 应">
+<meta property="og:description" content="常见概念RAG（检索增强生成）RAG（Retrieval Augmented Generation，RAG） 上下文信息检索方法，利用基于向量的搜索从数据库或知识库中检索相关知识，检索结果作为上下文，辅助大语言模型（Large Language Model，LLM）生成答案。 Function CallMCP 协议Anthropic 发布 Model Context Protocol 模型上下">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-06T07:07:41.456Z">
+<meta property="article:modified_time" content="2025-06-30T14:14:08.016Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="aisec">
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          506 字
+          830 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          5 分钟
+          7 分钟
         
       </span>
     
@@ -284,7 +284,8 @@
                 
                 <span id="more"></span>
 
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="常见概念"><a href="#常见概念" class="headerlink" title="常见概念"></a>常见概念</h1><h2 id="RAG（检索增强生成）"><a href="#RAG（检索增强生成）" class="headerlink" title="RAG（检索增强生成）"></a>RAG（检索增强生成）</h2><p>上下文信息检索方法，利用基于向量的搜索从数据库或知识库中检索相关知识，使模型能够补充最新的信息。</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="常见概念"><a href="#常见概念" class="headerlink" title="常见概念"></a>常见概念</h1><h2 id="RAG（检索增强生成）"><a href="#RAG（检索增强生成）" class="headerlink" title="RAG（检索增强生成）"></a>RAG（检索增强生成）</h2><p>RAG（Retrieval Augmented Generation，RAG）</p>
+<p>上下文信息检索方法，利用基于向量的搜索从数据库或知识库中检索相关知识，检索结果作为上下文，辅助大语言模型（Large Language Model，LLM）生成答案。</p>
 <h2 id="Function-Call"><a href="#Function-Call" class="headerlink" title="Function Call"></a>Function Call</h2><h2 id="MCP-协议"><a href="#MCP-协议" class="headerlink" title="MCP 协议"></a>MCP 协议</h2><p>Anthropic 发布</p>
 <p>Model Context Protocol 模型上下文协议</p>
 <p><strong>旨在统一规范大语言模型与外部数据源和工具之间的通信</strong>，建立 AI  与外部数据、工具交互的标准，类似中间件</p>
@@ -304,11 +305,62 @@
 <h2 id="LM-Studio"><a href="#LM-Studio" class="headerlink" title="LM Studio"></a>LM Studio</h2><p>LM Studio is a desktop app for developing and experimenting with LLMs locally on your computer.</p>
 <p>LM Studio 是一款桌面应用程序，可在您的计算机上本地开发和试验大型语言模型。</p>
 <p><a target="_blank" rel="noopener" href="https://lmstudio.ai/">https://lmstudio.ai/</a></p>
-<h1 id="常见术语"><a href="#常见术语" class="headerlink" title="常见术语"></a>常见术语</h1><h2 id="NLP"><a href="#NLP" class="headerlink" title="NLP"></a>NLP</h2><p>自然语言处理</p>
+<h1 id="常见术语"><a href="#常见术语" class="headerlink" title="常见术语"></a>常见术语</h1><h2 id="NLP"><a href="#NLP" class="headerlink" title="NLP"></a>NLP</h2><p>自然语言处理（Natural Language Processing，NLP）</p>
+<h3 id="NLU-NLG"><a href="#NLU-NLG" class="headerlink" title="NLU&#x2F;NLG"></a>NLU&#x2F;NLG</h3><p>自然语言理解（Natural Language Understanding，NLU）</p>
+<p>自然语言生成（Natural Language Generation，NLG）</p>
+<h3 id="常见NLP-任务"><a href="#常见NLP-任务" class="headerlink" title="常见NLP 任务"></a>常见NLP 任务</h3><p>语音识别</p>
+<p>文本生成</p>
+<p>情感分析</p>
+<p>知识图谱</p>
+<p>机器翻译</p>
+<p>问答系统</p>
+<p>聊天机器人</p>
 <h2 id="LLMs"><a href="#LLMs" class="headerlink" title="LLMs"></a>LLMs</h2><p>大型语言模型</p>
 <h2 id="Xb"><a href="#Xb" class="headerlink" title="Xb"></a>Xb</h2><p>模型参数量</p>
 <p>x billion，7b 为 7 billion，也就是 70 亿个</p>
 <p>参数量是模型中可训练的权重参数总数，</p>
+<h2 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h2><h3 id="查看是否存在-GPU"><a href="#查看是否存在-GPU" class="headerlink" title="查看是否存在 GPU"></a>查看是否存在 GPU</h3><h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><h5 id="lspci-grep-i-vga"><a href="#lspci-grep-i-vga" class="headerlink" title="lspci | grep -i vga"></a>lspci | grep -i vga</h5><p>查看 PCI 设备，检查是否存在显卡设备，查看结果是否包含类似 VGA compatible controller 或 3D controller 的条目</p>
+<p>存在显卡设备</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs elixir">(base) root<span class="hljs-variable">@localhost</span><span class="hljs-symbol">:/tmp</span><span class="hljs-comment"># lspci | grep -i vga</span><br><span class="hljs-number">00</span><span class="hljs-symbol">:</span><span class="hljs-number">01.0</span> <span class="hljs-title class_">VGA</span> compatible <span class="hljs-symbol">controller:</span> <span class="hljs-title class_">Red</span> <span class="hljs-title class_">Hat</span>, <span class="hljs-title class_">Inc</span>. <span class="hljs-title class_">Virtio</span> <span class="hljs-title class_">GPU</span> (rev <span class="hljs-number">01</span>)<br><span class="hljs-number">08</span><span class="hljs-symbol">:</span><span class="hljs-number">00.0</span> <span class="hljs-title class_">VGA</span> compatible <span class="hljs-symbol">controller:</span> <span class="hljs-title class_">NVIDIA</span> <span class="hljs-title class_">Corporation</span> <span class="hljs-title class_">Device</span> <span class="hljs-number">2684</span> (rev a1)<br></code></pre></td></tr></table></figure>
+
+
+
+<p>不存在显卡设备</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">(base)</span> [<span class="hljs-string">root@</span> <span class="hljs-string">tmp</span>]<span class="hljs-comment"># lspci | grep -i vga</span><br><span class="hljs-attr">00:02.0 VGA compatible controller:</span> <span class="hljs-string">Device</span> <span class="hljs-number">1234</span><span class="hljs-string">:1111</span> <span class="hljs-string">(rev</span> <span class="hljs-number">02</span><span class="hljs-string">)</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="查看-dev-目录下的-GPU-设备文件"><a href="#查看-dev-目录下的-GPU-设备文件" class="headerlink" title="查看 &#x2F;dev 目录下的 GPU 设备文件"></a>查看 &#x2F;dev 目录下的 GPU 设备文件</h5><p><strong>ls &#x2F;dev&#x2F;nvidia</strong>*</p>
+<p>存在显卡设备</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) root@localhost:/tmp# <span class="hljs-built_in">ls</span> /dev/nvidia*<br>/dev/nvidia0  /dev/nvidiactl  /dev/nvidia-uvm  /dev/nvidia-uvm-tools<br><br>/dev/nvidia-caps:<br>nvidia-cap1  nvidia-cap2<br></code></pre></td></tr></table></figure>
+
+
+
+<p>不存在显卡设备</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) [root@ tmp]# <span class="hljs-built_in">ls</span> /dev/nvidia*<br><span class="hljs-built_in">ls</span>: cannot access <span class="hljs-string">&#x27;/dev/nvidia*&#x27;</span>: No such file or directory<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="nvidia-smi-命令（仅适用于-NVIDIA-GPU）"><a href="#nvidia-smi-命令（仅适用于-NVIDIA-GPU）" class="headerlink" title="nvidia-smi 命令（仅适用于 NVIDIA GPU）"></a>nvidia-smi 命令（仅适用于 NVIDIA GPU）</h5><p><strong>nvidia-smi</strong></p>
+<p>存在显卡设备</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">(base) root<span class="hljs-meta">@localhost:/tmp#</span> nvidia-smi<br>Mon Jun 30 22:12:57 2025<br>+-----------------------------------------------------------------------------------------+<br>|<span class="hljs-string"> NVIDIA-SMI 550.54.14              Driver Version: 550.54.14      CUDA Version: 12.4     </span>|<br>|<span class="hljs-string">-----------------------------------------+------------------------+----------------------+</span><br><span class="hljs-string"></span>|<span class="hljs-string"> GPU  Name                 Persistence-M </span>|<span class="hljs-string"> Bus-Id          Disp.A </span>|<span class="hljs-string"> Volatile Uncorr. ECC </span>|<br>|<span class="hljs-string"> Fan  Temp   Perf          Pwr:Usage/Cap </span>|<span class="hljs-string">           Memory-Usage </span>|<span class="hljs-string"> GPU-Util  Compute M. </span>|<br>|<span class="hljs-string">                                         </span>|<span class="hljs-string">                        </span>|<span class="hljs-string">               MIG M. </span>|<br>|<span class="hljs-string">=========================================+========================+======================</span>|<br>|<span class="hljs-string">   0  NVIDIA GeForce RTX 4090        Off </span>|<span class="hljs-string">   00000000:08:00.0 Off </span>|<span class="hljs-string">                  Off </span>|<br>|<span class="hljs-string"> 32%   33C    P2             52W /  450W </span>|<span class="hljs-string">   16212MiB /  24564MiB </span>|<span class="hljs-string">      0%      Default </span>|<br>|<span class="hljs-string">                                         </span>|<span class="hljs-string">                        </span>|<span class="hljs-string">                  N/A </span>|<br>+-----------------------------------------+------------------------+----------------------+<br><br>+-----------------------------------------------------------------------------------------+<br>|<span class="hljs-string"> Processes:                                                                              </span>|<br>|<span class="hljs-string">  GPU   GI   CI        PID   Type   Process name                              GPU Memory </span>|<br>|<span class="hljs-string">        ID   ID                                                               Usage      </span>|<br>|<span class="hljs-string">=========================================================================================</span>|<br>|<span class="hljs-string">    0   N/A  N/A   1851912      C   python                                      16206MiB </span>|<br>+-----------------------------------------------------------------------------------------+<br></code></pre></td></tr></table></figure>
+
+
+
+<p>不存在显卡设备</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">(<span class="hljs-keyword">base) </span>[root@ tmp]<span class="hljs-comment"># nvidia-smi</span><br><span class="hljs-keyword">bash: </span>nvidia-smi: command not found<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><p><strong>system_profiler SPDisplaysDataType</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">(base)</span> <span class="hljs-string">➜</span>  <span class="hljs-string">/tmp</span> <span class="hljs-string">system_profiler</span> <span class="hljs-string">SPDisplaysDataType</span><br><span class="hljs-attr">Graphics/Displays:</span><br><br>    <span class="hljs-attr">Apple M1:</span><br><br>      <span class="hljs-attr">Chipset Model:</span> <span class="hljs-string">Apple</span> <span class="hljs-string">M1</span><br>      <span class="hljs-attr">Type:</span> <span class="hljs-string">GPU</span><br>      <span class="hljs-attr">Bus:</span> <span class="hljs-string">Built-In</span><br>      <span class="hljs-attr">Total Number of Cores:</span> <span class="hljs-number">8</span><br>      <span class="hljs-attr">Vendor:</span> <span class="hljs-string">Apple</span> <span class="hljs-string">(0x106b)</span><br>      <span class="hljs-attr">Metal Support:</span> <span class="hljs-string">Metal</span> <span class="hljs-number">3</span><br>      <span class="hljs-attr">Displays:</span><br>        <span class="hljs-attr">Color LCD:</span><br>          <span class="hljs-attr">Display Type:</span> <span class="hljs-string">Built-In</span> <span class="hljs-string">Retina</span> <span class="hljs-string">LCD</span><br>          <span class="hljs-attr">Resolution:</span> <span class="hljs-number">2560 </span><span class="hljs-string">x</span> <span class="hljs-number">1600 </span><span class="hljs-string">Retina</span><br>          <span class="hljs-attr">Main Display:</span> <span class="hljs-literal">Yes</span><br>          <span class="hljs-attr">Mirror:</span> <span class="hljs-string">Off</span><br>          <span class="hljs-attr">Online:</span> <span class="hljs-literal">Yes</span><br>          <span class="hljs-attr">Automatically Adjust Brightness:</span> <span class="hljs-literal">Yes</span><br>          <span class="hljs-attr">Connection Type:</span> <span class="hljs-string">Internal</span><br></code></pre></td></tr></table></figure>
+
+
+
 <h1 id="风险端口"><a href="#风险端口" class="headerlink" title="风险端口"></a>风险端口</h1><h2 id="11434-Ollama"><a href="#11434-Ollama" class="headerlink" title="11434 Ollama"></a>11434 Ollama</h2><h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><h3 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><p>建议在 Python 虚拟环境中安装依赖项，以避免与系统 Python 环境冲突</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 -m venv deepseek_env<br><span class="hljs-built_in">source</span> deepseek_env/bin/activate<br></code></pre></td></tr></table></figure>
 

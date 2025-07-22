@@ -27,7 +27,7 @@
 <meta property="og:description" content="启动http服务日常在进行文件下载的时候，会出现不同环境下载速度不同或者下载结果不同的情况，为了不同环境之间进行文件传输，可以使用python临时启动httpserver服务器。 注意点1）执行python命令的目录就是http服务的根目录 2）默认端口为 8000 ，可以在命令中指定 3）启动的服务为单线程 语法python2 python -m SimpleHTTPServer 3001">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-11-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-11-11T10:54:16.099Z">
+<meta property="article:modified_time" content="2025-07-09T01:21:07.790Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="dev">
 <meta property="article:tag" content="python">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          117 字
+          129 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -293,6 +293,8 @@
 <p>python -m SimpleHTTPServer 3001</p>
 <p>python3</p>
 <p>python -m http.server 3001</p>
+<h2 id="进度条-tqdm"><a href="#进度条-tqdm" class="headerlink" title="进度条 tqdm"></a>进度条 tqdm</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> tqdm.auto import tqdm<br><br><span class="hljs-keyword">for</span> out <span class="hljs-keyword">in</span> tqdm(pipe(dataset, <span class="hljs-attribute">batch_size</span>=batch_size), <span class="hljs-attribute">total</span>=len(dataset)):<br>	pass<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
