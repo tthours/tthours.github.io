@@ -19,15 +19,15 @@
   <meta name="author" content="tt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="训练策略 监督学习（标注数据训练分类&#x2F;检测模型） 半监督学习（少量标注+大量无标注数据） 强化学习（如对抗训练，模拟攻击与防御） 持续学习（适应新型攻击模式）  监督学习 Supervised Learning用已标注的数据（输入+正确输出）训练模型，让模型学会从输入预测输出。 数据集训练集用于模型学习规律 验证集调参（如学习率、模型结构） 测试集最终评估模型性能 模型收敛+">
+    <meta name="description" content="训练策略 监督学习（标注数据训练分类&#x2F;检测模型） 半监督学习（少量标注+大量无标注数据） 强化学习（如对抗训练，模拟攻击与防御） 持续学习（适应新型攻击模式）  监督学习 Supervised Learning用已标注的数据（输入+正确输出）训练模型，让模型学会从输入预测输出。 数据集训练集用于模型学习规律 验证集调参（如学习率、模型结构） 测试集最终评估模型性能 半监督学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ai-training">
 <meta property="og:url" content="https://tthours.github.io/2025/07/16/security/aisec/ai-training/index.html">
 <meta property="og:site_name" content="tthours">
-<meta property="og:description" content="训练策略 监督学习（标注数据训练分类&#x2F;检测模型） 半监督学习（少量标注+大量无标注数据） 强化学习（如对抗训练，模拟攻击与防御） 持续学习（适应新型攻击模式）  监督学习 Supervised Learning用已标注的数据（输入+正确输出）训练模型，让模型学会从输入预测输出。 数据集训练集用于模型学习规律 验证集调参（如学习率、模型结构） 测试集最终评估模型性能 模型收敛+">
+<meta property="og:description" content="训练策略 监督学习（标注数据训练分类&#x2F;检测模型） 半监督学习（少量标注+大量无标注数据） 强化学习（如对抗训练，模拟攻击与防御） 持续学习（适应新型攻击模式）  监督学习 Supervised Learning用已标注的数据（输入+正确输出）训练模型，让模型学会从输入预测输出。 数据集训练集用于模型学习规律 验证集调参（如学习率、模型结构） 测试集最终评估模型性能 半监督学习">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-21T01:29:14.919Z">
+<meta property="article:modified_time" content="2025-07-22T01:18:31.225Z">
 <meta property="article:author" content="tt">
 <meta property="article:tag" content="security">
 <meta property="article:tag" content="aisec">
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          2.4k 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          11 分钟
+          21 分钟
         
       </span>
     
@@ -298,6 +298,103 @@
 <h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><h4 id="训练集"><a href="#训练集" class="headerlink" title="训练集"></a>训练集</h4><p>用于模型学习规律</p>
 <h4 id="验证集"><a href="#验证集" class="headerlink" title="验证集"></a>验证集</h4><p>调参（如学习率、模型结构）</p>
 <h4 id="测试集"><a href="#测试集" class="headerlink" title="测试集"></a>测试集</h4><p>最终评估模型性能</p>
+<h2 id="半监督学习"><a href="#半监督学习" class="headerlink" title="半监督学习"></a>半监督学习</h2><p>用少量标注数据和大量无标注数据训练模型，比纯监督学习更高效，比无监督学习更精准。</p>
+<h3 id="使用原因"><a href="#使用原因" class="headerlink" title="使用原因"></a>使用原因</h3><ul>
+<li>标注数据太贵</li>
+<li>无标注数据便宜</li>
+<li>两者结合：用少量标注数据”引导”模型，再用无标注数据”扩展”知识</li>
+</ul>
+<h3 id="训练方法"><a href="#训练方法" class="headerlink" title="训练方法"></a>训练方法</h3><h4 id="自训练（Self-Training）"><a href="#自训练（Self-Training）" class="headerlink" title="自训练（Self-Training）"></a>自训练（Self-Training）</h4><p>步骤：</p>
+<ol>
+<li>用标注数据训练初始模型。</li>
+<li>用模型预测无标注数据，挑出<strong>高置信度</strong>的预测结果（如概率&gt;90%）。</li>
+<li>把这些”伪标签”数据加入训练集，重新训练模型。</li>
+<li>重复直到收敛。</li>
+</ol>
+<p>例子：</p>
+<p>先用1000条标注恶意流量训练模型 → 预测10万条无标注流量 → 挑出90%置信度的”恶意”样本 → 加入训练集 → 再次训练。</p>
+<h4 id="协同训练（Co-Training）"><a href="#协同训练（Co-Training）" class="headerlink" title="协同训练（Co-Training）"></a>协同训练（Co-Training）</h4><p><strong>“两个模型互相教对方”<strong>——用同一批数据的</strong>不同视角</strong>（特征子集）训练两个模型，它们互相提供伪标签来提升彼此性能。</p>
+<p>步骤：</p>
+<p>用标注数据训练 A 模型，让 A 模型预测没有标注数据，生成 B 模型需要的训练数据，也就是伪标签。</p>
+<p>用标注数据训练 B 模型，让 B 模型预测没有标注数据，生成 A 模型需要的训练数据，也就是伪标签。</p>
+<p>用 A 模型预测的结果给 B 模型进行训练</p>
+<p>用 B 模型预测的结果给 A 模型进行训练</p>
+<p>预测→挑伪标签→互相训练</p>
+<p>适用范围：<br>数据有多个独立的特征视图（如网页的文本和链接）</p>
+<p>不同视图之间相关性低但互补（一个视图遗漏的信息，另一个视图能补充）</p>
+<p>不适用于：</p>
+<ul>
+<li>数据特征高度相关（如不同视角全是文本，协同效果差）。</li>
+</ul>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>需要数据有<strong>可分离的特征子集</strong>。</li>
+<li>两个模型必须<strong>独立学习</strong>（不能共享参数）。</li>
+</ul>
+<h4 id="图半监督学习（Graph-Based）"><a href="#图半监督学习（Graph-Based）" class="headerlink" title="图半监督学习（Graph-Based）"></a>图半监督学习（Graph-Based）</h4><h4 id="一致性正则化（Consistency-Regularization）"><a href="#一致性正则化（Consistency-Regularization）" class="headerlink" title="一致性正则化（Consistency Regularization）"></a>一致性正则化（Consistency Regularization）</h4><p>对同一数据施加不同扰动（轻微修改-噪声、裁剪），模型的预测结果应该保持一致</p>
+<p><strong>对同一数据”百般刁难”（加扰动），要求模型”立场坚定”（预测一致）</strong></p>
+<p>如果结果不一致，可以使用损失函数惩罚这种不一致。</p>
+<h5 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h5><ul>
+<li>损失函数 &#x3D; 原始预测分布 和 扰动预测分布之间的差异（如KL散度）。</li>
+<li>训练时，强制模型让这个差异尽可能小。</li>
+</ul>
+<h5 id="扰动类型"><a href="#扰动类型" class="headerlink" title="扰动类型"></a>扰动类型</h5><table>
+<thead>
+<tr>
+<th align="center">扰动类型</th>
+<th align="center">具体操作</th>
+<th align="center">目的</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>输入扰动</strong></td>
+<td align="center">加噪声、模糊、随机遮挡</td>
+<td align="center">提升鲁棒性</td>
+</tr>
+<tr>
+<td align="center"><strong>几何扰动</strong></td>
+<td align="center">随机裁剪、旋转、缩放</td>
+<td align="center">适应不同视角</td>
+</tr>
+<tr>
+<td align="center"><strong>颜色扰动</strong></td>
+<td align="center">调整亮度、对比度</td>
+<td align="center">适应光照变化</td>
+</tr>
+</tbody></table>
+<h3 id="半监督学习优势"><a href="#半监督学习优势" class="headerlink" title="半监督学习优势"></a>半监督学习优势</h3><p><strong>省钱</strong>：少量标注数据 + 大量非标注数据</p>
+<p><strong>更强的泛化性：</strong>无标注数据帮助模型学习更真实的分布</p>
+<p><strong>适合现实场景</strong>：如网络安全、医疗诊断等标注成本高的领域</p>
+<h3 id="半监督学习注意事项"><a href="#半监督学习注意事项" class="headerlink" title="半监督学习注意事项"></a>半监督学习注意事项</h3><p><strong>伪标签噪声</strong>：模型预测错误的无标注数据可能引入”假答案”，需谨慎筛选高置信度样本</p>
+<p><strong>领域差异</strong>：标注数据和未标注数据分布不一致时效果会下降</p>
+<h2 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h2><h2 id="持续学习"><a href="#持续学习" class="headerlink" title="持续学习"></a>持续学习</h2><h1 id="评估与优化"><a href="#评估与优化" class="headerlink" title="评估与优化"></a>评估与优化</h1><ul>
+<li><strong>评估指标</strong>：准确率、召回率、F1分数、AUC（分类任务）；误报率、检测延迟（实时检测任务）</li>
+<li><strong>对抗训练</strong>（提高模型鲁棒性，防止对抗样本攻击）</li>
+<li><strong>模型压缩</strong>（如蒸馏、量化，使模型适合部署在边缘设备）</li>
+</ul>
+<h1 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h1><p><strong>数据清洗是训练安全大模型的关键步骤</strong>，否则噪声数据会导致模型性能下降甚至误判。主要清洗方法包括：</p>
+<h3 id="1-去噪与异常值处理"><a href="#1-去噪与异常值处理" class="headerlink" title="(1) 去噪与异常值处理"></a><strong>(1) 去噪与异常值处理</strong></h3><ul>
+<li><strong>网络流量数据</strong>：过滤掉正常流量（如HTTP浏览），保留异常流量（如DDoS、扫描）。</li>
+<li><strong>恶意软件样本</strong>：去除损坏或无效的样本（如不完整的PE文件）。</li>
+<li><strong>代码数据</strong>：过滤低质量或非安全相关的代码（如注释、测试代码）。</li>
+</ul>
+<h3 id="2-标注一致性检查"><a href="#2-标注一致性检查" class="headerlink" title="(2) 标注一致性检查"></a><strong>(2) 标注一致性检查</strong></h3><ul>
+<li>确保标注数据（如恶意&#x2F;正常分类）准确，避免标签错误影响模型训练。</li>
+<li>使用多人标注+交叉验证提高标注质量。</li>
+</ul>
+<h3 id="3-数据平衡"><a href="#3-数据平衡" class="headerlink" title="(3) 数据平衡"></a><strong>(3) 数据平衡</strong></h3><ul>
+<li>安全数据通常不平衡（如正常样本远多于恶意样本），需采用：<ul>
+<li><strong>过采样</strong>（如SMOTE生成恶意样本）</li>
+<li><strong>欠采样</strong>（减少正常样本数量）</li>
+<li><strong>损失函数调整</strong>（如Focal Loss缓解类别不平衡）</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-特征工程"><a href="#4-特征工程" class="headerlink" title="(4) 特征工程"></a><strong>(4) 特征工程</strong></h3><ul>
+<li><strong>网络流量</strong>：提取统计特征（包大小、频率、协议分布）。</li>
+<li><strong>恶意软件</strong>：提取静态特征（API调用、熵值）或动态特征（行为日志）。</li>
+<li><strong>代码</strong>：提取语法树（AST）、控制流图（CFG）等结构化特征。</li>
+</ul>
 <h1 id="模型收敛-泛化-过拟合"><a href="#模型收敛-泛化-过拟合" class="headerlink" title="模型收敛+泛化+过拟合"></a>模型收敛+泛化+过拟合</h1><h2 id="模型收敛-Convergence"><a href="#模型收敛-Convergence" class="headerlink" title="模型收敛 Convergence"></a>模型收敛 Convergence</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>模型在训练过程中，损失函数或指标逐渐稳定，不再明显下降，也就是说学会了训练数据的规律。</p>
 <h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p><strong>网络安全场景</strong>：</p>
 <ul>
@@ -365,11 +462,7 @@
 </ul>
 <h4 id="训练技巧"><a href="#训练技巧" class="headerlink" title="训练技巧"></a>训练技巧</h4><p>早停（Early Stopping）：当测试集性能不再提升时停止训练</p>
 <p>交叉验证：用多份数据验证模型稳定性</p>
-<h1 id="评估与优化"><a href="#评估与优化" class="headerlink" title="评估与优化"></a>评估与优化</h1><ul>
-<li><strong>评估指标</strong>：准确率、召回率、F1分数、AUC（分类任务）；误报率、检测延迟（实时检测任务）</li>
-<li><strong>对抗训练</strong>（提高模型鲁棒性，防止对抗样本攻击）</li>
-<li><strong>模型压缩</strong>（如蒸馏、量化，使模型适合部署在边缘设备）</li>
-</ul>
+<p>- </p>
 
                 
               </div>
